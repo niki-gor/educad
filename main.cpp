@@ -29,6 +29,7 @@ int main() {
 
     while (window.isOpen()) {
         auto pointedPoint = Utility::cursorPointsToPoint(points, window);
+        auto pointedLine = Utility::cursorPointsToLine(lines, window);
 
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -52,7 +53,7 @@ int main() {
             };
         }
 
-        cursor.loadFromSystem(pointedPoint == nullptr ? sf::Cursor::Type::Arrow : sf::Cursor::Type::Hand);
+        cursor.loadFromSystem(pointedPoint == nullptr && pointedLine == nullptr ? sf::Cursor::Type::Arrow : sf::Cursor::Type::Hand);
         window.setMouseCursor(cursor);
         
         window.clear();
