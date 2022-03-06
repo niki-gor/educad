@@ -7,7 +7,7 @@ Utility::Utility(const sf::RenderWindow& window) :
 sf::CircleShape Utility::drawablePoint(const Point point) {
     sf::CircleShape result;
     result.setPosition(sf::Vector2f(point.pos.x, point.pos.y));
-    result.setPointCount(10);
+    result.setPointCount(point.shape);
 
     result.setFillColor(sf::Color::Transparent);
     result.setRadius(pointRadius * (1 - outlineThicknessRatio));
@@ -35,7 +35,7 @@ std::list<std::shared_ptr<Point>>::iterator Utility::cursorPointsToPoint(std::li
 }
 
 const float Utility::pointRadiusRatio = 0.007f;
-const float Utility::outlineThicknessRatio = 0.2f;
+const float Utility::outlineThicknessRatio = 0.4f;
 const float Utility::pointRadiusChosenRatio = 0.01f;
 
 const float Utility::maxPointingDeviationRatio = 0.002;
