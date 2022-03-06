@@ -3,9 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include "point.h"
 #include "line.h"
+#include "angem.h"
 #include <random>
 #include <chrono>
 #include <unordered_set>
+#include <iostream>
 
 class Utility {
 private:

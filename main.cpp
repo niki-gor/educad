@@ -47,7 +47,7 @@ int main() {
                     }
                 }
                 else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
-                    points.emplace(new Point(sf::Vector3f(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y, 0), Utility::randomColor()));
+                    points.emplace(new Point(sf::Vector3f(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y, 0), Utility::randomColor()));
                 }
             };
         }

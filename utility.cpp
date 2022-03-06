@@ -21,20 +21,16 @@ sf::CircleShape Utility::drawablePoint(const Point& point) {
 }
 
 std::shared_ptr<Point> Utility::cursorPointsToPoint(const std::unordered_set<std::shared_ptr<Point>>& points, const sf::RenderWindow& window) {
-    std::shared_ptr<Point> result(nullptr);
     auto cursor = sf::Mouse::getPosition(window);
-    float minDistance = FLT_MAX;
-    for (auto& i : points) {
-        float distance = std::hypot(cursor.x - i->pos.x, cursor.y - i->pos.y);
-        if (distance < minDistance) {
-            minDistance = distance;
-            result = i;
-        }
-    }
-    if (minDistance > pointingRadius)
+    auto result = Angem::nearestPointToPoint(points, Point(sf::Vector3f(cursor.x, cursor.y, 0)));
+    std::cout << (result == nullptr ? "NULLPTR" : std::to_string(Angem::distance(result->pos.x, result->pos.y, cursor.x, cursor.y))) << '\n';
+    if (result == nullptr)
+        return nullptr;
+    if (Angem::distance(result->pos.x, result->pos.y, cursor.x, cursor.y) > pointingRadius)
         return nullptr;
     return result;
 }
+        
 
 const float Utility::pointRadiusRatio = 0.007f;
 const float Utility::outlineThicknessRatio = 0.4f;
