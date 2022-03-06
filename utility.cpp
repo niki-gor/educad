@@ -1,9 +1,10 @@
 #include "utility.h"
 
 Utility::Utility(const sf::RenderWindow& window) :
-    random(std::chrono::steady_clock::now().time_since_epoch().count()),
     pointRadius{ std::min(window.getSize().x, window.getSize().y) * pointRadiusRatio },
-    pointingRadius{ std::min(window.getSize().x, window.getSize().y) * (pointRadiusRatio + maxPointingDeviationRatio) } {}
+    pointingRadius{ std::min(window.getSize().x, window.getSize().y) * (pointRadiusRatio + maxPointingDeviationRatio) } {
+    random.seed(std::chrono::steady_clock::now().time_since_epoch().count());
+}
 
 sf::CircleShape Utility::drawablePoint(const Point& point) {
     sf::CircleShape result;
@@ -48,6 +49,8 @@ const float Utility::axisOXRightBoundRatio = 0.8f;
 const float Utility::axisOYUpperBoundRatio = 0.2f;
 const float Utility::axisOZLowerBoundRatio = 0.8f;
 
+std::mt19937 Utility::random;
+
 
 void Utility::initAxes(sf::VertexArray& axes, const sf::RenderWindow& window) {
     const float width = (float)window.getSize().x;
@@ -66,4 +69,8 @@ sf::VertexArray Utility::drawableLine(const Line& line) {
     result[1].position = { line.second->pos.x, line.second->pos.y };
     result[1].color = line.second->color;
     return result;
+}
+
+sf::Color Utility::randomColor() {
+    return sf::Color(random() | 255);
 }

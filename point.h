@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 
+
 class Point {
 public:
     std::string name;
@@ -9,6 +10,5 @@ public:
     sf::Color color;
     bool inFrontalProjection;
     bool inHorizontalProjection;
-    Point();
-    Point(sf::Vector3f);
+    Point(sf::Vector3f, sf::Color);
 };
