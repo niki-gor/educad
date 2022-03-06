@@ -2,5 +2,4 @@
 
 Point::Point() {}
 
-Point::Point(std::string name, sf::Vector3f pos, sf::Color color) : 
-    name{ name }, pos{ pos }, color{ color } {}
+Point::Point(sf::Vector3f pos) : pos{ pos } {}

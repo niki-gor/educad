@@ -10,5 +10,5 @@ public:
     bool inFrontalProjection;
     bool inHorizontalProjection;
     Point();
-    Point(std::string name, sf::Vector3f position, sf::Color color);
+    Point(sf::Vector3f);
 };
