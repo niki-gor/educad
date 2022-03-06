@@ -1,13 +1,14 @@
 #include "utility.h"
 
 Utility::Utility(const sf::RenderWindow& window) :
+    random(std::chrono::steady_clock::now().time_since_epoch().count()),
     pointRadius{ std::min(window.getSize().x, window.getSize().y) * pointRadiusRatio },
     pointingRadius{ std::min(window.getSize().x, window.getSize().y) * (pointRadiusRatio + maxPointingDeviationRatio) } {}
 
 sf::CircleShape Utility::drawablePoint(const Point point) {
     sf::CircleShape result;
     result.setPosition(sf::Vector2f(point.pos.x, point.pos.y));
-    result.setPointCount(point.shape);
+    result.setPointCount(5);    // pentagon
 
     result.setFillColor(sf::Color::Transparent);
     result.setRadius(pointRadius * (1 - outlineThicknessRatio));
@@ -18,19 +19,21 @@ sf::CircleShape Utility::drawablePoint(const Point point) {
     return result;
 }
 
-std::list<std::shared_ptr<Point>>::iterator Utility::cursorPointsToPoint(std::list<std::shared_ptr<Point>>& points, const sf::RenderWindow& window) {
-    auto result = points.end();
+std::shared_ptr<Point> Utility::cursorPointsToPoint(const std::unordered_set<std::shared_ptr<Point>>& points, const sf::RenderWindow& window) {
+    std::shared_ptr<Point> result(nullptr);
     auto cursor = sf::Mouse::getPosition(window);
-    float minDistance = _HUGE_ENUF;
-    for (auto i = points.begin(); i != points.end(); ++i) {
-        auto distance = std::hypot(cursor.x - (*i)->pos.x, cursor.y - (*i)->pos.y);
+    float minDistance = FLT_MAX;
+    for (auto& i : points) {
+        float distance = std::hypot(cursor.x - i->pos.x, cursor.y - i->pos.y);
         if (distance < minDistance) {
             minDistance = distance;
             result = i;
         }
     }
-    if (std::hypot(cursor.x - (*result)->pos.x, cursor.y - (*result)->pos.y) > pointingRadius)
-        return points.end();
+    if (minDistance == FLT_MAX)
+        return nullptr;
+    if (std::hypot(cursor.x - result->pos.x, cursor.y - result->pos.y) > pointingRadius)
+        return nullptr;
     return result;
 }
 
