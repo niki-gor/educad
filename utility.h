@@ -1,7 +1,6 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include <list>
 #include "point.h"
 #include "line.h"
 #include <random>
@@ -23,16 +22,14 @@ private:
     static const float axisOZUpperBoundRatio;
     static const float axisOZLowerBoundRatio;
 
-
-
-    const float pointRadius;
-    const float pointingRadius;
+    static float pointRadius;
+    static float pointingRadius;
     static std::mt19937 random;
 public:
-    Utility(const sf::RenderWindow&);
-    sf::CircleShape drawablePoint(const Point&);
-    sf::VertexArray drawableLine(const Line&);
-    void initAxes(sf::VertexArray&, const sf::RenderWindow&);
-    std::shared_ptr<Point> cursorPointsToPoint(const std::unordered_set<std::shared_ptr<Point>>&, const sf::RenderWindow&);
-    sf::Color randomColor();
+    static void init(const sf::RenderWindow&);
+    static sf::CircleShape drawablePoint(const Point&);
+    static sf::VertexArray drawableLine(const Line&);
+    static void initAxes(sf::VertexArray&, const sf::RenderWindow&);
+    static std::shared_ptr<Point> cursorPointsToPoint(const std::unordered_set<std::shared_ptr<Point>>&, const sf::RenderWindow&);
+    static sf::Color randomColor();
 };

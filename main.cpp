@@ -9,12 +9,11 @@
 
 
 int main() {
-    sizeof(std::shared_ptr<Point>);
     sf::RenderWindow window(sf::VideoMode(1000, 1000), "Example");
     sf::Cursor cursor;
-    Utility utility(window);
+    Utility::init(window);
     sf::VertexArray axes;
-    utility.initAxes(axes, window);
+    Utility::initAxes(axes, window);
 
     std::unordered_set<std::shared_ptr<Point>> points;
     std::unordered_set<std::shared_ptr<Line>, Hash> lines;
@@ -23,13 +22,13 @@ int main() {
     //std::unordered_set<std::shared_ptr<Line>> hiddenLines;
 
     for (size_t i = 0; i < 10; ++i) {
-        points.emplace(new Point(sf::Vector3f(rand() % 500, rand() % 500, rand() % 500), utility.randomColor()));
+        points.emplace(new Point(sf::Vector3f(rand() % 500, rand() % 500, rand() % 500), Utility::randomColor()));
     }
 
     std::shared_ptr<Point> clickedPoint(nullptr);
 
     while (window.isOpen()) {
-        auto pointedPoint = utility.cursorPointsToPoint(points, window);
+        auto pointedPoint = Utility::cursorPointsToPoint(points, window);
 
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -48,7 +47,7 @@ int main() {
                     }
                 }
                 else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
-                    points.emplace(new Point(sf::Vector3f(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y, 0), utility.randomColor()));
+                    points.emplace(new Point(sf::Vector3f(sf::Mouse::getPosition().x, sf::Mouse::getPosition().y, 0), Utility::randomColor()));
                 }
             };
         }
@@ -61,11 +60,11 @@ int main() {
         window.draw(axes);
 
         for (auto& i : lines) {
-            window.draw(utility.drawableLine(*i));
+            window.draw(Utility::drawableLine(*i));
         }
 
         for (auto& i : points) {
-            window.draw(utility.drawablePoint(*i));
+            window.draw(Utility::drawablePoint(*i));
         }
 
         window.display();

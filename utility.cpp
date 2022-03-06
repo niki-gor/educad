@@ -1,9 +1,9 @@
 #include "utility.h"
 
-Utility::Utility(const sf::RenderWindow& window) :
-    pointRadius{ std::min(window.getSize().x, window.getSize().y) * pointRadiusRatio },
-    pointingRadius{ std::min(window.getSize().x, window.getSize().y) * (pointRadiusRatio + maxPointingDeviationRatio) } {
-    random.seed(std::chrono::steady_clock::now().time_since_epoch().count());
+void Utility::init(const sf::RenderWindow& window) {
+    pointRadius = std::min(window.getSize().x, window.getSize().y) * pointRadiusRatio;
+    pointingRadius = std::min(window.getSize().x, window.getSize().y) * (pointRadiusRatio + maxPointingDeviationRatio);
+    random.seed((unsigned int)std::chrono::steady_clock::now().time_since_epoch().count());
 }
 
 sf::CircleShape Utility::drawablePoint(const Point& point) {
@@ -31,9 +31,7 @@ std::shared_ptr<Point> Utility::cursorPointsToPoint(const std::unordered_set<std
             result = i;
         }
     }
-    if (minDistance == FLT_MAX)
-        return nullptr;
-    if (std::hypot(cursor.x - result->pos.x, cursor.y - result->pos.y) > pointingRadius)
+    if (minDistance > pointingRadius)
         return nullptr;
     return result;
 }
@@ -42,13 +40,15 @@ const float Utility::pointRadiusRatio = 0.007f;
 const float Utility::outlineThicknessRatio = 0.4f;
 const float Utility::pointRadiusChosenRatio = 0.01f;
 
-const float Utility::maxPointingDeviationRatio = 0.002;
+const float Utility::maxPointingDeviationRatio = 0.002f;
 
 const float Utility::axisOXLeftBoundRatio = 0.2f;
 const float Utility::axisOXRightBoundRatio = 0.8f;
 const float Utility::axisOYUpperBoundRatio = 0.2f;
 const float Utility::axisOZLowerBoundRatio = 0.8f;
 
+float Utility::pointRadius;
+float Utility::pointingRadius;
 std::mt19937 Utility::random;
 
 
