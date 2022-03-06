@@ -31,9 +31,9 @@ public:
     std::mt19937 random;
 
     Utility(const sf::RenderWindow&);
-    sf::CircleShape drawablePoint(const Point);
+    sf::CircleShape drawablePoint(const Point&);
     void initAxes(sf::VertexArray&, const sf::RenderWindow&);
     std::shared_ptr<Point> cursorPointsToPoint(const std::unordered_set<std::shared_ptr<Point>>&, const sf::RenderWindow&);
 
-    sf::VertexArray drawableLine(const Line);
+    sf::VertexArray drawableLine(const Line&);
 };

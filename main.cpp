@@ -4,21 +4,23 @@
 #include "line.h"
 #include <iostream>
 #include <unordered_set>
+#include "hash.h"
 
 
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(500, 500), "Example", sf::Style::Fullscreen);
+    sizeof(std::shared_ptr<Point>);
+    sf::RenderWindow window(sf::VideoMode(1000, 1000), "Example");
     sf::Cursor cursor;
     Utility utility(window);
     sf::VertexArray axes;
     utility.initAxes(axes, window);
 
     std::unordered_set<std::shared_ptr<Point>> points;
-    std::unordered_set<std::shared_ptr<Line>> lines;
+    std::unordered_set<std::shared_ptr<Line>, Hash> lines;
 
-    std::unordered_set<std::shared_ptr<Point>> hiddenPoints;
-    std::unordered_set<std::shared_ptr<Line>> hiddenLines;
+    //std::unordered_set<std::shared_ptr<Point>> hiddenPoints;
+    //std::unordered_set<std::shared_ptr<Line>> hiddenLines;
 
     for (size_t i = 0; i < 10; ++i) {
         std::shared_ptr<Point> newPoint(new Point());
@@ -28,7 +30,11 @@ int main() {
         points.insert(newPoint);
     }
 
+    std::shared_ptr<Point> clickedPoint(nullptr);
+
     while (window.isOpen()) {
+        auto pointedPoint = utility.cursorPointsToPoint(points, window);
+
         sf::Event event;
         while (window.pollEvent(event)) {
             switch (event.type) {
@@ -37,6 +43,15 @@ int main() {
                 break;
             case sf::Event::MouseButtonPressed:
                 if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+                    if (pointedPoint != nullptr) {
+                        if (clickedPoint != nullptr && clickedPoint != pointedPoint) {
+                            lines.emplace(new Line(clickedPoint, pointedPoint));
+                            std::cout << "WAS HERE " << lines.size() << '\n';
+                        }
+                        clickedPoint = pointedPoint;
+                    }
+                }
+                else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
                     std::shared_ptr<Point> newPoint(new Point());
                     newPoint->name = "lol";
                     newPoint->pos.x = sf::Mouse::getPosition().x;
@@ -44,14 +59,9 @@ int main() {
                     newPoint->color = sf::Color(utility.random() | 255);
                     points.insert(newPoint);
                 }
-                else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
-                    window.close();
-                }
-                break;
             };
         }
 
-        auto pointedPoint = utility.cursorPointsToPoint(points, window);
         cursor.loadFromSystem(pointedPoint == nullptr ? sf::Cursor::Type::Arrow : sf::Cursor::Type::Hand);
         window.setMouseCursor(cursor);
         
@@ -59,11 +69,19 @@ int main() {
 
         window.draw(axes);
 
+        for (auto& i : lines) {
+            window.draw(utility.drawableLine(*i));
+        }
+
         for (auto& i : points) {
             window.draw(utility.drawablePoint(*i));
         }
 
         window.display();
+    }
+
+    for (auto& i : lines) {
+        std::cout << i->first << ' ' << i->second << '\n';
     }
 
     return 0;

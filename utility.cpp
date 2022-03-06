@@ -5,7 +5,7 @@ Utility::Utility(const sf::RenderWindow& window) :
     pointRadius{ std::min(window.getSize().x, window.getSize().y) * pointRadiusRatio },
     pointingRadius{ std::min(window.getSize().x, window.getSize().y) * (pointRadiusRatio + maxPointingDeviationRatio) } {}
 
-sf::CircleShape Utility::drawablePoint(const Point point) {
+sf::CircleShape Utility::drawablePoint(const Point& point) {
     sf::CircleShape result;
     result.setPosition(sf::Vector2f(point.pos.x, point.pos.y));
     result.setPointCount(5);    // pentagon
@@ -59,6 +59,11 @@ void Utility::initAxes(sf::VertexArray& axes, const sf::RenderWindow& window) {
     axes.append(sf::Vertex(sf::Vector2f(width * axisOXRightBoundRatio, height * axisOZLowerBoundRatio)));
 }
 
-sf::VertexArray Utility::drawableLine(const Line line) {
-    return sf::VertexArray();
+sf::VertexArray Utility::drawableLine(const Line& line) {
+    sf::VertexArray result(sf::Lines, 2);
+    result[0].position = { line.first->pos.x, line.first->pos.y };
+    result[0].color = line.first->color;
+    result[1].position = { line.second->pos.x, line.second->pos.y };
+    result[1].color = line.second->color;
+    return result;
 }
