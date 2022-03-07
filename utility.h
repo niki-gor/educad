@@ -10,6 +10,7 @@
 #include <unordered_set>
 #include <iostream>
 #include <variant>
+#include "vec3.h"
 
 class Utility {
 private:
@@ -54,8 +55,8 @@ public:
 
     static sf::Color randomColor();
 
-    static Point mapCoordsToPoint(sf::Vector2f);
-    static sf::Vector2f mapPointToCoords(Point);
+    static Vec2 mapCoordsToNormal(sf::Vector2f);
+    static sf::Vector2f mapNormalToCoords(Vec2);
 
-    static Point getCursorPosition();
+    static Vec2 getCursorPosition();
 };

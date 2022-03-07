@@ -19,7 +19,7 @@ float Angem::det(float& a11, float& a12, float& a21, float& a22) {
 Point Angem::perpendicularIntersection(Line& line, Point& point) {
     auto[a1, b1, c1] = horizontalCoefficients(line);
     auto[a2, b2, c2] = perpendicularHorizontalCoefficients(line, point);
-    return Point(sf::Vector2f(det(b1, c1, b2, c2) / det(a1, b1, a2, b2), det(c1, a1, c2, a2) / det(a1, b1, a2, b2)));
+    return Point(Vec2(det(b1, c1, b2, c2) / det(a1, b1, a2, b2), det(c1, a1, c2, a2) / det(a1, b1, a2, b2)));
 }
 
 std::array<float, 3> Angem::frontalCoefficients(Line& line) {

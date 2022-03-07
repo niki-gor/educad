@@ -21,10 +21,10 @@ int main() {
     //std::unordered_set<std::shared_ptr<Point>> hiddenPoints;
     //std::unordered_set<std::shared_ptr<Line>> hiddenLines;
 
-    points.insert(std::make_shared<Point>(sf::Vector2f(100, 100)));
+    points.insert(std::make_shared<Point>(Vec3(100, 100, 0), Utility::randomColor()));
 
     for (size_t i = 0; i < 10; ++i) {
-        points.insert(std::make_shared<Point>(sf::Vector3f(rand() % 500, rand() % 500, 0), Utility::randomColor()));
+        points.insert(std::make_shared<Point>(Vec3(rand() % 500, rand() % 500, 0), Utility::randomColor()));
     }
 
     std::shared_ptr<Point> clickedPoint(nullptr);
@@ -49,7 +49,7 @@ int main() {
                     }
                 }
                 else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
-                    points.insert(std::make_shared<Point>(Utility::getCursorPosition()));
+                    points.insert(std::make_shared<Point>(Utility::getCursorPosition(), Utility::randomColor()));
                 }
                 break;
             case sf::Event::MouseWheelScrolled:

@@ -20,7 +20,7 @@ void Utility::init(std::unique_ptr<sf::RenderWindow> windowPtr) {
 
 sf::CircleShape Utility::drawablePoint(const Point& point) {
     sf::CircleShape result;
-    result.setPosition(mapPointToCoords(point));
+    result.setPosition(mapNormalToCoords(Vec2(point.pos)));
     result.setPointCount(5);    // pentagon
 
     result.setFillColor(sf::Color::Transparent);
@@ -36,7 +36,7 @@ std::variant<std::nullptr_t, std::shared_ptr<Point>, std::shared_ptr<Line>> Util
     const std::unordered_set<std::shared_ptr<Point>>& points,
     const std::unordered_set<std::shared_ptr<Line>, Hash>& lines) {
 
-    auto cursor = getCursorPosition();
+    auto cursor = Point(Vec3(getCursorPosition()));
     using variant = std::variant<std::nullptr_t, std::shared_ptr<Point>, std::shared_ptr<Line>>;
 
     static const auto nearest = [&cursor](std::shared_ptr<Point> point, std::shared_ptr<Line> line)->variant {
@@ -89,9 +89,9 @@ std::unique_ptr<sf::RenderWindow> Utility::window;
 
 sf::VertexArray Utility::drawableLine(const Line& line) {
     sf::VertexArray result(sf::Lines, 2);
-    result[0].position = mapPointToCoords(*line.first);
+    result[0].position = mapNormalToCoords(Vec2(line.first->pos));
     result[0].color = line.first->color;
-    result[1].position = mapPointToCoords(*line.second);
+    result[1].position = mapNormalToCoords(Vec2(line.second->pos));
     result[1].color = line.second->color;
     return result;
 }
@@ -130,14 +130,14 @@ void Utility::decreaseZoom() {
     }
 }
 
-Point Utility::mapCoordsToPoint(sf::Vector2f coords) {
-    return Point(sf::Vector2f(coords.x, window->getSize().y - coords.y));
+Vec2 Utility::mapCoordsToNormal(sf::Vector2f coords) {
+    return Vec2(coords.x, window->getSize().y - coords.y);
 }
 
-sf::Vector2f Utility::mapPointToCoords(Point point) {
-    return sf::Vector2f(point.pos.x, window->getSize().y - point.pos.y);
+sf::Vector2f Utility::mapNormalToCoords(Vec2 point) {
+    return sf::Vector2f(point.x, window->getSize().y - point.y);
 }
 
-Point Utility::getCursorPosition() {
-    return mapCoordsToPoint(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
+Vec2 Utility::getCursorPosition() {
+    return mapCoordsToNormal(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
 }
