@@ -11,8 +11,6 @@
 int main() {
     sf::Cursor cursor;
     Utility::init(std::make_unique<sf::RenderWindow>(sf::VideoMode(1000, 1000), "Lol"));
-    sf::VertexArray axes;
-    Utility::initAxes(axes);
 
     std::unordered_set<std::shared_ptr<Point>> points;
     std::unordered_set<std::shared_ptr<Line>, Hash> lines;
@@ -57,15 +55,9 @@ int main() {
         
         Utility::window->clear();
 
-        Utility::window->draw(axes);
-
-        for (auto& i : lines) {
-            Utility::window->draw(Utility::drawableLine(*i));
-        }
-
-        for (auto& i : points) {
-            Utility::window->draw(Utility::drawablePoint(*i));
-        }
+        Utility::drawAxes();
+        Utility::drawLines(lines);
+        Utility::drawPoints(points);
 
         Utility::window->display();
     }
