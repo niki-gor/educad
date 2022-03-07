@@ -28,11 +28,13 @@ private:
     static float pointRadius;
     static std::mt19937 random;
 public:
-    static void init(const sf::RenderWindow&);
+    static std::unique_ptr<sf::RenderWindow> window;
+
+    static void init(std::unique_ptr<sf::RenderWindow>);
     static sf::CircleShape drawablePoint(const Point&);
     static sf::VertexArray drawableLine(const Line&);
-    static void initAxes(sf::VertexArray&, const sf::RenderWindow&);
-    static std::shared_ptr<Point> cursorPointsToPoint(const std::unordered_set<std::shared_ptr<Point>>&, const sf::RenderWindow&);
-    static std::shared_ptr<Line> cursorPointsToLine(const std::unordered_set<std::shared_ptr<Line>, Hash>&, const sf::RenderWindow&);
+    static void initAxes(sf::VertexArray&);
+    static std::shared_ptr<Point> cursorPointsToPoint(const std::unordered_set<std::shared_ptr<Point>>&);
+    static std::shared_ptr<Line> cursorPointsToLine(const std::unordered_set<std::shared_ptr<Line>, Hash>&);
     static sf::Color randomColor();
 };

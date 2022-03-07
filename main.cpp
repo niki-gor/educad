@@ -9,11 +9,10 @@
 
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(1000, 1000), "Example");
     sf::Cursor cursor;
-    Utility::init(window);
+    Utility::init(std::make_unique<sf::RenderWindow>(sf::VideoMode(1000, 1000), "Lol"));
     sf::VertexArray axes;
-    Utility::initAxes(axes, window);
+    Utility::initAxes(axes);
 
     std::unordered_set<std::shared_ptr<Point>> points;
     std::unordered_set<std::shared_ptr<Line>, Hash> lines;
@@ -27,15 +26,15 @@ int main() {
 
     std::shared_ptr<Point> clickedPoint(nullptr);
 
-    while (window.isOpen()) {
-        auto pointedPoint = Utility::cursorPointsToPoint(points, window);
-        auto pointedLine = Utility::cursorPointsToLine(lines, window);
+    while (Utility::window->isOpen()) {
+        auto pointedPoint = Utility::cursorPointsToPoint(points);
+        auto pointedLine = Utility::cursorPointsToLine(lines);
 
         sf::Event event;
-        while (window.pollEvent(event)) {
+        while (Utility::window->pollEvent(event)) {
             switch (event.type) {
             case sf::Event::Closed:
-                window.close();
+                Utility::window->close();
                 break;
             case sf::Event::MouseButtonPressed:
                 if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -48,27 +47,27 @@ int main() {
                     }
                 }
                 else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
-                    points.emplace(std::make_shared<Point>(sf::Vector3f(sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y, 0), Utility::randomColor()));
+                    points.insert(std::make_shared<Point>(sf::Vector3f(sf::Mouse::getPosition(*Utility::window).x, sf::Mouse::getPosition(*Utility::window).y, 0), Utility::randomColor()));
                 }
             };
         }
 
         cursor.loadFromSystem(pointedPoint == nullptr && pointedLine == nullptr ? sf::Cursor::Type::Arrow : sf::Cursor::Type::Hand);
-        window.setMouseCursor(cursor);
+        Utility::window->setMouseCursor(cursor);
         
-        window.clear();
+        Utility::window->clear();
 
-        window.draw(axes);
+        Utility::window->draw(axes);
 
         for (auto& i : lines) {
-            window.draw(Utility::drawableLine(*i));
+            Utility::window->draw(Utility::drawableLine(*i));
         }
 
         for (auto& i : points) {
-            window.draw(Utility::drawablePoint(*i));
+            Utility::window->draw(Utility::drawablePoint(*i));
         }
 
-        window.display();
+        Utility::window->display();
     }
 
     for (auto& i : lines) {
