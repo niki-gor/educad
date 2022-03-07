@@ -47,23 +47,21 @@ int main() {
                 else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
                     points.insert(std::make_shared<Point>(sf::Vector3f(sf::Mouse::getPosition(*Utility::window).x, sf::Mouse::getPosition(*Utility::window).y, 0), Utility::randomColor()));
                 }
+                break;
+            case sf::Event::MouseWheelScrolled:
+                if (event.mouseWheelScroll.delta < 0)
+                    Utility::decreaseZoom();
+                else
+                    Utility::increaseZoom();
+                break;
             };
+            event.mouseWheelScroll.delta = 0;
         }
 
         cursor.loadFromSystem(pointedPoint == nullptr && pointedLine == nullptr ? sf::Cursor::Type::Arrow : sf::Cursor::Type::Hand);
         Utility::window->setMouseCursor(cursor);
-        
-        Utility::window->clear();
 
-        Utility::drawAxes();
-        Utility::drawLines(lines);
-        Utility::drawPoints(points);
-
-        Utility::window->display();
-    }
-
-    for (auto& i : lines) {
-        std::cout << i->first << ' ' << i->second << '\n';
+        Utility::draw(lines, points);
     }
 
     return 0;

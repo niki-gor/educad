@@ -4,14 +4,17 @@ void Utility::init(std::unique_ptr<sf::RenderWindow> windowPtr) {
     random.seed((unsigned int)std::chrono::steady_clock::now().time_since_epoch().count());
 
     window = std::move(windowPtr);
+
     const float width = (float)window->getSize().x;
     const float height = (float)window->getSize().y;
     pointRadius = std::min(width, height) * pointRadiusRatio;
     axes.setPrimitiveType(sf::Lines);
-    axes.append(sf::Vertex(sf::Vector2f(width * axisOXLeftBoundRatio, height * 0.5f)));
-    axes.append(sf::Vertex(sf::Vector2f(width * axisOXRightBoundRatio, height * 0.5f)));
-    axes.append(sf::Vertex(sf::Vector2f(width * axisOXRightBoundRatio, height * axisOYUpperBoundRatio)));
-    axes.append(sf::Vertex(sf::Vector2f(width * axisOXRightBoundRatio, height * axisOZLowerBoundRatio)));
+    axes.append(sf::Vertex(sf::Vector2f(width * axisOXLeftBoundRatio, height * 0.5f), sf::Color::Black));
+    axes.append(sf::Vertex(sf::Vector2f(width * axisOXRightBoundRatio, height * 0.5f), sf::Color::Black));
+    axes.append(sf::Vertex(sf::Vector2f(width * axisOXRightBoundRatio, height * axisOYUpperBoundRatio), sf::Color::Black));
+    axes.append(sf::Vertex(sf::Vector2f(width * axisOXRightBoundRatio, height * axisOZLowerBoundRatio), sf::Color::Black));
+
+    zoomFactor = 1;
 }
 
 sf::CircleShape Utility::drawablePoint(const Point& point) {
@@ -69,6 +72,13 @@ float Utility::pointRadius;
 std::mt19937 Utility::random;
 sf::VertexArray Utility::axes;
 
+sf::View Utility::view;
+float Utility::zoomFactor;
+
+const float Utility::maxZoomFactor = 4;
+const float Utility::minZoomFactor = 0.2;
+const float Utility::zoomDeltaRatio = 1.1;
+
 std::unique_ptr<sf::RenderWindow> Utility::window;
 
 sf::VertexArray Utility::drawableLine(const Line& line) {
@@ -84,18 +94,34 @@ sf::Color Utility::randomColor() {
     return sf::Color(random() | 255);
 }
 
-void Utility::drawLines(const std::unordered_set<std::shared_ptr<Line>, Hash>& lines) {
+void Utility::draw(const std::unordered_set<std::shared_ptr<Line>, Hash>& lines, const std::unordered_set<std::shared_ptr<Point>>& points) {
+    window->clear(sf::Color::White);
+    window->draw(axes);
+
     for (auto& i : lines) {
         window->draw(drawableLine(*i));
     }
-}
 
-void Utility::drawPoints(const std::unordered_set<std::shared_ptr<Point>>& points) {
     for (auto& i : points) {
         window->draw(drawablePoint(*i));
     }
+
+    window->setView(view);
+    window->display();
 }
 
-void Utility::drawAxes() {
-    window->draw(axes);
+void Utility::increaseZoom() {
+    if (zoomFactor / zoomDeltaRatio >= minZoomFactor) {
+        zoomFactor /= zoomDeltaRatio;
+        view.zoom(1 / zoomDeltaRatio);
+    }
+    std::cout << zoomFactor << ' ' << view.getSize().x << ' ' << view.getSize().y << '\n';
+}
+
+void Utility::decreaseZoom() {
+    if (zoomFactor * zoomDeltaRatio <= maxZoomFactor) {
+        zoomFactor *= zoomDeltaRatio;
+        view.zoom(zoomDeltaRatio);
+    }
+    std::cout << zoomFactor << ' ' << view.getSize().x << ' ' << view.getSize().y << '\n';
 }

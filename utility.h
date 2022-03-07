@@ -28,17 +28,27 @@ private:
     static float pointRadius;
     static std::mt19937 random;
     static sf::VertexArray axes;
+
+    static sf::View view;
+    static float zoomFactor;
+
+    static const float maxZoomFactor;
+    static const float minZoomFactor;
+    static const float zoomDeltaRatio;
 public:
+    static void init(std::unique_ptr<sf::RenderWindow>);
     static std::unique_ptr<sf::RenderWindow> window;
 
-    static void drawLines(const std::unordered_set<std::shared_ptr<Line>, Hash>&);
-    static void drawPoints(const std::unordered_set<std::shared_ptr<Point>>&);
-    static void drawAxes();
+    static void increaseZoom();
+    static void decreaseZoom();
 
-    static void init(std::unique_ptr<sf::RenderWindow>);
+    static void draw(const std::unordered_set<std::shared_ptr<Line>, Hash>&, const std::unordered_set<std::shared_ptr<Point>>&);
+
     static sf::CircleShape drawablePoint(const Point&);
     static sf::VertexArray drawableLine(const Line&);
+
     static std::shared_ptr<Point> cursorPointsToPoint(const std::unordered_set<std::shared_ptr<Point>>&);
     static std::shared_ptr<Line> cursorPointsToLine(const std::unordered_set<std::shared_ptr<Line>, Hash>&);
+
     static sf::Color randomColor();
 };
