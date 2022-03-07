@@ -9,6 +9,7 @@
 #include <chrono>
 #include <unordered_set>
 #include <iostream>
+#include <variant>
 
 class Utility {
 private:
@@ -47,8 +48,14 @@ public:
     static sf::CircleShape drawablePoint(const Point&);
     static sf::VertexArray drawableLine(const Line&);
 
-    static std::shared_ptr<Point> cursorPointsToPoint(const std::unordered_set<std::shared_ptr<Point>>&);
-    static std::shared_ptr<Line> cursorPointsToLine(const std::unordered_set<std::shared_ptr<Line>, Hash>&);
+    static std::variant<std::nullptr_t, std::shared_ptr<Point>, std::shared_ptr<Line>> cursorPointsTo(
+        const std::unordered_set<std::shared_ptr<Point>>& ,
+        const std::unordered_set<std::shared_ptr<Line>, Hash>&);
 
     static sf::Color randomColor();
+
+    static Point mapCoordsToPoint(sf::Vector2f);
+    static sf::Vector2f mapPointToCoords(Point);
+
+    static Point getCursorPosition();
 };

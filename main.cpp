@@ -15,6 +15,9 @@ int main() {
     std::unordered_set<std::shared_ptr<Point>> points;
     std::unordered_set<std::shared_ptr<Line>, Hash> lines;
 
+    std::unordered_set<std::shared_ptr<Point>> chosenPoints;
+    std::unordered_set<std::shared_ptr<Line>> chosenLines;
+
     //std::unordered_set<std::shared_ptr<Point>> hiddenPoints;
     //std::unordered_set<std::shared_ptr<Line>> hiddenLines;
 
@@ -25,9 +28,10 @@ int main() {
     std::shared_ptr<Point> clickedPoint(nullptr);
 
     while (Utility::window->isOpen()) {
-        auto pointedPoint = Utility::cursorPointsToPoint(points);
-        auto pointedLine = Utility::cursorPointsToLine(lines);
-
+        auto pointed = Utility::cursorPointsTo(points, lines);
+        auto pointedPoint = std::get_if<std::shared_ptr<Point>>(&pointed);
+        auto pointedLine = std::get_if<std::shared_ptr<Line>>(&pointed);
+        
         sf::Event event;
         while (Utility::window->pollEvent(event)) {
             switch (event.type) {
@@ -37,15 +41,15 @@ int main() {
             case sf::Event::MouseButtonPressed:
                 if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                     if (pointedPoint != nullptr) {
-                        if (clickedPoint != nullptr && clickedPoint != pointedPoint) {
-                            lines.insert(std::make_shared<Line>(clickedPoint, pointedPoint));
+                        if (clickedPoint != nullptr && clickedPoint != *pointedPoint) {
+                            lines.insert(std::make_shared<Line>(clickedPoint, *pointedPoint));
                             std::cout << "WAS HERE " << lines.size() << '\n';
                         }
-                        clickedPoint = pointedPoint;
+                        clickedPoint = *pointedPoint;
                     }
                 }
                 else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
-                    points.insert(std::make_shared<Point>(sf::Vector3f(sf::Mouse::getPosition(*Utility::window).x, sf::Mouse::getPosition(*Utility::window).y, 0), Utility::randomColor()));
+                    points.insert(std::make_shared<Point>(Utility::getCursorPosition()));
                 }
                 break;
             case sf::Event::MouseWheelScrolled:
@@ -58,7 +62,7 @@ int main() {
             event.mouseWheelScroll.delta = 0;
         }
 
-        cursor.loadFromSystem(pointedPoint == nullptr && pointedLine == nullptr ? sf::Cursor::Type::Arrow : sf::Cursor::Type::Hand);
+        cursor.loadFromSystem(std::holds_alternative<nullptr_t>(pointed) ? sf::Cursor::Type::Arrow : sf::Cursor::Type::Hand);
         Utility::window->setMouseCursor(cursor);
 
         Utility::draw(lines, points);

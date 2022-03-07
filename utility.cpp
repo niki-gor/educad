@@ -19,7 +19,7 @@ void Utility::init(std::unique_ptr<sf::RenderWindow> windowPtr) {
 
 sf::CircleShape Utility::drawablePoint(const Point& point) {
     sf::CircleShape result;
-    result.setPosition(sf::Vector2f(point.pos.x, point.pos.y));
+    result.setPosition(mapPointToCoords(point));
     result.setPointCount(5);    // pentagon
 
     result.setFillColor(sf::Color::Transparent);
@@ -31,31 +31,38 @@ sf::CircleShape Utility::drawablePoint(const Point& point) {
     return result;
 }
 
-std::shared_ptr<Point> Utility::cursorPointsToPoint(const std::unordered_set<std::shared_ptr<Point>>& points) {
-    auto cursor = Point(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
-    auto result = Angem::nearestPointToPoint(points, cursor);
-    if (result == nullptr) {
-        return nullptr;
-    }
-    if (Angem::distance(*result, cursor) > pointRadius) {
-        return nullptr;
-    }
-    return result;
-}
+std::variant<std::nullptr_t, std::shared_ptr<Point>, std::shared_ptr<Line>> Utility::cursorPointsTo(
+    const std::unordered_set<std::shared_ptr<Point>>& points,
+    const std::unordered_set<std::shared_ptr<Line>, Hash>& lines) {
 
-std::shared_ptr<Line> Utility::cursorPointsToLine(const std::unordered_set<std::shared_ptr<Line>, Hash>& lines) {
-    auto cursor = Point(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
-    auto result = Angem::nearestLineToPoint(lines, cursor);
-    if (result == nullptr) {
+    auto cursor = getCursorPosition();
+    using variant = std::variant<std::nullptr_t, std::shared_ptr<Point>, std::shared_ptr<Line>>;
+
+    static const auto nearest = [&cursor](std::shared_ptr<Point> point, std::shared_ptr<Line> line)->variant {
+        if (point != nullptr && line != nullptr) {
+            if (Angem::distance(*point, cursor) <= Angem::distance(*line, cursor)) {
+                return point;
+            }
+            return line;
+        }
+        if (point == nullptr) {
+            return line;
+        }
+        return point;
+    };
+
+    static const auto nearEnough = [&cursor](variant nearest)->variant {
+        if (std::holds_alternative<std::shared_ptr<Point>>(nearest)) {
+            return (Angem::distance(*std::get<std::shared_ptr<Point>>(nearest), cursor) < pointRadius ? nearest : nullptr);
+        }
+        if (std::holds_alternative<std::shared_ptr<Line>>(nearest)) {
+            return (Angem::distance(*std::get<std::shared_ptr<Line>>(nearest), cursor) < pointRadius ? nearest : nullptr);
+        }
         return nullptr;
-    }
-    std::cout << Angem::distance(*result, cursor) << ' ' << cursor.pos.x << ' ' << cursor.pos.y << '\n';
-    if (Angem::distance(*result, cursor) > pointRadius) {
-        return nullptr;
-    }
-    return result;
+    };
+
+    return nearEnough(nearest(Angem::nearestPointToPoint(points, cursor), Angem::nearestLineToPoint(lines, cursor)));
 }
-        
 
 const float Utility::pointRadiusRatio = 0.007f;
 const float Utility::outlineThicknessRatio = 0.4f;
@@ -81,9 +88,9 @@ std::unique_ptr<sf::RenderWindow> Utility::window;
 
 sf::VertexArray Utility::drawableLine(const Line& line) {
     sf::VertexArray result(sf::Lines, 2);
-    result[0].position = { line.first->pos.x, line.first->pos.y };
+    result[0].position = mapPointToCoords(*line.first);
     result[0].color = line.first->color;
-    result[1].position = { line.second->pos.x, line.second->pos.y };
+    result[1].position = mapPointToCoords(*line.second);
     result[1].color = line.second->color;
     return result;
 }
@@ -113,7 +120,6 @@ void Utility::increaseZoom() {
         zoomFactor /= zoomDeltaRatio;
         view.zoom(1 / zoomDeltaRatio);
     }
-    std::cout << zoomFactor << ' ' << view.getSize().x << ' ' << view.getSize().y << '\n';
 }
 
 void Utility::decreaseZoom() {
@@ -121,5 +127,16 @@ void Utility::decreaseZoom() {
         zoomFactor *= zoomDeltaRatio;
         view.zoom(zoomDeltaRatio);
     }
-    std::cout << zoomFactor << ' ' << view.getSize().x << ' ' << view.getSize().y << '\n';
+}
+
+Point Utility::mapCoordsToPoint(sf::Vector2f coords) {
+    return Point(sf::Vector2f(coords.x, window->getSize().y - coords.y));
+}
+
+sf::Vector2f Utility::mapPointToCoords(Point point) {
+    return sf::Vector2f(point.pos.x, window->getSize().y - point.pos.y);
+}
+
+Point Utility::getCursorPosition() {
+    return mapCoordsToPoint(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
 }
