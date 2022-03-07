@@ -32,27 +32,25 @@ sf::CircleShape Utility::drawablePoint(const Point& point) {
 }
 
 std::shared_ptr<Point> Utility::cursorPointsToPoint(const std::unordered_set<std::shared_ptr<Point>>& points) {
-    auto cursor = sf::Mouse::getPosition(*window);
-    auto cursorPoint = Point(sf::Vector3f(cursor.x, cursor.y, 0));
-    auto result = Angem::nearestPointToPoint(points, cursorPoint);
+    auto cursor = Point(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
+    auto result = Angem::nearestPointToPoint(points, cursor);
     if (result == nullptr) {
         return nullptr;
     }
-    if (Angem::distance(*result, cursorPoint) > pointRadius) {
+    if (Angem::distance(*result, cursor) > pointRadius) {
         return nullptr;
     }
     return result;
 }
 
 std::shared_ptr<Line> Utility::cursorPointsToLine(const std::unordered_set<std::shared_ptr<Line>, Hash>& lines) {
-    auto cursor = sf::Mouse::getPosition(*window);
-    auto cursorPoint = Point(sf::Vector3f(cursor.x, cursor.y, 0));
-    auto result = Angem::nearestLineToPoint(lines, cursorPoint);
+    auto cursor = Point(window->mapPixelToCoords(sf::Mouse::getPosition(*window)));
+    auto result = Angem::nearestLineToPoint(lines, cursor);
     if (result == nullptr) {
         return nullptr;
     }
-    std::cout << Angem::distance(*result, cursorPoint) << ' ' << cursorPoint.pos.x << ' ' << cursorPoint.pos.y << '\n';
-    if (Angem::distance(*result, cursorPoint) > pointRadius) {
+    std::cout << Angem::distance(*result, cursor) << ' ' << cursor.pos.x << ' ' << cursor.pos.y << '\n';
+    if (Angem::distance(*result, cursor) > pointRadius) {
         return nullptr;
     }
     return result;
