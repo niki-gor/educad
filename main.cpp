@@ -22,7 +22,7 @@ int main() {
     //std::unordered_set<std::shared_ptr<Line>> hiddenLines;
 
     for (size_t i = 0; i < 10; ++i) {
-        points.insert(std::make_shared<Point>(sf::Vector3f(rand() % 500, rand() % 500, rand() % 500), Utility::randomColor()));
+        points.insert(std::make_shared<Point>(sf::Vector3f(rand() % 500, rand() % 500, 0), Utility::randomColor()));
     }
 
     std::shared_ptr<Point> clickedPoint(nullptr);
@@ -42,9 +42,7 @@ int main() {
                 if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
                     if (pointedPoint != nullptr) {
                         if (clickedPoint != nullptr && clickedPoint != *pointedPoint) {
-                            lines.insert(std::make_shared<Line>(clickedPoint, *pointedPoint));
-                            std::cout << "WAS HERE " << lines.size() << '\n';
-                        }
+                            lines.insert(std::make_shared<Line>(clickedPoint, *pointedPoint));                        }
                         clickedPoint = *pointedPoint;
                     }
                 }

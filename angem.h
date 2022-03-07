@@ -11,6 +11,9 @@ public:
     static std::array<float, 3> frontalCoefficients(Line);
     static float distance(Point, Point);
     static float distance(Line, Point);
+    static float fastDistance(Point, Point);
+    static float fastDistance(Line, Point);
     static std::shared_ptr<Point> nearestPointToPoint(const std::unordered_set<std::shared_ptr<Point>>&, Point);
     static std::shared_ptr<Line> nearestLineToPoint(const std::unordered_set<std::shared_ptr<Line>, Hash>&, Point);
+    static float fastInvSqrt(float);
 };

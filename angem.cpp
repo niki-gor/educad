@@ -24,11 +24,23 @@ float Angem::distance(Line line, Point point) {
     return abs(a*x0 + b*x0 + c) / std::hypot(a, b);
 }
 
+float Angem::fastDistance(Point first, Point second) {
+    auto[x1, y1, z1] = first.pos;
+    auto[x2, y2, z2] = second.pos;
+    return 1 / fastInvSqrt((x1 - x2)*(x1 - x2) + (y1 - y2)*(y1 - y2));
+}
+
+float Angem::fastDistance(Line line, Point point) {
+    auto[a, b, c] = horizontalCoefficients(line);
+    auto[x0, y0, z0] = point.pos;
+    return abs(a*x0 + b*x0 + c)*fastInvSqrt(a*a + b*b);
+}
+
 std::shared_ptr<Point> Angem::nearestPointToPoint(const std::unordered_set<std::shared_ptr<Point>>& points, Point given) {
     if (points.empty())
         return nullptr;
     return *std::min_element(points.begin(), points.end(), [&given](const auto& lhs, const auto& rhs) {
-        return distance(*lhs, given) < distance(*rhs, given);
+        return fastDistance(*lhs, given) < fastDistance(*rhs, given);
     });
 }
 
@@ -36,6 +48,15 @@ std::shared_ptr<Line> Angem::nearestLineToPoint(const std::unordered_set<std::sh
     if (lines.empty())
         return nullptr;
     return *std::min_element(lines.begin(), lines.end(), [&given](const auto& lhs, const auto& rhs) {
-        return distance(*lhs, given) < distance(*rhs, given);
+        return fastDistance(*lhs, given) < fastDistance(*rhs, given);
     });
+}
+
+float Angem::fastInvSqrt(float x) {
+    float xhalf = 0.5f * x;
+    int i = *(int*)&x;
+    i = 0x5f3759df - (i >> 1);
+    x = *(float*)&i;
+    x = x * (1.5f - (xhalf*x*x));
+    return x;
 }

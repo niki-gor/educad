@@ -53,10 +53,10 @@ std::variant<std::nullptr_t, std::shared_ptr<Point>, std::shared_ptr<Line>> Util
 
     static const auto nearEnough = [&cursor](variant nearest)->variant {
         if (std::holds_alternative<std::shared_ptr<Point>>(nearest)) {
-            return (Angem::distance(*std::get<std::shared_ptr<Point>>(nearest), cursor) < pointRadius ? nearest : nullptr);
+            return (Angem::fastDistance(*std::get<std::shared_ptr<Point>>(nearest), cursor) < pointRadius ? nearest : nullptr);
         }
         if (std::holds_alternative<std::shared_ptr<Line>>(nearest)) {
-            return (Angem::distance(*std::get<std::shared_ptr<Line>>(nearest), cursor) < pointRadius ? nearest : nullptr);
+            return (Angem::fastDistance(*std::get<std::shared_ptr<Line>>(nearest), cursor) < pointRadius ? nearest : nullptr);
         }
         return nullptr;
     };
