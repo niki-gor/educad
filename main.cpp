@@ -21,6 +21,8 @@ int main() {
     //std::unordered_set<std::shared_ptr<Point>> hiddenPoints;
     //std::unordered_set<std::shared_ptr<Line>> hiddenLines;
 
+    points.insert(std::make_shared<Point>(sf::Vector2f(100, 100)));
+
     for (size_t i = 0; i < 10; ++i) {
         points.insert(std::make_shared<Point>(sf::Vector3f(rand() % 500, rand() % 500, 0), Utility::randomColor()));
     }

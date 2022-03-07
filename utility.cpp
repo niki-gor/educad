@@ -1,6 +1,7 @@
 #include "utility.h"
 
 void Utility::init(std::unique_ptr<sf::RenderWindow> windowPtr) {
+    srand(time(NULL));
     random.seed((unsigned int)std::chrono::steady_clock::now().time_since_epoch().count());
 
     window = std::move(windowPtr);
@@ -40,7 +41,7 @@ std::variant<std::nullptr_t, std::shared_ptr<Point>, std::shared_ptr<Line>> Util
 
     static const auto nearest = [&cursor](std::shared_ptr<Point> point, std::shared_ptr<Line> line)->variant {
         if (point != nullptr && line != nullptr) {
-            if (Angem::distance(*point, cursor) <= Angem::distance(*line, cursor)) {
+            if (Angem::distance(*point, cursor) <= Angem::fastDistanceToBoundedLine(*line, cursor)) {
                 return point;
             }
             return line;
