@@ -21,13 +21,11 @@ int main() {
     //std::unordered_set<PointPtr> hiddenPoints;
     //std::unordered_set<LinePtr> hiddenLines;
 
-   // auto[a, b, c] = Angem::horizontalCoefficients(**lines.begin());
-    //for (float x = 0; x < ; x += 10)
-      //  points.insert(std::make_shared<Point>(Vec3(x, (-a * x - c) / b, 0), Utility::randomColor()));
-
-    std::cout << lines.size() << '\n';
-    for (auto& i : lines)
-        std::cout << i->first << ' ' << i->second << '\n';
+    for (size_t i = 0; i < 100; ++i)
+        points.insert(std::make_shared<Point>(Vec3(rand() % 1000, rand() % 1000, 0), Utility::randomColor()));
+    for (auto i = points.begin(); i != points.end(); std::advance(i, 2)) {
+        lines.insert(std::make_shared<Line>(*i, *std::next(i)));
+    }
 
     PointPtr clickedPoint(nullptr);
 

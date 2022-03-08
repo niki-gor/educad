@@ -40,31 +40,17 @@ std::variant<std::nullptr_t, PointPtr, LinePtr> Utility::cursorPointsTo(
     auto cursor = Point(Vec3(getCursorPosition()));
     using variant = std::variant<std::nullptr_t, PointPtr, LinePtr>;
 
-    static const auto nearest = [&cursor](PointPtr point, LinePtr line)->variant {
-        if (point != nullptr && line != nullptr) {
-            if (Angem::fastDistance(*point, cursor) <= Angem::fastDistanceToBoundedLine(*line, cursor)) {
-                return point;
-            }
-            return line;
-        }
-        if (point != nullptr)
-            return point;
-        if (line != nullptr)
-            return line;
-        return nullptr;
-    };
-    
-    static const auto nearEnough = [&cursor](variant nearest)->variant {
-        if (std::holds_alternative<PointPtr>(nearest)) {
-            return (Angem::fastDistance(*std::get<PointPtr>(nearest), cursor) < pointRadius ? nearest : nullptr);
-        }
-        if (std::holds_alternative<LinePtr>(nearest)) {
-            return (Angem::fastDistanceToBoundedLine(*std::get<LinePtr>(nearest), cursor) < pointRadius ? nearest : nullptr);
-        }
-        return nullptr;
-    };
+    auto nearestPoint = Angem::nearestPointToPoint(points, cursor);
+    if (nearestPoint != nullptr && Angem::fastDistance(*nearestPoint, cursor) <= pointRadius) {
+        return nearestPoint;
+    }
 
-    return nearEnough(nearest(Angem::nearestPointToPoint(points, cursor), Angem::nearestLineToPoint(lines, cursor)));
+    auto nearestLine = Angem::nearestLineToPoint(lines, cursor);
+    if (nearestLine != nullptr && Angem::fastDistanceToBoundedLine(*nearestLine, cursor) <= pointRadius) {
+        return nearestLine;
+    }
+    
+    return nullptr;
 }
 
 const float Utility::pointRadiusRatio = 0.007f;
