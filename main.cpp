@@ -12,27 +12,31 @@ int main() {
     sf::Cursor cursor;
     Utility::init(std::make_unique<sf::RenderWindow>(sf::VideoMode(1000, 1000), "Lol"));
 
-    std::unordered_set<std::shared_ptr<Point>> points;
-    std::unordered_set<std::shared_ptr<Line>, Hash> lines;
+    std::unordered_set<PointPtr> points;
+    std::unordered_set<LinePtr, Hash> lines;
 
-    std::unordered_set<std::shared_ptr<Point>> chosenPoints;
-    std::unordered_set<std::shared_ptr<Line>> chosenLines;
+    std::unordered_set<PointPtr> chosenPoints;
+    std::unordered_set<LinePtr> chosenLines;
 
-    //std::unordered_set<std::shared_ptr<Point>> hiddenPoints;
-    //std::unordered_set<std::shared_ptr<Line>> hiddenLines;
+    //std::unordered_set<PointPtr> hiddenPoints;
+    //std::unordered_set<LinePtr> hiddenLines;
 
-    points.insert(std::make_shared<Point>(Vec3(100, 100, 0), Utility::randomColor()));
+   // auto[a, b, c] = Angem::horizontalCoefficients(**lines.begin());
+    //for (float x = 0; x < ; x += 10)
+      //  points.insert(std::make_shared<Point>(Vec3(x, (-a * x - c) / b, 0), Utility::randomColor()));
 
-    for (size_t i = 0; i < 10; ++i) {
-        points.insert(std::make_shared<Point>(Vec3(rand() % 500, rand() % 500, 0), Utility::randomColor()));
-    }
+    std::cout << lines.size() << '\n';
+    for (auto& i : lines)
+        std::cout << i->first << ' ' << i->second << '\n';
 
-    std::shared_ptr<Point> clickedPoint(nullptr);
+    PointPtr clickedPoint(nullptr);
 
     while (Utility::window->isOpen()) {
+        auto t0 = std::chrono::steady_clock::now();
+        
         auto pointed = Utility::cursorPointsTo(points, lines);
-        auto pointedPoint = std::get_if<std::shared_ptr<Point>>(&pointed);
-        auto pointedLine = std::get_if<std::shared_ptr<Line>>(&pointed);
+        auto pointedPoint = std::get_if<PointPtr>(&pointed);
+        auto pointedLine = std::get_if<LinePtr>(&pointed);
         
         sf::Event event;
         while (Utility::window->pollEvent(event)) {
@@ -58,14 +62,25 @@ int main() {
                 else
                     Utility::increaseZoom();
                 break;
+            case sf::Event::KeyPressed:
+                for (auto& i : lines) {
+                    i->first->color = sf::Color::Blue;
+                    i->second->color = sf::Color::Yellow;
+                }
+                lines.clear();
+                break;
             };
             event.mouseWheelScroll.delta = 0;
         }
-
         cursor.loadFromSystem(std::holds_alternative<nullptr_t>(pointed) ? sf::Cursor::Type::Arrow : sf::Cursor::Type::Hand);
         Utility::window->setMouseCursor(cursor);
+        
+        auto t1 = std::chrono::steady_clock::now();
+        std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(t1 - t0).count() << ' ';
 
         Utility::draw(lines, points);
+
+        std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now() - t1).count() << '\n';
     }
 
     return 0;

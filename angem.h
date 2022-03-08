@@ -18,7 +18,7 @@ public:
     static float fastDistance(Line&, Point&);
     static float fastDistanceToBoundedLine(Line&, Point&);
     static float scalar(Point&, Point&, Point&);
-    static std::shared_ptr<Point> nearestPointToPoint(const std::unordered_set<std::shared_ptr<Point>>&, Point&);
-    static std::shared_ptr<Line> nearestLineToPoint(const std::unordered_set<std::shared_ptr<Line>, Hash>&, Point&);
-    static float fastInvSqrt(float);
+    static PointPtr nearestPointToPoint(const std::unordered_set<PointPtr>&, Point&);
+    static LinePtr nearestLineToPoint(const std::unordered_set<LinePtr, Hash>&, Point&);
+    inline static float fastInvSqrt(float);
 };

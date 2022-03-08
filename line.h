@@ -6,9 +6,11 @@
 
 class Line {
 public:
-    const std::shared_ptr<Point> first;
-    const std::shared_ptr<Point> second;
-    Line(std::shared_ptr<Point> first, std::shared_ptr<Point> second);
+    const PointPtr first;
+    const PointPtr second;
+    Line(PointPtr first, PointPtr second);
     bool inFrontalProjection;
     bool inHorizontalProjection;
 };
+
+using LinePtr = std::shared_ptr<Line>;

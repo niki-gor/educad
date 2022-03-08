@@ -5,6 +5,7 @@ void Utility::init(std::unique_ptr<sf::RenderWindow> windowPtr) {
     random.seed((unsigned int)std::chrono::steady_clock::now().time_since_epoch().count());
 
     window = std::move(windowPtr);
+    window->setActive();
 
     const float width = (float)window->getSize().x;
     const float height = (float)window->getSize().y;
@@ -32,32 +33,33 @@ sf::CircleShape Utility::drawablePoint(const Point& point) {
     return result;
 }
 
-std::variant<std::nullptr_t, std::shared_ptr<Point>, std::shared_ptr<Line>> Utility::cursorPointsTo(
-    const std::unordered_set<std::shared_ptr<Point>>& points,
-    const std::unordered_set<std::shared_ptr<Line>, Hash>& lines) {
+std::variant<std::nullptr_t, PointPtr, LinePtr> Utility::cursorPointsTo(
+    const std::unordered_set<PointPtr>& points,
+    const std::unordered_set<LinePtr, Hash>& lines) {
 
     auto cursor = Point(Vec3(getCursorPosition()));
-    using variant = std::variant<std::nullptr_t, std::shared_ptr<Point>, std::shared_ptr<Line>>;
+    using variant = std::variant<std::nullptr_t, PointPtr, LinePtr>;
 
-    static const auto nearest = [&cursor](std::shared_ptr<Point> point, std::shared_ptr<Line> line)->variant {
+    static const auto nearest = [&cursor](PointPtr point, LinePtr line)->variant {
         if (point != nullptr && line != nullptr) {
-            if (Angem::distance(*point, cursor) <= Angem::fastDistanceToBoundedLine(*line, cursor)) {
+            if (Angem::fastDistance(*point, cursor) <= Angem::fastDistanceToBoundedLine(*line, cursor)) {
                 return point;
             }
             return line;
         }
-        if (point == nullptr) {
+        if (point != nullptr)
+            return point;
+        if (line != nullptr)
             return line;
-        }
-        return point;
+        return nullptr;
     };
-
+    
     static const auto nearEnough = [&cursor](variant nearest)->variant {
-        if (std::holds_alternative<std::shared_ptr<Point>>(nearest)) {
-            return (Angem::fastDistance(*std::get<std::shared_ptr<Point>>(nearest), cursor) < pointRadius ? nearest : nullptr);
+        if (std::holds_alternative<PointPtr>(nearest)) {
+            return (Angem::fastDistance(*std::get<PointPtr>(nearest), cursor) < pointRadius ? nearest : nullptr);
         }
-        if (std::holds_alternative<std::shared_ptr<Line>>(nearest)) {
-            return (Angem::fastDistance(*std::get<std::shared_ptr<Line>>(nearest), cursor) < pointRadius ? nearest : nullptr);
+        if (std::holds_alternative<LinePtr>(nearest)) {
+            return (Angem::fastDistanceToBoundedLine(*std::get<LinePtr>(nearest), cursor) < pointRadius ? nearest : nullptr);
         }
         return nullptr;
     };
@@ -100,20 +102,20 @@ sf::Color Utility::randomColor() {
     return sf::Color(random() | 255);
 }
 
-void Utility::draw(const std::unordered_set<std::shared_ptr<Line>, Hash>& lines, const std::unordered_set<std::shared_ptr<Point>>& points) {
-    window->clear(sf::Color::White);
-    window->draw(axes);
+void Utility::draw(const std::unordered_set<LinePtr, Hash>& lines, const std::unordered_set<PointPtr>& points) {
+        window->clear(sf::Color::White);
+        window->draw(axes);
 
-    for (auto& i : lines) {
-        window->draw(drawableLine(*i));
-    }
+        for (auto& i : lines) {
+            window->draw(drawableLine(*i));
+        }
 
-    for (auto& i : points) {
-        window->draw(drawablePoint(*i));
-    }
+        for (auto& i : points) {
+            window->draw(drawablePoint(*i));
+        }
 
-    window->setView(view);
-    window->display();
+        window->setView(view);
+        window->display();
 }
 
 void Utility::increaseZoom() {

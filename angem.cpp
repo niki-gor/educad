@@ -37,7 +37,7 @@ float Angem::distance(Point& first, Point& second) {
 float Angem::distance(Line& line, Point& point) {
     auto[a, b, c] = horizontalCoefficients(line);
     auto&[x0, y0, z0] = point.pos;
-    return abs(a*x0 + b*x0 + c) / std::hypot(a, b);
+    return abs(a*x0 + b*y0 + c) / std::hypot(a, b);
 }
 
 float Angem::fastDistance(Point& first, Point& second) {
@@ -49,7 +49,7 @@ float Angem::fastDistance(Point& first, Point& second) {
 float Angem::fastDistance(Line& line, Point& point) {
     auto[a, b, c] = horizontalCoefficients(line);
     auto&[x0, y0, z0] = point.pos;
-    return abs(a*x0 + b*x0 + c)*fastInvSqrt(a*a + b*b);
+    return abs(a*x0 + b*y0 + c)*fastInvSqrt(a*a + b*b);
 }
 
 float Angem::scalar(Point& begin, Point& firstEnd, Point& secondEnd) {
@@ -65,7 +65,7 @@ float Angem::fastDistanceToBoundedLine(Line& line, Point& point) {
     return fastDistance(line, point);
 }
 
-std::shared_ptr<Point> Angem::nearestPointToPoint(const std::unordered_set<std::shared_ptr<Point>>& points, Point& given) {
+PointPtr Angem::nearestPointToPoint(const std::unordered_set<PointPtr>& points, Point& given) {
     if (points.empty())
         return nullptr;
     return *std::min_element(points.begin(), points.end(), [&given](const auto& lhs, const auto& rhs) {
@@ -73,7 +73,7 @@ std::shared_ptr<Point> Angem::nearestPointToPoint(const std::unordered_set<std::
     });
 }
 
-std::shared_ptr<Line> Angem::nearestLineToPoint(const std::unordered_set<std::shared_ptr<Line>, Hash>& lines, Point& given) {
+LinePtr Angem::nearestLineToPoint(const std::unordered_set<LinePtr, Hash>& lines, Point& given) {
     if (lines.empty())
         return nullptr;
     return *std::min_element(lines.begin(), lines.end(), [&given](const auto& lhs, const auto& rhs) {
@@ -81,7 +81,7 @@ std::shared_ptr<Line> Angem::nearestLineToPoint(const std::unordered_set<std::sh
     });
 }
 
-float Angem::fastInvSqrt(float x) {
+inline float Angem::fastInvSqrt(float x) {
     float xhalf = 0.5f * x;
     int i = *(int*)&x;
     i = 0x5f3759df - (i >> 1);

@@ -3,7 +3,6 @@
 #include <SFML/Graphics.hpp>
 #include "vec3.h"
 
-
 class Point {
 public:
     Vec3 pos;
@@ -15,3 +14,5 @@ public:
     Point(Vec3 pos);
     Point(Vec3 pos, sf::Color color);
 };
+
+using PointPtr = std::shared_ptr<Point>;

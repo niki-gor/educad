@@ -44,14 +44,14 @@ public:
     static void increaseZoom();
     static void decreaseZoom();
 
-    static void draw(const std::unordered_set<std::shared_ptr<Line>, Hash>&, const std::unordered_set<std::shared_ptr<Point>>&);
+    static void draw(const std::unordered_set<LinePtr, Hash>&, const std::unordered_set<PointPtr>&);
 
     static sf::CircleShape drawablePoint(const Point&);
     static sf::VertexArray drawableLine(const Line&);
 
-    static std::variant<std::nullptr_t, std::shared_ptr<Point>, std::shared_ptr<Line>> cursorPointsTo(
-        const std::unordered_set<std::shared_ptr<Point>>& ,
-        const std::unordered_set<std::shared_ptr<Line>, Hash>&);
+    static std::variant<std::nullptr_t, PointPtr, LinePtr> cursorPointsTo(
+        const std::unordered_set<PointPtr>& ,
+        const std::unordered_set<LinePtr, Hash>&);
 
     static sf::Color randomColor();
 
