@@ -15,18 +15,18 @@ int main() {
     std::unordered_set<PointPtr> points;
     std::unordered_set<LinePtr, Hash> lines;
 
-    std::unordered_set<PointPtr> chosenPoints;
-    std::unordered_set<LinePtr> chosenLines;
+    std::unordered_set<PointPtr> selectedPoints;
+    std::unordered_set<LinePtr> selectedLines;
 
     //std::unordered_set<PointPtr> hiddenPoints;
     //std::unordered_set<LinePtr> hiddenLines;
 
-    for (size_t i = 0; i < 100; ++i)
+    for (size_t i = 0; i < 10; ++i)
         points.insert(std::make_shared<Point>(Vec3(rand() % 1000, rand() % 1000, 0), Utility::randomColor()));
     for (auto i = points.begin(); i != points.end(); std::advance(i, 2)) {
         lines.insert(std::make_shared<Line>(*i, *std::next(i)));
     }
-
+    
     PointPtr clickedPoint(nullptr);
 
     while (Utility::window->isOpen()) {
@@ -38,6 +38,7 @@ int main() {
         
         sf::Event event;
         while (Utility::window->pollEvent(event)) {
+            
             switch (event.type) {
             case sf::Event::Closed:
                 Utility::window->close();
@@ -49,9 +50,17 @@ int main() {
                             lines.insert(std::make_shared<Line>(clickedPoint, *pointedPoint));                        }
                         clickedPoint = *pointedPoint;
                     }
+                    else {
+                        points.insert(std::make_shared<Point>(Utility::getCursorPosition(), Utility::randomColor()));
+                    }
                 }
                 else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) {
-                    points.insert(std::make_shared<Point>(Utility::getCursorPosition(), Utility::randomColor()));
+                    if (pointedPoint != nullptr) {
+                        points.erase(*pointedPoint);
+                    }
+                    else if (pointedLine != nullptr) {
+                        lines.erase(*pointedLine);
+                    }
                 }
                 break;
             case sf::Event::MouseWheelScrolled:
@@ -60,15 +69,9 @@ int main() {
                 else
                     Utility::increaseZoom();
                 break;
-            case sf::Event::KeyPressed:
-                for (auto& i : lines) {
-                    i->first->color = sf::Color::Blue;
-                    i->second->color = sf::Color::Yellow;
-                }
-                lines.clear();
-                break;
             };
             event.mouseWheelScroll.delta = 0;
+            
         }
         cursor.loadFromSystem(std::holds_alternative<nullptr_t>(pointed) ? sf::Cursor::Type::Arrow : sf::Cursor::Type::Hand);
         Utility::window->setMouseCursor(cursor);

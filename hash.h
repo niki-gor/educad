@@ -4,7 +4,7 @@
 #include "line.h"
 
 struct Hash {
-    size_t operator()(const LinePtr& ptr) const;
+    size_t operator()(const std::shared_ptr<Line>& ptr) const;
 };
 
-bool operator==(const LinePtr& lhs, const LinePtr& rhs);
+bool operator==(const std::shared_ptr<Line>& lhs, const std::shared_ptr<Line>& rhs);
