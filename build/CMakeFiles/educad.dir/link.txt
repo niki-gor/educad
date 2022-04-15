@@ -1,1 +1,0 @@
-/usr/bin/c++  -Wall -Wpedantic -Wextra -lsfml-graphics -lsfml-window -lsfml-system  -rdynamic CMakeFiles/educad.dir/main.cpp.o  -o educad  Utils/libUtils.a Entity/libEntity.a -lsfml-graphics -lsfml-window -lsfml-system Utils/libUtils.a 
