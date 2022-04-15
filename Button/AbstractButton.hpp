@@ -22,7 +22,7 @@ public:
     virtual ~Button();
 };
 
-class SFMLVector2D : public Coordinates2D {
+class SFMLVector2D : public Vector2D {
 protected:
     float x;
     float y;
@@ -37,6 +37,11 @@ class GUIFactory {
 public:
     virtual PTR<Button> createButton() const = 0;
     ~GUIFactory();
+};
+
+class SFMLGUIFactory : public GUIFactory {
+public:
+    PTR<Button> createButton() const override;
 };
 
 class SFMLButton : public Button, public SFMLVector2D {

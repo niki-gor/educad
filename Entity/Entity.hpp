@@ -45,39 +45,56 @@ int main() {
     Model model;
 
 }
-*/
 
-
-class Entity : {
-private:
-    std::set<PTR<Projection>> projections;
-    PTR<AngemEntity> coords;
-public:
-    virtual void updateCoords() = 0;
-};
 
 class ProjectedEntity {
 private:
     PTR<Entity> entity;
     PTR<Projection> projection;
 };
+*/
 
-class Projection {
+
+
+
+
+
+
+
+
+
+
+
+
+class Entity {
 private:
-    PTR<AngemEntity> coords;
+    std::set<PTR<Projection>> projections;
+public:
+    virtual void update() = 0;
+};
+
+class Point : public Entity {
+};
+
+class 
+
+class ProjectionPlane : public Plane {
+private:
     std::set<PTR<Entity>> projected;
+public:
+    ProjectionPlane(PTR<Projection> perpendicularProjection, PTR<Line> intersection);
 };
 
 
 
-class Projection {
+
+
+class Projection : public AngemPlane {
 private:
-    PTR<Projection> parent;
-    PTR<AngemEntity> coords;
     std::set<PTR<Entity>> projected;
 public:
     Projection() {}
-    Projection(PTR<Projection> perpendicularProjection, PTR<ProjectedLine> intersection);
+    Projection(PTR<Projection> perpendicularProjection, PTR<Line> intersection);
     ProjectedPoint project(PTR<Point> point) const;
 };
 
@@ -98,7 +115,7 @@ public:
 }
 
 
-class Line : public Entity {
+class Line : public Entity, public AngemLine {
 
 };
 
@@ -132,7 +149,7 @@ public:
 }
 
 
-class Plane : public Entity;
+class Plane : public Entity, public AngemPlane;
 
 class PlaneByThreePoints : public Plane;
 class PlaneByPointAndLine : public Plane;
@@ -147,10 +164,10 @@ class PlaneByParallelLines : public Plane;
 
 
 
-
+/*
 class Plane : public Entity {
-
 };
+
 class ProjectedPlane : public ProjectedEntity {
 
 };
@@ -220,6 +237,22 @@ class ProjectedEntity {
 PTR<Projection> projection;
 PTR<Entity> entity;
 };
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
@@ -247,6 +280,28 @@ public:
 */
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 class AlgoEntity {
 protected:
     Polyset<AlgoEntity> parents;
@@ -305,3 +360,4 @@ public:
     Plane(PTR<Line> first, PTR<Line> second);
     Plane(PTR<Point> point, PTR<Line> line);
 };
+*/

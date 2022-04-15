@@ -2,6 +2,6 @@
 
 
 
-std::shared_ptr<sf::Drawable> AbstractButton::getBody() {
+PTR<sf::Drawable> AbstractButton::getBody() {
     return body;
 }

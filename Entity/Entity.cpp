@@ -2,6 +2,30 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
 Entity::~Entity() {}
 
 Entity::Entity(Polyset<Entity> parents) : parents{parents} {}
@@ -43,6 +67,14 @@ void Line::draw(sf::RenderTarget& target, sf::RenderStates states) const {
 
     target.draw(result);
 }
+
+*/
+
+
+
+
+
+
 
 
 /*
