@@ -1,0 +1,1 @@
+/usr/bin/c++  -Wall -Wpedantic -Wextra -lsfml-graphics -lsfml-window -lsfml-system  -rdynamic CMakeFiles/main.o.dir/main.cpp.o  -o main.o  Utils/libUtils.a Entity/libEntity.a Utils/libUtils.a 

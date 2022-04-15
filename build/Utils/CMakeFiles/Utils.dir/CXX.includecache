@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nikita/SFML/educad_old_style/Utils/Utils.cpp
+Utils.hpp
+/home/nikita/SFML/educad_old_style/Utils/Utils.hpp
+
+/home/nikita/SFML/educad_old_style/Utils/Utils.hpp
+memory
+-
+unordered_set
+-
+unordered_map
+-
+typeinfo
+-
+typeindex
+-
+SFML/Graphics.hpp
+/home/nikita/SFML/educad_old_style/Utils/SFML/Graphics.hpp
+

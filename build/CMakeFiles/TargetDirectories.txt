@@ -1,0 +1,9 @@
+/home/nikita/SFML/educad_old_style/build/CMakeFiles/rebuild_cache.dir
+/home/nikita/SFML/educad_old_style/build/CMakeFiles/edit_cache.dir
+/home/nikita/SFML/educad_old_style/build/CMakeFiles/educad.dir
+/home/nikita/SFML/educad_old_style/build/Utils/CMakeFiles/rebuild_cache.dir
+/home/nikita/SFML/educad_old_style/build/Utils/CMakeFiles/edit_cache.dir
+/home/nikita/SFML/educad_old_style/build/Utils/CMakeFiles/Utils.dir
+/home/nikita/SFML/educad_old_style/build/Entity/CMakeFiles/rebuild_cache.dir
+/home/nikita/SFML/educad_old_style/build/Entity/CMakeFiles/edit_cache.dir
+/home/nikita/SFML/educad_old_style/build/Entity/CMakeFiles/Entity.dir
