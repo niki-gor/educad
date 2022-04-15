@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.19)
+project(Entity)
 set(THIS_LIB_NAME Entity)
 
 add_library(${THIS_LIB_NAME} ${THIS_LIB_NAME}.cpp)

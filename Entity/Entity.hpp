@@ -69,7 +69,7 @@ private:
     PTR<Point> point;
     PTR<Line> line;
 public:
-    LineByParallel(PTR<Line> first, PTR<Line> second);
+    LineByParallel(PTR<Point> first, PTR<Line> second);
 }
 class LineByPerpendicular : public Line {
 private:
