@@ -1,4 +1,16 @@
-set(THIS_LIB_NAME Utils)
+cmake_minimum_required(VERSION 3.18)
+project(Utils)
 
-add_library(${THIS_LIB_NAME} ${THIS_LIB_NAME}.cpp)
-target_include_directories(${THIS_LIB_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+set(UTILS_LIBRARIES)
+set(UTILS_INCLUDE_DIRS)
+
+file(GLOB SOURCES *.cpp)
+file(GLOB INCLUDE_DIRS ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_library(Utils STATIC ${SOURCES})
+
+set(UTILS_LIBRARIES ${PROJECT_NAME} PARENT_SCOPE)
+set(UTILS_INCLUDE_DIRS ${INCLUDE_DIRS} PARENT_SCOPE)
+
+target_include_directories(${PROJECT_NAME} PUBLIC ${ENTITY_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${ENTITY_LIBRARIES})

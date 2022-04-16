@@ -1,8 +1,8 @@
 #ifndef RENDER_LIBRARY_H
 #define RENDER_LIBRARY_H
 #include "set"
-#include "GUIObserver/GUIObserver.h"
-#include "TwoDObject.h"
+#include "GUIObserver.h"
+#include "TwoDEntity.h"
 #include "Entity.h"
 
 class Render{

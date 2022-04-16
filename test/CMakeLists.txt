@@ -8,6 +8,3 @@ set(CMAKE_EXE_LINKER_FLAGS "-fprofile-arcs -ftest-coverage")
 find_package(GTest REQUIRED)
 
 add_executable(testRender testRender.cpp)
-
-target_include_directories(${PROJECT_NAME} PUBLIC ${RENDER_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} PRIVATE Render GTest::GTest GTest::Main)
