@@ -91,7 +91,9 @@ public:
 }
 
 
-class Plane : public Entity, public AngemPlane;
+class Plane : public Entity, public AngemPlane {
+
+};
 
 class PlaneByThreePoints : public Plane;
 class PlaneByPointAndLine : public Plane;
