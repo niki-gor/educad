@@ -11,6 +11,7 @@ private:
     std::set<PTR<ProjectionPlane>> projections;
 public:
     virtual void update() = 0;
+    virtual TwoDEntity getProjection() = 0;
 };
 
 namespace Utils{
