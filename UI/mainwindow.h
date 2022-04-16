@@ -6,6 +6,7 @@
 #include "toolbar.h"
 #include "projectstructurelist.h"
 #include "descriptive.h"
+#include <contextedit.h>
 
 namespace Ui {
 class MainWindow;
@@ -24,6 +25,8 @@ private:
     ToolBar* toolBar;
     ProjectStructureList* projectStructureList;
     DescriptiveSpace* descriptiveSpace;
+    LineContextEdit lineContextEdit;
+    PointContextEdit pointContextEdit;
 };
 
 #endif // MAINWINDOW_H

@@ -20,20 +20,20 @@ public:
 };
 
 class GUIPoint : protected GUIObjects {
+public:
     string pointName;
     int draw ();
     int reDraw ();
     int remove ();
-public:
     ~GUIPoint() {}
 };
 
 class GUILine : protected GUIObjects {
+public:
     string pointNames[2];
     int draw ();
     int reDraw ();
     int remove ();
-public:
     ~GUILine () {}
 
 };
@@ -41,20 +41,22 @@ public:
 class GUIAxis : protected GUIObjects {
     string axisName;
     GUILine baseLine;
+public:
     int draw ();
     int reDraw ();
     int remove ();
-public:
     ~GUIAxis() {}
 };
 
 class GUIPlane : protected GUIObjects {
+private:
     GUIAxis planeAxis;
     string planeName;
+public:
+    GUIPlane() {};
     int draw ();
     int reDraw ();
     int remove ();
-public:
     GUIPlane (GUIAxis axis, string name);
     string getPlaneName () {return planeName;}
     ~GUIPlane() {}

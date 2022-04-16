@@ -29,3 +29,12 @@ ToolBar::ToolBar () {
     eraseButton->setText("Erase");
     eraseButton->setGeometry(QRect(420,0,60,60));
 }
+
+void ToolBar::newProjectButtonHandler() {};
+void ToolBar::saveProjectButtonHandler() {};
+void ToolBar::openProjectButtonHander () {};
+void ToolBar::createPointButtonHandler () {};
+void ToolBar::createLineButtonHandler () {};
+void ToolBar::createProjectionPlaneButtonHandler () {};
+void ToolBar::resizeButtonHandler() {};
+void ToolBar::eraseButtonHandler() {};
