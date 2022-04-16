@@ -2,7 +2,7 @@
 // Created by Марат Гасанов on 15.04.2022.
 //
 
-#include "TwoDLine.h"
+#include "TwoDEntity.h"
 #include "iostream"
 
 TwoDLine::TwoDLine(const std::shared_ptr<TwoDPoint>& point1, const std::shared_ptr<TwoDPoint>& point2) {

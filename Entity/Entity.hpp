@@ -62,6 +62,7 @@ private:
     PTR<Point> first;
     PTR<Point> second;
 public:
+    LineByTwoPoints();
     LineByTwoPoints(PTR<Point> first, PTR<Point> second);
 }
 class LineByParallel : public Line {
@@ -69,6 +70,7 @@ private:
     PTR<Point> point;
     PTR<Line> line;
 public:
+    LineByParallel();
     LineByParallel(PTR<Point> first, PTR<Line> second);
 }
 class LineByPerpendicular : public Line {
@@ -76,6 +78,7 @@ private:
     PTR<Point> point;
     PTR<Line> line;
 public:
+    LineByPerpendicular();
     LineByPerpendicular(PTR<Point> point, PTR<Line> line);
 }
 class LineByPlanesIntersection : public Line {
@@ -83,6 +86,7 @@ private:
     PTR<Plane> first;
     PTR<Plane> second;
 public:
+    LineByPlanesIntersection();
     LineByPlanesIntersection(PTR<Plane> first, PTR<Plane> second);
 }
 

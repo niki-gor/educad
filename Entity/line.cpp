@@ -41,3 +41,39 @@ LineByPlanesIntersection::LineByPlanesIntersection(PTR<Plane> first, PTR<Plane> 
     j = 1;
     k = 1;
 }
+
+LineByPlanesIntersection::LineByPlanesIntersection(){
+    x0 = 1;
+    y0 = 1;
+    z0 = 1;
+    i = 1;
+    j = 1;
+    k = 1;
+}
+
+LineByTwoPoints::LineByTwoPoints(){
+    x0 = 1;
+    y0 = 1;
+    z0 = 1;
+    i = 1;
+    j = 1;
+    k = 1;
+}
+
+LineByParallel::LineByParallel(){
+    x0 = 1;
+    y0 = 1;
+    z0 = 1;
+    i = 1;
+    j = 1;
+    k = 1;
+}
+
+LineByPerpendicular::LineByPerpendicular(){
+    x0 = 1;
+    y0 = 1;
+    z0 = 1;
+    i = 1;
+    j = 1;
+    k = 1;
+}

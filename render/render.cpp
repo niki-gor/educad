@@ -7,3 +7,4 @@ void Render::addToProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::s
     findedPlane->addToProjectionPlane(object);
     observer->onAddToProjectionPlane(object->getTwoDObject(findedPlane));
 }
+

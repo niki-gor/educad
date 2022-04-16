@@ -5,7 +5,9 @@ project(educad)
 set(CMAKE_CXX_FLAGS "-Wall -Wpedantic -Wextra -lsfml-graphics -lsfml-window -lsfml-system")
 add_executable(${PROJECT_NAME} main.cpp)
 
+add_subdirectory(TwoDEntity)
 add_subdirectory(Utils)
 add_subdirectory(Entity)
+add_subdirectory(render)
 
-target_link_libraries(${PROJECT_NAME} LINK_PUBLIC Utils Entity sfml-graphics sfml-window sfml-system)
+target_link_libraries(${PROJECT_NAME} PUBLIC render)
