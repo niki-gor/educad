@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.18)
 project(Entity)
 set(THIS_LIB_NAME Entity)
 
@@ -9,3 +9,4 @@ set(ENTITY_INCLUDE_DIRS ${INCLUDE_DIRS} PARENT_SCOPE)
 
 target_include_directories(${THIS_LIB_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 target_link_libraries(${THIS_LIB_NAME} LINK_PUBLIC Utils Angem)
+

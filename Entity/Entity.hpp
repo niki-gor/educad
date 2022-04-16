@@ -1,15 +1,22 @@
+#pragma once
+
 #include "Utils.hpp"
 #include "Angem.hpp"
 #include <cmath>
-
+#include <set>
 
 
 class Entity {
 private:
-    std::set<PTR<Projection>> projections;
+    std::set<PTR<ProjectionPlane>> projections;
 public:
     virtual void update() = 0;
 };
+
+namespace Utils{
+    static Polyset<Entity> P; //Math. model
+}
+
 
 class Point : public Entity {
 };
@@ -20,18 +27,18 @@ class ProjectionPlane : public Plane {
 private:
     std::set<PTR<Entity>> projected;
 public:
-    ProjectionPlane(PTR<Projection> perpendicularProjection, PTR<Line> intersection);
+    ProjectionPlane(PTR<ProjectionPlane> perpendicularProjection, PTR<Line> intersection);
 };
 
 
-class Projection : public AngemPlane {
-private:
-    std::set<PTR<Entity>> projected;
-public:
-    Projection() {}
-    Projection(PTR<Projection> perpendicularProjection, PTR<Line> intersection);
-    ProjectedPoint project(PTR<Point> point) const;
-};
+//class Projection : public AngemPlane {
+//private:
+//    std::set<PTR<Entity>> projected;
+//public:
+//    Projection() {}
+//    Projection(PTR<Projection> perpendicularProjection, PTR<Line> intersection);
+//    ProjectedPoint project(PTR<Point> point) const;
+//};
 
 
 class Point : public Entity, public AngemPoint {
