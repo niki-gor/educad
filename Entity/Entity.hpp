@@ -1,36 +1,31 @@
 #pragma once
 
 #include "Utils.hpp"
-#include "Angem.hpp"
+#include "AngemEntity.h"
+#include "TwoDEntity.h"
 #include <cmath>
 #include <set>
 
+class ProjectionPlane;
+class Plane;
+class Line;
+class Point;
 
 class Entity {
 private:
-    std::set<PTR<ProjectionPlane>> projections;
+    std::set<PTR<ProjectionPlane> > projections;
 public:
     virtual void update() = 0;
-    virtual TwoDEntity getProjection() = 0;
+    virtual PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>) = 0;
+    void addProjectionPlane(PTR<ProjectionPlane> plane){projections.insert(plane);}
+    void deleteProjectionPlane(PTR<ProjectionPlane> plane){projections.erase(plane);}
 };
 
 namespace Utils{
     static Polyset<Entity> P; //Math. model
 }
 
-
-class Point : public Entity {
-};
-
-//class 
-
-class ProjectionPlane : public Plane {
-private:
-    std::set<PTR<Entity>> projected;
-public:
-    ProjectionPlane(PTR<ProjectionPlane> perpendicularProjection, PTR<Line> intersection);
-};
-
+//class
 
 //class Projection : public AngemPlane {
 //private:
@@ -49,7 +44,6 @@ class PointByCoords : public Point {
 public:
     void update() {};
     PointByCoords(double x, double y, double z);
-    virtual void update(){};
 };
 
 class PointByLinesIntersection : public Point {
@@ -74,7 +68,6 @@ public:
     void update() {};
     LineByTwoPoints();
     LineByTwoPoints(PTR<Point> first, PTR<Point> second);
-    void update(){};
 };
 
 class LineByParallel : public Line {
@@ -137,6 +130,15 @@ public:
     PTR<Line> second;
     void update();
 };
+
+class ProjectionPlane : public Plane {
+private:
+    std::set<PTR<Entity> > projected;
+public:
+    ProjectionPlane(PTR<ProjectionPlane> perpendicularProjection, PTR<Line> intersection);
+    void add(PTR<Entity> object) {projected.insert(object);}
+};
+
 
 
 

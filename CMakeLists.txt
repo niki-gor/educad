@@ -7,8 +7,8 @@ add_executable(${PROJECT_NAME} main.cpp)
 add_subdirectory(TwoDEntity)
 add_subdirectory(Utils)
 add_subdirectory(Entity)
-add_subdirectory(render)
 add_subdirectory(Angem)
+add_subdirectory(render)
 add_subdirectory(UI)
 
 

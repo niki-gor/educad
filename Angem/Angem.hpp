@@ -5,35 +5,6 @@
 #include "Utils.hpp"
 
 
-class AngemEntity {
-};
-
-class AngemPoint : AngemEntity {
-public:
-    double x;
-    double y;
-    double z;
-};
-
-class AngemLine : AngemEntity {
-public:
-    // i j k -- направляющий вектор
-    double i;
-    double j;
-    double k;
-    double x0;
-    double y0;
-    double z0;
-};
-
-class AngemPlane : AngemEntity {
-public:
-    double A;
-    double B;
-    double C;
-    double D;
-};
-
 namespace AngemUtils {
     float getDistance(AngemPoint p1, AngemPoint p2){
         return 0;
@@ -41,7 +12,7 @@ namespace AngemUtils {
     AngemLine getPerpendicularLine(AngemPoint p, AngemLine l){
         return AngemLine();
     }
-    AngemLine getPerpendicularLine(AngemPoint p, AngemLine l){
+    AngemLine getPerpendicularLine(AngemLine l1, AngemLine l2){
         return AngemLine();
     }
     AngemLine getPerpendicularLine(AngemPoint p, AngemPlane s){

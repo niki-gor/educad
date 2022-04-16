@@ -7,6 +7,7 @@
 #include "memory"
 
 class TwoDEntity{
+public:
     virtual void render() = 0;
 };
 

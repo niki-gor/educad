@@ -3,7 +3,7 @@
 
 
 template<class T>
-std::unordered_set<PTR<T>>& Polyset<T>::operator[](std::type_index type) {
+std::unordered_set<PTR<T> >& Polyset<T>::operator[](std::type_index type) {
     return storage[type];
 }
 
