@@ -1,8 +1,11 @@
+#pragma once
+
 #include <typeindex>
 #include <typeinfo>
 #include <memory>
 #include <unordered_set>
 #include <unordered_map>
+#include "Entity.hpp"
 
 #define TYPE(x) std::type_index(typeid(x))
 #define MAKEPTR std::make_shared
@@ -27,3 +30,7 @@ public:
 
     size_t size() const;
 };
+
+namespace Utils{
+    static Polyset<Entity> P; //Math. model
+}
