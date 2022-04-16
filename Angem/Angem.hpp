@@ -47,6 +47,15 @@ namespace AngemUtils {
     AngemLine getPerpendicularLine(AngemPoint p, AngemPlane s){
         return AngemLine();
     }
+    AngemPoint linesIntersection(AngemLine,AngemLine){
+        return AngemPoint();
+    }
+    AngemLine planesIntersection(AngemPlane,AngemPlane){
+        return AngemLine();
+    }
+    AngemLine parallelLine(AngemLine, AngemPoint){
+        return AngemLine();
+    }
 };
 
 class AngemModelWorker {
