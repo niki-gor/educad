@@ -14,7 +14,7 @@ public:
 class Point : public Entity {
 };
 
-class 
+//class 
 
 class ProjectionPlane : public Plane {
 private:
@@ -22,9 +22,6 @@ private:
 public:
     ProjectionPlane(PTR<Projection> perpendicularProjection, PTR<Line> intersection);
 };
-
-
-
 
 
 class Projection : public AngemPlane {
@@ -42,15 +39,19 @@ class Point : public Entity, public AngemPoint {
 
 class PointByCoords : public Point {
 public:
+    void update() {};
     PointByCoords(double x, double y, double z);
+    virtual void update(){};
 };
+
 class PointByLinesIntersection : public Point {
 private:
     PTR<Line> first;
     PTR<Line> second;
 public:
+    void update() {};
     PointByLinesIntersection(PTR<Line> first, PTR<Line> second);
-}
+};
 
 
 class Line : public Entity, public AngemLine {
@@ -62,43 +63,72 @@ private:
     PTR<Point> first;
     PTR<Point> second;
 public:
+    void update() {};
     LineByTwoPoints();
     LineByTwoPoints(PTR<Point> first, PTR<Point> second);
-}
+    void update(){};
+};
+
 class LineByParallel : public Line {
 private:
     PTR<Point> point;
     PTR<Line> line;
 public:
+    void update() {};
     LineByParallel();
     LineByParallel(PTR<Point> first, PTR<Line> second);
-}
+};
+
 class LineByPerpendicular : public Line {
 private:
     PTR<Point> point;
     PTR<Line> line;
 public:
+    void update() {};
     LineByPerpendicular();
     LineByPerpendicular(PTR<Point> point, PTR<Line> line);
-}
+};
+
 class LineByPlanesIntersection : public Line {
 private:
     PTR<Plane> first;
     PTR<Plane> second;
 public:
+    void update() {};
     LineByPlanesIntersection();
     LineByPlanesIntersection(PTR<Plane> first, PTR<Plane> second);
-}
+};
 
 
 class Plane : public Entity, public AngemPlane {
 
 };
 
-class PlaneByThreePoints : public Plane;
-class PlaneByPointAndLine : public Plane;
-class PlaneByIntersectingLines : public Plane;
-class PlaneByParallelLines : public Plane;
+class PlaneByThreePoints : public Plane {
+public:
+    PTR<Point> first;
+    PTR<Point> second;
+    PTR<Point> third;
+    void update();
+};
+class PlaneByPointAndLine : public Plane {
+public:
+    PTR<Point> point;
+    PTR<Line> line;
+    void update();
+};
+class PlaneByIntersectingLines : public Plane {
+public:
+    PTR<Line> first;
+    PTR<Line> second;
+    void update();
+};
+class PlaneByParallelLines : public Plane {
+public:
+    PTR<Line> first;
+    PTR<Line> second;
+    void update();
+};
 
 
 
