@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.18)
 project(Entity)
 set(THIS_LIB_NAME Entity)
 
-add_library(${THIS_LIB_NAME} ${THIS_LIB_NAME}.cpp line.cpp)
+add_library(${THIS_LIB_NAME} ${THIS_LIB_NAME}.cpp line.cpp point.cpp plane.cpp)
 
 set(ENTITY_LIBRARIES ${PROJECT_NAME} PARENT_SCOPE)
 set(ENTITY_INCLUDE_DIRS ${INCLUDE_DIRS} PARENT_SCOPE)

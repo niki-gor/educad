@@ -110,12 +110,14 @@ public:
     PTR<Point> first;
     PTR<Point> second;
     PTR<Point> third;
+    PlaneByThreePoints(PTR<Point> p1, PTR<Point> p2, PTR<Point> p3);
     void update();
 };
 class PlaneByPointAndLine : public Plane {
 public:
     PTR<Point> point;
     PTR<Line> line;
+    PlaneByPointAndLine(PTR<Point> p, PTR<Line> l);
     void update();
 };
 class PlaneByIntersectingLines : public Plane {
@@ -134,9 +136,13 @@ public:
 class ProjectionPlane : public Plane {
 private:
     std::set<PTR<Entity> > projected;
+    double xBegin;
+    double yBegin;
+    double zBegin;
 public:
     ProjectionPlane(PTR<ProjectionPlane> perpendicularProjection, PTR<Line> intersection);
     void add(PTR<Entity> object) {projected.insert(object);}
+    void update();
 };
 
 
