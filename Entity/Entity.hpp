@@ -44,6 +44,9 @@ class PointByCoords : public Point {
 public:
     void update() {};
     PointByCoords(double x, double y, double z);
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
+        return PTR<TwoDEntity>();
+    };
 };
 
 class PointByLinesIntersection : public Point {
@@ -52,6 +55,9 @@ private:
     PTR<Line> second;
 public:
     void update() {};
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
+        return PTR<TwoDEntity>();
+    };
     PointByLinesIntersection(PTR<Line> first, PTR<Line> second);
 };
 
@@ -66,6 +72,9 @@ private:
     PTR<Point> second;
 public:
     void update() {};
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
+        return PTR<TwoDEntity>();
+    };
     LineByTwoPoints();
     LineByTwoPoints(PTR<Point> first, PTR<Point> second);
 };
@@ -76,6 +85,9 @@ private:
     PTR<Line> line;
 public:
     void update() {};
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
+        return PTR<TwoDEntity>();
+    };
     LineByParallel();
     LineByParallel(PTR<Point> first, PTR<Line> second);
 };
@@ -86,6 +98,9 @@ private:
     PTR<Line> line;
 public:
     void update() {};
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
+        return PTR<TwoDEntity>();
+    };
     LineByPerpendicular();
     LineByPerpendicular(PTR<Point> point, PTR<Line> line);
 };
@@ -96,6 +111,9 @@ private:
     PTR<Plane> second;
 public:
     void update() {};
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
+        return PTR<TwoDEntity>();
+    };
     LineByPlanesIntersection();
     LineByPlanesIntersection(PTR<Plane> first, PTR<Plane> second);
 };
@@ -112,6 +130,9 @@ public:
     PTR<Point> third;
     PlaneByThreePoints(PTR<Point> p1, PTR<Point> p2, PTR<Point> p3);
     void update();
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
+        return PTR<TwoDEntity>();
+    };
 };
 class PlaneByPointAndLine : public Plane {
 public:
@@ -119,18 +140,27 @@ public:
     PTR<Line> line;
     PlaneByPointAndLine(PTR<Point> p, PTR<Line> l);
     void update();
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
+        return PTR<TwoDEntity>();
+    };
 };
 class PlaneByIntersectingLines : public Plane {
 public:
     PTR<Line> first;
     PTR<Line> second;
     void update();
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
+        return PTR<TwoDEntity>();
+    };
 };
 class PlaneByParallelLines : public Plane {
 public:
     PTR<Line> first;
     PTR<Line> second;
     void update();
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
+        return PTR<TwoDEntity>();
+    };
 };
 
 class ProjectionPlane : public Plane {

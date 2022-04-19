@@ -18,7 +18,7 @@ namespace AngemUtils {
     AngemLine getPerpendicularLine(AngemPoint p, AngemPlane s){
         return AngemLine();
     }
-    AngemPoint linesIntersection(AngemLine,AngemLine){
+    AngemPoint linesIntersection(AngemLine l1,AngemLine l2){
         return AngemPoint();
     }
     AngemLine planesIntersection(AngemPlane,AngemPlane){
