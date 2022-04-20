@@ -24,4 +24,14 @@ ProjectionPlane::ProjectionPlane(PTR<ProjectionPlane> perpendicularProjection, P
     zBegin = 1;
 }
 
+ProjectionPlane::ProjectionPlane(PTR<Plane> plane) {
+    A = plane->A;
+    B = plane->B;
+    C = plane->C;
+    D = plane->D;
+    xBegin = 1;
+    yBegin = 1;
+    zBegin = 1;
+}
+
 

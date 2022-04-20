@@ -10,7 +10,7 @@
 class GUIObserver{
 public:
     virtual void onAddToProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> object) = 0;
-    virtual void onChangeFromProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> oldObject, std::shared_ptr<TwoDEntity> newObject) = 0;
+    virtual void onChangeFromProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> object) = 0;
     virtual void onDeleteFromProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> object) = 0;
 };
 

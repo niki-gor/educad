@@ -11,7 +11,7 @@ public:
     virtual void render() = 0;
 };
 
-class TwoDPoint : TwoDEntity{
+class TwoDPoint : public TwoDEntity{
 public:
     double x;
     double y;
@@ -19,7 +19,7 @@ public:
     void render();
 };
 
-class TwoDLine : TwoDEntity{
+class TwoDLine : public TwoDEntity{
 private:
     double a;
     double b;

@@ -4,6 +4,11 @@
 
 #include "Entity.hpp"
 
+PTR<TwoDEntity> Point::getProjection(PTR<ProjectionPlane>) {
+    PTR<TwoDEntity> entity(new TwoDPoint(1,2));
+    return entity;
+}
+
 PointByCoords::PointByCoords(double x, double y, double z) {
     this->x=x;
     this->y=y;

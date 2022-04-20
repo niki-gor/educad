@@ -3,10 +3,13 @@
 #include <iostream>
 
 void Render::addToProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<Entity> object) {
-    std::shared_ptr<ProjectionPlane> findedPlane = *planes.find(plane);
-    findedPlane->add(object);
+    if (planes.find(plane) == planes.end()) {
+        planes.insert(plane);
+    }
+
+    plane->add(object);
     object->addProjectionPlane(plane);
-    observer->onAddToProjectionPlane(findedPlane, object->getProjection(findedPlane));
+    observer->onAddToProjectionPlane(plane, object->getProjection(plane));
 }
 
 void Render::deleteFromPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<Entity> object) {
@@ -15,9 +18,7 @@ void Render::deleteFromPlane(std::shared_ptr<ProjectionPlane> plane, std::shared
     object->deleteProjectionPlane(findedPlane);
 }
 
-void Render::changeFromProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<Entity> oldObject,
-                                       std::shared_ptr<Entity> newObject) {
-    std::shared_ptr<ProjectionPlane> findedPlane = *planes.find(plane);
-
+void Render::changeFromProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<Entity> object) {
+    observer->onChangeFromProjectionPlane(plane, object->getProjection(plane));
 }
 
