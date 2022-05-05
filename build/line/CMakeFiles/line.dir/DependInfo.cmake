@@ -12,15 +12,13 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "../line"
   "../point"
-  "../vec3"
-  "../vec2"
+  "../vec"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/nikita/SFML/educad_legacy/build/point/CMakeFiles/point.dir/DependInfo.cmake"
-  "/home/nikita/SFML/educad_legacy/build/vec3/CMakeFiles/vec3.dir/DependInfo.cmake"
-  "/home/nikita/SFML/educad_legacy/build/vec2/CMakeFiles/vec2.dir/DependInfo.cmake"
+  "/home/nikita/SFML/educad_legacy/build/vec/CMakeFiles/vec.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

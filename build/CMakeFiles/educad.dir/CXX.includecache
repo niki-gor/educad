@@ -64,11 +64,11 @@ variant
 vec3.h
 ../utility/vec3.h
 
-../vec2/vec2.h
+../vec/vec2.h
 
-../vec3/vec3.h
+../vec/vec3.h
 vec2.h
-../vec3/vec2.h
+../vec/vec2.h
 tuple
 -
 

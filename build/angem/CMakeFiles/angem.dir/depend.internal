@@ -5,7 +5,7 @@ angem/CMakeFiles/angem.dir/angem.cpp.o
  ../hash/hash.h
  ../line/line.h
  ../point/point.h
- ../vec2/vec2.h
- ../vec3/vec3.h
+ ../vec/vec2.h
+ ../vec/vec3.h
  /home/nikita/SFML/educad_legacy/angem/angem.cpp
  /home/nikita/SFML/educad_legacy/angem/angem.h

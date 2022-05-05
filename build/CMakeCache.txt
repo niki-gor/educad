@@ -225,10 +225,10 @@ hash_LIB_DEPENDS:STATIC=general;line;
 line_LIB_DEPENDS:STATIC=general;point;
 
 //Dependencies for the target
-point_LIB_DEPENDS:STATIC=general;vec3;
+point_LIB_DEPENDS:STATIC=general;vec;
 
 //Dependencies for the target
-utility_LIB_DEPENDS:STATIC=general;point;general;line;general;hash;general;angem;general;vec3;
+utility_LIB_DEPENDS:STATIC=general;point;general;line;general;hash;general;angem;general;vec;
 
 //Dependencies for the target
 vec3_LIB_DEPENDS:STATIC=general;vec2;
@@ -338,7 +338,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

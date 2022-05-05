@@ -6,7 +6,7 @@ CMakeFiles/educad.dir/main.cpp.o: ../hash/hash.h
 CMakeFiles/educad.dir/main.cpp.o: ../line/line.h
 CMakeFiles/educad.dir/main.cpp.o: ../point/point.h
 CMakeFiles/educad.dir/main.cpp.o: ../utility/utility.h
-CMakeFiles/educad.dir/main.cpp.o: ../vec2/vec2.h
-CMakeFiles/educad.dir/main.cpp.o: ../vec3/vec3.h
+CMakeFiles/educad.dir/main.cpp.o: ../vec/vec2.h
+CMakeFiles/educad.dir/main.cpp.o: ../vec/vec3.h
 CMakeFiles/educad.dir/main.cpp.o: ../main.cpp
 

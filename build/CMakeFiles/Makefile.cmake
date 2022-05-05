@@ -16,8 +16,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../line/CMakeLists.txt"
   "../point/CMakeLists.txt"
   "../utility/CMakeLists.txt"
-  "../vec2/CMakeLists.txt"
-  "../vec3/CMakeLists.txt"
+  "../vec/CMakeLists.txt"
   "/usr/share/cmake-3.16/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.16/Modules/CMakeCheckCompilerFlagCommonPatterns.cmake"
@@ -53,8 +52,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "line/CMakeFiles/CMakeDirectoryInformation.cmake"
   "point/CMakeFiles/CMakeDirectoryInformation.cmake"
   "utility/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "vec2/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "vec3/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "vec/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -65,6 +63,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "line/CMakeFiles/line.dir/DependInfo.cmake"
   "point/CMakeFiles/point.dir/DependInfo.cmake"
   "utility/CMakeFiles/utility.dir/DependInfo.cmake"
-  "vec2/CMakeFiles/vec2.dir/DependInfo.cmake"
-  "vec3/CMakeFiles/vec3.dir/DependInfo.cmake"
+  "vec/CMakeFiles/vec.dir/DependInfo.cmake"
   )

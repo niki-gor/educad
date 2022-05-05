@@ -189,30 +189,17 @@ utility/fast:
 .PHONY : utility/fast
 
 #=============================================================================
-# Target rules for targets named vec2
+# Target rules for targets named vec
 
 # Build rule for target.
-vec2: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 vec2
-.PHONY : vec2
+vec: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 vec
+.PHONY : vec
 
 # fast build rule for target.
-vec2/fast:
-	$(MAKE) -f vec2/CMakeFiles/vec2.dir/build.make vec2/CMakeFiles/vec2.dir/build
-.PHONY : vec2/fast
-
-#=============================================================================
-# Target rules for targets named vec3
-
-# Build rule for target.
-vec3: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 vec3
-.PHONY : vec3
-
-# fast build rule for target.
-vec3/fast:
-	$(MAKE) -f vec3/CMakeFiles/vec3.dir/build.make vec3/CMakeFiles/vec3.dir/build
-.PHONY : vec3/fast
+vec/fast:
+	$(MAKE) -f vec/CMakeFiles/vec.dir/build.make vec/CMakeFiles/vec.dir/build
+.PHONY : vec/fast
 
 main.o: main.cpp.o
 
@@ -255,8 +242,7 @@ help:
 	@echo "... line"
 	@echo "... point"
 	@echo "... utility"
-	@echo "... vec2"
-	@echo "... vec3"
+	@echo "... vec"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

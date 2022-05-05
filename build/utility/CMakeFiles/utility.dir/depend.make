@@ -5,8 +5,8 @@ utility/CMakeFiles/utility.dir/utility.cpp.o: ../angem/angem.h
 utility/CMakeFiles/utility.dir/utility.cpp.o: ../hash/hash.h
 utility/CMakeFiles/utility.dir/utility.cpp.o: ../line/line.h
 utility/CMakeFiles/utility.dir/utility.cpp.o: ../point/point.h
-utility/CMakeFiles/utility.dir/utility.cpp.o: ../vec2/vec2.h
-utility/CMakeFiles/utility.dir/utility.cpp.o: ../vec3/vec3.h
+utility/CMakeFiles/utility.dir/utility.cpp.o: ../vec/vec2.h
+utility/CMakeFiles/utility.dir/utility.cpp.o: ../vec/vec3.h
 utility/CMakeFiles/utility.dir/utility.cpp.o: ../utility/utility.cpp
 utility/CMakeFiles/utility.dir/utility.cpp.o: ../utility/utility.h
 

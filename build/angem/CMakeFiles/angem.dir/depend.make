@@ -4,8 +4,8 @@
 angem/CMakeFiles/angem.dir/angem.cpp.o: ../hash/hash.h
 angem/CMakeFiles/angem.dir/angem.cpp.o: ../line/line.h
 angem/CMakeFiles/angem.dir/angem.cpp.o: ../point/point.h
-angem/CMakeFiles/angem.dir/angem.cpp.o: ../vec2/vec2.h
-angem/CMakeFiles/angem.dir/angem.cpp.o: ../vec3/vec3.h
+angem/CMakeFiles/angem.dir/angem.cpp.o: ../vec/vec2.h
+angem/CMakeFiles/angem.dir/angem.cpp.o: ../vec/vec3.h
 angem/CMakeFiles/angem.dir/angem.cpp.o: ../angem/angem.cpp
 angem/CMakeFiles/angem.dir/angem.cpp.o: ../angem/angem.h
 

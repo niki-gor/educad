@@ -3,8 +3,8 @@
 
 hash/CMakeFiles/hash.dir/hash.cpp.o: ../line/line.h
 hash/CMakeFiles/hash.dir/hash.cpp.o: ../point/point.h
-hash/CMakeFiles/hash.dir/hash.cpp.o: ../vec2/vec2.h
-hash/CMakeFiles/hash.dir/hash.cpp.o: ../vec3/vec3.h
+hash/CMakeFiles/hash.dir/hash.cpp.o: ../vec/vec2.h
+hash/CMakeFiles/hash.dir/hash.cpp.o: ../vec/vec3.h
 hash/CMakeFiles/hash.dir/hash.cpp.o: ../hash/hash.cpp
 hash/CMakeFiles/hash.dir/hash.cpp.o: ../hash/hash.h
 

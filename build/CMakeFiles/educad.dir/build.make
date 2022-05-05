@@ -84,14 +84,12 @@ educad: hash/libhash.a
 educad: line/libline.a
 educad: point/libpoint.a
 educad: utility/libutility.a
-educad: vec2/libvec2.a
-educad: vec3/libvec3.a
+educad: vec/libvec.a
 educad: angem/libangem.a
 educad: hash/libhash.a
 educad: line/libline.a
 educad: point/libpoint.a
-educad: vec3/libvec3.a
-educad: vec2/libvec2.a
+educad: vec/libvec.a
 educad: CMakeFiles/educad.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/nikita/SFML/educad_legacy/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable educad"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/educad.dir/link.txt --verbose=$(VERBOSE)

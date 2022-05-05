@@ -6,5 +6,5 @@ CXX_FLAGS = -std=c++2a -Wall -Wpedantic -Wextra -lsfml-graphics -lsfml-window -l
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/nikita/SFML/educad_legacy/hash -I/home/nikita/SFML/educad_legacy/line -I/home/nikita/SFML/educad_legacy/point -I/home/nikita/SFML/educad_legacy/vec3 -I/home/nikita/SFML/educad_legacy/vec2 
+CXX_INCLUDES = -I/home/nikita/SFML/educad_legacy/hash -I/home/nikita/SFML/educad_legacy/line -I/home/nikita/SFML/educad_legacy/point -I/home/nikita/SFML/educad_legacy/vec 
 

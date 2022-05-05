@@ -44,8 +44,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/nikita/SFML/educad_legacy/build/line/cmake_install.cmake")
   include("/home/nikita/SFML/educad_legacy/build/point/cmake_install.cmake")
   include("/home/nikita/SFML/educad_legacy/build/utility/cmake_install.cmake")
-  include("/home/nikita/SFML/educad_legacy/build/vec2/cmake_install.cmake")
-  include("/home/nikita/SFML/educad_legacy/build/vec3/cmake_install.cmake")
+  include("/home/nikita/SFML/educad_legacy/build/vec/cmake_install.cmake")
 
 endif()
 

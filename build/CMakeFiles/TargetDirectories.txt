@@ -16,9 +16,6 @@
 /home/nikita/SFML/educad_legacy/build/utility/CMakeFiles/rebuild_cache.dir
 /home/nikita/SFML/educad_legacy/build/utility/CMakeFiles/edit_cache.dir
 /home/nikita/SFML/educad_legacy/build/utility/CMakeFiles/utility.dir
-/home/nikita/SFML/educad_legacy/build/vec2/CMakeFiles/rebuild_cache.dir
-/home/nikita/SFML/educad_legacy/build/vec2/CMakeFiles/edit_cache.dir
-/home/nikita/SFML/educad_legacy/build/vec2/CMakeFiles/vec2.dir
-/home/nikita/SFML/educad_legacy/build/vec3/CMakeFiles/rebuild_cache.dir
-/home/nikita/SFML/educad_legacy/build/vec3/CMakeFiles/edit_cache.dir
-/home/nikita/SFML/educad_legacy/build/vec3/CMakeFiles/vec3.dir
+/home/nikita/SFML/educad_legacy/build/vec/CMakeFiles/rebuild_cache.dir
+/home/nikita/SFML/educad_legacy/build/vec/CMakeFiles/edit_cache.dir
+/home/nikita/SFML/educad_legacy/build/vec/CMakeFiles/vec.dir
