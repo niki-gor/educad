@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../vec2/vec2.h
+
+/home/nikita/SFML/educad_legacy/vec3/vec3.cpp
+vec3.h
+/home/nikita/SFML/educad_legacy/vec3/vec3.h
+
+/home/nikita/SFML/educad_legacy/vec3/vec3.h
+vec2.h
+/home/nikita/SFML/educad_legacy/vec3/vec2.h
+tuple
+-
+

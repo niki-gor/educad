@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../point/point.h
+SFML/Graphics.hpp
+-
+memory
+-
+vec3.h
+../point/vec3.h
+
+../vec2/vec2.h
+
+../vec3/vec3.h
+vec2.h
+../vec3/vec2.h
+tuple
+-
+
+/home/nikita/SFML/educad_legacy/line/line.cpp
+line.h
+/home/nikita/SFML/educad_legacy/line/line.h
+
+/home/nikita/SFML/educad_legacy/line/line.h
+memory
+-
+array
+-
+point.h
+/home/nikita/SFML/educad_legacy/line/point.h
+

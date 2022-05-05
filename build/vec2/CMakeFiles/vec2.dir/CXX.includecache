@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nikita/SFML/educad_legacy/vec2/vec2.cpp
+vec2.h
+/home/nikita/SFML/educad_legacy/vec2/vec2.h
+
+/home/nikita/SFML/educad_legacy/vec2/vec2.h
+

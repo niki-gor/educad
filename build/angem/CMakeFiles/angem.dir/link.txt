@@ -1,0 +1,2 @@
+/usr/bin/ar qc libangem.a  CMakeFiles/angem.dir/angem.cpp.o
+/usr/bin/ranlib libangem.a
