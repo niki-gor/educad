@@ -6,12 +6,8 @@
 
 
 namespace AngemUtils {
-    float getDistance(AngemPoint p1, AngemPoint p2){
-        return 0;
-    }
-    AngemLine getPerpendicularLine(AngemPoint p, AngemLine l){
-        return AngemLine();
-    }
+    double getDistance(AngemPoint p1, AngemPoint p2);
+    AngemLine getPerpendicularLine(AngemPoint p, AngemLine l);
     AngemLine getPerpendicularLine(AngemLine l1, AngemLine l2){
         return AngemLine();
     }

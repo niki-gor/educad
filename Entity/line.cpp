@@ -51,7 +51,7 @@ LineByPlanesIntersection::LineByPlanesIntersection(){
     k = 1;
 }
 
-LineByTwoPoints::LineByTwoPoints(){
+LineByTwoPoints::LineByTwoPoints(){ 
     x0 = 1;
     y0 = 1;
     z0 = 1;
