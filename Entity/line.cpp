@@ -1,12 +1,15 @@
-//
-// Created by Марат Гасанов on 16.04.2022.
-//
-
 #include "Entity.hpp"
+#include "Angem.hpp"
 
 LineByTwoPoints::LineByTwoPoints(PTR<Point> first, PTR<Point> second){
     this->first = first;
     this->second = second;
+    this->i = second->x - first->x;
+    this->j = second->y - first->y;
+    this->k = second->z - first->z;
+    this->x0 = second->x;
+    this->y0 = second->y;
+    this->z0 = second->z;
 }
 
 LineByParallel::LineByParallel(PTR<Point> first, PTR<Line> second){
@@ -21,14 +24,15 @@ LineByParallel::LineByParallel(PTR<Point> first, PTR<Line> second){
 }
 
 LineByPerpendicular::LineByPerpendicular(PTR<Point> point, PTR<Line> line){
-    x0 = point->x;
-    y0 = point->y;
-    z0 = point->z;
-    this->point = point;
-    this->i = 1;
-    this->j = 1;
-    this->k = (-line->i - line->j)/line->k;
     this->line = line;
+    this->point = point;
+    AngemLine l = AngemUtils::getPerpendicularLine(*point, *line);
+    this->i = l.i;
+    this->j = l.j;
+    this->k = l.k;
+    this->x0 = point->x;
+    this->y0 = point->y;
+    this->z0 = point->z;
 }
 
 LineByPlanesIntersection::LineByPlanesIntersection(PTR<Plane> first, PTR<Plane> second){ //Не дописал

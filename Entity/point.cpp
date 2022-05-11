@@ -1,8 +1,5 @@
-//
-// Created by Марат Гасанов on 16.04.2022.
-//
-
 #include "Entity.hpp"
+#include "Angem.hpp"
 
 PTR<TwoDEntity> Point::getProjection(PTR<ProjectionPlane>) {
     PTR<TwoDEntity> entity(new TwoDPoint(1,2));
@@ -16,7 +13,8 @@ PointByCoords::PointByCoords(double x, double y, double z){
 }
 
 PointByLinesIntersection::PointByLinesIntersection(PTR<Line> first, PTR<Line> second) {//не доделал
-    x = 1;
-    y = 1;
-    z = 1;
+    AngemPoint p = AngemUtils::linesIntersection(*first, *second);
+    x = p.x;
+    y = p.y;
+    z = p.z;
 }

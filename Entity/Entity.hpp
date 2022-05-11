@@ -151,11 +151,13 @@ public:
     PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
         return PTR<TwoDEntity>();
     };
+    PlaneByIntersectingLines(PTR<Line> l, PTR<Line> l1);
 };
 class PlaneByParallelLines : public Plane {
 public:
     PTR<Line> first;
     PTR<Line> second;
+    PlaneByParallelLines(PTR<Line> l, PTR<Line> l1);
     void update(){};
     PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
         return PTR<TwoDEntity>();
