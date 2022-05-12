@@ -14,14 +14,16 @@ PlaneByThreePoints::PlaneByThreePoints(PTR<Point> p1, PTR<Point> p2, PTR<Point> 
     D = 1;
 }
 
-ProjectionPlane::ProjectionPlane(PTR<ProjectionPlane> perpendicularProjection, PTR<Line> intersection) { // Не доделал
-    A = 1;
-    B = 1;
-    C = 1;
-    D = 1;
-    xBegin = 1;
-    yBegin = 1;
-    zBegin = 1;
+ProjectionPlane::ProjectionPlane(const PTR<Plane>& perpendicularPlane, PTR<Line> intersection) { // Не доделал
+    A = perpendicularPlane->A;
+    B = perpendicularPlane->B;
+    C = perpendicularPlane->C;
+    D = perpendicularPlane->D;
+    double square = A*A + B*B + C*C;
+    double t = -D/(square);
+    xBegin = A*t;
+    yBegin = B*t;
+    zBegin = C*t;
 }
 
 ProjectionPlane::ProjectionPlane(PTR<Plane> plane) {

@@ -13,25 +13,23 @@ public:
 
 class TwoDPoint : public TwoDEntity{
 public:
-    double x;
-    double y;
-    TwoDPoint(double x, double y): x(x), y(y){};
+    double X;
+    double Y;
+    TwoDPoint(double x, double y): X(x), Y(y){};
     void render();
 };
 
 class TwoDLine : public TwoDEntity{
 private:
-    double a;
-    double b;
-    double c;
+    double A;
+    double B;
+    double C;
     std::shared_ptr<TwoDPoint> point1;
     std::shared_ptr<TwoDPoint> point2;
 public:
     TwoDLine(const std::shared_ptr<TwoDPoint>& point1, const std::shared_ptr<TwoDPoint>& point2);
-    TwoDLine(double a, double b, double c) : a(a), b(b), c(c){};
     void render();
 };
-
 
 
 #endif //PROJECTNAME_TWODENTITY_H

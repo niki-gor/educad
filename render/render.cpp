@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-void Render::addToProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<Entity> object) {
+void Render::addToProjectionPlane(const std::shared_ptr<ProjectionPlane>& plane, const std::shared_ptr<Entity>& object) {
     if (planes.find(plane) == planes.end()) {
         planes.insert(plane);
     }

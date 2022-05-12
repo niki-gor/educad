@@ -4,12 +4,19 @@
 
 #include "Entity.hpp"
 
+PTR<TwoDEntity> Line::getProjection(PTR<ProjectionPlane> projectionPlane){
+    PTR<TwoDPoint> twoDPoint1 = std::dynamic_pointer_cast<TwoDPoint>(point1->getProjection(projectionPlane));
+    PTR<TwoDPoint> twoDPoint2 = std::dynamic_pointer_cast<TwoDPoint>(point2->getProjection(projectionPlane));
+    PTR<TwoDLine> line(new TwoDLine(twoDPoint1, twoDPoint2));
+    return line;
+}
+
 LineByTwoPoints::LineByTwoPoints(PTR<Point> first, PTR<Point> second){
     this->first = first;
     this->second = second;
 }
 
-LineByParallel::LineByParallel(PTR<Point> first, PTR<Line> second){
+LineByParallel::LineByParallel(const PTR<Point>& first, const PTR<Line>& second){
     i = second->i;
     j = second->j;
     k = second->k;
@@ -20,7 +27,7 @@ LineByParallel::LineByParallel(PTR<Point> first, PTR<Line> second){
     line = second;
 }
 
-LineByPerpendicular::LineByPerpendicular(PTR<Point> point, PTR<Line> line){
+LineByPerpendicular::LineByPerpendicular(const PTR<Point>& point, const PTR<Line>& line){
     x0 = point->x;
     y0 = point->y;
     z0 = point->z;
@@ -77,3 +84,4 @@ LineByPerpendicular::LineByPerpendicular(){
     j = 1;
     k = 1;
 }
+
