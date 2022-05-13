@@ -2,10 +2,12 @@
 #define CONTROLLER_H
 
 
+#include "../Entity/Entity.hpp"
+
 class Controller
 {
 public:
-    Controller();
+    Controller(ProjectionPlane oxy);
     void onButtonPress();
     void onRMBClick();
     void onLMBClick();

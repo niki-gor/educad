@@ -4,6 +4,15 @@
 
 #include "Entity.hpp"
 
+LineByParametres::LineByParametres(double i, double j, double k, double x0, double y0, double z0) {
+    this->i = i;
+    this->j = j;
+    this->k = k;
+    this->x0 = x0;
+    this->y0 = y0;
+    this->z0 = z0;
+}
+
 PTR<TwoDEntity> Line::getProjection(PTR<ProjectionPlane> projectionPlane){
     PTR<TwoDPoint> twoDPoint1 = std::dynamic_pointer_cast<TwoDPoint>(point1->getProjection(projectionPlane));
     PTR<TwoDPoint> twoDPoint2 = std::dynamic_pointer_cast<TwoDPoint>(point2->getProjection(projectionPlane));

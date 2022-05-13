@@ -14,26 +14,21 @@ PlaneByThreePoints::PlaneByThreePoints(PTR<Point> p1, PTR<Point> p2, PTR<Point> 
     D = 1;
 }
 
-ProjectionPlane::ProjectionPlane(const PTR<Plane>& perpendicularPlane, PTR<Line> intersection) { // Не доделал
-    A = perpendicularPlane->A;
-    B = perpendicularPlane->B;
-    C = perpendicularPlane->C;
-    D = perpendicularPlane->D;
-    double square = A*A + B*B + C*C;
-    double t = -D/(square);
-    xBegin = A*t;
-    yBegin = B*t;
-    zBegin = C*t;
+ProjectionPlane::ProjectionPlane(const PTR<Plane>& plane) {
+    PTR<Point> zeroPoint(new PointByCoords(0, 0, 0));
+    originPoint = zeroPoint->getProjectionOnPlane(plane);
+    PTR<Line> abscis(new LineByPlanesIntersection(PTR<Plane>(this), plane));
+    AngemLine line = AngemUtils::getPerpendicularLine(*originPoint, *abscis);
+    PTR<Line> ordinat(new LineByParametres(line.i, line.j, line.k, originPoint->x, originPoint->y, originPoint->z));
+    this->ordinat = ordinat;
+    this->absciss = abscis;
 }
 
-ProjectionPlane::ProjectionPlane(PTR<Plane> plane) {
-    A = plane->A;
-    B = plane->B;
-    C = plane->C;
-    D = plane->D;
-    xBegin = 1;
-    yBegin = 1;
-    zBegin = 1;
+ProjectionPlane::ProjectionPlane(double A, double B, double C, double D) {
+    this->A = A;
+    this->B = B;
+    this->C = C;
+    this->D = D;
 }
 
 

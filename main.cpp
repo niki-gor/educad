@@ -1,4 +1,9 @@
 #include "iostream"
+#include "render.h"
+#include "Entity.hpp"
+#include "Angem.hpp"
+#include "AngemModelWorker.h"
+#include "controller.h"
 
 int main(){
     int foo = 5;

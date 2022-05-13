@@ -30,9 +30,9 @@ PTR<Point> Point::getProjectionOnLine(const PTR<Line>& line) {
     return point;
 }
 
-PTR<Point> Point::getProjectionOnPlane(const PTR<ProjectionPlane>& plane) {
+PTR<Point> Point::getProjectionOnPlane(const PTR<Plane>& plane) {
     double pointX, pointY, pointZ;
-    double tNumerator = -(plane->A* this->x + plane->B*this->y + plane->C*this->z + D);
+    double tNumerator = -(plane->A* this->x + plane->B*this->y + plane->C*this->z + plane->D);
     double tDenominator = (plane->A*plane->A + plane->B*plane->B + plane->C*plane->C);
     double t = (tNumerator/tDenominator);
     pointX = plane->A*t + this->x;

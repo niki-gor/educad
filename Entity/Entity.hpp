@@ -6,6 +6,7 @@
 #include <cmath>
 #include "iostream"
 #include <set>
+#include "Angem.hpp"
 
 class ProjectionPlane;
 class Plane;
@@ -13,12 +14,13 @@ class Line;
 class Point;
 
 class Entity {
-private:
-    std::set<PTR<ProjectionPlane> > projections;
 public:
+//private:
+    std::set<PTR<ProjectionPlane> > projections;
+//public:
     virtual void update() = 0;
     virtual PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane) = 0;
-    void addProjectionPlane(PTR<ProjectionPlane> plane){projections.insert(plane);}
+    void addProjectionPlane(const PTR<ProjectionPlane>& plane){projections.insert(plane);}
     void deleteProjectionPlane(PTR<ProjectionPlane> plane){projections.erase(plane);}
 };
 
@@ -30,7 +32,7 @@ class Point : public Entity, public AngemPoint {
 public:
     PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
     PTR<Point> getProjectionOnLine(const PTR<Line>& line);
-    PTR<Point> getProjectionOnPlane(const PTR<ProjectionPlane>& plane);
+    PTR<Point> getProjectionOnPlane(const PTR<Plane>& plane);
     double getDistance(PTR<Point> point);
 };
 
@@ -97,9 +99,20 @@ public:
     LineByPlanesIntersection(PTR<Plane> first, PTR<Plane> second);
 };
 
+class LineByParametres: public Line{
+public:
+    LineByParametres(double i, double j, double k, double x0, double y0, double z0);
+    void update() {};
+};
 
+// Planes
 class Plane : public Entity, public AngemPlane {
-
+public:
+    double getA(){return A;}
+    double getB(){return B;}
+    double getC(){return C;}
+    double getD(){return D;}
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane){};
 };
 
 class PlaneByThreePoints : public Plane {
@@ -109,9 +122,6 @@ public:
     PTR<Point> third;
     PlaneByThreePoints(PTR<Point> p1, PTR<Point> p2, PTR<Point> p3);
     void update(){};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>(new TwoDPoint(0,0));
-    };
 };
 class PlaneByPointAndLine : public Plane {
 public:
@@ -119,44 +129,33 @@ public:
     PTR<Line> line;
     PlaneByPointAndLine(PTR<Point> p, PTR<Line> l);
     void update(){};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>();
-    };
 };
 class PlaneByIntersectingLines : public Plane {
 public:
     PTR<Line> first;
     PTR<Line> second;
     void update(){};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>();
-    };
 };
 class PlaneByParallelLines : public Plane {
 public:
     PTR<Line> first;
     PTR<Line> second;
     void update(){};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>();
-    };
 };
 
+//ProjectionPlane
 class ProjectionPlane : public Plane {
 //private:
 public:
     std::set<PTR<Entity> > projected;
-    double xBegin;
-    double yBegin;
-    double zBegin;
     PTR<Point> originPoint;
     PTR<Line> absciss;
     PTR<Line> ordinat;
 
 //public:
-    ProjectionPlane(const PTR<Plane>& perpendicularPlane, PTR<Line> intersection);
-    ProjectionPlane(PTR<Plane> plane);
+    ProjectionPlane(const PTR<Plane>& plane);
+    ProjectionPlane(double A, double B, double C, double D);
     void add(PTR<Entity> object) {projected.insert(object);}
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>) {};
+    void erase(PTR<Entity> object){projected.erase(object);}
     void update(){};
 };
