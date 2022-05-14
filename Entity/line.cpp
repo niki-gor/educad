@@ -1,6 +1,23 @@
 #include "Entity.hpp"
 #include "Angem.hpp"
 
+LineByParametres::LineByParametres(double i, double j, double k, double x0, double y0, double z0) {
+    this->i = i;
+    this->j = j;
+    this->k = k;
+    this->x0 = x0;
+    this->y0 = y0;
+    this->z0 = z0;
+}
+
+PTR<TwoDEntity> Line::getProjection(PTR<ProjectionPlane> projectionPlane){
+
+    PTR<TwoDPoint> twoDPoint1 = point1->getProjectionPoint(projectionPlane);
+    PTR<TwoDPoint> twoDPoint2 = point2->getProjectionPoint(projectionPlane);
+    PTR<TwoDLine> line(new TwoDLine(twoDPoint1, twoDPoint2));
+    return line;
+}
+
 LineByTwoPoints::LineByTwoPoints(PTR<Point> first, PTR<Point> second){
     this->first = first;
     this->second = second;
@@ -17,7 +34,7 @@ std::vector<PTR<Entity>> LineByTwoPoints::getChildren() const{
     return children;
 }
 
-LineByParallel::LineByParallel(PTR<Point> first, PTR<Line> second){
+LineByParallel::LineByParallel(const PTR<Point>& first, const PTR<Line>& second){
     i = second->i;
     j = second->j;
     k = second->k;
@@ -34,7 +51,7 @@ std::vector<PTR<Entity>> LineByParallel::getChildren() const{
 }
 
 
-LineByPerpendicular::LineByPerpendicular(PTR<Point> point, PTR<Line> line){
+LineByPerpendicular::LineByPerpendicular(const PTR<Point>& point, const PTR<Line>& line){
     this->line = line;
     this->point = point;
     AngemLine l = AngemUtils::getPerpendicularLine(*point, *line);
@@ -97,3 +114,4 @@ LineByPerpendicular::LineByPerpendicular(){
     j = 1;
     k = 1;
 }
+

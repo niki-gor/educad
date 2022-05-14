@@ -6,6 +6,6 @@
 #include "iostream"
 
 void TwoDPoint::render() {
-    std::cout << "Render Point with x: " << x << " y: " << y << std::endl;
+    std::cout << "Render Point with x: " << X << " y: " << Y << std::endl;
 }
 

@@ -8,6 +8,7 @@
 #include <set>
 #include "polyset.h"
 #include <vector>
+#include "Angem.hpp"
 
 class ProjectionPlane;
 class Plane;
@@ -15,12 +16,13 @@ class Line;
 class Point;
 
 class Entity {
-private:
-    std::set<PTR<ProjectionPlane> > projections;
 public:
+//private:
+    std::set<PTR<ProjectionPlane> > projections;
+//public:
     virtual void update() = 0;
-    virtual PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>) = 0;
-    void addProjectionPlane(PTR<ProjectionPlane> plane){projections.insert(plane);}
+    virtual PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane) = 0;
+    void addProjectionPlane(const PTR<ProjectionPlane>& plane){projections.insert(plane);}
     void deleteProjectionPlane(PTR<ProjectionPlane> plane){projections.erase(plane);}
     virtual std::type_index type() const = 0;
     virtual std::vector<PTR<Entity>> getChildren() const;
@@ -30,21 +32,14 @@ namespace Utils{
     static Polyset<Entity> P; //Math. model
 }
 
-//class
-
-//class Projection : public AngemPlane {
-//private:
-//    std::set<PTR<Entity>> projected;
-//public:
-//    Projection() {}
-//    Projection(PTR<Projection> perpendicularProjection, PTR<Line> intersection);
-//    ProjectedPoint project(PTR<Point> point) const;
-//};
-
-
 class Point : public Entity, public AngemPoint {
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>);
+public:
     virtual std::type_index type() const override final;
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
+    PTR<Point> getProjectionOnLine(const PTR<Line>& line);
+    PTR<Point> getProjectionOnPlane(const PTR<Plane>& plane);
+    PTR<TwoDPoint> getProjectionPoint(const PTR<ProjectionPlane>& projectionPlane);
+    double getDistance(PTR<Point> point);
 };
 
 class PointByCoords : public Point {
@@ -79,7 +74,11 @@ public:
 
 
 class Line : public Entity, public AngemLine {
+public:
     virtual std::type_index type() const override final;
+    PTR<Point> point1;
+    PTR<Point> point2;
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
 };
 
 class LineByTwoPoints : public Line {
@@ -88,9 +87,6 @@ private:
     PTR<Point> second;
 public:
     void update() {};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>();
-    };
     LineByTwoPoints();
     LineByTwoPoints(PTR<Point> first, PTR<Point> second);
     std::vector<PTR<Entity>> getChildren() const;
@@ -102,12 +98,9 @@ private:
     PTR<Line> line;
 public:
     void update() {};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>();
-    };
     LineByParallel();
-    LineByParallel(PTR<Point> first, PTR<Line> second);
     std::vector<PTR<Entity>> getChildren() const;
+    LineByParallel(const PTR<Point>& first, const PTR<Line>& second);
 };
 
 class LineByPerpendicular : public Line {
@@ -116,12 +109,9 @@ private:
     PTR<Line> line;
 public:
     void update() {};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>();
-    };
     LineByPerpendicular();
-    LineByPerpendicular(PTR<Point> point, PTR<Line> line);
     std::vector<PTR<Entity>> getChildren() const;
+    LineByPerpendicular(const PTR<Point>& point, const PTR<Line>& line);
 };
 
 class LineByPlanesIntersection : public Line {
@@ -130,17 +120,26 @@ private:
     PTR<Plane> second;
 public:
     void update() {};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>();
-    };
     LineByPlanesIntersection();
     LineByPlanesIntersection(PTR<Plane> first, PTR<Plane> second);
     std::vector<PTR<Entity>> getChildren() const;
 };
 
+class LineByParametres: public Line{
+public:
+    LineByParametres(double i, double j, double k, double x0, double y0, double z0);
+    void update() {};
+};
 
+// Planes
 class Plane : public Entity, public AngemPlane {
+public:
     virtual std::type_index type() const override final;
+    double getA(){return A;}
+    double getB(){return B;}
+    double getC(){return C;}
+    double getD(){return D;}
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane){};
 };
 
 class PlaneByThreePoints : public Plane {
@@ -150,179 +149,49 @@ public:
     PTR<Point> third;
     PlaneByThreePoints(PTR<Point> p1, PTR<Point> p2, PTR<Point> p3);
     void update(){};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>(new TwoDPoint(0,0));
-    };
     std::vector<PTR<Entity>> getChildren() const;
 };
+
 class PlaneByPointAndLine : public Plane {
 public:
     PTR<Point> point;
     PTR<Line> line;
     PlaneByPointAndLine(PTR<Point> p, PTR<Line> l);
     void update(){};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>();
-    };
     std::vector<PTR<Entity>> getChildren() const;
 };
+
 class PlaneByIntersectingLines : public Plane {
 public:
     PTR<Line> first;
     PTR<Line> second;
     void update(){};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>();
-    };
     PlaneByIntersectingLines(PTR<Line> l, PTR<Line> l1);
     std::vector<PTR<Entity>> getChildren() const;
 };
+
 class PlaneByParallelLines : public Plane {
 public:
     PTR<Line> first;
     PTR<Line> second;
     PlaneByParallelLines(PTR<Line> l, PTR<Line> l1);
     void update(){};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
-        return PTR<TwoDEntity>();
-    };
     std::vector<PTR<Entity>> getChildren() const;
 };
 
+//ProjectionPlane
 class ProjectionPlane : public Plane {
-private:
-    std::set<PTR<Entity> > projected;
-    double xBegin;
-    double yBegin;
-    double zBegin;
+//private:
 public:
-    ProjectionPlane(PTR<ProjectionPlane> perpendicularProjection, PTR<Line> intersection);
-    ProjectionPlane(PTR<Plane> plane);
+    std::set<PTR<Entity> > projected;
+    PTR<Point> originPoint;
+    PTR<Line> absciss;
+    PTR<Line> ordinat;
+
+//public:
+    ProjectionPlane(const PTR<Plane>& plane);
+    ProjectionPlane(double A, double B, double C, double D);
     void add(PTR<Entity> object) {projected.insert(object);}
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>) {};
+    void erase(PTR<Entity> object){projected.erase(object);}
     void update(){};
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-class ProjectedEntity {
-private:
-    Polyset<ProjectedEntity> parents;
-    Polyset<ProjectedEntity> children;
-    PTR<Projection> projection;
-    PTR<Entity> origin;
-public:
-    void addChild(PTR<ProjectedEntity> child);
-    PTR<const Entity> getOrigin() const;
-};
-
-class Projection : public Entity {
-private:
-    PTR<AlgoLine> intersectionWithParent;
-public:
-    AlgoProjection(PTR<Line> intersectionWithParent);
-    PTR<Line> getIntersectionWith(PTR<AlgoProjection> projection) const;
-
-    template<class T>
-    bool count(PTR<T> entity) const;
-};
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-class AlgoEntity {
-protected:
-    Polyset<AlgoEntity> parents;
-    Polyset<AlgoEntity> children;
-public:
-    const Polyset<AlgoEntity>& getParents() const;
-    const Polyset<AlgoEntity>& getChildren() const;
-    template<class T>
-    void addChild(PTR<T> child);
-};
-
-
-class AlgoLine : public AlgoEntity {
-};
-
-class Point : public AlgoEntity, public AngemPoint {
-public:
-    Point(PTR<Line> first, PTR<Line> second) : AngemPoint(first, second);
-};
-
-class DrawablePoint : public sf::Drawable, public Point {
-private:
-    sf::CircleShape body;
-    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
-};
-
-class DrawableLine : public sf::Drawable {
-private:
-    sf::VertexArray body;
-    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const override;
-};
-
-class Point : public Entity {
-private:
-    VEC2 position;
-    Point(PTR<Projection> projection, VEC2 position);
-public:
-    Point(PTR<Line> first, PTR<Line> second);
-    Point(float x, float y, float z);
-    VEC2 getPosition() const;
-};
-
-
-
-class Line : public Entity {
-public:
-    Line(PTR<Point> first, PTR<Point> second);
-    Line(PTR<Plane> first, PTR<Plane> second);
-};
-
-
-
-class Plane : public Entity {
-public:
-    Plane(PTR<Point> first, PTR<Point> second, PTR<Point> third);
-    Plane(PTR<Line> first, PTR<Line> second);
-    Plane(PTR<Point> point, PTR<Line> line);
-};
-*/

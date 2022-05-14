@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.18)
+project(Controller)
+set(THIS_LIB_NAME Controller)
+
+add_library(${THIS_LIB_NAME}  controller.cpp)
+
+set(CONTROLLER_LIBRARIES ${PROJECT_NAME} PARENT_SCOPE)
+set(CONTROLLER_INCLUDE_DIRS ${INCLUDE_DIRS} PARENT_SCOPE)
+
+target_include_directories(${THIS_LIB_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR} ${RENDER_INCLUDE_DIRS} ${TWO_D_ENTITY_INCLUDE_DIRS})
+target_link_libraries(${THIS_LIB_NAME} LINK_PUBLIC Render Angem TwoDEntity)
