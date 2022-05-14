@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.18)
+cmake_minimum_required(VERSION 3.0.0)
 project(Utils)
 
 set(UTILS_LIBRARIES)

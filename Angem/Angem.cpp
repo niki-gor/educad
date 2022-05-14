@@ -6,7 +6,7 @@ double AngemUtils::getDistance(AngemPoint p1, AngemPoint p2){
     return pow( pow(p1.x - p2.x, 2) + pow(p1.y - p2.y, 2) + pow(p1.z - p2.z, 2) , 0.5 );
 }
 
-double AngemUtils::round(double x, int N = 2){
+double AngemUtils::round(double x, int N){
     static const double powerOfTen[] = { 1.0, 10.0, 100.0, 1000.0, 10000.0 };
     double rounded = std::floor(x * powerOfTen[N] + 0.5) / powerOfTen[N];
     return rounded;
