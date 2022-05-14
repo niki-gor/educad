@@ -12,6 +12,11 @@ LineByTwoPoints::LineByTwoPoints(PTR<Point> first, PTR<Point> second){
     this->z0 = second->z;
 }
 
+std::vector<PTR<Entity>> LineByTwoPoints::getChildren() const{
+    std::vector<PTR<Entity>> children = {first, second};
+    return children;
+}
+
 LineByParallel::LineByParallel(PTR<Point> first, PTR<Line> second){
     i = second->i;
     j = second->j;
@@ -23,6 +28,12 @@ LineByParallel::LineByParallel(PTR<Point> first, PTR<Line> second){
     line = second;
 }
 
+std::vector<PTR<Entity>> LineByParallel::getChildren() const{
+    std::vector<PTR<Entity>> children = {point, line};
+    return children;
+}
+
+
 LineByPerpendicular::LineByPerpendicular(PTR<Point> point, PTR<Line> line){
     this->line = line;
     this->point = point;
@@ -33,6 +44,11 @@ LineByPerpendicular::LineByPerpendicular(PTR<Point> point, PTR<Line> line){
     this->x0 = point->x;
     this->y0 = point->y;
     this->z0 = point->z;
+}
+
+std::vector<PTR<Entity>> LineByPerpendicular::getChildren() const{
+    std::vector<PTR<Entity>> children = {point, line};
+    return children;
 }
 
 LineByPlanesIntersection::LineByPlanesIntersection(PTR<Plane> first, PTR<Plane> second){ //Не дописал

@@ -83,3 +83,12 @@ AngemLine AngemUtils::planesIntersection(AngemPlane,AngemPlane){
 AngemLine AngemUtils::parallelLine(AngemLine l, AngemPoint p){
     return AngemLine(l.i, l.j, l.k, p.x, p.y, p.z);
 }
+AngemPoint AngemUtils::pointOnLine(AngemLine l, double x, double y, double z){
+    if(x != NULL){
+        
+    } else if(y != NULL){
+        
+    } else {
+        
+    }
+}

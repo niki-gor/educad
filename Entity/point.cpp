@@ -18,3 +18,28 @@ PointByLinesIntersection::PointByLinesIntersection(PTR<Line> first, PTR<Line> se
     y = p.y;
     z = p.z;
 }
+
+std::vector<PTR<Entity>> PointByLinesIntersection::getChildren() const{
+    std::vector<PTR<Entity>> children = std::vector<PTR<Entity>>();
+    children.push_back(first);
+    children.push_back(second);
+    return children;
+}
+
+std::vector<PTR<Entity>> PointOnLine::getChildren() const{
+    std::vector<PTR<Entity>> children = std::vector<PTR<Entity>>();
+    children.push_back(line);
+    return children;
+}
+
+PointOnLine::PointOnLine(PTR<Line> l1, double x, double y, double z){
+    
+}
+
+std::vector<PTR<Entity>> PointOnPlane::getChildren() const{
+    std::vector<PTR<Entity>> children = std::vector<PTR<Entity>>();
+    children.push_back(plane);
+    return children;
+}
+
+

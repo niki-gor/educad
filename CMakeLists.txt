@@ -12,6 +12,7 @@ add_subdirectory(Utils)
 add_subdirectory(Angem)
 add_subdirectory(Entity)
 add_subdirectory(render)
+add_subdirectory(AngemWorker)
 #add_subdirectory(UI)
 
 
