@@ -7,6 +7,30 @@
 #include "controller.h"
 #include "ControllerObservable.h"
 
+class GUI:public GUIObserver{
+public:
+    std::shared_ptr<TwoDEntity> some;
+    void onAddToProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> object)  {
+        std::cout << "Added object to plane (A = " << plane->getA() << ", B = " << plane->getB() << ", C = " << plane->getC() << ", D = " << plane->getD()  << ")"<< std::endl;
+        object->render();
+        std::cout << "-----------" << std::endl;
+        some = object;
+    }
+
+    void onChangeFromProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> object) {
+        std::cout << "Changed from plane (A = " << plane->getA() << ", B = " << plane->getB() << ", C = " << plane->getC() << ", D = " << plane->getD()  << ")"<< std::endl;
+        object->render();
+        std::cout << "-----------" << std::endl;
+    }
+
+    void onDeleteFromProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> object)  {
+        std::cout << "Deleted from plane (A = " << plane->getA() << ", B = " << plane->getB() << ", C = " << plane->getC() << ", D = " << plane->getD()  << ")"<< std::endl;
+        std::cout << "Object deleted" << std::endl;
+        object->render();
+        std::cout << "-----------" << std::endl;
+    }
+};
+
 class UI{
     ControllerObservable* controller;
 public:
