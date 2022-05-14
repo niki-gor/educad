@@ -12,7 +12,7 @@ void AngemModelWorker::DeleteEntity(PTR<Entity> p){
 
 void AngemModelWorker::DeleteRecurs(PTR<Entity> p){
     std::vector<PTR<Entity>> children = p->getChildren();
-    for( auto& const i : children ){
+    for(const auto&i : children ){
         this->DeleteRecurs(i);
     }
     render->deleteEntity(p);
