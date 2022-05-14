@@ -4,8 +4,8 @@
 
 #include "controller.h"
 
-Controller::Controller(): oxy(ProjectionPlane(0, 0, 1, 0)), oxz(ProjectionPlane(1, 0, 0, 0)){
-    render = Render();
+Controller::Controller(Render render): render(render), oxy(ProjectionPlane(0, 0, 1, 0)), oxz(ProjectionPlane(1, 0, 0, 0)){
+    //lineWorker = new LineWorker();
 }
 
 void Controller::addToModel(PTR<Entity> entity) {
@@ -20,7 +20,7 @@ void Controller::renderEntity(PTR<Entity> entity) {
 void Controller::onAddEntity(PTR<Entity> entity) {
     entity->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
     entity->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
-    addToModel(entity);
+    //addToModel(entity);
     renderEntity(entity);
 }
 

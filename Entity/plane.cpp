@@ -29,6 +29,20 @@ ProjectionPlane::ProjectionPlane(double A, double B, double C, double D) {
     this->B = B;
     this->C = C;
     this->D = D;
+    PTR<Point> p1(new PointByCoords(0, 0, 0));
+    PTR<Point> p2(new PointByCoords(1, 0, 0));
+    PTR<Point> p3(new PointByCoords(0,1,0));
+    PTR<Line> abscis(new LineByTwoPoints(p1, p2));
+    if (C){
+        PTR<Line> ord(new LineByTwoPoints(p1, p2));
+        ordinat = ord;
+    }
+    else{
+        PTR<Line> ord(new LineByTwoPoints(p1, p3));
+        ordinat = ord;
+    }
+    originPoint = PTR<Point>(new PointByCoords(0, 0, 0));
+    absciss = abscis;
 }
 
 

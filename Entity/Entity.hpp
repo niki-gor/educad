@@ -33,6 +33,7 @@ public:
     PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
     PTR<Point> getProjectionOnLine(const PTR<Line>& line);
     PTR<Point> getProjectionOnPlane(const PTR<Plane>& plane);
+    PTR<TwoDPoint> getProjectionPoint(const PTR<ProjectionPlane>& projectionPlane);
     double getDistance(PTR<Point> point);
 };
 

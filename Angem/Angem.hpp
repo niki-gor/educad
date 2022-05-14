@@ -7,25 +7,15 @@
 
 namespace AngemUtils {
     double getDistance(AngemPoint p1, AngemPoint p2);
+    AngemLine getPerpendicularLine(AngemPoint p, AngemLine l);
 
-    AngemLine getPerpendicularLine(AngemPoint p, AngemLine l){
-        return AngemLine();
-    }
-    AngemLine getPerpendicularLine(AngemLine l1, AngemLine l2){
-        return AngemLine();
-    }
-    AngemLine getPerpendicularLine(AngemPoint p, AngemPlane s){
-        return AngemLine();
-    }
-    AngemPoint linesIntersection(AngemLine l1,AngemLine l2){
-        return AngemPoint();
-    }
-    AngemLine planesIntersection(AngemPlane,AngemPlane){
-        return AngemLine();
-    }
-    AngemLine parallelLine(AngemLine, AngemPoint){
-        return AngemLine();
-    }
+    AngemLine getPerpendicularLine(AngemLine l1, AngemLine l2);
+
+    AngemLine getPerpendicularLine(AngemPoint p, AngemPlane s);
+    AngemPoint linesIntersection(AngemLine l1,AngemLine l2);
+    AngemLine planesIntersection(AngemPlane,AngemPlane);
+    AngemLine parallelLine(AngemLine, AngemPoint);
+    double round(double x, int N);
 };
 
 

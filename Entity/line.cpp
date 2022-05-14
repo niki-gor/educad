@@ -14,8 +14,9 @@ LineByParametres::LineByParametres(double i, double j, double k, double x0, doub
 }
 
 PTR<TwoDEntity> Line::getProjection(PTR<ProjectionPlane> projectionPlane){
-    PTR<TwoDPoint> twoDPoint1 = std::dynamic_pointer_cast<TwoDPoint>(point1->getProjection(projectionPlane));
-    PTR<TwoDPoint> twoDPoint2 = std::dynamic_pointer_cast<TwoDPoint>(point2->getProjection(projectionPlane));
+
+    PTR<TwoDPoint> twoDPoint1 = point1->getProjectionPoint(projectionPlane);
+    PTR<TwoDPoint> twoDPoint2 = point2->getProjectionPoint(projectionPlane);
     PTR<TwoDLine> line(new TwoDLine(twoDPoint1, twoDPoint2));
     return line;
 }

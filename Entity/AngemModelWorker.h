@@ -20,10 +20,10 @@ private:
     PTR<Polyset<Entity> > container;
 };
 
-class LineWorker: AngemModelWorker {
+class LineWorker:public AngemModelWorker {
 public:
     ~LineWorker();
-    PTR<Entity> AddToModel(PTR<Entity> PLine){ return PTR<Line>(); }
+    PTR<Entity> AddToModel(PTR<Entity> PLine){}
     PTR<Entity> AddToModelNew(Polyset<Entity> contP) { return PTR<Line>(); }
     int DeleteEntity(PTR<Entity> PLine) { return 0; }
     int DeleteRecurs(PTR<Entity> PLine) { return 0; }
@@ -33,7 +33,6 @@ public:
     }
 private:
     PTR<Polyset<Entity> > container;
-    LineWorker();
 };
 
 class PlaneWorker: AngemModelWorker {

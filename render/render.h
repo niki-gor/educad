@@ -10,6 +10,7 @@ private:
     std::set<std::shared_ptr<ProjectionPlane> > planes;
 public:
     std::shared_ptr<GUIObserver> observer;
+    Render(PTR<GUIObserver> observer);
     void addProjectionPlane(const PTR<ProjectionPlane>& projectionPlane);
     void deleteProjectionPlane(const PTR<ProjectionPlane>& projectionPlane);
     void addToProjectionPlane(const std::shared_ptr<ProjectionPlane>& plane, const std::shared_ptr<Entity>& object);

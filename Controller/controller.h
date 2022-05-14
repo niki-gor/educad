@@ -9,10 +9,9 @@
 #include "ControllerObservable.h"
 #include "TwoDEntity.h"
 
-class Controller:ControllerObservable{
+class Controller: public ControllerObservable{
 private:
     AngemModelWorker* lineWorker;
-    AngemModelWorker* pointWorker;
     void addToModel(PTR<Entity> entity);
     void renderEntity(PTR<Entity> entity);
     void disRenderEntity(PTR<Entity> entity);
@@ -20,7 +19,7 @@ private:
     ProjectionPlane oxy;
     ProjectionPlane oxz;
 public:
-    Controller();
+    Controller(Render render);
     void onAddEntity(PTR<Entity> entity) override;
     void onDeleteEntity(PTR<Entity> entity) override;
 };

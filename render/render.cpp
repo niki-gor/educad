@@ -44,4 +44,8 @@ void Render::deleteEntity(const PTR<Entity>& entity) {
     }
 }
 
+Render::Render(PTR<GUIObserver> observer) {
+    this->observer = observer;
+}
+
 

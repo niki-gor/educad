@@ -6,6 +6,7 @@
 #include "guiobjects.h"
 #include "toolbar.h"
 #include "mainwindow.h"
+#include "../Entity/Entity.hpp"
 
 UnitTest::UnitTest() {
 
@@ -42,7 +43,7 @@ void UnitTest::testContextEdit() {
 }
 
 void UnitTest::testController() {
-    Controller controller;
+    Controller controller(ProjectionPlane(<#initializer#>));
     controller.onButtonPress();
     controller.onRMBClick();
     controller.onLMBClick();

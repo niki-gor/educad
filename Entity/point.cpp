@@ -7,8 +7,8 @@
 PTR<TwoDEntity> Point::getProjection(PTR<ProjectionPlane> projectionPlane) {
     double pointX, pointY;
     PTR<Point> projectionOnPlane = getProjectionOnPlane(projectionPlane);
-    PTR<Point> projectionOnAbsciss = getProjectionOnLine(projectionPlane->absciss);
-    PTR<Point> projectoinOnOrdinate = getProjectionOnLine(projectionPlane->ordinat);
+    PTR<Point> projectionOnAbsciss = projectionOnPlane->getProjectionOnLine(projectionPlane->absciss);
+    PTR<Point> projectoinOnOrdinate = projectionOnPlane->getProjectionOnLine(projectionPlane->ordinat);
     pointX = projectionOnAbsciss->getDistance(projectionPlane->originPoint);
     pointY = projectoinOnOrdinate->getDistance(projectionPlane->originPoint);
     PTR<TwoDPoint> twoDPoint(new TwoDPoint(pointX, pointY));
@@ -45,6 +45,20 @@ PTR<Point> Point::getProjectionOnPlane(const PTR<Plane>& plane) {
 double Point::getDistance(PTR<Point> point) {
     double squaredLength = (this->x - this->x)*(this->x - this->x) + (this->y - this->y)*(this->y - this->y) + (this->z - this->z)*(this->z - this->z);
     return sqrt(squaredLength);
+}
+
+PTR<TwoDPoint> Point::getProjectionPoint(const PTR<ProjectionPlane> &projectionPlane) {
+    double pointX, pointY;
+    PTR<Point> projectionOnPlane = getProjectionOnPlane(projectionPlane);
+    PTR<Point> projectionOnAbsciss = projectionOnPlane->getProjectionOnLine(projectionPlane->absciss);
+    PTR<Point> projectoinOnOrdinate = projectionOnPlane->getProjectionOnLine(projectionPlane->ordinat);
+    pointX = projectionOnAbsciss->getDistance(projectionPlane->originPoint);
+    pointY = projectoinOnOrdinate->getDistance(projectionPlane->originPoint);
+    PTR<TwoDPoint> twoDPoint(new TwoDPoint(pointX, pointY));
+    projectionOnPlane.reset();
+    projectionOnAbsciss.reset();
+    projectoinOnOrdinate.reset();
+    return twoDPoint;
 }
 
 PointByCoords::PointByCoords(double x, double y, double z) {
