@@ -1,2 +1,6 @@
+build/
 .vscode
-/build/
+*.xml
+.idea/
+*build*/
+lib/
