@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpolyset.a  CMakeFiles/polyset.dir/polyset.cpp.o
+/usr/bin/ranlib libpolyset.a

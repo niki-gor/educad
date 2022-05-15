@@ -1,0 +1,2 @@
+/usr/bin/ar qc libpoint2d_base.a  CMakeFiles/point2d_base.dir/point2d_base.cpp.o
+/usr/bin/ranlib libpoint2d_base.a

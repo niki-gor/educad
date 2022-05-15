@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nikita/SFML/educad_plain/angem/angem.cpp
+angem.h
+/home/nikita/SFML/educad_plain/angem/angem.h
+
+/home/nikita/SFML/educad_plain/angem/angem.h
+array
+-
+

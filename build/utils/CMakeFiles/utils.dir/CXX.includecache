@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/nikita/SFML/educad_plain/utils/utils.cpp
+utils.h
+/home/nikita/SFML/educad_plain/utils/utils.h
+
+/home/nikita/SFML/educad_plain/utils/utils.h
+typeindex
+-
+typeinfo
+-
+memory
+-
+

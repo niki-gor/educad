@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../utils/utils.h
+typeindex
+-
+typeinfo
+-
+memory
+-
+
+/home/nikita/SFML/educad_plain/polyset/polyset.cpp
+polyset.h
+/home/nikita/SFML/educad_plain/polyset/polyset.h
+
+/home/nikita/SFML/educad_plain/polyset/polyset.h
+unordered_set
+-
+unordered_map
+-
+utils.h
+/home/nikita/SFML/educad_plain/polyset/utils.h
+polyset.cpp
+/home/nikita/SFML/educad_plain/polyset/polyset.cpp
+

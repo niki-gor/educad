@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../polyset/polyset.cpp
+polyset.h
+../polyset/polyset.h
+
+../polyset/polyset.h
+unordered_set
+-
+unordered_map
+-
+utils.h
+../polyset/utils.h
+polyset.cpp
+../polyset/polyset.cpp
+
+../utils/utils.h
+typeindex
+-
+typeinfo
+-
+memory
+-
+
+/home/nikita/SFML/educad_plain/entity2d/entity2d.cpp
+entity2d.h
+/home/nikita/SFML/educad_plain/entity2d/entity2d.h
+
+/home/nikita/SFML/educad_plain/entity2d/entity2d.h
+unordered_set
+-
+utils.h
+/home/nikita/SFML/educad_plain/entity2d/utils.h
+polyset.h
+/home/nikita/SFML/educad_plain/entity2d/polyset.h
+

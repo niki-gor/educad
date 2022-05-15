@@ -1,0 +1,2 @@
+/usr/bin/ar qc libentity2d.a  CMakeFiles/entity2d.dir/entity2d.cpp.o
+/usr/bin/ranlib libentity2d.a

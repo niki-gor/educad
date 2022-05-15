@@ -1,0 +1,2 @@
+/usr/bin/ar qc libline2d_base.a  CMakeFiles/line2d_base.dir/line2d_base.cpp.o
+/usr/bin/ranlib libline2d_base.a
