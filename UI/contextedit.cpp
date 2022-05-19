@@ -1,4 +1,5 @@
 #include "contextedit.h"
+#include "qmenu.h"
 
 #include <QPushButton>
 
@@ -47,6 +48,18 @@ void LineContextEdit::handleBuildParallelLineButton() {
 }
 
 LineContextEdit::LineContextEdit() {
+    contextEditWidget = new QMenu();
+    contextEditWidget->addAction("Спроецировать на плоскость");
+    contextEditWidget->addAction("Провести перпендикуляр");
+    contextEditWidget->addAction("Переименовать");
+    contextEditWidget->addAction("Посчитать дистанцию");
+    contextEditWidget->addAction("Изменить размер");
+    contextEditWidget->addAction("Удалить");
+    contextEditWidget->addAction("Вырезать");
+    contextEditWidget->addAction("Скопировать");
+    contextEditWidget->addAction("Построить натуральную величину");
+    contextEditWidget->addAction("Построить пересечение");
+    contextEditWidget->addAction("Построить параллельную прямую");
     connect(&projectOnPlaneButton, SIGNAL (released()), this,SLOT (LineContextEdit::handePprojectOnPlaneButton()));
     connect(&drawPerpendicularButton, SIGNAL (released()), this, SLOT (LineContextEdit::handleDrawPerpendicularLine()));
     connect(&renameButton, SIGNAL (released()), this, SLOT (LineContextEdit::handleRenameButton()));
@@ -61,6 +74,15 @@ LineContextEdit::LineContextEdit() {
 }
 
 PointContextEdit::PointContextEdit () {
+    contextEditWidget = new QMenu();
+    contextEditWidget->addAction("Спроецировать на плоскость");
+    contextEditWidget->addAction("Провести перпендикуляр");
+    contextEditWidget->addAction("Переименовать");
+    contextEditWidget->addAction("Посчитать дистанцию");
+    contextEditWidget->addAction("Изменить размер");
+    contextEditWidget->addAction("Удалить");
+    contextEditWidget->addAction("Вырезать");
+    contextEditWidget->addAction("Скопировать");
     connect(&projectOnPlaneButton, SIGNAL (released()), this,SLOT (PointContextEdit::handePprojectOnPlaneButton()));
     connect(&drawPerpendicularButton, SIGNAL (released()), this, SLOT (PointContextEdit::handleDrawPerpendicularLine()));
     connect(&renameButton, SIGNAL (released()), this, SLOT (PointContextEdit::handleRenameButton()));

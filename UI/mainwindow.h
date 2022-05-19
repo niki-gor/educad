@@ -2,11 +2,13 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QPainter>
 #include "toolbar.h"
+#include <QMouseEvent>
 #include "projectstructurelist.h"
 #include "descriptive.h"
 #include <contextedit.h>
+#include "canvas.h"
 
 namespace Ui {
 class MainWindow;
@@ -19,14 +21,15 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-
+    void setCanvasCondition (int condition) {canvas->condition=condition;}
+    Canvas* canvas;
 private:
     Ui::MainWindow *ui;
     ToolBar* toolBar;
     ProjectStructureList* projectStructureList;
-    DescriptiveSpace* descriptiveSpace;
     LineContextEdit lineContextEdit;
     PointContextEdit pointContextEdit;
+    int f;
 };
 
 #endif // MAINWINDOW_H
