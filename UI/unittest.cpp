@@ -1,4 +1,4 @@
-#include <QtTest/QTest>
+/*#include <QtTest/QTest>
 #include <unittest.h>
 #include "canvas.h"
 #include "contextedit.h"
@@ -6,7 +6,7 @@
 #include "guiobjects.h"
 #include "toolbar.h"
 #include "mainwindow.h"
-#include "../Entity/Entity.hpp"
+//#include "../Entity/Entity.hpp"
 
 UnitTest::UnitTest() {
 
@@ -14,7 +14,7 @@ UnitTest::UnitTest() {
 
 void UnitTest::testCanvas () {
     Canvas canvas;
-    canvas.createImage(100, 100);
+   // canvas.createImage(100, 100);
     canvas.paintEngine();
 }
 
@@ -43,10 +43,10 @@ void UnitTest::testContextEdit() {
 }
 
 void UnitTest::testController() {
-    Controller controller(ProjectionPlane(<#initializer#>));
-    controller.onButtonPress();
-    controller.onRMBClick();
-    controller.onLMBClick();
+    //Controller controller(ProjectionPlane(<#initializer#>));
+  //  controller.onButtonPress();
+ //   controller.onRMBClick();
+    //controller.onLMBClick();
 }
 
 void UnitTest::testGUIObjects() {
@@ -68,15 +68,15 @@ void UnitTest::testGUIObjects() {
 }
 
 void UnitTest::testToolbar() {
-    ToolBar toolBar;
-    toolBar.eraseButtonHandler();
-    toolBar.resizeButtonHandler();
-    toolBar.createLineButtonHandler();
-    toolBar.newProjectButtonHandler();
-    toolBar.openProjectButtonHander();
-    toolBar.createPointButtonHandler();
-    toolBar.saveProjectButtonHandler();
-    toolBar.createProjectionPlaneButtonHandler();
+   // ToolBar toolBar;
+   // toolBar.eraseButtonHandler();
+   // toolBar.resizeButtonHandler();
+  //  toolBar.createLineButtonHandler();
+ //   toolBar.newProjectButtonHandler();
+  //  toolBar.openProjectButtonHander();
+ //   toolBar.createPointButtonHandler();
+  //  toolBar.saveProjectButtonHandler();
+ //   toolBar.createProjectionPlaneButtonHandler();
 }
 
 void UnitTest::testGUIObservers() {
@@ -88,14 +88,10 @@ int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
-    test.testCanvas();
-    test.testToolbar();
-    test.testController();
-    test.testGUIObjects();
-    test.testContextEdit();
+ //   test.testCanvas();
+ //   test.testToolbar();
+ //   test.testController();
+ //   test.testGUIObjects();
+ //   test.testContextEdit();
     return a.exec();
-}
-
-
-
-
+}*/

@@ -4,10 +4,8 @@
 #include <QPushButton>
 #include <QTextEdit>
 
-class ContextEdit : public QObject
-{
+class ContextEdit : public QTextEdit {
 protected:
-    QTextEdit contextEditWidget;
     QPushButton projectOnPlaneButton;
     QPushButton drawPerpendicularButton;
     QPushButton renameButton;
@@ -17,6 +15,7 @@ protected:
     QPushButton cutButton;
     QPushButton copyButton;
 public:
+        QMenu* contextEditWidget;
     virtual void handleProjectOnPlaneButton () = 0;
     virtual void handleDrawPerpendicularButton () = 0;
     virtual void handleRenameButton () = 0;
@@ -28,7 +27,9 @@ public:
     virtual ~ContextEdit() {}
 };
 
-class LineContextEdit : protected ContextEdit {
+
+
+class LineContextEdit : public ContextEdit {
 protected:
     QPushButton realSizeButton;
     QPushButton buildIntersectionButton;
@@ -49,7 +50,7 @@ public:
     virtual ~LineContextEdit() {}
 };
 
-class PointContextEdit : protected ContextEdit {
+class PointContextEdit : public ContextEdit {
 public:
     virtual void handleProjectOnPlaneButton () ;
     virtual void handleDrawPerpendicularButton () ;

@@ -53,7 +53,7 @@ private:
     GUIAxis planeAxis;
     string planeName;
 public:
-    GUIPlane() {};
+    GUIPlane() {}
     int draw ();
     int reDraw ();
     int remove ();
