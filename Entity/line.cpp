@@ -10,15 +10,16 @@ LineByParametres::LineByParametres(double i, double j, double k, double x0, doub
     this->z0 = z0;
 }
 
-PTR<TwoDEntity> Line::getProjection(PTR<ProjectionPlane> projectionPlane){
+std::vector<PTR<Entity> > LineByParametres::getChildren() const {
+}
 
-    PTR<TwoDPoint> twoDPoint1 = point1->getProjectionPoint(projectionPlane);
-    PTR<TwoDPoint> twoDPoint2 = point2->getProjectionPoint(projectionPlane);
-    PTR<TwoDLine> line(new TwoDLine(twoDPoint1, twoDPoint2));
-    return line;
+std::vector<PTR<Entity> > Line::getChildren() const {
+
 }
 
 LineByTwoPoints::LineByTwoPoints(PTR<Point> first, PTR<Point> second){
+    this->point1 = first;
+    this->point2 = second;
     this->first = first;
     this->second = second;
     this->i = second->x - first->x;
@@ -29,8 +30,8 @@ LineByTwoPoints::LineByTwoPoints(PTR<Point> first, PTR<Point> second){
     this->z0 = second->z;
 }
 
-std::vector<PTR<Entity>> LineByTwoPoints::getChildren() const{
-    std::vector<PTR<Entity>> children = {first, second};
+std::vector<PTR<Entity> > LineByTwoPoints::getChildren() const{
+    std::vector<PTR<Entity> > children = {first, second};
     return children;
 }
 
@@ -45,8 +46,8 @@ LineByParallel::LineByParallel(const PTR<Point>& first, const PTR<Line>& second)
     line = second;
 }
 
-std::vector<PTR<Entity>> LineByParallel::getChildren() const{
-    std::vector<PTR<Entity>> children = {point, line};
+std::vector<PTR<Entity> > LineByParallel::getChildren() const{
+    std::vector<PTR<Entity> > children = {point, line};
     return children;
 }
 
@@ -63,8 +64,8 @@ LineByPerpendicular::LineByPerpendicular(const PTR<Point>& point, const PTR<Line
     this->z0 = point->z;
 }
 
-std::vector<PTR<Entity>> LineByPerpendicular::getChildren() const{
-    std::vector<PTR<Entity>> children = {point, line};
+std::vector<PTR<Entity> > LineByPerpendicular::getChildren() const{
+    std::vector<PTR<Entity> > children = {point, line};
     return children;
 }
 
@@ -86,6 +87,9 @@ LineByPlanesIntersection::LineByPlanesIntersection(){
     i = 1;
     j = 1;
     k = 1;
+}
+
+std::vector<PTR<Entity> > LineByPlanesIntersection::getChildren() const {
 }
 
 LineByTwoPoints::LineByTwoPoints(){ 

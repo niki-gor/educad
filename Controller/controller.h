@@ -5,7 +5,7 @@
 #ifndef EDUCAD_CONTROLLER_H
 #define EDUCAD_CONTROLLER_H
 #include "render.h"
-#include "AngemModelWorker.h"
+#include "AngemModelWorker.hpp"
 #include "ControllerObservable.h"
 #include "TwoDEntity.h"
 
@@ -18,6 +18,13 @@ private:
     Render render;
     ProjectionPlane oxy;
     ProjectionPlane oxz;
+public:
+    void onCreateLineByTwoPoint(PTR<Point> point1, PTR<Point> point2) override;
+
+    void onCreatePerpendicular(PTR<Point> point, PTR<Line> line) override;
+
+    void onCreateParallelLine(PTR<Line> line, PTR<Point> point) override;
+
 public:
     Controller(Render render);
     void onAddEntity(PTR<Entity> entity) override;

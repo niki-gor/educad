@@ -14,7 +14,6 @@ public:
         std::cout << "Added object to plane (A = " << plane->getA() << ", B = " << plane->getB() << ", C = " << plane->getC() << ", D = " << plane->getD()  << ")"<< std::endl;
         object->render();
         std::cout << "-----------" << std::endl;
-        some = object;
     }
 
     void onChangeFromProjectionPlane(std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> object) {
@@ -49,9 +48,11 @@ public:
 };
 
 TEST(basic, Test){
-    ControllerObservable* controller = new Controller();
+    PTR<GUIObserver> observer(new GUI());
+    Render render = Render(observer);
+    ControllerObservable* controller = new Controller(render);
     UI ui = UI(controller);
-    ui.clickMouse();
+    //ui.clickMouse();
     ui.doubleClickMouse();
     EXPECT_NO_THROW();
 }

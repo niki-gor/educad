@@ -23,8 +23,8 @@ PlaneByThreePoints::PlaneByThreePoints(PTR<Point> p1, PTR<Point> p2, PTR<Point> 
     D = A*(-p1->x) + B*(-p1->y) + C*(-p1->z);
 }
 
-std::vector<PTR<Entity>> PlaneByThreePoints::getChildren() const{
-    std::vector<PTR<Entity>> children = {first, second, third};
+std::vector<PTR<Entity> > PlaneByThreePoints::getChildren() const{
+    std::vector<PTR<Entity> > children = {first, second, third};
     return children;
 }
 
@@ -44,8 +44,8 @@ PlaneByPointAndLine::PlaneByPointAndLine(PTR<Point> p, PTR<Line> l){
     D = A*(-p->x) + B*(-p->y) + C*(-p->z);
 }
 
-std::vector<PTR<Entity>> PlaneByPointAndLine::getChildren() const{
-    std::vector<PTR<Entity>> children = {point, line};
+std::vector<PTR<Entity> > PlaneByPointAndLine::getChildren() const{
+    std::vector<PTR<Entity> > children = {point, line};
     return children;
 }
 
@@ -60,8 +60,8 @@ PlaneByIntersectingLines::PlaneByIntersectingLines(PTR<Line> l, PTR<Line> l1){
     D = A*(-l->x0) + B*(-l->y0) + C*(-l->z0);
 }
 
-std::vector<PTR<Entity>> PlaneByIntersectingLines::getChildren() const{
-    std::vector<PTR<Entity>> children = {first, second};
+std::vector<PTR<Entity> > PlaneByIntersectingLines::getChildren() const{
+    std::vector<PTR<Entity> > children = {first, second};
     return children;
 }
 
@@ -80,8 +80,8 @@ PlaneByParallelLines::PlaneByParallelLines(PTR<Line> l, PTR<Line> l1){
     D = A*(-l->x0) + B*(-l->y0) + C*(-l->z0);
 }
 
-std::vector<PTR<Entity>> PlaneByParallelLines::getChildren() const{
-    std::vector<PTR<Entity>> children = {first, second};
+std::vector<PTR<Entity> > PlaneByParallelLines::getChildren() const{
+    std::vector<PTR<Entity> > children = {first, second};
     return children;
 }
 
@@ -103,17 +103,21 @@ ProjectionPlane::ProjectionPlane(double A, double B, double C, double D) {
     PTR<Point> p1(new PointByCoords(0, 0, 0));
     PTR<Point> p2(new PointByCoords(1, 0, 0));
     PTR<Point> p3(new PointByCoords(0,1,0));
+    PTR<Point> p4(new PointByCoords(0,0,1));
     PTR<Line> abscis(new LineByTwoPoints(p1, p2));
     if (C){
-        PTR<Line> ord(new LineByTwoPoints(p1, p2));
+        PTR<Line> ord(new LineByTwoPoints(p1, p3));
         ordinat = ord;
     }
     else{
-        PTR<Line> ord(new LineByTwoPoints(p1, p3));
+        PTR<Line> ord(new LineByTwoPoints(p1, p4));
         ordinat = ord;
     }
     originPoint = PTR<Point>(new PointByCoords(0, 0, 0));
     absciss = abscis;
+}
+
+std::vector<PTR<Entity> > ProjectionPlane::getChildren() const {
 }
 
 

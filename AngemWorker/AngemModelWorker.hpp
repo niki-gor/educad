@@ -13,7 +13,7 @@ public:
     virtual PTR<Entity> AddToModelNew(Polyset<Entity> contP) = 0; // добавить новый объект в модель
     virtual void DeleteEntity(PTR<Entity> p); // удалить элемент
     virtual void DeleteRecurs(PTR<Entity> p);
-    virtual PTR<Entity> CreateEntity(Polyset<Entity> contP) = 0;
+    //virtual PTR<Entity> CreateEntity(Polyset<Entity> contP) = 0;
 protected:
     PTR<Polyset<Entity>> container;
     PTR<Render> render;
