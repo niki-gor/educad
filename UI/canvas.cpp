@@ -2,12 +2,14 @@
 #include "QPicture"
 #include "QLabel"
 #include <math.h>
-#include <QBrush>
+#include "QBrush"
 #include "QBoxLayout"
 #include "QPushButton"
 #include "QCursor"
 #include "QPainterPath"
-
+#include "QMenu"
+#include "QApplication"
+#include "QDesktopWidget"
 
 void Canvas::addPoint(int x, int y, QString name) {
     qp qp1;
@@ -49,6 +51,14 @@ void Canvas::addLine(int x1, int y1, int x2, int y2, QString name) {
     setLayout( layout );
 }
 
+ removeRelated::removeRelated (QWidget* parent) : QMessageBox (parent) {
+       this->setText("Remove related?");
+       YESButton = this->addButton("Yes", ButtonRole::YesRole);
+       NOButton = this->addButton("No", ButtonRole::NoRole);
+       connect(YESButton, SIGNAL( clicked() ), SLOT( accept() ) );
+       connect( NOButton, SIGNAL( clicked() ), SLOT( accept() ) );
+ }
+
 int Canvas::findInVcp (int x, int y) {
     for (int i = 0; i < vcp.size(); ++i) {
         if (  ( (vcp[i].pos.x() >= x - 4) && (vcp[i].pos.x() <= x + 4) )
@@ -66,7 +76,10 @@ Canvas::Canvas(QWidget* parent, QMainWindow* _parent, ProjectStructureList* _pro
     projectStructureList = _projectStructureList;
     condition=0;
     parentWindow=_parent;
-    this->resize(1000,600);
+    QRect rec = QApplication::desktop()->screenGeometry();
+    int scrHeight = rec.height()*9/10;
+    int scrWidth = rec.width();
+    this->resize(scrWidth*3/4, scrHeight*9445/10000);
     QPalette pl; //объект палитра необходим для заданимя фона окна
     pl.setColor(QPalette::Background, QColor(255, 255, 255)); //определить цвет
     this->setAutoFillBackground(true); //фон окна заливается автоматически
@@ -82,7 +95,7 @@ void Canvas::paintEvent(QPaintEvent *event)
     brush.setColor(Qt::black);
     QPainter p(this);
     pen.setStyle(Qt::SolidLine);
-    pen.setWidth(2);
+    pen.setWidth(5);
     pen.setBrush(Qt::black);
     p.setPen (pen);
     int xAxisX1 = width()-10;
@@ -95,6 +108,9 @@ void Canvas::paintEvent(QPaintEvent *event)
     QFont font ("Times", 16);
     p.setFont(font);
     p.drawText(QPoint(xAxisX2+10,xAxisY2-10), "X");
+    QString posX = QString::number(pos.x());
+    QString posY = QString::number(pos.y());
+    p.drawText(this->size().width()*88/100, this->size().height()*95/100, "X: " + posX + " Y: " + posY);
     int yzAxisX1 = width()-10;
     int yzAxisY1 = 10;
     int yzAxisX2 = width()-10;
@@ -104,8 +120,8 @@ void Canvas::paintEvent(QPaintEvent *event)
     p.drawLine(yzAxisX1, yzAxisY1, yzAxisX1+5, yzAxisY1+5);
     p.drawLine(yzAxisX2-5, yzAxisY2-5, yzAxisX2, yzAxisY2);
     p.drawLine(yzAxisX2+5, yzAxisY2-5, yzAxisX2, yzAxisY2);
-    p.drawText(QPoint(yzAxisX1-20,yzAxisY1+25), "Z");
-    p.drawText(QPoint(yzAxisX2-20,yzAxisY2-10), "Y");
+    p.drawText(QPoint(yzAxisX1-30,yzAxisY1+35), "Z");
+    p.drawText(QPoint(yzAxisX2-30,yzAxisY2-30), "Y");
     p.setBrush(Qt::black);
     pen.setWidth(10);
     p.setPen(pen);
@@ -118,10 +134,10 @@ void Canvas::paintEvent(QPaintEvent *event)
         QPainterPath path;
 
         if (vcp[i].objType==POINT) {
-            pen.setWidth(10);
+            pen.setWidth(15);
             p.setPen(pen);
         p.drawEllipse(vcp[i].pos.x(), vcp[i].pos.y(), 4, 4);
-        p.fillPath(QPainterPath(QPoint(vcp[i].pos.x(), vcp[i].pos.y())), p.brush());
+      //  p.fillPath(QPainterPath(QPoint(vcp[i].pos.x(), vcp[i].pos.y())), p.brush());
         if (vcp[i].planeNumber==1)
             projectStructureList->addPointToXZPlaneStructure(vcp[i].qpName);
         if (vcp[i].planeNumber==2)
@@ -130,6 +146,10 @@ void Canvas::paintEvent(QPaintEvent *event)
         if (vcp[i].objType==LINE) {
             pen.setWidth(3);
             p.setPen(pen);
+            if (vcp[i].planeNumber==1)
+                projectStructureList->addLineToXZPlaneStructure(vcp[i].qpName);
+            if (vcp[i].planeNumber==2)
+                projectStructureList->addLineToXYPlaneStructure(vcp[i].qpName);
             if (vcp[i].endpos.x()>0)
             p.drawLine(vcp[i].pos.x(), vcp[i].pos.y(), vcp[i].endpos.x(), vcp[i].endpos.y());
         //if (vcp[i].planeNumber==1)
@@ -142,12 +162,46 @@ void Canvas::paintEvent(QPaintEvent *event)
         }
         p.drawText(QPoint(vcp[i].pos.x()-10, vcp[i].pos.y()-10), text);
     }
+    for (int i = 0; i < help.size(); ++i)
+    {
+        pen.setColor(help[i].qpColor);
+        pen.setBrush(help[i].qpColor);
+        p.setPen(pen);
+        QPainterPath path;
+        if (help[i].objType==LINE) {
+            pen.setWidth(3);
+            p.setPen(pen);
+            if (help[i].endpos.x()>0)
+            p.drawLine(help[i].pos.x(), help[i].pos.y(), help[i].endpos.x(), help[i].endpos.y());
+       }
+    }
+    for (int i = 0; i < xMatch.size(); ++i)
+    {
+        pen.setColor(xMatch[i].qpColor);
+        pen.setBrush(xMatch[i].qpColor);
+        pen.setStyle(Qt::DashLine);
+        pen.setWidth(5);
+        p.setPen(pen);
+        QPainterPath path;
+        if (xMatch[i].objType==LINE) {
+            pen.setWidth(3);
+            p.setPen(pen);
+            if (xMatch[i].endpos.x()>0)
+            p.drawLine(xMatch[i].pos.x(), xMatch[i].pos.y(), xMatch[i].endpos.x(), xMatch[i].endpos.y());
+       }
+        pen.setStyle(Qt::SolidLine);
+    }
 }
 //обработка движения мыши
 void Canvas::mouseMoveEvent(QMouseEvent *event)
 {
     QCursor c; //положение курсора мыши
     this->pos = event->pos();
+    QRect rec = QApplication::desktop()->screenGeometry();
+    int scrHeight = rec.height()*9/10;
+    int scrWidth = rec.width();
+    int xDefault = scrWidth / 4;
+    int yDefault = scrHeight * 555 / 10000 + scrWidth*35/1800;
     if (!blocked) {
         int index=findInVcp(this->pos.x(), this->pos.y());
         if (index>=0) {
@@ -166,25 +220,57 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
         this->update();
     } else {
         if ((event->pos().x()!=xBlocked) && (xBlocked!=-1)) {
-            printf ("\nban\n");
-            c.setPos(267+parentWindow->pos().x()+xBlocked, 90+parentWindow->pos().y() + event->pos().y());
+            c.setPos(xDefault+parentWindow->pos().x()+xBlocked, yDefault+parentWindow->pos().y() + event->pos().y());
         }
         if (yBlocked==2) {
                 if (event->pos().y()<height()/2) {
                     if (xBlocked!=-1)
-                        c.setPos(267+parentWindow->pos().x()+xBlocked, 90+parentWindow->pos().y() + height()/2);
+                        c.setPos(xDefault+parentWindow->pos().x()+xBlocked, yDefault+parentWindow->pos().y() + height()/2);
                     else
-                        c.setPos(267+parentWindow->pos().x()+this->pos.x(), 90+parentWindow->pos().y() + height()/2);
+                        c.setPos(xDefault+parentWindow->pos().x()+this->pos.x(), yDefault+parentWindow->pos().y() + height()/2);
                 }
 
         }
         if (yBlocked==1) {
             if (event->pos().y()>height()/2) {
                  if (xBlocked!=-1)
-                c.setPos(267+parentWindow->pos().x()+xBlocked, 90+parentWindow->pos().y() + height()/2);
+                c.setPos(xDefault+parentWindow->pos().x()+xBlocked, yDefault+parentWindow->pos().y() + height()/2);
                  else
-                     c.setPos(267+parentWindow->pos().x()+this->pos.x(), 90+parentWindow->pos().y() + height()/2);
+                     c.setPos(xDefault+parentWindow->pos().x()+this->pos.x(), yDefault+parentWindow->pos().y() + height()/2);
             }
+        }
+        if ((condition==2) && (vcp.last().endpos.x()<0)) {
+            if (help.size()>0) help.pop_back();
+                qp qp1;
+                qp1.pos = vcp.last().pos;
+                qp1.fl = 0;
+                qp1.objType=LINE;
+                qp1.qpColor=Qt::black;
+                qp1.planeNumber=0;
+                qp1.endpos = this->pos;
+                qp1.needsProjection=false;
+                help.append(qp1);
+                this->update();
+        }
+        if (xBlocked>0) {
+            if (xMatch.size()>0) xMatch.pop_back();
+                qp qp1;
+                if (vcp.last().objType==LINE) {
+                    if (vcp.last().endpos.x()>0)
+                        qp1.pos = vcp.last().pos;
+                    else
+                        qp1.pos = vcp[vcp.size()-2].endpos;
+                } else if (vcp.last().objType==POINT) {
+                     qp1.pos = vcp.last().pos;
+                }
+                qp1.fl = 0;
+                qp1.objType=LINE;
+                qp1.qpColor=Qt::gray;
+                qp1.planeNumber=0;
+                qp1.endpos = this->pos;
+                qp1.needsProjection=false;
+                xMatch.append(qp1);
+                this->update();
         }
     }
 }
@@ -194,7 +280,6 @@ void Canvas::mousePressEvent(QMouseEvent * e)
 {
     QCursor c;
     if(e->button() == Qt::LeftButton) {
-        printf ("condition=%d\n", condition);
         if (condition==1) {
                 if (!blocked) {
                 qp qp1;
@@ -211,9 +296,9 @@ void Canvas::mousePressEvent(QMouseEvent * e)
                 blocked=true;
                 xBlocked = qp1.pos.x();
                 yBlocked = qp1.planeNumber;
-
                 }
             else {
+                 if (xMatch.size()>0) xMatch.pop_back();
                  qp qp1;
                  qp1.pos = this->pos;
                  qp1.fl = 0;
@@ -230,6 +315,7 @@ void Canvas::mousePressEvent(QMouseEvent * e)
              if (condition==2) {
                  if ( (vcp.size()>0) && (vcp.last().needsProjection==true) && (blocked==true)) {
                      if (vcp.last().endpos.x()>0) {
+                         if (xMatch.size()>0) xMatch.pop_back();
                      qp qp1;
                      qp1.pos = this->pos;
                      qp1.fl = 0;
@@ -244,6 +330,8 @@ void Canvas::mousePressEvent(QMouseEvent * e)
                      blocked=true;
                      yBlocked = qp1.planeNumber;
                      } else {
+                       if (xMatch.size()>0) xMatch.pop_back();
+                       if (help.size()>0) help.pop_back();
                        qp qp1 = vcp.back();
                        vcp.pop_back();
                        vcp.back().qpColor=Qt::black;
@@ -265,13 +353,14 @@ void Canvas::mousePressEvent(QMouseEvent * e)
                  inputNameWindow.exec();
                  qp1.qpName=inputNameWindow.getInput();
                  if (qp1.pos.y()<height()/2) qp1.planeNumber=1; else qp1.planeNumber=2;
+                 qp1.needsProjection=false;
                  qp1.endpos = QPoint (-1, -1);
                  vcp.append(qp1); //добавили в массив для рисования
                  blocked=true;
                  xBlocked = -1;
                  yBlocked = qp1.planeNumber;
-                 qp1.needsProjection=false;
                  } else {
+                   if (help.size()>0)  help.pop_back();
                    qp qp1 = vcp.back();
                    vcp.pop_back();
                    qp1.endpos = this->pos;
@@ -283,6 +372,31 @@ void Canvas::mousePressEvent(QMouseEvent * e)
                    blocked = true;
                    }
             }
+             } else if (condition==3) {
+                 int index=findInVcp(this->pos.x(), this->pos.y());
+                         if (index>=0) {
+                             if (vcp[index].planeNumber == 2) {
+                                 if (vcp[index].objType == POINT) {
+                                     printf ("sent removal signal");
+                                     projectStructureList->removePointFromXZPlaneStructure(vcp[index].qpName);
+                                 } else if (vcp[index].objType == LINE) {
+                                     printf ("sent removal signal");
+                                     projectStructureList->removeLineFromXZPlaneStructure(vcp[index].qpName);
+                                 }
+                             } else if (vcp[index].planeNumber==1) {
+                                 if (vcp[index].objType == POINT) {
+                                     printf ("sent removal signal");
+                                     projectStructureList->removePointFromXYPlaneStructure(vcp[index].qpName);
+                                 } else if (vcp[index].objType == LINE) {
+                                     printf ("sent removal signal");
+                                     projectStructureList->removeLineFromXYPlaneStructure(vcp[index].qpName);
+                                 }
+                             }
+                             vcp.remove(index);
+                         }
+                         rRelated.exec();
+                         //обновить экран
+                         this->update();
              }
     }
 }
@@ -291,18 +405,28 @@ void Canvas::mouseReleaseEvent(QMouseEvent * e)
 {
     if(e->button() == Qt::RightButton)
     {
+        QRect rec = QApplication::desktop()->screenGeometry();
+        int scrHeight = rec.height()*9/10;
+        int scrWidth = rec.width();
+        int xDefault = scrWidth / 4;
+        int yDefault = scrHeight * 555 / 10000 + scrWidth*35/1800;
         if (selected==POINT) {
-            pointRMB.contextEditWidget.show();
+            pointRMB.contextEditWidget->move(this->pos.x()+xDefault, this->pos.y()+yDefault);
+            pointRMB.contextEditWidget->show();
         } else if (selected==LINE) {
-            lineRMB.contextEditWidget.show();
+            lineRMB.contextEditWidget->move(this->pos.x()+xDefault, this->pos.y()+yDefault);
+            lineRMB.contextEditWidget->show();
         }
         //удалить последний элемент линии
-       /* int index=findInVcp(this->pos.x(), this->pos.y());
-        if (index>=0) {
-            vcp.remove(index);
-        }
-        //обновить экран
-        this->update();*/
+       /* */
     }
+}
+
+void Canvas::clear () {
+    vcp.clear();
+    projectStructureList->clear();
+    help.clear();
+    xMatch.clear();
+    this->update();
 }
 

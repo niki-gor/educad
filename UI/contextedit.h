@@ -4,7 +4,7 @@
 #include <QPushButton>
 #include <QTextEdit>
 
-class ContextEdit : public QObject {
+class ContextEdit : public QTextEdit {
 protected:
     QPushButton projectOnPlaneButton;
     QPushButton drawPerpendicularButton;
@@ -15,7 +15,7 @@ protected:
     QPushButton cutButton;
     QPushButton copyButton;
 public:
-        QTextEdit contextEditWidget;
+        QMenu* contextEditWidget;
     virtual void handleProjectOnPlaneButton () = 0;
     virtual void handleDrawPerpendicularButton () = 0;
     virtual void handleRenameButton () = 0;

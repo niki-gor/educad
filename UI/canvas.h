@@ -5,12 +5,14 @@
 #include <QImage>
 #include <QPainter>
 #include <QMouseEvent>
+#include "QPushButton"
 #include <QPen>
 #include "QDialog"
 #include "QLineEdit"
 #include "QMainWindow"
 #include "projectstructurelist.h"
 #include "contextedit.h"
+#include "QMessageBox"
 
 class InputName : public QDialog {
     Q_OBJECT
@@ -22,6 +24,18 @@ signals:
     void applied();
 private:
     QLineEdit* m_edit;
+};
+
+class removeRelated : public QMessageBox {
+    Q_OBJECT
+public:
+    removeRelated( QWidget* parent = nullptr );
+    ~removeRelated() {}
+signals:
+    void applied();
+private:
+    QPushButton* YESButton;
+    QPushButton* NOButton;
 };
 
 enum ObjectType {
@@ -46,6 +60,7 @@ class Canvas : public QWidget
 {
     Q_OBJECT
 public:
+    void clear();
     explicit Canvas(QWidget* parent = nullptr,QMainWindow* _parent=nullptr, ProjectStructureList* _projectStructureList=nullptr);
     void prepareCanvas ();
     int condition; //0=dead 1=point 2=line
@@ -59,7 +74,10 @@ private:
     void paintEvent(QPaintEvent *event);
     QPoint pos; //координаты точки для рисования
     void mouseMoveEvent(QMouseEvent *event);
+    removeRelated rRelated;
     QVector<qp> vcp; //массив (вектор) для хранения рисунка
+    QVector<qp> help; //массив (вектор) для хранения рисунка
+    QVector<qp> xMatch; //массив (вектор) для хранения рисунка
     void mousePressEvent(QMouseEvent *);
     void mouseReleaseEvent(QMouseEvent *);
     int f;

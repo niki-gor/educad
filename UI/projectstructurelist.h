@@ -17,16 +17,25 @@ private:
     QTreeWidgetItem* planeXYStruct;
     QTreeWidgetItem* planeXZStruct;
     vector <QTreeWidgetItem*> userPlanesStruct;
+    QFont font;
 public:
-    QWidget* structureWidget;
+    QFrame* structureWidget;
+    void clear ();
     ProjectStructureList();
+    int addNewPlaneToStructure(GUIPlane plane);
     int addPointToXYPlaneStructure (QString pointName);
     int addPointToXZPlaneStructure (QString pointName);
     int addPointToUserPlaneStructure (GUIPlane plane);
-    int addLineToXYPlaneStructure ();
-    int addLineToXZPlaneStructure ();
+    int addLineToXYPlaneStructure (QString lineName);
+    int addLineToXZPlaneStructure (QString lineName);
     int addLineToUserPlaneStructure (GUIPlane plane);
-    int addNewPlaneToStructure (GUIPlane plane);
+    int removePointFromXYPlaneStructure (QString pointName);
+    int removePointFromXZPlaneStructure (QString pointName);
+    int removePointFromUserPlaneStructure (GUIPlane plane);
+    int removeLineFromXYPlaneStructure (QString lineName);
+    int removeLineFromXZPlaneStructure (QString lineName);
+    int removeLineFromUserPlaneStructure (GUIPlane plane);
+    int removePlaneFromStructure (GUIPlane plane);
 };
 
 #endif // PROJECTSTRUCTURELIST_H

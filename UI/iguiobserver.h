@@ -1,7 +1,7 @@
 #ifndef IGUIOBSERVER_H
 #define IGUIOBSERVER_H
 #include "canvas.h"
-#include "../TwoDEntity/TwoDEntity.h"
+#include "TwoDEntity/TwoDEntity.h"
 #include <memory>
 
 class IGUIObserver {

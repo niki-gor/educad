@@ -13,11 +13,23 @@ MainWindow::MainWindow(QWidget *parent) :
     projectStructureList = new ProjectStructureList ();
     canvas = new Canvas(nullptr, this, projectStructureList);
     layout()->addWidget(projectStructureList->structureWidget);
-    canvas->move(260,60);
     layout()->addWidget(canvas);
     toolBar = new ToolBar(parent=this, canvas);
     layout()->addWidget(toolBar->toolBarWidget);
-    QSize newSize (1920,1080);
+    setWindowTitle("EDUCAD");
+    QRect rec = QApplication::desktop()->screenGeometry();
+    int scrHeight = rec.height()*9/10;
+    int scrWidth = rec.width();
+    printf ("%d %d", scrHeight ,scrWidth/4);
+    QSize newSize (scrWidth,scrHeight);
+    this->resize(newSize);
+    int canvX = scrWidth / 4;
+    int canvY = scrHeight * 555 / 10000;
+    canvas->move(canvX, canvY);
+    QPalette pal;
+    pal.setColor(QPalette::Background, Qt::white);
+    this->setAutoFillBackground(true);
+    this->setPalette(pal);
     setGeometry(
          QStyle::alignedRect(
              Qt::LeftToRight,

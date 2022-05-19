@@ -1,6 +1,6 @@
 #include "canvas.h"
 #include "iguiobserver.h"
-#include "../TwoDEntity/TwoDEntity.h"
+#include "TwoDEntity/TwoDEntity.h"
 
 
 

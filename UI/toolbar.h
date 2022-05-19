@@ -1,13 +1,18 @@
 #ifndef TOOLBAR_H
 #define TOOLBAR_H
 
+
+#include "QMessageBox"
+#include "QDialogButtonBox"
 #include <QWidget>
 #include <QPushButton>
 #include "QMainWindow"
 #include "canvas.h"
+#include "QObject"
 
 class ToolBar : public QObject
 {
+   QMessageBox* clearAll;
     QPushButton* newProjectButton;
     QPushButton* saveProjectButton;
     QPushButton* openProjectButton;
@@ -20,7 +25,7 @@ class ToolBar : public QObject
     Canvas* canvas;
 public:
     ToolBar(QWidget *parent, Canvas* _canvas);
-    QWidget* toolBarWidget;
+    QFrame* toolBarWidget;
 private slots:
     void newProjectButtonHandler();
     void saveProjectButtonHandler();
