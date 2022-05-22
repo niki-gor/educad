@@ -6,7 +6,6 @@
 #include "toolbar.h"
 #include <QMouseEvent>
 #include "projectstructurelist.h"
-#include "descriptive.h"
 #include <contextedit.h>
 #include "canvas.h"
 

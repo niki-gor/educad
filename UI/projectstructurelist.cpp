@@ -3,16 +3,16 @@
 #include "string.h"
 #include "iostream"
 #include "QApplication"
-#include "QDesktopWidget"
+//#include "QDesktopWidget"
 #include "QFont"
 using namespace std;
 
 ProjectStructureList::ProjectStructureList() {
-    QRect rec = QApplication::desktop()->screenGeometry();
-    int height = rec.height()*9/10;
-    int width = rec.width();
+  //  QRect rec = QApplication::desktop()->screenGeometry();
+    int height = 2160*9/10;
+    int width = 3840;
     structureWidget = new QFrame ();
-        font = QFont("Times", 16);
+    font = QFont("Times", 16);
     treeWidget = new QTreeWidget (structureWidget);
     treeWidget->setFont(font);
     treeWidget->setHeaderLabel("Project Structure");
@@ -29,7 +29,7 @@ ProjectStructureList::ProjectStructureList() {
     treeWidget->addTopLevelItem(kingItem);
     kingItem->addChild(planeXYStruct);
     kingItem->addChild(planeXZStruct);
-    structureWidget->setGeometry(QRect(0,height*555/10000,width/4,height));
+    structureWidget->setGeometry(QRect(0,height*556/10000,width/4,height));
     treeWidget->setGeometry(0,0,width/4-2,height);
     treeWidget->setFrameShape(QFrame::NoFrame);
     structureWidget->setFrameShape(QFrame::Box);

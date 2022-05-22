@@ -214,7 +214,7 @@ class TwoDPoint : public TwoDEntity{
 public:
     double X;
     double Y;
-    TwoDPoint(double x, double y, PTR<ProjectionPlane> plane): X(x), Y(y);
+    TwoDPoint(double x, double y, PTR<ProjectionPlane> plane): X(x), Y(y) {};
     void render();
 
 };
