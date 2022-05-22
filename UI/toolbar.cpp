@@ -2,7 +2,7 @@
 #include <QPushButton>
 #include "QObject"
 #include "QApplication"
-#include "QDesktopWidget"
+//#include "QDesktopWidget"
 #include <canvas.h>
 #include "QPalette"
 #include "QAbstractButton"
@@ -11,13 +11,13 @@ ToolBar::ToolBar (QWidget *parent, Canvas* _canvas) {
     parentWidget=parent;
     canvas=_canvas;
     toolBarWidget = new QFrame();
-    QRect rec = QApplication::desktop()->screenGeometry();
-    int scrHeight = rec.height()*9/10;
-    int scrWidth = rec.width();
+    QRect rec = QGuiApplication::primaryScreen()->geometry();
+    int scrHeight = 2160*9/10;
+    int scrWidth = 3840;
     int butSize = scrHeight*556/10000;
     toolBarWidget->setGeometry(0,0,scrWidth,butSize);
     QPalette pal;
-    pal.setColor(QPalette::Background, Qt::white);
+   // pal.setColor(QPalette::Background, Qt::white);
     toolBarWidget->setAutoFillBackground(true);
     toolBarWidget->setPalette(pal);
     toolBarWidget->setFrameShape(QFrame::Box);

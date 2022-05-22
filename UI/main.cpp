@@ -1,7 +1,7 @@
 #include "mainwindow.h"
 #include <QApplication>
 #include "guistorage.h"
-#include "iguiobserver.h"
+//#include "iguiobserver.h"
 
 int main(int argc, char *argv[])
 {
@@ -9,6 +9,8 @@ int main(int argc, char *argv[])
     GUIStorage selectedObjects;
     GUIStorage objectsOnScreen;
     MainWindow w;
+  //  IGUILineObserver lineObserver (w.canvas);
+  //  IGUIPointObserver pointObserver (w.canvas);
     w.show();
     return a.exec();
 }

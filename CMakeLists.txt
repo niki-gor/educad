@@ -13,10 +13,10 @@ add_subdirectory(Entity)
 add_subdirectory(render)
 add_subdirectory(AngemWorker)
 add_subdirectory(Controller)
-#add_subdirectory(UI)
+add_subdirectory(UI)
 
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CONTROLLER_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} PUBLIC ${CONTROLLER_LIBRARIES})
 
-add_subdirectory(test)
+#add_subdirectory(test)

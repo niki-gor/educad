@@ -9,7 +9,11 @@
 #include "QPainterPath"
 #include "QMenu"
 #include "QApplication"
-#include "QDesktopWidget"
+//#include "QDesktopWidget"
+//#include "../educad/Utils/utils.h"
+//#include "../educad/Controller/ControllerObservable.h"
+//#include "../educad/Entity/Entity.hpp"
+
 
 void Canvas::addPoint(int x, int y, QString name) {
     qp qp1;
@@ -76,12 +80,12 @@ Canvas::Canvas(QWidget* parent, QMainWindow* _parent, ProjectStructureList* _pro
     projectStructureList = _projectStructureList;
     condition=0;
     parentWindow=_parent;
-    QRect rec = QApplication::desktop()->screenGeometry();
-    int scrHeight = rec.height()*9/10;
-    int scrWidth = rec.width();
-    this->resize(scrWidth*3/4, scrHeight*9445/10000);
+   // QRect rec = QApplication::desktop()->screenGeometry();
+    int scrHeight = 2160*9/10;
+    int scrWidth = 3840;
+    this->resize(scrWidth*3/4, scrHeight*9444/10000);
     QPalette pl; //объект палитра необходим для заданимя фона окна
-    pl.setColor(QPalette::Background, QColor(255, 255, 255)); //определить цвет
+ //   pl.setColor(QPalette::Background, QColor(255, 255, 255)); //определить цвет
     this->setAutoFillBackground(true); //фон окна заливается автоматически
     this->setPalette(pl); //устанавливаем фон окна
     selected=NOTHING;
@@ -197,9 +201,9 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
 {
     QCursor c; //положение курсора мыши
     this->pos = event->pos();
-    QRect rec = QApplication::desktop()->screenGeometry();
-    int scrHeight = rec.height()*9/10;
-    int scrWidth = rec.width();
+   // QRect rec = QApplication::desktop()->screenGeometry();
+    int scrHeight = 2160;
+    int scrWidth = 3840;
     int xDefault = scrWidth / 4;
     int yDefault = 144;
     if (!blocked) {
@@ -225,10 +229,14 @@ void Canvas::mouseMoveEvent(QMouseEvent *event)
         if (yBlocked==2) {
                 if (event->pos().y()<height()/2) {
                     if (xBlocked!=-1) {
-                        c.setPos(xDefault+parentWindow->pos().x()+xBlocked, yDefault+parentWindow->pos().y() + height()/2);
-                        printf ("MOVING MOUSE TO %d \n", yDefault+parentWindow->pos().y() + height()/2);}
-                    else{
-                        c.setPos(xDefault+parentWindow->pos().x()+this->pos.x(), yDefault+parentWindow->pos().y() + height()/2);
+                        c.setPos(xDefault + xBlocked,yDefault + height()/2);
+                        printf ("MOVING MOUSE TO %d \n",yDefault +  height()/2);
+                         printf ("EP,TR %d \n",  height()/2);
+                        printf ("%d %d", event->pos().x(), event->pos().y());
+                       printf ("EP2TR %d \n",  parentWindow->pos().y());
+                    }
+                    else {
+                        c.setPos(this->pos.x(),  height()/2);
                          printf ("height/2 = %d blocked = %d \n", height()/2, yDefault+parentWindow->pos().y() + height()/2);}
                 }
 
@@ -308,6 +316,7 @@ void Canvas::mousePressEvent(QMouseEvent * e)
                  qp1.qpColor=Qt::black;
                  qp1.needsProjection=false;
                  vcp.back().qpColor=Qt::black;
+               //  PTR<Entity> point = MAKEPTR<Entity> (new PointByCoords (1,2,3));
                  qp1.qpName = vcp.back().qpName;
                  if (yBlocked == 1) qp1.planeNumber =2; else qp1.planeNumber = 1;
                  vcp.append(qp1);
@@ -407,9 +416,9 @@ void Canvas::mouseReleaseEvent(QMouseEvent * e)
 {
     if(e->button() == Qt::RightButton)
     {
-        QRect rec = QApplication::desktop()->screenGeometry();
-        int scrHeight = rec.height()*9/10;
-        int scrWidth = rec.width();
+      //  QRect rec = QApplication::desktop()->screenGeometry();
+        int scrHeight =2160*9/10;
+        int scrWidth = 3840;
         int xDefault = scrWidth / 4;
         int yDefault = scrHeight * 555 / 10000 + scrWidth*35/1800;
         if (selected==POINT) {

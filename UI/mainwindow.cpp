@@ -1,9 +1,10 @@
-#include "mainwindow.h"
-#include "ui_mainwindow.h"
 #include <qlabel.h>
 #include <qpicture.h>
 #include <qlayout.h>
-#include "QDesktopWidget"
+#include "QGuiApplication"
+#include "mainwindow.h"
+#include "./ui_mainwindow.h"
+//#include "QDesktopWidget"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) :
     toolBar = new ToolBar(parent=this, canvas);
     layout()->addWidget(toolBar->toolBarWidget);
     setWindowTitle("EDUCAD");
-    QRect rec = QApplication::desktop()->screenGeometry();
+    QRect rec = QGuiApplication::primaryScreen()->geometry();
     int scrHeight = rec.height()*9/10;
     int scrWidth = rec.width();
     printf ("%d %d", scrHeight ,scrWidth/4);
@@ -27,7 +28,7 @@ MainWindow::MainWindow(QWidget *parent) :
     int canvY = scrHeight * 555 / 10000;
     canvas->move(canvX, canvY);
     QPalette pal;
-    pal.setColor(QPalette::Background, Qt::white);
+  //  pal.setColor(QPalette::Background, Qt::white);
     this->setAutoFillBackground(true);
     this->setPalette(pal);
     setGeometry(
@@ -35,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
              Qt::LeftToRight,
              Qt::AlignCenter,
              newSize,
-             qApp->desktop()->availableGeometry()
+             qApp->primaryScreen()->availableGeometry()
          )
      );
 }
