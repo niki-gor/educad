@@ -13,7 +13,7 @@ class IGUIPointObserver : public IGUIObserver {
    // int onChange (std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> oldObject, std::shared_ptr<TwoDEntity> newObject);
    // int onDelete (std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> object);
 public:
-    int onCreate (std::shared_ptr<TwoDPoint> object);
+  //  int onCreate (std::shared_ptr<TwoDPoint> object);
     IGUIPointObserver(Canvas* _canvas) {canvas=_canvas;}
     ~IGUIPointObserver();
 };
@@ -22,7 +22,7 @@ class IGUILineObserver : public IGUIObserver {
    // int onChange (std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> oldObject, std::shared_ptr<TwoDEntity> newObject);
   //  int onDelete (std::shared_ptr<ProjectionPlane> plane, std::shared_ptr<TwoDEntity> object);
 public:
-    int onCreate (std::shared_ptr<TwoDLine> object);
+  //  int onCreate (std::shared_ptr<TwoDLine> object);
     IGUILineObserver (Canvas* _canvas) {canvas=_canvas;}
         ~IGUILineObserver();
 };

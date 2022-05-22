@@ -5,7 +5,7 @@
 #include "controller.h"
 
 Controller::Controller(Render render): render(render), oxy(ProjectionPlane(0, 0, 1, 0)), oxz(ProjectionPlane(1, 0, 0, 0)){
-    lineWorker = new LineWorker();
+   // lineWorker = new LineWorker();
 }
 
 void Controller::addToModel(PTR<Entity> entity) {

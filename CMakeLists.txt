@@ -15,8 +15,7 @@ add_subdirectory(AngemWorker)
 add_subdirectory(Controller)
 add_subdirectory(UI)
 
-
-target_include_directories(${PROJECT_NAME} PUBLIC ${CONTROLLER_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} PUBLIC ${CONTROLLER_LIBRARIES})
+target_include_directories(${PROJECT_NAME} PUBLIC ${CONTROLLER_INCLUDE_DIRS} ${UI_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${CONTROLLER_LIBRARIES} ${UI_LIBRARIES})
 
 #add_subdirectory(test)

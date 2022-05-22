@@ -2,8 +2,4 @@
 
 #include <QLabel>
 
-DescriptiveSpace::DescriptiveSpace()
-{
-    fieldXY = new Canvas ();
-    fieldXZ = new Canvas ();
-}
+
