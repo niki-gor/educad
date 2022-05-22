@@ -5,7 +5,7 @@
 #include "gtest/gtest.h"
 #include "iostream"
 #include "controller.h"
-#include "ControllerObservable.h"
+#include "../ControllerObservable/ControllerObservable.h"
 
 class GUI:public GUIObserver{
 public:

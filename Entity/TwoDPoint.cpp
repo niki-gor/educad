@@ -6,11 +6,6 @@
 #include "iostream"
 #include "Entity.hpp"
 
-
-void TwoDPoint::render() {
-    std::cout << "Render Point with x: " << X << " y: " << Y << std::endl;
-}
-
 TwoDPoint::TwoDPoint(double x, double y, PTR<ProjectionPlane> plane) {
     this->projectionPlane = plane;
     this->X = x;

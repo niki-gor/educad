@@ -15,7 +15,4 @@ TwoDLine::TwoDLine(const std::shared_ptr<TwoDPoint>& point1, const std::shared_p
    C = -(point1->X/(point2->X - point1->X)) + (point1->Y/(point2->Y - point1->Y));
 }
 
-void TwoDLine::render() {
-    std::cout << "Render line: " << A << "x + " << B << "y + " << C << " = 0" << std::endl;
-}
 

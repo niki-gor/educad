@@ -6,7 +6,7 @@
 #define EDUCAD_CONTROLLER_H
 #include "render.h"
 #include "AngemModelWorker.hpp"
-#include "ControllerObservable.h"
+#include "../ControllerObservable/ControllerObservable.h"
 #include "TwoDEntity.h"
 
 class Controller: public ControllerObservable{
