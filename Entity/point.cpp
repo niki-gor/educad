@@ -13,7 +13,7 @@ PTR<TwoDPoint> Point::getProjectionPoint(const PTR<ProjectionPlane> &projectionP
     PTR<Point> projectoinOnOrdinate = projectionOnPlane->getProjectionOnLine(projectionPlane->ordinat);
     pointX = projectionOnAbsciss->getDistance(projectionPlane->originPoint);
     pointY = projectoinOnOrdinate->getDistance(projectionPlane->originPoint);
-    PTR<TwoDPoint> twoDPoint(new TwoDPoint(pointX, pointY));
+    PTR<TwoDPoint> twoDPoint(new TwoDPoint(pointX, pointY, projectionPlane));
     projectionOnPlane.reset();
     projectionOnAbsciss.reset();
     projectoinOnOrdinate.reset();

@@ -13,5 +13,7 @@ void TwoDPoint::render() {
 
 TwoDPoint::TwoDPoint(double x, double y, PTR<ProjectionPlane> plane) {
     this->projectionPlane = plane;
+    this->X = x;
+    this->Y = y;
 }
 

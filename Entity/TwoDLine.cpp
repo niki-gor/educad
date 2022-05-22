@@ -4,6 +4,7 @@
 
 #include "TwoDEntity.h"
 #include "iostream"
+#include "Entity.hpp"
 
 TwoDLine::TwoDLine(const std::shared_ptr<TwoDPoint>& point1, const std::shared_ptr<TwoDPoint>& point2, PTR<ProjectionPlane> plane) {
    this->point1 = point1;
@@ -12,7 +13,6 @@ TwoDLine::TwoDLine(const std::shared_ptr<TwoDPoint>& point1, const std::shared_p
    A = 1/(point2->X - point1->X);
    B = 1/(point2->Y - point1->Y);
    C = -(point1->X/(point2->X - point1->X)) + (point1->Y/(point2->Y - point1->Y));
-
 }
 
 void TwoDLine::render() {
