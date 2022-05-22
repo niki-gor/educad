@@ -12,7 +12,8 @@
 #include "QMainWindow"
 #include "projectstructurelist.h"
 #include "QMessageBox"
-#include "ControllerObservable.h"
+#include "contextedit.h"
+#include "../ControllerObservable/ControllerObservable.h"
 
 class InputName : public QDialog {
     Q_OBJECT
@@ -68,8 +69,8 @@ public:
     void addLine (int x1, int y1, int x2, int y2, QString name);
 private:
     ControllerObservable* controllerObservable;
-  //  LineContextEdit lineRMB;
-  //  PointContextEdit pointRMB;
+    LineContextEdit lineRMB;
+    PointContextEdit pointRMB;
     QMainWindow* parentWindow;
     int findInVcp (int x, int y);
     void paintEvent(QPaintEvent *event);

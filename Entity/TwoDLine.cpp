@@ -1,8 +1,6 @@
 //
 // Created by Марат Гасанов on 15.04.2022.
 //
-
-#include "TwoDEntity.h"
 #include "iostream"
 #include "Entity.hpp"
 
@@ -14,5 +12,6 @@ TwoDLine::TwoDLine(const std::shared_ptr<TwoDPoint>& point1, const std::shared_p
    B = 1/(point2->Y - point1->Y);
    C = -(point1->X/(point2->X - point1->X)) + (point1->Y/(point2->Y - point1->Y));
 }
+
 
 

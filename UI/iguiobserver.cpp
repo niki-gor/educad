@@ -1,14 +1,8 @@
 #include "canvas.h"
 #include "iguiobserver.h"
+#include "RenderableEntity.h"
 //#include "TwoDEntity/TwoDEntity.h"
 
+void GUIAPI::onAddToProjectionPlane(std::shared_ptr<RenderableEntity> object) {
 
-
-/*int IGUIPointObserver::onCreate (std::shared_ptr<TwoDPoint> object) {
-    canvas->addPoint(object->X, object->Y, "sus");
-    return 0;
 }
-
-int IGUILineObserver::onCreate(std::shared_ptr<TwoDLine> object) {
-    canvas->addLine(object->point1->X, object->point1->Y, object->point2->X, object->point2->Y, "sus");
-}*/

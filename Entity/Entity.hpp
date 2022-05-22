@@ -2,7 +2,6 @@
 
 #include "utils.h"
 #include "AngemEntity.h"
-#include "TwoDEntity.h"
 #include <cmath>
 #include "iostream"
 #include <set>
@@ -206,7 +205,6 @@ public:
 
 class TwoDEntity{
 public:
-    virtual void render() = 0;
     PTR<ProjectionPlane> projectionPlane;
 };
 
@@ -215,7 +213,6 @@ public:
     double X;
     double Y;
     TwoDPoint(double x, double y, PTR<ProjectionPlane> plane);
-    void render();
 };
 
 class TwoDLine : public TwoDEntity{
@@ -223,9 +220,8 @@ private:
     double A;
     double B;
     double C;
+public:
     std::shared_ptr<TwoDPoint> point1;
     std::shared_ptr<TwoDPoint> point2;
-public:
     TwoDLine(const std::shared_ptr<TwoDPoint>& point1, const std::shared_ptr<TwoDPoint>& point2, PTR<ProjectionPlane> plane);
-    void render();
 };

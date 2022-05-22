@@ -2,7 +2,6 @@
 #define RENDER_LIBRARY_H
 #include "set"
 #include "GUIObserver.h"
-#include "TwoDEntity.h"
 #include "Entity.hpp"
 
 class Render{

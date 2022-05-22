@@ -7,7 +7,6 @@
 #include "render.h"
 #include "AngemModelWorker.hpp"
 #include "../ControllerObservable/ControllerObservable.h"
-#include "TwoDEntity.h"
 
 class Controller: public ControllerObservable{
 private:

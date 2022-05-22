@@ -9,7 +9,6 @@
 #include "QApplication"
 //#include "QDesktopWidget"
 #include "utils.h"
-#include "ControllerObservable.h"
 #include "Entity.hpp"
 
 

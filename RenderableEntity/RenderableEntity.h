@@ -13,7 +13,7 @@ class RenderableEntity{
 
 class RenderablePoint:public RenderableEntity, public TwoDPoint{
     void render(Canvas* canvas);
-}
+};
 
 class RenderableLine:public RenderableEntity, public TwoDLine{
     void render(Canvas* canvas);
