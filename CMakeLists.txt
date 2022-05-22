@@ -13,6 +13,7 @@ add_subdirectory(Entity)
 add_subdirectory(render)
 add_subdirectory(AngemWorker)
 add_subdirectory(Controller)
+add_subdirectory(Canvas)
 add_subdirectory(UI)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CONTROLLER_INCLUDE_DIRS} ${UI_INCLUDE_DIRS})

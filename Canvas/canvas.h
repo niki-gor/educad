@@ -11,8 +11,8 @@
 #include "QLineEdit"
 #include "QMainWindow"
 #include "projectstructurelist.h"
-#include "contextedit.h"
 #include "QMessageBox"
+#include "ControllerObservable.h"
 
 class InputName : public QDialog {
     Q_OBJECT
@@ -61,14 +61,15 @@ class Canvas : public QWidget
     Q_OBJECT
 public:
     void clear();
-    explicit Canvas(QWidget* parent = nullptr,QMainWindow* _parent=nullptr, ProjectStructureList* _projectStructureList=nullptr);
+    explicit Canvas(QWidget* parent = nullptr,QMainWindow* _parent=nullptr, ProjectStructureList* _projectStructureList=nullptr, ControllerObservable* controllerObservable= nullptr);
     void prepareCanvas ();
     int condition; //0=dead 1=point 2=line
     void addPoint (int x, int y, QString name);
     void addLine (int x1, int y1, int x2, int y2, QString name);
 private:
-    LineContextEdit lineRMB;
-    PointContextEdit pointRMB;
+    ControllerObservable* controllerObservable;
+  //  LineContextEdit lineRMB;
+  //  PointContextEdit pointRMB;
     QMainWindow* parentWindow;
     int findInVcp (int x, int y);
     void paintEvent(QPaintEvent *event);

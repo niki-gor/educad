@@ -46,9 +46,9 @@ void ProjectStructureList::clear () {
     }
 }
 
-int ProjectStructureList::addNewPlaneToStructure(GUIPlane plane) {
+int ProjectStructureList::addNewPlaneToStructure() {
     QTreeWidgetItem* newPlaneStruct = new QTreeWidgetItem ();
-    newPlaneStruct->setText(0, QString::fromStdString(plane.getPlaneName()));
+  //  newPlaneStruct->setText(0, QString::fromStdString(plane.getPlaneName()));
     kingItem->addChild(newPlaneStruct);
     return 0;
 }

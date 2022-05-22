@@ -216,7 +216,6 @@ public:
     double Y;
     TwoDPoint(double x, double y, PTR<ProjectionPlane> plane);
     void render();
-
 };
 
 class TwoDLine : public TwoDEntity{

@@ -5,7 +5,6 @@
 #include <QTreeWidgetItem>
 #include <vector>
 
-#include <guiobjects.h>
 
 using namespace std;
 
@@ -22,20 +21,20 @@ public:
     QFrame* structureWidget;
     void clear ();
     ProjectStructureList();
-    int addNewPlaneToStructure(GUIPlane plane);
+    int addNewPlaneToStructure();
     int addPointToXYPlaneStructure (QString pointName);
     int addPointToXZPlaneStructure (QString pointName);
-    int addPointToUserPlaneStructure (GUIPlane plane);
+    int addPointToUserPlaneStructure ();
     int addLineToXYPlaneStructure (QString lineName);
     int addLineToXZPlaneStructure (QString lineName);
-    int addLineToUserPlaneStructure (GUIPlane plane);
+    int addLineToUserPlaneStructure ();
     int removePointFromXYPlaneStructure (QString pointName);
     int removePointFromXZPlaneStructure (QString pointName);
-    int removePointFromUserPlaneStructure (GUIPlane plane);
+    int removePointFromUserPlaneStructure ();
     int removeLineFromXYPlaneStructure (QString lineName);
     int removeLineFromXZPlaneStructure (QString lineName);
-    int removeLineFromUserPlaneStructure (GUIPlane plane);
-    int removePlaneFromStructure (GUIPlane plane);
+    int removeLineFromUserPlaneStructure ();
+    int removePlaneFromStructure ();
 };
 
 #endif // PROJECTSTRUCTURELIST_H
