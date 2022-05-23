@@ -12,6 +12,11 @@ TwoDPoint::TwoDPoint(double x, double y, PTR<ProjectionPlane> plane) {
 }
 
 void TwoDPoint::render() {
-    // George`s code
-    this->renderable->addPoint();
+    int direction;
+    if (projectionPlane->ordinat->point2->y == 1) {
+        direction = 1;
+    }
+    else if (projectionPlane->ordinat->point2->z == 1) direction = 2;
+    this->renderable->addPoint(X, Y, projectionPlane->originPoint->x, projectionPlane->originPoint->y, direction, "uzbek");
 }
+

@@ -12,20 +12,20 @@
 #include "Entity.hpp"
 
 
-void Canvas::addPoint(int x, int y, QString name) {
+void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
     qp qp1;
     qp1.pos = QPoint(x, y);
     qp1.fl = 0;
     qp1.objType = POINT;
     qp1.qpColor = Qt::black;
     qp1.needsProjection = false;
-    qp1.qpName = name;
+    qp1.qpName = QString::fromStdString(name);
     qp1.planeNumber = 1;
     vcp.append(qp1); //добавили в массив для рисования
     this->update();
 }
 
-void Canvas::addLine(int x1, int y1, int x2, int y2, QString name) {
+void Canvas::addLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
     qp qp1;
     qp1.pos = this->pos;
     qp1.pos = QPoint(x1, y1);
@@ -34,7 +34,7 @@ void Canvas::addLine(int x1, int y1, int x2, int y2, QString name) {
     qp1.objType = LINE;
     qp1.qpColor = Qt::black;
     qp1.needsProjection = false;
-    qp1.qpName = name;
+    qp1.qpName =  QString::fromStdString(name);
     qp1.planeNumber = 1;
     vcp.append(qp1); //добавили в массив для рисования
     this->update();

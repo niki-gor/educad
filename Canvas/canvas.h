@@ -66,8 +66,8 @@ public:
     Canvas(QWidget* parent = nullptr, QMainWindow* _parent=nullptr, ProjectStructureList* _projectStructureList=nullptr, ControllerObservable* controllerObservable= nullptr);
     void prepareCanvas ();
     int condition; //0=dead 1=point 2=line
-    void addPoint (int x, int y, string name);
-    void addLine (int x1, int y1, int x2, int y2, string name);
+    void addPoint (int x, int y, int xBegin, int yBegin, int planeNumber, std::string name);
+    void addLine (int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
 private:
     ControllerObservable* controllerObservable;
     LineContextEdit lineRMB;

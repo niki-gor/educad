@@ -9,12 +9,14 @@
 
 int main(int argc, char *argv[])
 {
+    QApplication a(argc, argv);
     PTR<GUIAPI> gui(new GUIAPI());
     auto* render = new Render(gui);
     ControllerObservable* controller = new Controller(render);
-    Canvas canvas = Canvas(controller);
-    QApplication a(argc, argv);
-    MainWindow w;
+    ProjectStructureList* projectStructureList;
+    PTR<Canvas> canvas (new Canvas(nullptr, nullptr, projectStructureList, controller));
+    gui->canvas=canvas;
+    MainWindow w (nullptr, canvas);
     w.show();
     return a.exec();
 }

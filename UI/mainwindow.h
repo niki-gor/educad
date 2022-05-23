@@ -18,7 +18,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = nullptr, Canvas* canvas = nullptr);
+    explicit MainWindow(QWidget *parent = nullptr, PTR<Canvas> = nullptr);
     ~MainWindow();
     void setCanvasCondition (int condition) {canvas->condition=condition;}
     Canvas* canvas;
