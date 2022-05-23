@@ -6,13 +6,13 @@
 #include "./ui_mainwindow.h"
 //#include "QDesktopWidget"
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent, Canvas* _canvas) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
     projectStructureList = new ProjectStructureList ();
-    canvas = new Canvas(nullptr, this, projectStructureList);
+    canvas = _canvas;
     layout()->addWidget(projectStructureList->structureWidget);
     layout()->addWidget(canvas);
     toolBar = new ToolBar(parent=this, canvas);

@@ -4,6 +4,8 @@
 #include "render.h"
 #include "canvas.h"
 #include "Controller/controller.h"
+#include "controller.h"
+#include "canvas.h"
 
 int main(int argc, char *argv[])
 {

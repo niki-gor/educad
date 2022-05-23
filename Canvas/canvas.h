@@ -63,7 +63,7 @@ class Canvas : public QWidget, public Renderable
     Q_OBJECT
 public:
     void clear();
-    explicit Canvas(QWidget* parent = nullptr,QMainWindow* _parent=nullptr, ProjectStructureList* _projectStructureList=nullptr, ControllerObservable* controllerObservable= nullptr);
+    Canvas(QWidget* parent = nullptr, QMainWindow* _parent=nullptr, ProjectStructureList* _projectStructureList=nullptr, ControllerObservable* controllerObservable= nullptr);
     void prepareCanvas ();
     int condition; //0=dead 1=point 2=line
     void addPoint (int x, int y, string name);
