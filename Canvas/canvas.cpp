@@ -76,6 +76,7 @@ Canvas::Canvas(QWidget *parent, QMainWindow *_parent, ProjectStructureList *_pro
     projectStructureList = _projectStructureList;
     condition = 0;
     parentWindow = _parent;
+    this->controllerObservable = controllerObservable;
     // QRect rec = QApplication::desktop()->screenGeometry();
     int scrHeight = 2160 * 9 / 10;
     int scrWidth = 3840;

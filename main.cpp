@@ -4,8 +4,6 @@
 #include "render.h"
 #include "canvas.h"
 #include "Controller/controller.h"
-#include "controller.h"
-#include "canvas.h"
 
 int main(int argc, char *argv[])
 {
@@ -13,10 +11,11 @@ int main(int argc, char *argv[])
     PTR<GUIAPI> gui(new GUIAPI());
     auto* render = new Render(gui);
     ControllerObservable* controller = new Controller(render);
-    ProjectStructureList* projectStructureList;
+    auto* projectStructureList = new ProjectStructureList();
     PTR<Canvas> canvas (new Canvas(nullptr, nullptr, projectStructureList, controller));
     gui->canvas=canvas;
-    MainWindow w (nullptr, canvas);
-    w.show();
+    MainWindow* w = new MainWindow(nullptr, canvas);
+    canvas->parentWindow = w;
+    w->show();
     return a.exec();
 }

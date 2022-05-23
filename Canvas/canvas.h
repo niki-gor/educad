@@ -68,11 +68,11 @@ public:
     int condition; //0=dead 1=point 2=line
     void addPoint (int x, int y, int xBegin, int yBegin, int planeNumber, std::string name);
     void addLine (int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
+    QMainWindow* parentWindow;
 private:
     ControllerObservable* controllerObservable;
     LineContextEdit lineRMB;
     PointContextEdit pointRMB;
-    QMainWindow* parentWindow;
     int findInVcp (int x, int y);
     void paintEvent(QPaintEvent *event);
     QPoint pos; //координаты точки для рисования
