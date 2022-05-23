@@ -7,3 +7,7 @@ std::vector<PTR<Entity>> Entity::getChildren() const {
 std::vector<PTR<Entity> > Plane::getChildren() const {
 
 }
+
+void TwoDEntity::setRenderable(PTR<Renderable> renderable_) {
+    renderable = renderable_;
+}

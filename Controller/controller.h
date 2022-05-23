@@ -10,11 +10,11 @@
 
 class Controller: public ControllerObservable{
 private:
-    AngemModelWorker* lineWorker;
+//    AngemModelWorker* worker;
     void addToModel(PTR<Entity> entity);
     void renderEntity(PTR<Entity> entity);
     void disRenderEntity(PTR<Entity> entity);
-    Render render;
+    Render* render;
     ProjectionPlane oxy;
     ProjectionPlane oxz;
 public:
@@ -24,8 +24,7 @@ public:
 
     void onCreateParallelLine(PTR<Line> line, PTR<Point> point) override;
 
-public:
-    Controller(Render render);
+    explicit Controller(Render* render);
     void onAddEntity(PTR<Entity> entity) override;
     void onDeleteEntity(PTR<Entity> entity) override;
 };

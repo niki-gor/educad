@@ -11,3 +11,7 @@ TwoDPoint::TwoDPoint(double x, double y, PTR<ProjectionPlane> plane) {
     this->Y = y;
 }
 
+void TwoDPoint::render() {
+    // George`s code
+    this->renderable->addPoint();
+}

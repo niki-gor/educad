@@ -4,17 +4,16 @@
 
 #include "controller.h"
 
-Controller::Controller(Render render): render(render), oxy(ProjectionPlane(0, 0, 1, 0)), oxz(ProjectionPlane(1, 0, 0, 0)){
-   // lineWorker = new LineWorker();
+Controller::Controller(Render* render): render(render), oxy(ProjectionPlane(0, 0, 1, 0)), oxz(ProjectionPlane(1, 0, 0, 0)){
 }
 
 void Controller::addToModel(PTR<Entity> entity) {
-    lineWorker->AddToModel(entity);
+//    lineWorker->AddToModel(entity);
 }
 
 
 void Controller::renderEntity(PTR<Entity> entity) {
-    render.addEntity(entity);
+    render->addEntity(entity);
 }
 
 void Controller::onAddEntity(PTR<Entity> entity) {
@@ -25,12 +24,12 @@ void Controller::onAddEntity(PTR<Entity> entity) {
 }
 
 void Controller::onDeleteEntity(PTR<Entity> entity) {
-    lineWorker->DeleteEntity(entity);
+//    lineWorker->DeleteEntity(entity);
 //    disRenderEntity(entity);
 }
 
 void Controller::disRenderEntity(PTR<Entity> entity) {
-    render.deleteEntity(entity);
+    render->deleteEntity(entity);
 }
 
 void Controller::onCreatePerpendicular(PTR<Point> point, PTR<Line> line) {

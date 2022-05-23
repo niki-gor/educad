@@ -8,6 +8,7 @@
 #include "polyset.h"
 #include <vector>
 #include "Angem.hpp"
+#include "Renderable.h"
 
 class ProjectionPlane;
 class Plane;
@@ -205,7 +206,11 @@ public:
 
 class TwoDEntity{
 public:
+    PTR<Renderable> renderable;
     PTR<ProjectionPlane> projectionPlane;
+    virtual void render() = 0;
+    void setRenderable(PTR<Renderable> renderable_);
+
 };
 
 class TwoDPoint : public TwoDEntity{
@@ -213,6 +218,7 @@ public:
     double X;
     double Y;
     TwoDPoint(double x, double y, PTR<ProjectionPlane> plane);
+    void render();
 };
 
 class TwoDLine : public TwoDEntity{
@@ -224,4 +230,5 @@ public:
     std::shared_ptr<TwoDPoint> point1;
     std::shared_ptr<TwoDPoint> point2;
     TwoDLine(const std::shared_ptr<TwoDPoint>& point1, const std::shared_ptr<TwoDPoint>& point2, PTR<ProjectionPlane> plane);
+    void render();
 };

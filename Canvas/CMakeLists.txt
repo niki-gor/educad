@@ -29,8 +29,8 @@ set(CANVAS_INCLUDE_DIRS ${INCLUDE_DIRS} PARENT_SCOPE)
 
 add_library(${THIS_LIB_NAME}  ${SOURCES})
 
-target_link_libraries(CANVAS PUBLIC ${ENTITY_LIBRARIES} Qt6::Core Qt6::Gui Qt6::Widgets)
-target_include_directories(CANVAS PUBLIC ${ENTITY_INCLUDE_DIRS})
+target_link_libraries(CANVAS PUBLIC ${ENTITY_LIBRARIES} ${RENDERABLE_ENTITY_LIBRARIES} Qt6::Core Qt6::Gui Qt6::Widgets)
+target_include_directories(CANVAS PUBLIC ${ENTITY_INCLUDE_DIRS} ${RENDERABLE_ENTITY_INCLUDE_DIRS})
 #if(QT_VERSION_MAJOR EQUAL 6)
 #    qt_finalize_executable(UI)
 #endif()

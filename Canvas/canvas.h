@@ -14,6 +14,7 @@
 #include "QMessageBox"
 #include "contextedit.h"
 #include "../ControllerObservable/ControllerObservable.h"
+#include "Renderable.h"
 
 class InputName : public QDialog {
     Q_OBJECT
@@ -57,7 +58,7 @@ struct qp //структура для хранения координаты пр
     int fl;
 };
 
-class Canvas : public QWidget
+class Canvas : public QWidget, public Renderable
 {
     Q_OBJECT
 public:
@@ -65,8 +66,8 @@ public:
     explicit Canvas(QWidget* parent = nullptr,QMainWindow* _parent=nullptr, ProjectStructureList* _projectStructureList=nullptr, ControllerObservable* controllerObservable= nullptr);
     void prepareCanvas ();
     int condition; //0=dead 1=point 2=line
-    void addPoint (int x, int y, QString name);
-    void addLine (int x1, int y1, int x2, int y2, QString name);
+    void addPoint (int x, int y, string name);
+    void addLine (int x1, int y1, int x2, int y2, string name);
 private:
     ControllerObservable* controllerObservable;
     LineContextEdit lineRMB;
