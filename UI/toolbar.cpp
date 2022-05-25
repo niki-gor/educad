@@ -12,8 +12,8 @@ ToolBar::ToolBar (QWidget *parent, Canvas* _canvas) {
     canvas=_canvas;
     toolBarWidget = new QFrame();
     QRect rec = QGuiApplication::primaryScreen()->geometry();
-    int scrHeight = 2160*9/10;
-    int scrWidth = 3840;
+    int scrHeight = rec.height()*9/10;
+    int scrWidth = rec.width();
     int butSize = scrHeight*556/10000;
     toolBarWidget->setGeometry(0,0,scrWidth,butSize);
     QPalette pal;

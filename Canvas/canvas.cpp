@@ -77,9 +77,9 @@ Canvas::Canvas(QWidget *parent, QMainWindow *_parent, ProjectStructureList *_pro
     condition = 0;
     parentWindow = _parent;
     this->controllerObservable = controllerObservable;
-    // QRect rec = QApplication::desktop()->screenGeometry();
-    int scrHeight = 2160 * 9 / 10;
-    int scrWidth = 3840;
+    QRect rec = QGuiApplication::primaryScreen()->geometry();
+    int scrHeight = rec.height() * 9 / 10;
+    int scrWidth = rec.width();
     this->resize(scrWidth * 3 / 4, scrHeight * 9444 / 10000);
     QPalette pl; //объект палитра необходим для заданимя фона окна
     //   pl.setColor(QPalette::Background, QColor(255, 255, 255)); //определить цвет
@@ -193,11 +193,11 @@ void Canvas::paintEvent(QPaintEvent *event) {
 void Canvas::mouseMoveEvent(QMouseEvent *event) {
     QCursor c; //положение курсора мыши
     this->pos = event->pos();
-    // QRect rec = QApplication::desktop()->screenGeometry();
-    int scrHeight = 2160;
-    int scrWidth = 3840;
+    QRect rec = QGuiApplication::primaryScreen()->geometry();
+    int scrHeight = rec.height();
+    int scrWidth = rec.width();
     int xDefault = scrWidth / 4;
-    int yDefault = 144;
+    int yDefault =  scrHeight * 555 / 10000 + scrWidth*35/1800;
     if (!blocked) {
         int index = findInVcp(this->pos.x(), this->pos.y());
         if (index >= 0) {
@@ -415,9 +415,9 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
 //отпускание кнопки мыши
 void Canvas::mouseReleaseEvent(QMouseEvent *e) {
     if (e->button() == Qt::RightButton) {
-        //  QRect rec = QApplication::desktop()->screenGeometry();
-        int scrHeight = 2160 * 9 / 10;
-        int scrWidth = 3840;
+        QRect rec = QGuiApplication::primaryScreen()->geometry();;
+        int scrHeight = rec.height() * 9 / 10;
+        int scrWidth = rec.width();
         int xDefault = scrWidth / 4;
         int yDefault = scrHeight * 555 / 10000 + scrWidth * 35 / 1800;
         if (selected == POINT) {

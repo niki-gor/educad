@@ -3,14 +3,15 @@
 #include "string.h"
 #include "iostream"
 #include "QApplication"
+#include "QScreen"
 //#include "QDesktopWidget"
 #include "QFont"
 using namespace std;
 
 ProjectStructureList::ProjectStructureList() {
-  //  QRect rec = QApplication::desktop()->screenGeometry();
-    int height = 2160*9/10;
-    int width = 3840;
+    QRect rec = QGuiApplication::primaryScreen()->geometry();
+    int height = rec.height()*9/10;
+    int width = rec.width();
     structureWidget = new QFrame ();
     font = QFont("Times", 16);
     treeWidget = new QTreeWidget (structureWidget);
