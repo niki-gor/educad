@@ -70,7 +70,9 @@ public:
     void addLine (int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
     ProjectStructureList* getProjectStructureList () {return projectStructureList;}
     QMainWindow* parentWindow;
+    QVector<qp*> getSelectedObjects () {return selectedObjects;}
 private:
+    TwoPointsContextEdit twoPointsRMB;
     int findInSelected (int x, int y);
     ControllerObservable* controllerObservable;
     LineContextEdit lineRMB;

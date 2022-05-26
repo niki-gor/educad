@@ -4,6 +4,17 @@
 #include <QPushButton>
 #include <QTextEdit>
 
+class TwoPointsContextEdit : public QTextEdit {
+    Q_OBJECT
+private:
+    QPushButton lineByTwoPoints;
+public:
+    TwoPointsContextEdit();
+    QMenu* twoPointsContextEditWidget;
+private slots:
+    void handleLineByTwoPointsButton ();
+};
+
 class ContextEdit : public QTextEdit {
 protected:
     QPushButton projectOnPlaneButton;
