@@ -14,6 +14,7 @@ PTR<TwoDEntity> Point::getProjection(PTR<ProjectionPlane> projectionPlane) {
     projectionOnPlane.reset();
     projectionOnAbsciss.reset();
     projectoinOnOrdinate.reset();
+    twoDProjections.insert(twoDPoint);
     return twoDPoint;
 }
 
@@ -45,6 +46,7 @@ PTR<TwoDEntity> Line::getProjection(PTR<ProjectionPlane> projectionPlane){
     PTR<TwoDPoint> twoDPoint1 = point1->getProjectionPoint(projectionPlane);
     PTR<TwoDPoint> twoDPoint2 = point2->getProjectionPoint(projectionPlane);
     PTR<TwoDLine> line(new TwoDLine(twoDPoint1, twoDPoint2, projectionPlane));
+    twoDProjections.insert(line);
     return line;
 }
 

@@ -20,5 +20,10 @@ TwoDLine::TwoDLine(const std::shared_ptr<TwoDPoint> &point1, const std::shared_p
     this->projectionPlane=plane;
 }
 
+void TwoDLine::deleteFromRender() {
 
+}
 
+PTR<Entity> TwoDLine::entityByTwoDEntity(PTR<TwoDEntity> secondProjection) {
+    return PTR<Entity>();
+}

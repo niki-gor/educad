@@ -21,6 +21,7 @@ class Entity {
 public:
 //private:
     std::set<PTR<ProjectionPlane> > projections;
+    std::set<PTR<TwoDEntity>> twoDProjections;
 //public:
     virtual void update() = 0;
     virtual PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane) = 0;
@@ -190,7 +191,7 @@ public:
 class ProjectionPlane : public Plane {
 //private:
 public:
-    std::set<PTR<Entity> > projected;
+    std::set<PTR<TwoDEntity> > projected;
     PTR<Point> originPoint;
     PTR<Line> absciss;
     PTR<Line> ordinat;
@@ -198,8 +199,8 @@ public:
 //public:
     ProjectionPlane(const PTR<Plane>& plane);
     ProjectionPlane(double A, double B, double C, double D);
-    void add(PTR<Entity> object) {projected.insert(object);}
-    void erase(PTR<Entity> object){projected.erase(object);}
+    void add(PTR<TwoDEntity> object) {projected.insert(object);}
+    void erase(PTR<TwoDEntity> object){projected.erase(object);}
     void update(){};
     std::vector<PTR<Entity> > getChildren() const;
 };
@@ -208,9 +209,11 @@ class TwoDEntity{
 public:
     PTR<Renderable> renderable;
     PTR<ProjectionPlane> projectionPlane;
+    PTR<Entity> projectedEntity;
     virtual void render() = 0;
+    virtual void deleteFromRender() = 0;
     void setRenderable(PTR<Renderable> renderable_);
-
+    virtual PTR<Entity> entityByTwoDEntity(PTR<TwoDEntity> secondProjection) = 0;
 };
 
 class TwoDPoint : public TwoDEntity{
@@ -219,6 +222,9 @@ public:
     double Y;
     TwoDPoint(double x, double y, PTR<ProjectionPlane> plane);
     void render();
+    void deleteFromRender();
+
+    PTR<Entity> entityByTwoDEntity(PTR<TwoDEntity> secondProjection) override;
 };
 
 class TwoDLine : public TwoDEntity{
@@ -231,4 +237,24 @@ public:
     std::shared_ptr<TwoDPoint> point2;
     TwoDLine(const std::shared_ptr<TwoDPoint>& point1, const std::shared_ptr<TwoDPoint>& point2, PTR<ProjectionPlane> plane);
     void render();
+    void deleteFromRender();
+
+    PTR<Entity> entityByTwoDEntity(PTR<TwoDEntity> secondProjection) override;
+};
+
+class TwoDPlane: TwoDEntity{
+private:
+    PTR<TwoDLine> line1;
+    PTR<TwoDLine> line2;
+    PTR<TwoDPoint> point;
+public:
+    TwoDPlane(PTR<TwoDLine> line1_, PTR<TwoDLine> line2_): line1(line1_), line2(line2_){};
+    TwoDPlane(PTR<TwoDLine> line, PTR<TwoDPoint> point_) : line1(line), point(point_){}
+
+private:
+    void render() override;
+
+    void deleteFromRender() override;
+
+    PTR<Entity> entityByTwoDEntity(PTR<TwoDEntity> secondProjection) override;;
 };

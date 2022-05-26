@@ -4,7 +4,7 @@ project(educad)
 
 add_executable(${PROJECT_NAME} main.cpp)
 
-#set(GCC_COVERAGE_LINK_FLAGS    "-lgcov")
+#set(GCC_COVERAGE_LINK_FLAGS "-lgcov")
 set(CMAKE_CXX_FLAGS ${CMAKE_CXX_FLAGS} "-std=c++11")
 
 add_subdirectory(RenderableEntity)
@@ -20,4 +20,4 @@ add_subdirectory(UI)
 target_include_directories(${PROJECT_NAME} PUBLIC ${CONTROLLER_INCLUDE_DIRS} ${UI_INCLUDE_DIRS})
 target_link_libraries(${PROJECT_NAME} PUBLIC ${CONTROLLER_LIBRARIES} ${UI_LIBRARIES})
 
-#add_subdirectory(test)
+add_subdirectory(test)
