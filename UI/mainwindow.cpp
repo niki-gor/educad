@@ -1,10 +1,8 @@
 #include <qlabel.h>
-#include <qpicture.h>
 #include <qlayout.h>
 #include "QGuiApplication"
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-//#include "QDesktopWidget"
 
 MainWindow::MainWindow(QWidget *parent, PTR<Canvas> _canvas) :
     QMainWindow(parent),
