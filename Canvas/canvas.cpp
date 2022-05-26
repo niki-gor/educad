@@ -79,6 +79,8 @@ int Canvas::findInSelected(int x, int y) {
 Canvas::Canvas(QWidget *parent, QMainWindow *_parent, ProjectStructureList *_projectStructureList,ControllerObservable* controllerObservable) : QWidget(parent) {
     LineContextEdit lineRMB;
     PointContextEdit pointRMB;
+    twoPointsRMB.setParent(this);
+    twoPointsRMB.hide();
     projectStructureList = _projectStructureList;
     condition = 0;
     parentWindow = _parent;
@@ -458,6 +460,9 @@ void Canvas::mouseReleaseEvent(QMouseEvent *e) {
         } else if (selected == LINE) {
             lineRMB.contextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
             lineRMB.contextEditWidget->show();
+        } else if ((selectedObjects.size()==2) && (selectedObjects[0]->objType==POINT) && (selectedObjects[1]->objType==POINT)) {
+            twoPointsRMB.twoPointsContextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
+            twoPointsRMB.twoPointsContextEditWidget->show();
         }
         //удалить последний элемент линии
         /* */

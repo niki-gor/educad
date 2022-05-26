@@ -1,5 +1,6 @@
 #include "contextedit.h"
 #include "qmenu.h"
+#include "canvas.h"
 
 #include <QPushButton>
 
@@ -47,6 +48,16 @@ void LineContextEdit::handleBuildParallelLineButton() {
 
 }
 
+void TwoPointsContextEdit::handleLineByTwoPointsButton() {
+    printf ("uzbek");
+    Canvas* cnv = dynamic_cast<Canvas*>(parent());
+    QVector <qp*> pointsToWork = cnv->getSelectedObjects();
+    for (int i=0; i<pointsToWork.size(); i++) {
+        printf ("%d", pointsToWork[0]->pos.x(),pointsToWork[1]->pos.x());
+    }
+}
+
+
 LineContextEdit::LineContextEdit() {
     contextEditWidget = new QMenu();
     contextEditWidget->addAction("Спроецировать на плоскость");
@@ -93,6 +104,14 @@ PointContextEdit::PointContextEdit () {
     connect(&copyButton, SIGNAL (released()), this, SLOT (PointContextEdit::handleCopyButton()));
 }
 
+TwoPointsContextEdit::TwoPointsContextEdit () {
+    twoPointsContextEditWidget = new QMenu ();
+    QAction* lineByTwoPointsAction = new QAction(tr("Построить прямую по 2 точкам"), this);
+    connect(lineByTwoPointsAction, SIGNAL(triggered()), this, SLOT(handleLineByTwoPointsButton()));
+    twoPointsContextEditWidget->addAction(lineByTwoPointsAction);
+   // connect(&act, &QPushButton::released, this, &TwoPointsContextEdit::handleLineByTwoPointsButton);
+}
+
 void PointContextEdit::handleProjectOnPlaneButton() {
 
 }
@@ -124,3 +143,4 @@ void PointContextEdit::handeCutButton() {
 void PointContextEdit::handleCopyButton () {
 
 }
+
