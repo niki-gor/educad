@@ -8,6 +8,7 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+    a.setWindowIcon(QIcon("../Icons/rk1.png"));
     PTR<GUIAPI> gui(new GUIAPI());
     auto* render = new Render(gui);
     ControllerObservable* controller = new Controller(render);
