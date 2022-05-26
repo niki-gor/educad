@@ -17,5 +17,6 @@ int main(int argc, char *argv[])
     MainWindow* w = new MainWindow(nullptr, canvas);
     canvas->parentWindow = w;
     w->show();
+    w->move(0,0);
     return a.exec();
 }

@@ -9,6 +9,12 @@
 #include "QMainWindow"
 #include "canvas.h"
 #include "QObject"
+#include "QComboBox"
+
+class LineComboBox : public QComboBox {
+public:
+    void showPopup (int x, int y);
+};
 
 class ToolBar : public QObject
 {
@@ -21,6 +27,8 @@ class ToolBar : public QObject
     QPushButton* createProjectionPlaneButton;
     QPushButton* resizeButton;
     QPushButton* eraseButton;
+    QPushButton* cursorButton;
+    LineComboBox* lineMethod;
     QWidget *parentWidget;
     Canvas* canvas;
 public:
@@ -32,6 +40,7 @@ private slots:
     void openProjectButtonHander ();
     void createPointButtonHandler ();
     void createLineButtonHandler ();
+    void cursorButtonHandler ();
     void createProjectionPlaneButtonHandler ();
     void resizeButtonHandler();
     void eraseButtonHandler();

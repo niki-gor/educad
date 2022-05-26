@@ -55,7 +55,7 @@ struct qp //структура для хранения координаты пр
     QString qpName;
     bool needsProjection;
     int planeNumber;
-    int fl;
+    bool isSelected=false;
 };
 
 class Canvas : public QWidget, public Renderable
@@ -68,8 +68,10 @@ public:
     int condition; //0=dead 1=point 2=line
     void addPoint (int x, int y, int xBegin, int yBegin, int planeNumber, std::string name);
     void addLine (int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
+    ProjectStructureList* getProjectStructureList () {return projectStructureList;}
     QMainWindow* parentWindow;
 private:
+    int findInSelected (int x, int y);
     ControllerObservable* controllerObservable;
     LineContextEdit lineRMB;
     PointContextEdit pointRMB;
@@ -78,7 +80,9 @@ private:
     QPoint pos; //координаты точки для рисования
     void mouseMoveEvent(QMouseEvent *event);
     removeRelated rRelated;
-    QVector<qp> vcp; //массив (вектор) для хранения рисунка
+    int selectedIndex;
+    QVector<qp*> vcp; //массив (вектор) для хранения рисунка
+    QVector<qp*> selectedObjects;
     QVector<qp> help; //массив (вектор) для хранения рисунка
     QVector<qp> xMatch; //массив (вектор) для хранения рисунка
     void mousePressEvent(QMouseEvent *);

@@ -76,7 +76,6 @@ int ProjectStructureList::addPointToXZPlaneStructure (QString pointName) {
         QTreeWidgetItem* newPoint = new QTreeWidgetItem();
         newPoint->setText(0, "Point " + pointName + "\'\'");
         planeXZStruct->addChild(newPoint);
-
         planeXZStruct->child(planeXZStruct->childCount()-1)->setFont(0, font);
      }
     return 0;
@@ -87,7 +86,6 @@ int ProjectStructureList::addLineToXYPlaneStructure (QString lineName) {
         QTreeWidgetItem* newPoint = new QTreeWidgetItem();
         newPoint->setText(0,"Line " + lineName + "\'");
         planeXYStruct->addChild(newPoint);
-
         planeXYStruct->child(planeXYStruct->childCount()-1)->setFont(0, font);
     }
     return 0;
@@ -98,7 +96,6 @@ int ProjectStructureList::addLineToXZPlaneStructure (QString lineName) {
         QTreeWidgetItem* newPoint = new QTreeWidgetItem();
         newPoint->setText(0, "Line " + lineName + "\'\'");
         planeXZStruct->addChild(newPoint);
-
         planeXZStruct->child(planeXZStruct->childCount()-1)->setFont(0, font);
      }
     return 0;

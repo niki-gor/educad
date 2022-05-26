@@ -11,24 +11,24 @@ MainWindow::MainWindow(QWidget *parent, PTR<Canvas> _canvas) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    projectStructureList = new ProjectStructureList ();
     canvas = _canvas.get();
+    projectStructureList = canvas->getProjectStructureList();
     layout()->addWidget(projectStructureList->structureWidget);
     layout()->addWidget(canvas);
     toolBar = new ToolBar(parent=this, canvas);
     layout()->addWidget(toolBar->toolBarWidget);
     setWindowTitle("EDUCAD");
     QRect rec = QGuiApplication::primaryScreen()->geometry();
-    int scrHeight = rec.height()*9/10;
-    int scrWidth = rec.width();
+    int scrHeight = QGuiApplication::primaryScreen()->availableGeometry().height();
+    int scrWidth = QGuiApplication::primaryScreen()->availableGeometry().width();
     printf ("%d %d", scrHeight ,scrWidth/4);
     QSize newSize (scrWidth,scrHeight);
     this->resize(newSize);
     int canvX = scrWidth / 4;
-    int canvY = scrHeight * 555 / 10000;
+    int canvY = scrHeight * 556 / 10000;
     canvas->move(canvX, canvY);
     QPalette pal;
-  //  pal.setColor(QPalette::Background, Qt::white);
+    pal.setColor(QPalette::Window, QColor(255, 255, 255));
     this->setAutoFillBackground(true);
     this->setPalette(pal);
     setGeometry(
