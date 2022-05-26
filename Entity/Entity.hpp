@@ -17,7 +17,15 @@ class Point;
 class Entity {
 private:
     std::set<PTR<ProjectionPlane> > projections;
+    
+    // by niki-gor
+    size_t calculateHash() const;
 public:
+    virtual ~Entity() = default;
+    const size_t hash;
+    PTR<Entity> fake;
+    //
+
     virtual void update() = 0;
     virtual PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>) = 0;
     void addProjectionPlane(PTR<ProjectionPlane> plane){projections.insert(plane);}

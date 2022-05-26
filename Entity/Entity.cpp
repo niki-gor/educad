@@ -1,5 +1,17 @@
 #include "Entity.hpp"
 
+
+size_t Entity::calculateHash() const {
+    static size_t prime = 1'000'000'007;
+    auto result = typeid(*this).hash_code();
+    for (auto& i : getChildren()) {
+        result = result * prime + i->hash;
+    }
+    return result;
+}
+
+
+
 std::vector<PTR<Entity>> Entity::getParents() const {
     return std::vector<PTR<Entity>>();
 }
