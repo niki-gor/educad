@@ -4,19 +4,21 @@
 #include "Angem.hpp"
 #include "Entity.hpp"
 #include "render.h"
+#include <vector>
 
 class AngemModelWorker {
 public:
     AngemModelWorker(PTR<Polyset<Entity>> container, PTR<Render> render) : container(container), render(render){}
     virtual ~AngemModelWorker();
     PTR<Entity> AddToModel(PTR<Entity> p); // добавить существующий объект в модель
-    virtual PTR<Entity> AddToModelNew(Polyset<Entity> contP) = 0; // добавить новый объект в модель
+    //virtual PTR<Entity> AddToModelNew(Polyset<Entity> contP) = 0; // добавить новый объект в модель
     virtual void DeleteEntity(PTR<Entity> p); // удалить элемент
     virtual void DeleteRecurs(PTR<Entity> p);
     virtual PTR<Entity> CreateEntity(Polyset<Entity> contP) = 0;
 protected:
     PTR<Polyset<Entity>> container;
     PTR<Render> render;
+    std::vector<PTR<Entity>> children;
 };
 
 //class LineWorker: public AngemModelWorker {

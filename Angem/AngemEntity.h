@@ -28,6 +28,8 @@ public:
 
 class AngemPlane : AngemEntity {
 public:
+    AngemPlane(double A, double B, double C, double D): A(A), B(B), C(C), D(D){};
+    AngemPlane() = default;
     double A;
     double B;
     double C;
