@@ -50,3 +50,20 @@ PTR<TwoDEntity> Line::getProjection(PTR<ProjectionPlane> projectionPlane){
     return line;
 }
 
+PTR<TwoDEntity> PlaneByThreePoints::getProjection(PTR<ProjectionPlane> projectionPlane) {
+    PTR<TwoDEntity> projectedEntity(new TwoDPlane(first, second, third));
+    return PTR<TwoDEntity>();
+}
+
+PTR<TwoDEntity> PlaneByPointAndLine::getProjection(PTR<ProjectionPlane> projectionPlane) {
+    return PTR<TwoDEntity>();
+}
+
+PTR<TwoDEntity> PlaneByIntersectingLines::getProjection(PTR<ProjectionPlane> projectionPlane) {
+    return PTR<TwoDEntity>();
+}
+
+PTR<TwoDEntity> PlaneByParallelLines::getProjection(PTR<ProjectionPlane> projectionPlane) {
+    return PTR<TwoDEntity>();
+}
+
