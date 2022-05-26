@@ -18,11 +18,11 @@ private:
     ProjectionPlane oxy;
     ProjectionPlane oxz;
 public:
-    void onCreateLineByTwoPoint(PTR<Point> point1, PTR<Point> point2) override;
+    bool onCreateLineByTwoPoint(PTR<Entity> point1, PTR<Entity> point2) override;
 
-    void onCreatePerpendicular(PTR<Point> point, PTR<Line> line) override;
+    bool onCreatePerpendicular(PTR<Entity> point, PTR<Entity> line) override;
 
-    void onCreateParallelLine(PTR<Line> line, PTR<Point> point) override;
+    bool onCreateParallelLine(PTR<Entity> line, PTR<Entity> point) override;
 
     explicit Controller(Render* render);
     void onAddEntity(PTR<Entity> entity) override;

@@ -9,6 +9,7 @@
 #include <vector>
 #include "Angem.hpp"
 #include "Renderable.h"
+#include "string"
 
 class ProjectionPlane;
 class Plane;
@@ -27,7 +28,7 @@ public:
     virtual PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane) = 0;
     void addProjectionPlane(const PTR<ProjectionPlane>& plane){projections.insert(plane);}
     void deleteProjectionPlane(PTR<ProjectionPlane> plane){projections.erase(plane);}
-    virtual std::type_index type() const = 0;
+    virtual std::string type() const = 0;
     virtual std::vector<PTR<Entity> > getChildren() const;
 };
 
@@ -37,7 +38,7 @@ namespace Utils{
 
 class Point : public Entity, public AngemPoint {
 public:
-    std::type_index type() const final{};
+    std::string type() const {return "point";};
     PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
     PTR<Point> getProjectionOnLine(const PTR<Line>& line);
     PTR<Point> getProjectionOnPlane(const PTR<Plane>& plane);
@@ -80,7 +81,7 @@ public:
 
 class Line : public Entity, public AngemLine {
 public:
-    std::type_index type() const override final {};
+    std::string type() const {return "line";};
     PTR<Point> point1;
     PTR<Point> point2;
     PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
@@ -141,7 +142,7 @@ public:
 // Planes
 class Plane : public Entity, public AngemPlane {
 public:
-    std::type_index type() const override final {};
+    std::string type() const {return "plane";};
     double getA(){return A;}
     double getB(){return B;}
     double getC(){return C;}

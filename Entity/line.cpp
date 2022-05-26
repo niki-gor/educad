@@ -11,6 +11,7 @@ LineByParametres::LineByParametres(double i, double j, double k, double x0, doub
 }
 
 std::vector<PTR<Entity> > LineByParametres::getChildren() const {
+
 }
 
 std::vector<PTR<Entity> > Line::getChildren() const {
@@ -92,7 +93,7 @@ LineByPlanesIntersection::LineByPlanesIntersection(){
 std::vector<PTR<Entity> > LineByPlanesIntersection::getChildren() const {
 }
 
-LineByTwoPoints::LineByTwoPoints(){ 
+LineByTwoPoints::LineByTwoPoints(){
     x0 = 1;
     y0 = 1;
     z0 = 1;
