@@ -32,20 +32,36 @@ void Controller::disRenderEntity(PTR<Entity> entity) {
     render->deleteEntity(entity);
 }
 
-void Controller::onCreatePerpendicular(PTR<Point> point, PTR<Line> line) {
-    PTR<Line> perpendicularLine(new LineByPerpendicular(point, line));
-    addToModel(perpendicularLine);
-    renderEntity(perpendicularLine);
+bool Controller::onCreatePerpendicular(PTR<Entity> point, PTR<Entity> line) {
+    if (point->type() == "point" && line->type() == "line"){
+        PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
+        PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
+        PTR<Line> perpendicularLine(new LineByPerpendicular(pointCast, lineCast));
+        addToModel(perpendicularLine);
+        renderEntity(perpendicularLine);
+        return true;
+    }
+    return false;
 }
 
-void Controller::onCreateParallelLine(PTR<Line> line, PTR<Point> point) {
-    PTR<Line> parallelLine(new LineByParallel(point, line));
-    addToModel(parallelLine);
-    renderEntity(parallelLine);
+bool Controller::onCreateParallelLine(PTR<Entity> line, PTR<Entity> point) {
+    if (line->type() == "line" && point->type() == "point"){
+        PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
+        PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
+        PTR<Line> parallelLine(new LineByParallel(pointCast, lineCast));
+        addToModel(parallelLine);
+        renderEntity(parallelLine);
+    }
 }
 
-void Controller::onCreateLineByTwoPoint(PTR<Point> point1, PTR<Point> point2) {
-    PTR<Line> lineByTwoPoints(new LineByTwoPoints(point1, point2));
-    addToModel(lineByTwoPoints);
-    renderEntity(lineByTwoPoints);
+bool Controller::onCreateLineByTwoPoint(PTR<Entity> point1, PTR<Entity> point2) {
+    if (point1->type() == "point" && point2->type() == "point"){
+        PTR<Point> point1Cast = std::dynamic_pointer_cast<Point>(point1);
+        PTR<Point> point2Cast = std::dynamic_pointer_cast<Point>(point2);
+        PTR<Line> lineByTwoPoints(new LineByTwoPoints(point1Cast, point2Cast));
+        addToModel(lineByTwoPoints);
+        renderEntity(lineByTwoPoints);
+        return true;
+    }
+    return false;
 }
