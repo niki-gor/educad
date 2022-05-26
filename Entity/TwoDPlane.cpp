@@ -5,12 +5,12 @@
 
 void TwoDPlane::render() {
     if (point){
-        renderable->addPoint(point);
-        renderable->addLine(line1);
+        //renderable->addPoint(point);
+        //renderable->addLine(line1);
     }
     else{
-        renderable->addLine(line1);
-        renderable->addLine(line2);
+        //renderable->addLine(line1);
+        //renderable->addLine(line2);
     }
 }
 
