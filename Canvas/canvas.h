@@ -71,6 +71,7 @@ public:
     ProjectStructureList* getProjectStructureList () {return projectStructureList;}
     QMainWindow* parentWindow;
     QVector<qp*> getSelectedObjects () {return selectedObjects;}
+    ControllerObservable* getControllerObservable () {return controllerObservable;}
 private:
     TwoPointsContextEdit twoPointsRMB;
     int findInSelected (int x, int y);

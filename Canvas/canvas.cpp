@@ -11,7 +11,6 @@
 #include "utils.h"
 #include "Entity.hpp"
 
-
 void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
     qp* qp1 = new qp;
     qp1->pos = QPoint(x, y);

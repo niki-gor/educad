@@ -1,6 +1,7 @@
 #include "contextedit.h"
 #include "qmenu.h"
 #include "canvas.h"
+#include "../ControllerObservable/ControllerObservable.h"
 
 #include <QPushButton>
 
@@ -55,6 +56,11 @@ void TwoPointsContextEdit::handleLineByTwoPointsButton() {
     for (int i=0; i<pointsToWork.size(); i++) {
         printf ("%d", pointsToWork[0]->pos.x(),pointsToWork[1]->pos.x());
     }
+    int x1,y1,z1,x2,y2,z2;
+    x1=1; y1=1; z1=1; x2=100; y2=100; z2=100;
+    PTR<Entity> point1 (new PointByCoords(x1,y1,z1));
+    PTR<Entity> point2 (new PointByCoords(x2,y2,z2));
+    cnv->getControllerObservable()->onCreateLineByTwoPoint(point1, point2);
 }
 
 

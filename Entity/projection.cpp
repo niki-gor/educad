@@ -51,7 +51,7 @@ PTR<TwoDEntity> Line::getProjection(PTR<ProjectionPlane> projectionPlane){
 }
 
 PTR<TwoDEntity> PlaneByThreePoints::getProjection(PTR<ProjectionPlane> projectionPlane) {
-    PTR<TwoDEntity> projectedEntity(new TwoDPlane(first, second, third));
+    //PTR<TwoDEntity> projectedEntity(new TwoDPlane(first, second, third));
     return PTR<TwoDEntity>();
 }
 
