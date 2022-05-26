@@ -242,16 +242,17 @@ public:
     PTR<Entity> entityByTwoDEntity(PTR<TwoDEntity> secondProjection) override;
 };
 
-class TwoDPlane: TwoDEntity{
+class TwoDPlane: public TwoDEntity{
 private:
     PTR<TwoDLine> line1;
     PTR<TwoDLine> line2;
-    PTR<TwoDPoint> point;
+    PTR<TwoDPoint> point1;
+    PTR<TwoDPoint> point2;
+    PTR<TwoDPoint> point3;
 public:
     TwoDPlane(PTR<TwoDLine> line1_, PTR<TwoDLine> line2_): line1(line1_), line2(line2_){};
-    TwoDPlane(PTR<TwoDLine> line, PTR<TwoDPoint> point_) : line1(line), point(point_){}
-
-private:
+    TwoDPlane(PTR<TwoDLine> line, PTR<TwoDPoint> point_) : line1(line), point1(point_){};
+    TwoDPlane(PTR<TwoDPoint> point1_, PTR<TwoDPoint> point2_ , PTR<TwoDPoint> point3_): point1(point1_), point2(point2_), point3(point3_){};
     void render() override;
 
     void deleteFromRender() override;
