@@ -59,6 +59,8 @@ bool Controller::onCreateLineByTwoPoint(PTR<Entity> point1, PTR<Entity> point2) 
         PTR<Point> point1Cast = std::dynamic_pointer_cast<Point>(point1);
         PTR<Point> point2Cast = std::dynamic_pointer_cast<Point>(point2);
         PTR<Line> lineByTwoPoints(new LineByTwoPoints(point1Cast, point2Cast));
+        lineByTwoPoints->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
+        lineByTwoPoints->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
         addToModel(lineByTwoPoints);
         renderEntity(lineByTwoPoints);
         return true;

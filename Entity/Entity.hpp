@@ -207,6 +207,7 @@ public:
     void erase(PTR<TwoDEntity> object){projected.erase(object);}
     void update(){};
     std::vector<PTR<Entity> > getChildren() const;
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane){};
 };
 
 class TwoDEntity{
