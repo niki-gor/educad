@@ -47,6 +47,9 @@ void PlaneByThreePoints::update(){
     B = k1*i2 - i1*k2;
     C = i1*j2 - j1*i2;
     D = A*(-p1->x) + B*(-p1->y) + C*(-p1->z);
+    for(auto& i : children){
+        i->update();
+    }
 }
 
 std::vector<PTR<Entity>> PlaneByThreePoints::getParents() const{
@@ -87,6 +90,9 @@ void PlaneByPointAndLine::update(){
     B = k1*l->i - i1*l->k;
     C = i1*l->j - j1*l->i;
     D = A*(-p->x) + B*(-p->y) + C*(-p->z);
+    for(auto& i : children){
+        i->update();
+    }
 }
 
 std::vector<PTR<Entity>> PlaneByPointAndLine::getParents() const{
@@ -117,6 +123,9 @@ void PlaneByIntersectingLines::update(){
     B = l1->k*l->i - l1->i*l->k;
     C = l1->i*l->j - l1->j*l->i;
     D = A*(-l->x0) + B*(-l->y0) + C*(-l->z0);
+    for(auto& i : children){
+        i->update();
+    }
 }
 
 std::vector<PTR<Entity>> PlaneByIntersectingLines::getParents() const{
@@ -155,6 +164,9 @@ void PlaneByParallelLines::update(){
     B = k1*l->i - i1*l->k;
     C = i1*l->j - j1*l->i;
     D = A*(-l->x0) + B*(-l->y0) + C*(-l->z0);
+    for(auto& i : children){
+        i->update();
+    }
 }
 
 std::vector<PTR<Entity>> PlaneByParallelLines::getParents() const{

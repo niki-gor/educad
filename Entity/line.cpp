@@ -21,6 +21,9 @@ void LineByTwoPoints::update(){
     this->x0 = second->x;
     this->y0 = second->y;
     this->z0 = second->z;
+    for(auto& i : children){
+        i->update();
+    }
 }
 
 std::vector<PTR<Entity>> LineByTwoPoints::getParents() const{
@@ -48,6 +51,9 @@ void LineByParallel::update(){
     x0 = point->x;
     y0 = point->y;
     z0 = point->z;
+    for(auto& i : children){
+        i->update();
+    }
 }
 
 std::vector<PTR<Entity>> LineByParallel::getParents() const{
@@ -78,6 +84,9 @@ void LineByPerpendicular::update(){
     this->x0 = point->x;
     this->y0 = point->y;
     this->z0 = point->z;
+    for(auto& i : children){
+        i->update();
+    }
 }
 
 std::vector<PTR<Entity>> LineByPerpendicular::getParents() const{
@@ -107,6 +116,9 @@ void LineByPlanesIntersection::update(){
     i = l.i;
     j = l.j;
     k = l.k;
+    for(auto& i : children){
+        i->update();
+    }
 }
 
 std::vector<PTR<Entity>> LineByPlanesIntersection::getParents() const{
