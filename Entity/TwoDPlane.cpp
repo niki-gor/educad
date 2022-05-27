@@ -5,17 +5,17 @@
 
 void TwoDPlane::render() {
     if (point1 && point2){
-//        renderable->addPoint(point1);
-//        renderable->addPoint(point2);
-//        renderable->addPoint(point3);
+        point1->render();
+        point2->render();
+        point3->render();
     }
     else if(line1 && point1){
-//        renderable->addLine(point1);
-//        renderable->addLine(line2);
+        line1->render();
+        point1->render();
     }
     else{
-//        renderable->addLine(line1);
-//        renderable->addLine(line2);
+        line1->render();
+        line2->render();
     }
 }
 
