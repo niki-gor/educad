@@ -39,3 +39,4 @@ double TwoDLine::getB() const {
 double TwoDLine::getC() const {
     return C;
 }
+

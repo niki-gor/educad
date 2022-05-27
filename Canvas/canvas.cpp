@@ -134,12 +134,11 @@ int Canvas::findInVcp(int x, int y) {
             return i;
         }
         if (vcp[i]->objType==LINE) {
-            PTR<TwoDLine> currLine =  std::dynamic_pointer_cast<TwoDLine>(vcp[i]->objectEntity);
-            if (this->pos.y()<height()/2) y = height()/2-y; else y = y-height()/2;
-            x = this->width() - x;
-            printf ("\nPosition in this system: %d %d\n", x, y);
-            printf ("\nPosition of line in this system: %d %d\n",currLine->point1->X, currLine->point1->Y,currLine->point2->X, currLine->point2->Y);
-            if ((abs(currLine->getA()*x+currLine->getB()*y+currLine->getC()) - EPS) <= 0) {
+            PTR<TwoDLine> currLine = std::dynamic_pointer_cast<TwoDLine>(vcp[i]->objectEntity);
+            int newY; int newX;
+            if (this->pos.y()<height()/2) newY = height()/2-y; else newY = y-height()/2;
+            newX = this->width() - x;
+            if ((abs(currLine->getA()*newX+currLine->getB()*newY+currLine->getC()) - EPS) <= 0) {
                 return i;
             }
         }
@@ -286,7 +285,6 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
     if (e->button() == Qt::LeftButton) {
         if (condition==0) {
             int index = findInVcp(this->pos.x(), this->pos.y());
-            printf ("index = %d, size = %d", index, vcp.size());
             if (index >= 0) {
                 if (vcp[index]->isSelected) {
                     vcp[index]->qpColor=Qt::black;
@@ -312,7 +310,6 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                     }
                 }
             } else {
-                printf ("\nsize = %d\n", selectedObjects.size());
                 if (!selectedObjects.empty()) {
                   for (int i = 0; i < selectedObjects.size(); i++) {
                         selectedObjects[i]->isSelected = false;
@@ -372,7 +369,6 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                 qp1->projections.append(vcp.back());
                 PTR<Entity> point(new PointByCoords(qp1->pos.x(), y, z));
                 vcp.back()->projections.append(qp1);
-                printf("I will add this point with coords %d %d %d", qp1->pos.x(), y, z);
                 qp1->objectEntity=twoDPoint;
                 controllerObservable->onAddEntity(point);
                 vcp.append(qp1);
@@ -521,7 +517,6 @@ void Canvas::mouseReleaseEvent(QMouseEvent *e) {
             twoPointsRMB.twoPointsContextEditWidget->show();
         } else if ( (selectedObjects.size()==2) &&
             (((selectedObjects[0]->objType == POINT) && (selectedObjects[1]->objType==LINE)) || ((selectedObjects[1]->objType == POINT) && (selectedObjects[0]->objType==LINE))) ) {
-            printf ("\n uzbek=%d tadjik=%d\n", selectedObjects[0]->pos.x(), selectedObjects[1]->pos.y());
             pointAndLineRMB.pointAndLineContextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
             pointAndLineRMB.pointAndLineContextEditWidget->show();
         }
