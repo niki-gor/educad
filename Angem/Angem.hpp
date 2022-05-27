@@ -29,6 +29,8 @@ namespace AngemUtils {
     AngemPoint pointOnPlane(AngemPlane pl, double x, double y, double z); // Получить точку на плоскости по двум координатам. 3 координату указать как NULL. 
     bool isPointOnLine(AngemLine l, AngemPoint p); // Лежит ли точка на линии 
     bool isPointOnPlane(AngemPlane pl, AngemPoint p); // Лежит ли точка на плоскости
+    AngemPoint getProjectionOnPlane(AngemPlane pl, AngemPoint p); // Проекция точки на плоскость
+    AngemPoint getProjectionOnLine(AngemLine l, AngemPoint p); // Проекция точки на прямую.
 };
 
 #endif

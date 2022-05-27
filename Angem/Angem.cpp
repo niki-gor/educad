@@ -414,3 +414,18 @@ bool AngemUtils::isPointOnPlane(AngemPlane pl, AngemPoint p){
     auto const & [x, y, z] = p;
     return A*x + B*y + C*z + D == 0;
 }
+
+AngemPoint AngemUtils::getProjectionOnPlane(AngemPlane pl, AngemPoint p){
+    if( isPointOnPlane(pl, p) ){
+        return p;
+    }
+    AngemLine perpendicular = getPerpendicularLine(p, pl);
+    return planeLineIntersection(pl, perpendicular);
+}
+AngemPoint AngemUtils::getProjectionOnLine(AngemLine l, AngemPoint p){
+    if( isPointOnLine(l, p) ){
+        return p;
+    }
+    AngemLine perpendicular = getPerpendicularLine(p, l);
+    return linesIntersection(l, perpendicular);
+}
