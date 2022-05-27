@@ -15,37 +15,38 @@ PointByCoords::PointByCoords(double x, double y, double z){
 void PointByCoords::update(){};
 
 PointByLinesIntersection::PointByLinesIntersection(PTR<Line> first, PTR<Line> second) {
-    AngemPoint p = AngemUtils::linesIntersection(*first, *second);
     this->first = first;
     this->second = second;
-    x = p.x;
-    y = p.y;
-    z = p.z;
+    init(first, second);
     first->addChild(MAKEPTR<PointByLinesIntersection>(*this));
     second->addChild(MAKEPTR<PointByLinesIntersection>(*this));
 }
 
-void PointByLinesIntersection::update(){
+void PointByLinesIntersection::init(PTR<Line> first, PTR<Line> second){
     AngemPoint p = AngemUtils::linesIntersection(*first, *second);
     x = p.x;
     y = p.y;
     z = p.z;
+}
+
+void PointByLinesIntersection::update(){
+    init(first, second);
     for(auto& i : children){
         i->update();
     }
 }
 
 std::vector<PTR<Entity>> PointByLinesIntersection::getParents() const{
-    std::vector<PTR<Entity>> children = std::vector<PTR<Entity>>();
-    children.push_back(first);
-    children.push_back(second);
-    return children;
+    std::vector<PTR<Entity>> parents = std::vector<PTR<Entity>>();
+    parents.push_back(first);
+    parents.push_back(second);
+    return parents;
 }
 
 std::vector<PTR<Entity>> PointOnLine::getParents() const{
-    std::vector<PTR<Entity>> children = std::vector<PTR<Entity>>();
-    children.push_back(line);
-    return children;
+    std::vector<PTR<Entity>> parents = std::vector<PTR<Entity>>();
+    parents.push_back(line);
+    return parents;
 }
 
 PointOnLine::PointOnLine(PTR<Line> l1, double* x, double* y, double* z){
@@ -70,9 +71,9 @@ void PointOnPlane::update(){
 }
 
 std::vector<PTR<Entity>> PointOnPlane::getParents() const{
-    std::vector<PTR<Entity>> children = std::vector<PTR<Entity>>();
-    children.push_back(plane);
-    return children;
+    std::vector<PTR<Entity>> parents = std::vector<PTR<Entity>>();
+    parents.push_back(plane);
+    return parents;
 }
 
 

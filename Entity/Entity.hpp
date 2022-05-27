@@ -75,6 +75,7 @@ class PointByLinesIntersection : public Point {
 private:
     PTR<Line> first;
     PTR<Line> second;
+    void init(PTR<Line> first, PTR<Line> second);
 public:
     ~PointByLinesIntersection() = default;
     void update();
@@ -93,6 +94,7 @@ class LineByTwoPoints : public Line {
 private:
     PTR<Point> first;
     PTR<Point> second;
+    void init(PTR<Point> first, PTR<Point> second);
 public:
     ~LineByTwoPoints() = default;
     void update();
@@ -108,6 +110,7 @@ class LineByParallel : public Line {
 private:
     PTR<Point> point;
     PTR<Line> line;
+    void init(PTR<Point> first, PTR<Line> second);
 public:
     ~LineByParallel() = default;
     void update();
@@ -123,6 +126,7 @@ class LineByPerpendicular : public Line {
 private:
     PTR<Point> point;
     PTR<Line> line;
+    void init(PTR<Point> point, PTR<Line> line);
 public:
     ~LineByPerpendicular() = default;
     void update();
@@ -138,6 +142,7 @@ class LineByPlanesIntersection : public Line {
 private:
     PTR<Plane> first;
     PTR<Plane> second;
+    void init(PTR<Plane> first, PTR<Plane> second);
 public:
     ~LineByPlanesIntersection() = default;
     void update();
@@ -157,6 +162,8 @@ public:
 };
 
 class PlaneByThreePoints : public Plane {
+private:
+    void init(PTR<Point> p1, PTR<Point> p2, PTR<Point> p3);
 public:
     ~PlaneByThreePoints() = default;
     PTR<Point> first;
@@ -171,6 +178,8 @@ public:
 };
 
 class PlaneByPointAndLine : public Plane {
+private:
+    void init(PTR<Point> p, PTR<Line> l);
 public:
     ~PlaneByPointAndLine() = default;
     PTR<Point> point;
@@ -184,6 +193,8 @@ public:
 };
 
 class PlaneByIntersectingLines : public Plane {
+private:
+    void init(PTR<Line> l, PTR<Line> l1);
 public:
     ~PlaneByIntersectingLines() = default;
     PTR<Line> first;
@@ -197,6 +208,8 @@ public:
 };
 
 class PlaneByParallelLines : public Plane {
+private:
+    void init(PTR<Line> l, PTR<Line> l1);
 public:
     ~PlaneByParallelLines() = default;
     PTR<Line> first;
