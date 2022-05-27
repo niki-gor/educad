@@ -20,7 +20,19 @@ void TwoDPlane::render() {
 }
 
 void TwoDPlane::deleteFromRender() {
-
+    if (point1 && point2){
+        point1->deleteFromRender();
+        point2->deleteFromRender();
+        point3->deleteFromRender();
+    }
+    else if(line1 && point1){
+        line1->deleteFromRender();
+        point1->deleteFromRender();
+    }
+    else{
+        line1->deleteFromRender();
+        line2->deleteFromRender();
+    }
 }
 
 PTR<Entity> TwoDPlane::entityByTwoDEntity(PTR<TwoDEntity> secondProjection) {

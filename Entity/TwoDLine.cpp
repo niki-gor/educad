@@ -24,7 +24,8 @@ TwoDLine::TwoDLine(const std::shared_ptr<TwoDPoint> &point1, const std::shared_p
 }
 
 void TwoDLine::deleteFromRender() {
-
+    //Гоша сделает
+//    renderable->deleteLine()
 }
 
 PTR<Entity> TwoDLine::entityByTwoDEntity(PTR<TwoDEntity> secondProjection) {
