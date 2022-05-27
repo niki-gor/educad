@@ -21,3 +21,14 @@ bool Entity::removeChild(PTR<Entity> child){
     }
     return false;
 }
+
+std::type_index Point::type() const {
+    return typeid(Point);
+}
+
+std::type_index Line::type() const {
+    return typeid(Line);
+}
+std::type_index Plane::type() const {
+    return typeid(Plane);
+}

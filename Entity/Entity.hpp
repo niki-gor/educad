@@ -40,7 +40,7 @@ namespace Utils{
 
 class Point : public Entity, public AngemPoint {
     PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>);
-    virtual std::type_index type() const override final{};
+    virtual std::type_index type() const override final;
 public:
     virtual ~Point(){};
 };
@@ -84,7 +84,7 @@ public:
 
 
 class Line : public Entity, public AngemLine {
-    virtual std::type_index type() const override final{};
+    virtual std::type_index type() const override final;
 public:
     virtual ~Line(){};
 };
@@ -151,7 +151,7 @@ public:
 
 
 class Plane : public Entity, public AngemPlane {
-    virtual std::type_index type() const override final{};
+    virtual std::type_index type() const override final;
 public:
     virtual ~Plane(){};
 };
