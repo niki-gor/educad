@@ -13,7 +13,7 @@
 #include <memory>
 #include <tuple>
 
-#define EPS 1e-7
+#define EPS 1000
 
 std::tuple<int, int> Canvas::canvasCoordsToPlaneCoords (int x, int y, PTR<ProjectionPlane> projectionPlane) {
     std::tuple <int, int> result;
@@ -135,10 +135,11 @@ int Canvas::findInVcp(int x, int y) {
         }
         if (vcp[i]->objType==LINE) {
             PTR<TwoDLine> currLine = std::dynamic_pointer_cast<TwoDLine>(vcp[i]->objectEntity);
-            int newY; int newX;
+            int newY; int newX=width()-x-10;
             if (this->pos.y()<height()/2) newY = height()/2-y; else newY = y-height()/2;
-            newX = this->width() - x;
+            printf ("\n%lf\n", (abs(currLine->getA()*newX+currLine->getB()*newY+currLine->getC()) - EPS));
             if ((abs(currLine->getA()*newX+currLine->getB()*newY+currLine->getC()) - EPS) <= 0) {
+                printf ("uzbek");
                 return i;
             }
         }
@@ -418,6 +419,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                         twoDLineEnd = std::make_shared<TwoDPoint>(lineBeginX, lineBeginZ, plane);
                     }
                     PTR<TwoDEntity> twoDLine (new TwoDLine(twoDLineBegin, twoDLineEnd, plane));
+                    printf ("This line coords would be %lf %lf %lf %lf", twoDLineBegin->X, twoDLineBegin->Y, twoDLineEnd->X, twoDLineEnd->Y);
                     qp1->objectEntity=twoDLine;
                     PTR<Point> lineBeginPoint (new PointByCoords(lineBeginX, lineBeginY, lineBeginZ));
                     PTR<Point> lineEndPoint (new PointByCoords(lineEndX, lineEndY, lineEndZ));
@@ -451,8 +453,8 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                     if (yBlocked == 1) qp1->planeNumber = 2; else qp1->planeNumber = 1;
                     qp1->needsProjection = true;
                     PTR <ProjectionPlane> plane;
-                    int lineBeginX = qp1->pos.x();
-                    int lineEndX = qp1->endpos.x();
+                    int lineBeginX = canvasBegin.x()-qp1->pos.x();
+                    int lineEndX = canvasBegin.x()-qp1->endpos.x();
                     PTR<TwoDPoint> twoDLineBegin;
                     PTR<TwoDPoint> twoDLineEnd;
                     int lineBeginY, lineEndY;
