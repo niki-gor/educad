@@ -42,33 +42,41 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
         }
         if (condition == 1) {
             if (!blocked) {
+                int y;
                 if (int i = findInVcp(this->pos.x(), this->pos.y())>=0) {
                     if (vcp[i]->objType==LINE) {
-                        
+                        double renderX = canvasBegin.x() - this->pos.x();
+                        double renderY;
+                        if (this->pos.y()<height()/2) {
+                            y = canvasBegin.y() + this->pos.y();
+                        } else {
+                            y = this->pos.y() - canvasBegin.y();
+                        }
+                        controllerObservable->onCreatePointOn(&renderX, &renderY, nullptr, vcp[i]->objectEntity->entityByTwoDEntity(vcp[i]->projections[0]->objectEntity));
                     }
-                }
-                int y;
-                qp* qp1 = new qp;
-                qp1->pos = this->pos;
-                qp1->objType = POINT;
-                qp1->qpColor = Qt::red;
-                qp1->needsProjection = false;
-                InputName inputNameWindow;
-                inputNameWindow.exec();
-                qp1->qpName = inputNameWindow.getInput();
-                if (qp1->pos.y() < height() / 2) qp1->planeNumber = 2; else qp1->planeNumber = 1;
-                PTR <ProjectionPlane> plane;
-                if (qp1->planeNumber == 2) {
-                    y = qp1->pos.y() - height() / 2;
                 } else {
-                    y = qp1->pos.y() + height() / 2;
+                    qp *qp1 = new qp;
+                    qp1->pos = this->pos;
+                    qp1->objType = POINT;
+                    qp1->qpColor = Qt::red;
+                    qp1->needsProjection = false;
+                    InputName inputNameWindow;
+                    inputNameWindow.exec();
+                    qp1->qpName = inputNameWindow.getInput();
+                    if (qp1->pos.y() < height() / 2) qp1->planeNumber = 2; else qp1->planeNumber = 1;
+                    PTR<ProjectionPlane> plane;
+                    if (qp1->planeNumber == 2) {
+                        y = qp1->pos.y() - height() / 2;
+                    } else {
+                        y = qp1->pos.y() + height() / 2;
+                    }
+                    PTR<TwoDEntity> twoDPoint(new TwoDPoint(qp1->pos.x(), y, plane));
+                    qp1->objectEntity = twoDPoint;
+                    vcp.append(qp1); //добавили в массив для рисования
+                    blocked = true;
+                    xBlocked = qp1->pos.x();
+                    yBlocked = qp1->planeNumber;
                 }
-                PTR<TwoDEntity> twoDPoint(new TwoDPoint (qp1->pos.x(), y, plane));
-                qp1->objectEntity=twoDPoint;
-                vcp.append(qp1); //добавили в массив для рисования
-                blocked = true;
-                xBlocked = qp1->pos.x();
-                yBlocked = qp1->planeNumber;
             } else {
                 if (xMatch.size() > 0) xMatch.pop_back();
                 qp* qp1 = new qp;
