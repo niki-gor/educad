@@ -105,6 +105,7 @@ class LineByParallel : public Line {
 private:
     PTR<Point> point;
     PTR<Line> line;
+    void setPoints(AngemPoint point1, AngemPoint point2);
 public:
     void update() {};
     LineByParallel();
