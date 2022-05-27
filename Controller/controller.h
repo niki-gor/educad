@@ -7,6 +7,7 @@
 #include "render.h"
 #include "AngemModelWorker.hpp"
 #include "../ControllerObservable/ControllerObservable.h"
+#include "Angem.hpp"
 
 class Controller: public ControllerObservable{
 private:
@@ -27,6 +28,8 @@ public:
     explicit Controller(Render* render);
     void onAddEntity(PTR<Entity> entity) override;
     void onDeleteEntity(PTR<Entity> entity) override;
+
+    bool onCreatePointOn(double* x, double * y, double * z, PTR<Entity> line) override;
 };
 
 #endif //EDUCAD_CONTROLLER_H

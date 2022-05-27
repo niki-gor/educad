@@ -24,10 +24,8 @@ namespace AngemUtils {
     AngemLine planesIntersection(AngemPlane pl1,AngemPlane pl2); // Линия пересечения двух плоскостей
     AngemLine parallelLine(AngemLine l, AngemPoint p); // Прямая, параллельная исходной прямой и проходящая через исходную точку.
     double round(double x, int N=2); // Округление (по дефолту до 0.01)
-    AngemPoint pointOnLine(AngemLine l, double x, double y, double z); // Получить точку на прямой по двум координатам. 3 координату указать как NULL.
-    std::pair<AngemPoint, AngemPoint> pointOnLine(AngemLine l, AngemPoint p, double distance); // Точка на прямой, находящаяся на заданном расстоянии от исходной точки.
-    AngemPoint pointOnPlane(AngemPlane pl, double x, double y, double z); // Получить точку на плоскости по двум координатам. 3 координату указать как NULL.
-    bool isPointOnLine(AngemLine l, AngemPoint p); // Лежит ли точка на линии
+    AngemPoint pointOnLine(AngemLine l, double* x, double* y, double* z); // Получить точку на прямой по двум координатам. 3 координату указать как nullptr.     std::pair<AngemPoint, AngemPoint> pointOnLine(AngemLine l, AngemPoint p, double distance); // Точка на прямой, находящаяся на заданном расстоянии от исходной точки.
+    AngemPoint pointOnPlane(AngemPlane pl, double* x, double* y, double* z); // Получить точку на плоскости по двум координатам. 3 координату указать как nullptr.    bool isPointOnLine(AngemLine l, AngemPoint p); // Лежит ли точка на линии
     bool isPointOnPlane(AngemPlane pl, AngemPoint p); // Лежит ли точка на плоскости
     AngemPoint getProjectionOnPlane(AngemPlane pl, AngemPoint p); // Проекция точки на плоскость
     AngemPoint getProjectionOnLine(AngemLine l, AngemPoint p); // Проекция точки на прямую.

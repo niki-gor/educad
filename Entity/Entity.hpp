@@ -60,13 +60,14 @@ public:
 class PointOnLine : public Point{
 public:
     void update() override {};
-    PointOnLine(PTR<Line> line, double x, double y, double z);
+    PointOnLine(PTR<Line> line, double* x, double* y, double* z);
     std::vector<PTR<Entity> > getParents() const;
     PTR<Line> line;
 };
 
 class PointOnPlane : public Point{
-    PointOnPlane(PTR<Plane> plane);
+public:
+    PointOnPlane(PTR<Plane> plane, double* x, double* y, double* z);
     std::vector<PTR<Entity> > getParents() const;
     PTR<Plane> plane;
     void update() {};

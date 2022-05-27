@@ -71,3 +71,26 @@ bool Controller::onCreateLineByTwoPoint(PTR<Entity> point1, PTR<Entity> point2) 
     }
     return false;
 }
+
+bool Controller::onCreatePointOn(double* x, double* y, double* z, PTR<Entity> entity) {
+    if (entity->type() == "line"){
+        PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(entity);
+        PTR<Point> pointOnLine(new PointOnLine(lineCast, x, y, z));
+        pointOnLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
+        pointOnLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
+        addToModel(pointOnLine);
+        renderEntity(pointOnLine);
+        return true;
+    }
+
+    else if(entity->type() == "plane"){
+        PTR<Plane> planeCast = std::dynamic_pointer_cast<Plane>(entity);
+        PTR<Point> pointOnPlane(new PointOnPlane(planeCast, x, y, z));
+        pointOnPlane->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
+        pointOnPlane->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
+        addToModel(pointOnPlane);
+        renderEntity(pointOnPlane);
+        return true;
+    }
+    return false;
+}
