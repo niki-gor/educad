@@ -56,6 +56,7 @@ struct qp //структура для хранения координаты пр
     bool needsProjection;
     int planeNumber;
     bool isSelected=false;
+    QVector<qp*> projections;
 };
 
 class Canvas : public QWidget, public Renderable
@@ -72,7 +73,9 @@ public:
     QMainWindow* parentWindow;
     QVector<qp*> getSelectedObjects () {return selectedObjects;}
     ControllerObservable* getControllerObservable () {return controllerObservable;}
+    std::tuple<int, int> canvasCoordsToPlaneCoords (int x, int y, PTR<ProjectionPlane>);
 private:
+    QPoint canvasBegin;
     TwoPointsContextEdit twoPointsRMB;
     int findInSelected (int x, int y);
     ControllerObservable* controllerObservable;

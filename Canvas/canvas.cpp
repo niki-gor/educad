@@ -10,6 +10,21 @@
 //#include "QDesktopWidget"
 #include "utils.h"
 #include "Entity.hpp"
+#include <tuple>
+
+std::tuple<int, int> Canvas::canvasCoordsToPlaneCoords (int x, int y, PTR<ProjectionPlane> projectionPlane) {
+    std::tuple <int, int> result;
+    int yResult;
+    int xResult = projectionPlane->originPoint->x + x + canvasBegin.x();
+    if (projectionPlane->ordinat->point2->z != 0) {
+        yResult = projectionPlane->originPoint->z - y + canvasBegin.y();
+    }  else if (projectionPlane->ordinat->point2->y!=0) {
+        yResult = projectionPlane->originPoint->z + y + canvasBegin.y();
+    }
+    std::get<0>(result) = xResult;
+    std::get<1>(result) = yResult;
+    return result;
+}
 
 void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
     qp* qp1 = new qp;
@@ -25,14 +40,22 @@ void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std
 
 void Canvas::addLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
     qp* qp1 = new qp;
-    qp1->pos = this->pos;
+    x1 = canvasBegin.x()-x1;
+    x2 = canvasBegin.x()-x2;
+    if (planeNumber==1) {
+        y1 = canvasBegin.y() + y1;
+        y2 = canvasBegin.y() + y2;
+    } else {
+        y1 = canvasBegin.y() - y1;
+        y2 = canvasBegin.y() - y2;
+    }
     qp1->pos = QPoint(x1, y1);
     qp1->endpos = QPoint(x2, y2);
     qp1->objType = LINE;
     qp1->qpColor = Qt::black;
     qp1->needsProjection = false;
     qp1->qpName =  QString::fromStdString(name);
-    qp1->planeNumber = 1;
+    qp1->planeNumber = planeNumber;
     vcp.append(qp1); //добавили в массив для рисования
     this->update();
 }
@@ -95,6 +118,8 @@ Canvas::Canvas(QWidget *parent, QMainWindow *_parent, ProjectStructureList *_pro
     selected = NOTHING;
     selectedIndex=-1;
     selectedObjects.clear();
+    canvasBegin.setX(this->geometry().width()-10);
+    canvasBegin.setY(this->geometry().height()/2);
     this->setMouseTracking(true);
     f = 0;
 }
@@ -355,6 +380,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                     y = qp1->pos.y() - height() / 2;
                     z = height() / 2 - vcp.back()->pos.y();
                 }
+                qp1->projections.append(vcp.back());
                 printf("I will add this point with coords %d %d %d", qp1->pos.x(), y, z);
                 PTR<Entity> point(new PointByCoords(qp1->pos.x(), y, z));
                 controllerObservable->onAddEntity(point);
