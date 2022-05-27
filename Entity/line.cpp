@@ -12,12 +12,8 @@ LineByParametres::LineByParametres(double i, double j, double k, double x0, doub
     this->z0 = z0;
 }
 
-std::vector<PTR<Entity> > LineByParametres::getChildren() const {
-
-}
-
-std::vector<PTR<Entity> > Line::getChildren() const {
-
+std::vector<PTR<Entity> > LineByParametres::getParents() const {
+    return {};
 }
 
 LineByTwoPoints::LineByTwoPoints(PTR<Point> first, PTR<Point> second){
@@ -31,11 +27,12 @@ LineByTwoPoints::LineByTwoPoints(PTR<Point> first, PTR<Point> second){
     this->x0 = second->x;
     this->y0 = second->y;
     this->z0 = second->z;
+    first->addChildren(PTR<Entity>(this));
+    second->addChildren(PTR<Entity>(this));
 }
 
-std::vector<PTR<Entity> > LineByTwoPoints::getChildren() const{
-    std::vector<PTR<Entity> > children = {first, second};
-    return children;
+std::vector<PTR<Entity> > LineByTwoPoints::getParents() const{
+    return {first, second};
 }
 
 LineByParallel::LineByParallel(const PTR<Point>& first, const PTR<Line>& second){
@@ -48,6 +45,8 @@ LineByParallel::LineByParallel(const PTR<Point>& first, const PTR<Line>& second)
     point = first;
     line = second;
     setPoints(*second->point1, *second->point2);
+    first->addChildren(PTR<Entity> (this));
+    second->addChildren(PTR<Entity> (this));
 }
 
 void LineByParallel::setPoints(AngemPoint point1, AngemPoint point2) {
@@ -57,11 +56,9 @@ void LineByParallel::setPoints(AngemPoint point1, AngemPoint point2) {
     this->point2 = MAKEPTR<PointByCoords>(pointCoords2.x, pointCoords2.y, pointCoords2.z);
 }
 
-std::vector<PTR<Entity> > LineByParallel::getChildren() const{
-    std::vector<PTR<Entity> > children = {point, line};
-    return children;
+std::vector<PTR<Entity> > LineByParallel::getParents() const{
+    return {point, line};
 }
-
 
 LineByPerpendicular::LineByPerpendicular(const PTR<Point>& point, const PTR<Line>& line){
     this->line = line;
@@ -76,11 +73,12 @@ LineByPerpendicular::LineByPerpendicular(const PTR<Point>& point, const PTR<Line
     this->point1 = point;
     AngemPoint point2Koords = AngemUtils::getProjectionOnLine(*line, *point);
     this->point2 = MAKEPTR<PointByCoords>(point2Koords.x, point2Koords.y, point2Koords.z);
+    point->addChildren(PTR<Entity> (this));
+    point->addChildren(PTR<Entity>(this));
 }
 
-std::vector<PTR<Entity> > LineByPerpendicular::getChildren() const{
-    std::vector<PTR<Entity> > children = {point, line};
-    return children;
+std::vector<PTR<Entity> > LineByPerpendicular::getParents() const{
+    return {point, line};
 }
 
 LineByPlanesIntersection::LineByPlanesIntersection(PTR<Plane> first, PTR<Plane> second){ //Не дописал
@@ -94,6 +92,10 @@ LineByPlanesIntersection::LineByPlanesIntersection(PTR<Plane> first, PTR<Plane> 
     k = 1;
 }
 
+std::vector<PTR<Entity> > LineByPlanesIntersection::getParents() const {
+    return {first, second} ;
+}
+
 LineByPlanesIntersection::LineByPlanesIntersection(){
     x0 = 1;
     y0 = 1;
@@ -101,9 +103,6 @@ LineByPlanesIntersection::LineByPlanesIntersection(){
     i = 1;
     j = 1;
     k = 1;
-}
-
-std::vector<PTR<Entity> > LineByPlanesIntersection::getChildren() const {
 }
 
 LineByTwoPoints::LineByTwoPoints(){

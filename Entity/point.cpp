@@ -20,47 +20,34 @@ PTR<TwoDPoint> Point::getProjectionPoint(const PTR<ProjectionPlane> &projectionP
     return twoDPoint;
 }
 
-std::vector<PTR<Entity> > Point::getChildren() const {
-
-}
-
 PointByCoords::PointByCoords(double x, double y, double z){
     this->x=x;
     this->y=y;
     this->z=z;
 }
 
-std::vector<PTR<Entity> > PointByCoords::getChildren() const {
-
-}
-
-PointByLinesIntersection::PointByLinesIntersection(PTR<Line> first, PTR<Line> second) {//не доделал
+PointByLinesIntersection::PointByLinesIntersection(const PTR<Line>& first, const PTR<Line>& second) {
+    first->addChildren(PTR<Entity>(this));
+    first->addChildren(PTR<Entity>(this));
     AngemPoint p = AngemUtils::linesIntersection(*first, *second);
     x = p.x;
     y = p.y;
     z = p.z;
 }
 
-std::vector<PTR<Entity> > PointByLinesIntersection::getChildren() const{
-    std::vector<PTR<Entity> > children = std::vector<PTR<Entity> >();
-    children.push_back(first);
-    children.push_back(second);
-    return children;
+std::vector<PTR<Entity> > PointByLinesIntersection::getParents() const{
+    return {first, second};
 }
 
-std::vector<PTR<Entity> > PointOnLine::getChildren() const{
-    std::vector<PTR<Entity> > children = std::vector<PTR<Entity> >();
-    children.push_back(line);
-    return children;
+std::vector<PTR<Entity> > PointOnLine::getParents() const{
+    return {line};
 }
 
 PointOnLine::PointOnLine(PTR<Line> l1, double x, double y, double z){
-    
+    line->addChildren(PTR<Entity>(this));
 }
 
-std::vector<PTR<Entity> > PointOnPlane::getChildren() const{
-    std::vector<PTR<Entity> > children = std::vector<PTR<Entity> >();
-    children.push_back(plane);
-    return children;
+std::vector<PTR<Entity> > PointOnPlane::getParents() const{
+    return {plane};
 }
 
