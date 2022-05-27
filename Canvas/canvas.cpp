@@ -67,8 +67,8 @@ std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> Canvas::linePlaneCoo
     std::get<0>(endPoint) = x2;
     std::get<1>(endPoint) = y2;
     std::get<2>(endPoint) = z2;
-    std::get<0>(result);
-    std::get<1>(result);
+    std::get<0>(result) = startPoint;
+    std::get<1>(result) = endPoint;
     return result;
 }
 
