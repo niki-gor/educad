@@ -240,6 +240,14 @@ public:
 
 class TwoDLine : public TwoDEntity{
 private:
+public:
+    double getA() const;
+
+    double getB() const;
+
+    double getC() const;
+
+private:
     double A;
     double B;
     double C;

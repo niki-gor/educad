@@ -27,3 +27,15 @@ void TwoDLine::deleteFromRender() {
 PTR<Entity> TwoDLine::entityByTwoDEntity(PTR<TwoDEntity> secondProjection) {
     return PTR<Entity>();
 }
+
+double TwoDLine::getA() const {
+    return A;
+}
+
+double TwoDLine::getB() const {
+    return B;
+}
+
+double TwoDLine::getC() const {
+    return C;
+}
