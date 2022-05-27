@@ -211,3 +211,10 @@ void Canvas::clear() {
     this->update();
 }
 
+void Canvas::deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
+
+}
+
+void Canvas::deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
+
+}

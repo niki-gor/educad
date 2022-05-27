@@ -91,6 +91,8 @@ public:
     std::tuple<int, int> canvasCoordsToPlaneCoords (int x, int y, PTR<ProjectionPlane>);
     std::tuple<int,int,int> pointPlaneCoordsToCanvasCoords (qp *object);
     std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> linePlaneCoordsToCanvasCoords (qp* object);
+    void deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name);
+    void deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
 private:
     PointAndLineContextEdit pointAndLineRMB;
     QPoint canvasBegin;
