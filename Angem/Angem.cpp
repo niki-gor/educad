@@ -49,7 +49,7 @@ double AngemUtils::getDistance(AngemPoint p, AngemPlane pl){
 
 double AngemUtils::round(double x, int N){
     static const double powerOfTen[] = { 1.0, 10.0, 100.0, 1000.0, 10000.0 };
-    double rounded = std::floor(x * powerOfTen[N] + 0.5) / powerOfTen[N];
+    double rounded = floor(x * powerOfTen[N] + 0.5) / powerOfTen[N];
     return rounded;
 }
 

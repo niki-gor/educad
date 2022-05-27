@@ -1,3 +1,5 @@
+#include <memory>
+
 #include "Entity.hpp"
 #include "Angem.hpp"
 
@@ -45,6 +47,14 @@ LineByParallel::LineByParallel(const PTR<Point>& first, const PTR<Line>& second)
     z0 = first->z;
     point = first;
     line = second;
+    setPoints(*second->point1, *second->point2);
+}
+
+void LineByParallel::setPoints(AngemPoint point1, AngemPoint point2) {
+    AngemPoint pointCoords1 = AngemUtils::getProjectionOnLine(*this, point1);
+    AngemPoint pointCoords2 = AngemUtils::getProjectionOnLine(*this, point2);
+    this->point1 = MAKEPTR<PointByCoords>(pointCoords1.x, pointCoords1.y, pointCoords1.z);
+    this->point2 = MAKEPTR<PointByCoords>(pointCoords2.x, pointCoords2.y, pointCoords2.z);
 }
 
 std::vector<PTR<Entity> > LineByParallel::getChildren() const{
@@ -63,6 +73,9 @@ LineByPerpendicular::LineByPerpendicular(const PTR<Point>& point, const PTR<Line
     this->x0 = point->x;
     this->y0 = point->y;
     this->z0 = point->z;
+    this->point1 = point;
+    AngemPoint point2Koords = AngemUtils::getProjectionOnLine(*line, *point);
+    this->point2 = MAKEPTR<PointByCoords>(point2Koords.x, point2Koords.y, point2Koords.z);
 }
 
 std::vector<PTR<Entity> > LineByPerpendicular::getChildren() const{
