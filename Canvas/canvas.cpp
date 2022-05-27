@@ -212,9 +212,32 @@ void Canvas::clear() {
 }
 
 void Canvas::deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
-
+    x = canvasBegin.x() - x;
+    if (planeNumber==1) {
+        y = canvasBegin.y() + y;
+    }  else {
+        y -= canvasBegin.y();
+    }
+    for (int i=0; i<vcp.size(); i++) {
+        if (vcp[i]->pos == QPoint (x,y)) {
+            vcp.erase(vcp.begin()+i);
+        }
+    }
 }
 
 void Canvas::deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
-
+    x1 = canvasBegin.x() - x1;
+    x2 = canvasBegin.x() - x2;
+    if (planeNumber==1) {
+        y1 = canvasBegin.y() + y1;
+        y2 = canvasBegin.y() + y2;
+    }  else {
+        y1 -= canvasBegin.y();
+        y2 -= canvasBegin.y();
+    }
+    for (int i=0; i<vcp.size(); i++) {
+        if ((vcp[i]->pos == QPoint (x1,y1)) && ((vcp[i]->pos == QPoint (x2,y2)))) {
+            vcp.erase(vcp.begin()+i);
+        }
+    }
 }
