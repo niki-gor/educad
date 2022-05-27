@@ -4,7 +4,7 @@
 
 #include "controller.h"
 
-Controller::Controller(Render* render): render(render), oxy(ProjectionPlane(0, 0, 1, 0)), oxz(ProjectionPlane(1, 0, 0, 0)){
+Controller::Controller(Render* render): render(render), oxy(ProjectionPlane(0, 0, 1, 0)), oxz(ProjectionPlane(0, 1, 0, 0)){
 }
 
 void Controller::addToModel(PTR<Entity> entity) {
