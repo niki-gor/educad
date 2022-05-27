@@ -48,7 +48,7 @@ std::vector<PTR<Entity>> PointOnLine::getParents() const{
     return children;
 }
 
-PointOnLine::PointOnLine(PTR<Line> l1, double x, double y, double z){
+PointOnLine::PointOnLine(PTR<Line> l1, double* x, double* y, double* z){
     AngemPoint p = AngemUtils::pointOnLine(*l1, x, y, z);
     this->x = p.x;
     this->y = p.y;
@@ -58,7 +58,7 @@ PointOnLine::PointOnLine(PTR<Line> l1, double x, double y, double z){
 
 void PointOnLine::update(){}
 
-PointOnPlane::PointOnPlane(PTR<Plane> plane, double x, double y, double z){
+PointOnPlane::PointOnPlane(PTR<Plane> plane, double* x, double* y, double* z){
     AngemPoint p = AngemUtils::pointOnPlane(*plane, x, y, z);
     this->x = p.x;
     this->y = p.y;

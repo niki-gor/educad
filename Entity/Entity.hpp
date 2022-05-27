@@ -56,7 +56,7 @@ class PointOnLine : public Point{
 public:
     ~PointOnLine() = default;
     void update();
-    PointOnLine(PTR<Line> line, double x, double y, double z);
+    PointOnLine(PTR<Line> line, double* x, double* y, double* z);
     std::vector<PTR<Entity>> getParents() const;
     PTR<Line> line;
 };
@@ -65,7 +65,7 @@ class PointOnPlane : public Point{
 public:
     ~PointOnPlane() = default;
     void update();
-    PointOnPlane(PTR<Plane> plane, double x, double y, double z);
+    PointOnPlane(PTR<Plane> plane, double* x, double* y, double* z);
     std::vector<PTR<Entity>> getParents() const;
 private:
     PTR<Plane> plane;

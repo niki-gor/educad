@@ -334,46 +334,46 @@ AngemLine AngemUtils::parallelLine(AngemLine l, AngemPoint p){
     return AngemLine(l.i, l.j, l.k, p.x, p.y, p.z);
 }
 
-AngemPoint AngemUtils::pointOnLine(AngemLine l, double x, double y, double z){
+AngemPoint AngemUtils::pointOnLine(AngemLine l, double* x, double* y, double* z){
     auto const & [i, j, k, x0, y0, z0] = l;
-    if(x == NULL){
+    if(x == nullptr){
         assert(j != 0 || k != 0 );
         if(j){
-            x = (y*i-y0*i + x0*j)/j;
+            *x = (*y*i-y0*i + x0*j)/j;
         } else {
-            x = (z*i-z0*i + x0*k)/k;
+            *x = (*z*i-z0*i + x0*k)/k;
         }
-    } else if(y == NULL){
+    } else if(y == nullptr){
         assert(i != 0 || k != 0 );
         if(i){
-            y = (x*j-x0*j + y0*i)/i;
+            *y = (*x*j-x0*j + y0*i)/i;
         } else {
-            y = (z*j-z0*j + y0*k)/k;
+            *y = (*z*j-z0*j + y0*k)/k;
         }
     } else {
         assert(i != 0 || j != 0 );
         if(i){
-            z = (x*k-x0*k + z0*i)/i;
+            *z = (*x*k-x0*k + z0*i)/i;
         } else {
-            z = (y*k-y0*k + z0*j)/j;
+            *z = (*y*k-y0*k + z0*j)/j;
         }
     }
-    return AngemPoint(x,y,z);
+    return AngemPoint(*x,*y,*z);
 }
 
-AngemPoint AngemUtils::pointOnPlane(AngemPlane pl, double x, double y, double z){
+AngemPoint AngemUtils::pointOnPlane(AngemPlane pl, double* x, double* y, double* z){
     auto const & [A, B, C, D] = pl;
-    if(x == NULL){
+    if(x == nullptr){
         assert(A != 0);
-        x = (-B*y - C*z - D)/A;
-    } else if (y == NULL){
+        *x = (-B*(*y) - C*(*z) - D)/A;
+    } else if (y == nullptr){
         assert(B != 0);
-        y = (-A*x - C*z - D)/B;
+        *y = (-A*(*x) - C*(*z) - D)/B;
     } else {
         assert(C != 0);
-        z = (-A*x - B*y - D)/C;
+        *z = (-A*(*x) - B*(*y) - D)/C;
     }
-    return AngemPoint(x,y,z);
+    return AngemPoint(*x,*y,*z);
 }
 
 bool AngemUtils::isPointOnLine(AngemLine l, AngemPoint p){
