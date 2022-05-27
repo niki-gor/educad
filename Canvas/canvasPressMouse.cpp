@@ -45,6 +45,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                 int y;
                 if (int i = findInVcp(this->pos.x(), this->pos.y())>=0) {
                     if (vcp[i]->objType==LINE) {
+                        qp* line = vcp[i];
                         double renderX = canvasBegin.x() - this->pos.x();
                         double renderY;
                         if (this->pos.y()<height()/2) {
@@ -52,7 +53,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                         } else {
                             renderY = this->pos.y() - canvasBegin.y();
                         }
-                        controllerObservable->onCreatePointOn(new double(renderX), new double(renderY), nullptr, vcp[i]->objectEntity->projectedEntity);
+                        controllerObservable->onCreatePointOn(new double(renderX), new double(renderY), nullptr, line->objectEntity->projectedEntity);
                     }
                 } else {
                     qp *qp1 = new qp;
