@@ -18,6 +18,9 @@ TwoDLine::TwoDLine(const std::shared_ptr<TwoDPoint> &point1, const std::shared_p
     this->point1=point1;
     this->point2=point2;
     this->projectionPlane=plane;
+    A = point2->X - point1->X;
+    B = point2->Y - point1->Y;
+    C = -(point1->X/(point2->X - point1->X)) +(point1->Y/(point2->Y - point1->Y))
 }
 
 void TwoDLine::deleteFromRender() {
