@@ -52,7 +52,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                         } else {
                             renderY = this->pos.y() - canvasBegin.y();
                         }
-                        controllerObservable->onCreatePointOn(&renderX, &renderY, nullptr, vcp[i]->objectEntity->entityByTwoDEntity(vcp[i]->projections[0]->objectEntity));
+                        controllerObservable->onCreatePointOn(&renderX, &renderY, nullptr, vcp[i]->objectEntity->projectedEntity);
                     }
                 } else {
                     qp *qp1 = new qp;
