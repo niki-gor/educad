@@ -17,6 +17,7 @@ class Line;
 class Point;
 class TwoDEntity;
 class TwoDPoint;
+class TwoDLine;
 
 class Entity {
 public:
@@ -85,6 +86,7 @@ public:
     PTR<Point> point1;
     PTR<Point> point2;
     PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
+    PTR<TwoDLine> getProjectionLine(PTR<ProjectionPlane> projectionPlane);
     std::vector<PTR<Entity> > getChildren() const;
 };
 
