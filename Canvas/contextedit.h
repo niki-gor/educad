@@ -15,6 +15,17 @@ private slots:
     void handleLineByTwoPointsButton ();
 };
 
+class PointAndLineContextEdit : public QTextEdit {
+    Q_OBJECT
+private:
+    QPushButton lineByTwoPoints;
+public:
+    PointAndLineContextEdit();
+    QMenu* pointAndLineContextEditWidget;
+private slots:
+    void handleParallelLineThroughPointButton ();
+};
+
 class ContextEdit : public QTextEdit {
 protected:
     QPushButton projectOnPlaneButton;
@@ -26,7 +37,7 @@ protected:
     QPushButton cutButton;
     QPushButton copyButton;
 public:
-        QMenu* contextEditWidget;
+    QMenu* contextEditWidget;
     virtual void handleProjectOnPlaneButton () = 0;
     virtual void handleDrawPerpendicularButton () = 0;
     virtual void handleRenameButton () = 0;

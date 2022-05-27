@@ -74,7 +74,10 @@ public:
     QVector<qp*> getSelectedObjects () {return selectedObjects;}
     ControllerObservable* getControllerObservable () {return controllerObservable;}
     std::tuple<int, int> canvasCoordsToPlaneCoords (int x, int y, PTR<ProjectionPlane>);
+    std::tuple<int,int,int> pointPlaneCoordsToCanvasCoords (qp *object);
+    std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> linePlaneCoordsToCanvasCoords (qp* object);
 private:
+    PointAndLineContextEdit pointAndLineRMB;
     QPoint canvasBegin;
     TwoPointsContextEdit twoPointsRMB;
     int findInSelected (int x, int y);

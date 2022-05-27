@@ -26,6 +26,52 @@ std::tuple<int, int> Canvas::canvasCoordsToPlaneCoords (int x, int y, PTR<Projec
     return result;
 }
 
+std::tuple<int,int,int> Canvas::pointPlaneCoordsToCanvasCoords (qp* object) {
+    int x,y,z;
+    std::tuple<int,int,int> result;
+    x=canvasBegin.x()-object->pos.x();
+    if (object->planeNumber == 2) {
+        y = object->projections[0]->pos.y() - height() / 2;
+        z = height() / 2 - object->pos.y();
+    } else {
+        y = object->pos.y() - height() / 2;
+        z = height() / 2 - object->projections[0]->pos.y();
+    }
+    std::get<0>(result) = x;
+    std::get<1>(result) = y;
+    std::get<2>(result) = z;
+    return result;
+}
+
+std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> Canvas::linePlaneCoordsToCanvasCoords (qp* object) {
+    int x1,y1,z1,x2,y2,z2;
+    std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> result;
+    std::tuple<int,int,int> startPoint;
+    std::tuple<int,int,int> endPoint;
+    x1=canvasBegin.x()-object->pos.x();
+    x2=canvasBegin.x()-object->endpos.x();
+    if (object->planeNumber == 2) {
+        y1 = object->projections[0]->pos.y() - height() / 2;
+        z1 = height() / 2 - object->pos.y();
+        y2 = object->projections[0]->endpos.y() - height() / 2;
+        z2 = height() / 2 - object->endpos.y();
+    } else {
+        y1 = object->pos.y() - height() / 2;
+        z1 = height() / 2 - object->projections[0]->pos.y();
+        y2 = object->endpos.y() - height() / 2;
+        z2 = height() / 2 - object->projections[0]->endpos.y();
+    }
+    std::get<0>(startPoint) = x1;
+    std::get<1>(startPoint) = y1;
+    std::get<2>(startPoint) = z1;
+    std::get<0>(endPoint) = x2;
+    std::get<1>(endPoint) = y2;
+    std::get<2>(endPoint) = z2;
+    std::get<0>(result);
+    std::get<1>(result);
+    return result;
+}
+
 void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
     qp* qp1 = new qp;
     qp1->pos = QPoint(x, y);
@@ -101,7 +147,9 @@ int Canvas::findInSelected(int x, int y) {
 Canvas::Canvas(QWidget *parent, QMainWindow *_parent, ProjectStructureList *_projectStructureList,ControllerObservable* controllerObservable) : QWidget(parent) {
     LineContextEdit lineRMB;
     PointContextEdit pointRMB;
+    pointAndLineRMB.setParent(this);
     twoPointsRMB.setParent(this);
+    pointAndLineRMB.hide();
     twoPointsRMB.hide();
     projectStructureList = _projectStructureList;
     condition = 0;
@@ -381,6 +429,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                     z = height() / 2 - vcp.back()->pos.y();
                 }
                 qp1->projections.append(vcp.back());
+                vcp.back()->projections.append(qp1);
                 printf("I will add this point with coords %d %d %d", qp1->pos.x(), y, z);
                 PTR<Entity> point(new PointByCoords(qp1->pos.x(), y, z));
                 controllerObservable->onAddEntity(point);
@@ -413,6 +462,8 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                     qp1->endpos = this->pos;
                     qp1->qpColor = Qt::black;
                     if (yBlocked == 1) qp1->planeNumber = 2; else qp1->planeNumber = 1;
+                    qp1->projections.append(vcp.back());
+                    vcp.back()->projections.append(qp1);
                     vcp.append(qp1);
                     qp1->needsProjection = false;
                     blocked = false;
@@ -488,6 +539,11 @@ void Canvas::mouseReleaseEvent(QMouseEvent *e) {
         } else if ((selectedObjects.size()==2) && (selectedObjects[0]->objType==POINT) && (selectedObjects[1]->objType==POINT)) {
             twoPointsRMB.twoPointsContextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
             twoPointsRMB.twoPointsContextEditWidget->show();
+        } else if ( (selectedObjects.size()==2) &&
+            (((selectedObjects[0]->objType == POINT) && (selectedObjects[1]->objType==LINE)) || ((selectedObjects[1]->objType == POINT) && (selectedObjects[0]->objType==LINE))) ) {
+            printf ("\n uzbek=%d tadjik=%d\n", selectedObjects[0]->pos.x(), selectedObjects[1]->pos.y());
+            pointAndLineRMB.pointAndLineContextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
+            pointAndLineRMB.pointAndLineContextEditWidget->show();
         }
         //удалить последний элемент линии
         /* */
