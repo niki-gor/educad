@@ -9,7 +9,6 @@
 #include <vector>
 #include "Angem.hpp"
 #include "Renderable.h"
-#include "string"
 
 class ProjectionPlane;
 class Plane;
@@ -17,23 +16,19 @@ class Line;
 class Point;
 class TwoDEntity;
 class TwoDPoint;
-class TwoDLine;
 
 class Entity {
 public:
 //private:
     std::set<PTR<ProjectionPlane> > projections;
     std::set<PTR<TwoDEntity>> twoDProjections;
-    std::vector<PTR<Entity> > childrends;
 //public:
     virtual void update() = 0;
     virtual PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane) = 0;
     void addProjectionPlane(const PTR<ProjectionPlane>& plane){projections.insert(plane);}
     void deleteProjectionPlane(PTR<ProjectionPlane> plane){projections.erase(plane);}
-    virtual std::string type() const = 0;
-    virtual std::vector<PTR<Entity> > getParents();
-    std::vector<PTR<Entity> > getChildren() const{return childrends;}
-    void addChildren(PTR<Entity> children){ childrends.push_back(children);};
+    virtual std::type_index type() const = 0;
+    virtual std::vector<PTR<Entity> > getChildren() const;
 };
 
 namespace Utils{
@@ -42,34 +37,34 @@ namespace Utils{
 
 class Point : public Entity, public AngemPoint {
 public:
-    std::string type() const {return "point";};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane) override;
+    std::type_index type() const final{};
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
     PTR<Point> getProjectionOnLine(const PTR<Line>& line);
     PTR<Point> getProjectionOnPlane(const PTR<Plane>& plane);
     PTR<TwoDPoint> getProjectionPoint(const PTR<ProjectionPlane>& projectionPlane);
     double getDistance(PTR<Point> point);
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 class PointByCoords : public Point {
 public:
-    void update() override {};
+    void update() {};
     PointByCoords(double x, double y, double z);
-    std::vector<PTR<Entity> > getParents(){return {};} ;
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 class PointOnLine : public Point{
 public:
-    void update() override {};
+    void update() {};
     PointOnLine(PTR<Line> line, double x, double y, double z);
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
     PTR<Line> line;
 };
 
 class PointOnPlane : public Point{
     PointOnPlane(PTR<Plane> plane);
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
     PTR<Plane> plane;
-    void update() {};
 };
 
 class PointByLinesIntersection : public Point {
@@ -78,19 +73,18 @@ private:
     PTR<Line> second;
 public:
     void update() {};
-    PointByLinesIntersection(const PTR<Line>& first, const PTR<Line>& second);
-    std::vector<PTR<Entity> > getParents() const;
+    PointByLinesIntersection(PTR<Line> first, PTR<Line> second);
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 
 class Line : public Entity, public AngemLine {
 public:
-    std::string type() const {return "line";};
+    std::type_index type() const override final {};
     PTR<Point> point1;
     PTR<Point> point2;
     PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
-    PTR<TwoDLine> getProjectionLine(PTR<ProjectionPlane> projectionPlane);
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 class LineByTwoPoints : public Line {
@@ -101,18 +95,17 @@ public:
     void update() {};
     LineByTwoPoints();
     LineByTwoPoints(PTR<Point> first, PTR<Point> second);
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 class LineByParallel : public Line {
 private:
     PTR<Point> point;
     PTR<Line> line;
-    void setPoints(AngemPoint point1, AngemPoint point2);
 public:
     void update() {};
     LineByParallel();
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
     LineByParallel(const PTR<Point>& first, const PTR<Line>& second);
 };
 
@@ -123,7 +116,7 @@ private:
 public:
     void update() {};
     LineByPerpendicular();
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
     LineByPerpendicular(const PTR<Point>& point, const PTR<Line>& line);
 };
 
@@ -135,25 +128,26 @@ public:
     void update() {};
     LineByPlanesIntersection();
     LineByPlanesIntersection(PTR<Plane> first, PTR<Plane> second);
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 class LineByParametres: public Line{
 public:
     LineByParametres(double i, double j, double k, double x0, double y0, double z0);
     void update() {};
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 // Planes
 class Plane : public Entity, public AngemPlane {
 public:
-    std::string type() const {return "plane";};
+    std::type_index type() const override final {};
     double getA(){return A;}
     double getB(){return B;}
     double getC(){return C;}
     double getD(){return D;}
-    std::vector<PTR<Entity> > getParents() const;
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane){};
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 class PlaneByThreePoints : public Plane {
@@ -163,8 +157,7 @@ public:
     PTR<Point> third;
     PlaneByThreePoints(PTR<Point> p1, PTR<Point> p2, PTR<Point> p3);
     void update(){};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 class PlaneByPointAndLine : public Plane {
@@ -173,8 +166,7 @@ public:
     PTR<Line> line;
     PlaneByPointAndLine(PTR<Point> p, PTR<Line> l);
     void update(){};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 class PlaneByIntersectingLines : public Plane {
@@ -183,8 +175,7 @@ public:
     PTR<Line> second;
     void update(){};
     PlaneByIntersectingLines(PTR<Line> l, PTR<Line> l1);
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 class PlaneByParallelLines : public Plane {
@@ -193,8 +184,7 @@ public:
     PTR<Line> second;
     PlaneByParallelLines(PTR<Line> l, PTR<Line> l1);
     void update(){};
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane);
-    std::vector<PTR<Entity> > getParents() const;
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 //ProjectionPlane
@@ -211,9 +201,8 @@ public:
     ProjectionPlane(double A, double B, double C, double D);
     void add(PTR<TwoDEntity> object) {projected.insert(object);}
     void erase(PTR<TwoDEntity> object){projected.erase(object);}
-    void update() override{};
-    std::vector<PTR<Entity> > getParents() const {return {};}
-    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane){};
+    void update(){};
+    std::vector<PTR<Entity> > getChildren() const;
 };
 
 class TwoDEntity{
@@ -234,24 +223,18 @@ public:
     TwoDPoint(double x, double y, PTR<ProjectionPlane> plane);
     void render();
     void deleteFromRender();
-
     PTR<Entity> entityByTwoDEntity(PTR<TwoDEntity> secondProjection) override;
 };
 
 class TwoDLine : public TwoDEntity{
 private:
-public:
-    double getA() const;
-
-    double getB() const;
-
-    double getC() const;
-
-private:
     double A;
     double B;
     double C;
 public:
+    double getA(){return A;}
+    double getB(){return B;}
+    double getC(){return C;}
     std::shared_ptr<TwoDPoint> point1;
     std::shared_ptr<TwoDPoint> point2;
     TwoDLine(const std::shared_ptr<TwoDPoint>& point1, const std::shared_ptr<TwoDPoint>& point2, PTR<ProjectionPlane> plane);
@@ -261,17 +244,16 @@ public:
     PTR<Entity> entityByTwoDEntity(PTR<TwoDEntity> secondProjection) override;
 };
 
-class TwoDPlane: public TwoDEntity{
+class TwoDPlane: TwoDEntity{
 private:
     PTR<TwoDLine> line1;
     PTR<TwoDLine> line2;
-    PTR<TwoDPoint> point1;
-    PTR<TwoDPoint> point2;
-    PTR<TwoDPoint> point3;
+    PTR<TwoDPoint> point;
 public:
     TwoDPlane(PTR<TwoDLine> line1_, PTR<TwoDLine> line2_): line1(line1_), line2(line2_){};
-    TwoDPlane(PTR<TwoDLine> line, PTR<TwoDPoint> point_) : line1(line), point1(point_){};
-    TwoDPlane(PTR<TwoDPoint> point1_, PTR<TwoDPoint> point2_ , PTR<TwoDPoint> point3_): point1(point1_), point2(point2_), point3(point3_){};
+    TwoDPlane(PTR<TwoDLine> line, PTR<TwoDPoint> point_) : line1(line), point(point_){}
+
+private:
     void render() override;
 
     void deleteFromRender() override;
