@@ -51,6 +51,10 @@ std::vector<PTR<Entity> > PointOnLine::getParents() const{
     return {line};
 }
 
+std::vector<PTR<Entity> > PointOnPlane::getParents() const {
+    return {plane};
+}
+
 PointOnPlane::PointOnPlane(PTR<Plane> plane, double* x, double* y, double* z){
     AngemPoint p = AngemUtils::pointOnPlane(*plane, x, y, z);
     this->x = p.x;
@@ -58,4 +62,5 @@ PointOnPlane::PointOnPlane(PTR<Plane> plane, double* x, double* y, double* z){
     this->z = p.z;
     this->plane = plane;
 }
+
 

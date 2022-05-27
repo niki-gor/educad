@@ -422,7 +422,6 @@ AngemPoint AngemUtils::getProjectionOnPlane(AngemPlane pl, AngemPoint p){
     AngemLine perpendicular = getPerpendicularLine(p, pl);
     return planeLineIntersection(pl, perpendicular);
 }
-
 AngemPoint AngemUtils::getProjectionOnLine(AngemLine l, AngemPoint p){
     if( isPointOnLine(l, p) ){
         return p;

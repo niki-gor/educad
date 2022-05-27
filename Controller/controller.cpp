@@ -25,7 +25,7 @@ void Controller::onAddEntity(PTR<Entity> entity) {
 
 void Controller::onDeleteEntity(PTR<Entity> entity) {
 //    lineWorker->DeleteEntity(entity);
-//    disRenderEntity(entity);
+    disRenderEntity(entity);
 }
 
 void Controller::disRenderEntity(PTR<Entity> entity) {

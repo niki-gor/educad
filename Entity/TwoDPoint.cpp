@@ -21,7 +21,8 @@ void TwoDPoint::render() {
 }
 
 void TwoDPoint::deleteFromRender() {
-
+    //гоша сделает
+//renderable->addPoint()
 }
 
 PTR<Entity> TwoDPoint::entityByTwoDEntity(PTR<TwoDEntity> secondProjection) {
