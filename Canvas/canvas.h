@@ -49,6 +49,7 @@ enum ObjectType {
 
 struct qp //структура для хранения координаты при рисовании
 {
+    PTR<TwoDEntity> objectEntity;
     QPoint pos;
     QPoint endpos;
     ObjectType objType;

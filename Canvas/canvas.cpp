@@ -10,7 +10,10 @@
 //#include "QDesktopWidget"
 #include "utils.h"
 #include "Entity.hpp"
+#include <memory>
 #include <tuple>
+
+#define EPS 1e-7
 
 std::tuple<int, int> Canvas::canvasCoordsToPlaneCoords (int x, int y, PTR<ProjectionPlane> projectionPlane) {
     std::tuple <int, int> result;
@@ -129,6 +132,16 @@ int Canvas::findInVcp(int x, int y) {
         if (((vcp[i]->pos.x() >= x - 4) && (vcp[i]->pos.x() <= x + 4))
             && ((vcp[i]->pos.y() >= y - 4) && (vcp[i]->pos.y() <= y + 4))) {
             return i;
+        }
+        if (vcp[i]->objType==LINE) {
+            PTR<TwoDLine> currLine =  std::dynamic_pointer_cast<TwoDLine>(vcp[i]->objectEntity);
+            if (this->pos.y()<height()/2) y = height()/2-y; else y = y-height()/2;
+            x = this->width() - x;
+            printf ("\nPosition in this system: %d %d\n", x, y);
+            printf ("\nPosition of line in this system: %d %d\n",currLine->point1->X, currLine->point1->Y,currLine->point2->X, currLine->point2->Y);
+            if ((abs(currLine->getA()*x+currLine->getB()*y+currLine->getC()) - EPS) <= 0) {
+                return i;
+            }
         }
     }
     return -1;
@@ -312,6 +325,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
         }
         if (condition == 1) {
             if (!blocked) {
+                int y;
                 qp* qp1 = new qp;
                 qp1->pos = this->pos;
                 qp1->objType = POINT;
@@ -321,6 +335,14 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                 inputNameWindow.exec();
                 qp1->qpName = inputNameWindow.getInput();
                 if (qp1->pos.y() < height() / 2) qp1->planeNumber = 2; else qp1->planeNumber = 1;
+                PTR <ProjectionPlane> plane;
+                if (qp1->planeNumber == 2) {
+                    y = qp1->pos.y() - height() / 2;
+                } else {
+                    y = qp1->pos.y() + height() / 2;
+                }
+                PTR<TwoDEntity> twoDPoint(new TwoDPoint (qp1->pos.x(), y, plane));
+                qp1->objectEntity=twoDPoint;
                 vcp.append(qp1); //добавили в массив для рисования
                 blocked = true;
                 xBlocked = qp1->pos.x();
@@ -336,17 +358,22 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                 qp1->qpName = vcp.back()->qpName;
                 int y, z;
                 if (yBlocked == 1) qp1->planeNumber = 2; else qp1->planeNumber = 1;
+                PTR <ProjectionPlane> plane;
+                PTR<TwoDEntity> twoDPoint;
                 if (qp1->planeNumber == 2) {
                     y = vcp.back()->pos.y() - height() / 2;
                     z = height() / 2 - qp1->pos.y();
+                    twoDPoint = std::make_shared<TwoDPoint>(qp1->pos.x(), z, plane);
                 } else {
                     y = qp1->pos.y() - height() / 2;
                     z = height() / 2 - vcp.back()->pos.y();
+                    twoDPoint = std::make_shared<TwoDPoint>(qp1->pos.x(), y, plane);
                 }
                 qp1->projections.append(vcp.back());
+                PTR<Entity> point(new PointByCoords(qp1->pos.x(), y, z));
                 vcp.back()->projections.append(qp1);
                 printf("I will add this point with coords %d %d %d", qp1->pos.x(), y, z);
-                PTR<Entity> point(new PointByCoords(qp1->pos.x(), y, z));
+                qp1->objectEntity=twoDPoint;
                 controllerObservable->onAddEntity(point);
                 vcp.append(qp1);
                 blocked = false;
@@ -379,6 +406,27 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                     if (yBlocked == 1) qp1->planeNumber = 2; else qp1->planeNumber = 1;
                     qp1->projections.append(vcp.back());
                     vcp.back()->projections.append(qp1);
+                    PTR <ProjectionPlane> plane;
+                    std::tuple lineCoords = linePlaneCoordsToCanvasCoords(qp1);
+                    std::tuple lineBegin = std::get<0>(lineCoords);
+                    std::tuple lineEnd = std::get<1>(lineCoords);
+                    int lineBeginX = std::get<0>(lineBegin); int lineBeginY = std::get<1>(lineBegin); int lineBeginZ = std::get<2>(lineBegin);
+                    int lineEndX = std::get<0>(lineEnd); int lineEndY = std::get<1>(lineEnd); int lineEndZ = std::get<2>(lineEnd);
+                    PTR<TwoDPoint> twoDLineBegin;
+                    PTR<TwoDPoint> twoDLineEnd;
+                    if (qp1->planeNumber==1) {
+                        twoDLineBegin = std::make_shared<TwoDPoint>(lineBeginX, lineBeginY, plane);
+                        twoDLineEnd = std::make_shared<TwoDPoint>(lineEndX, lineEndY, plane);
+                    } else {
+                        twoDLineBegin = std::make_shared<TwoDPoint>(lineBeginX, lineBeginZ, plane);
+                        twoDLineEnd = std::make_shared<TwoDPoint>(lineBeginX, lineBeginZ, plane);
+                    }
+                    PTR<TwoDEntity> twoDLine (new TwoDLine(twoDLineBegin, twoDLineEnd, plane));
+                    qp1->objectEntity=twoDLine;
+                    PTR<Point> lineBeginPoint (new PointByCoords(lineBeginX, lineBeginY, lineBeginZ));
+                    PTR<Point> lineEndPoint (new PointByCoords(lineEndX, lineEndY, lineEndZ));
+                    PTR<Entity> line (new LineByTwoPoints(lineBeginPoint, lineEndPoint));
+                    controllerObservable->onAddEntity(line);
                     vcp.append(qp1);
                     qp1->needsProjection = false;
                     blocked = false;
@@ -406,6 +454,23 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                     qp1->endpos = this->pos;
                     if (yBlocked == 1) qp1->planeNumber = 2; else qp1->planeNumber = 1;
                     qp1->needsProjection = true;
+                    PTR <ProjectionPlane> plane;
+                    int lineBeginX = qp1->pos.x();
+                    int lineEndX = qp1->endpos.x();
+                    PTR<TwoDPoint> twoDLineBegin;
+                    PTR<TwoDPoint> twoDLineEnd;
+                    int lineBeginY, lineEndY;
+                    if (qp1->planeNumber==1) {
+                        lineBeginY = qp1->pos.y()-height()/2;
+                        lineEndY = qp1->endpos.y()-height()/2;
+                    } else {
+                        lineBeginY =  height()/2 - qp1->pos.y();
+                        lineEndY =  height()/2 - qp1->endpos.y();
+                    }
+                    twoDLineBegin = std::make_shared<TwoDPoint>(lineBeginX, lineBeginY, plane);
+                    twoDLineEnd = std::make_shared<TwoDPoint>(lineEndX, lineEndY, plane);
+                    PTR<TwoDEntity> twoDLine (new TwoDLine(twoDLineBegin, twoDLineEnd, plane));
+                    qp1->objectEntity=twoDLine;
                     vcp.append(qp1);
                     xBlocked = qp1->pos.x();
                     yBlocked = qp1->planeNumber;
