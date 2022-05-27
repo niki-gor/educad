@@ -52,7 +52,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                         } else {
                             renderY = this->pos.y() - canvasBegin.y();
                         }
-                        controllerObservable->onCreatePointOn(&renderX, &renderY, nullptr, vcp[i]->objectEntity->projectedEntity);
+                        controllerObservable->onCreatePointOn(new double(renderX), new double(renderY), nullptr, vcp[i]->objectEntity->projectedEntity);
                     }
                 } else {
                     qp *qp1 = new qp;
@@ -102,6 +102,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                 qp1->projections.append(vcp.back());
                 PTR<Entity> point(new PointByCoords(qp1->pos.x(), y, z));
                 vcp.back()->projections.append(qp1);
+                twoDPoint->projectedEntity = point;
                 qp1->objectEntity=twoDPoint;
                 controllerObservable->onAddEntity(point);
                 vcp.append(qp1);
@@ -151,10 +152,11 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                         twoDLineEnd = std::make_shared<TwoDPoint>(lineBeginX, lineBeginZ, plane);
                     }
                     PTR<TwoDEntity> twoDLine (new TwoDLine(twoDLineBegin, twoDLineEnd, plane));
-                    qp1->objectEntity=twoDLine;
                     PTR<Point> lineBeginPoint (new PointByCoords(lineBeginX, lineBeginY, lineBeginZ));
                     PTR<Point> lineEndPoint (new PointByCoords(lineEndX, lineEndY, lineEndZ));
                     PTR<Entity> line (new LineByTwoPoints(lineBeginPoint, lineEndPoint));
+                    twoDLine->projectedEntity = line;
+                    qp1->objectEntity=twoDLine;
                     controllerObservable->onAddEntity(line);
                     vcp.append(qp1);
                     qp1->needsProjection = false;

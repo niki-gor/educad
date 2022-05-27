@@ -39,6 +39,7 @@ void Render::addEntity(const PTR<Entity>& entity) {
     for(const auto& it:entity->projections){
         PTR<TwoDEntity> projectedEntity = entity->getProjection(it);
         it->add(projectedEntity);
+        projectedEntity->projectedEntity = it;
         observer->onAddToProjectionPlane(projectedEntity);
         planes.insert(it);
     }
