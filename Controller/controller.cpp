@@ -37,6 +37,8 @@ bool Controller::onCreatePerpendicular(PTR<Entity> point, PTR<Entity> line) {
         PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
         PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
         PTR<Line> perpendicularLine(new LineByPerpendicular(pointCast, lineCast));
+        perpendicularLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
+        perpendicularLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
         addToModel(perpendicularLine);
         renderEntity(perpendicularLine);
         return true;
@@ -49,6 +51,8 @@ bool Controller::onCreateParallelLine(PTR<Entity> line, PTR<Entity> point) {
         PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
         PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
         PTR<Line> parallelLine(new LineByParallel(pointCast, lineCast));
+        parallelLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
+        parallelLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
         addToModel(parallelLine);
         renderEntity(parallelLine);
     }
