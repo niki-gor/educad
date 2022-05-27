@@ -15,6 +15,7 @@
 #include "contextedit.h"
 #include "../ControllerObservable/ControllerObservable.h"
 #include "Renderable.h"
+#include "QApplication"
 
 class InputName : public QDialog {
     Q_OBJECT

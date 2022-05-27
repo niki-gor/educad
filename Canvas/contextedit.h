@@ -23,6 +23,7 @@ public:
     PointAndLineContextEdit();
     QMenu* pointAndLineContextEditWidget;
 private slots:
+    void handlePerpendicularFromPointToLineButton();
     void handleParallelLineThroughPointButton ();
 };
 

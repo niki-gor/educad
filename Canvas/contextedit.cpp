@@ -150,7 +150,31 @@ PointAndLineContextEdit::PointAndLineContextEdit () {
     QAction* paralellLineThroughPointAction = new QAction(tr("Построить параллельную прямую через точку"), this);
     connect(paralellLineThroughPointAction, SIGNAL(triggered()), this, SLOT(handleParallelLineThroughPointButton()));
     pointAndLineContextEditWidget->addAction(paralellLineThroughPointAction);
+    QAction* perpendicularFromPointToLineAction = new QAction(tr("Построить перпендикуляр к прямой из точки"), this);
+    connect(perpendicularFromPointToLineAction, SIGNAL(triggered()), this, SLOT(handlePerpendicularFromPointToLineButton()));
+    pointAndLineContextEditWidget->addAction(perpendicularFromPointToLineAction);
     // connect(&act, &QPushButton::released, this, &TwoPointsContextEdit::handleLineByTwoPointsButton);
+}
+
+void PointAndLineContextEdit::handlePerpendicularFromPointToLineButton() {
+    Canvas* cnv = dynamic_cast<Canvas*>(parent());
+    QVector <qp*> objectsToWork = cnv->getSelectedObjects();
+    //QVector <qp*> selectedObjects = cnv->getSelectedObjects();
+    if (objectsToWork[0]->objType==LINE) {
+        std::swap(objectsToWork[0], objectsToWork[1]);
+    }
+    std::tuple pointCoords = cnv->pointPlaneCoordsToCanvasCoords(objectsToWork[0]);
+    std::tuple lineCoords = cnv->linePlaneCoordsToCanvasCoords(objectsToWork[1]);
+    std::tuple lineBegin = std::get<0>(lineCoords);
+    std::tuple lineEnd = std::get<1>(lineCoords);
+    int pointX = std::get<0>(pointCoords); int pointY = std::get<1>(pointCoords); int pointZ = std::get<2>(pointCoords);
+    int lineBeginX = std::get<0>(lineBegin); int lineBeginY = std::get<1>(lineBegin); int lineBeginZ = std::get<2>(lineBegin);
+    int lineEndX = std::get<0>(lineEnd); int lineEndY = std::get<1>(lineEnd); int lineEndZ = std::get<2>(lineEnd);
+    PTR<Entity> point (new PointByCoords(pointX, pointY, pointZ));
+    PTR<Point> baseLineBegin (new PointByCoords (lineBeginX, lineBeginY, lineBeginZ));
+    PTR<Point> baseLineEnd (new PointByCoords (lineEndX, lineEndY, lineEndZ));
+    PTR<Entity> baseLine (new LineByTwoPoints(baseLineBegin, baseLineEnd));
+    cnv->getControllerObservable()->onCreatePerpendicular(point, baseLine);
 }
 
 void PointContextEdit::handleProjectOnPlaneButton() {
