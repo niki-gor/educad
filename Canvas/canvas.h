@@ -16,6 +16,19 @@
 #include "../ControllerObservable/ControllerObservable.h"
 #include "Renderable.h"
 #include "QApplication"
+#include "QPicture"
+#include "QBrush"
+#include "QBoxLayout"
+#include "QPushButton"
+#include "QCursor"
+#include "QPainterPath"
+#include "QMenu"
+#include "QApplication"
+#include "utils.h"
+#include "Entity.hpp"
+#include <memory>
+#include <tuple>
+
 
 class InputName : public QDialog {
     Q_OBJECT

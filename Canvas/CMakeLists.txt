@@ -27,7 +27,7 @@ find_package(Qt6 COMPONENTS
 set(CANVAS_LIBRARIES ${PROJECT_NAME} PARENT_SCOPE)
 set(CANVAS_INCLUDE_DIRS ${INCLUDE_DIRS} PARENT_SCOPE)
 
-add_library(${THIS_LIB_NAME}  ${SOURCES} canvasMoveMouse.cpp)
+add_library(${THIS_LIB_NAME}  ${SOURCES} canvasMoveMouse.cpp canvasPaint.cpp)
 
 target_link_libraries(CANVAS PUBLIC ${ENTITY_LIBRARIES} ${RENDERABLE_ENTITY_LIBRARIES} Qt6::Core Qt6::Gui Qt6::Widgets)
 target_include_directories(CANVAS PUBLIC ${ENTITY_INCLUDE_DIRS} ${RENDERABLE_ENTITY_INCLUDE_DIRS})
