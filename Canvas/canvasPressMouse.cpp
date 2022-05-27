@@ -158,6 +158,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                     PTR<Entity> line (new LineByTwoPoints(lineBeginPoint, lineEndPoint));
                     twoDLine->projectedEntity = line;
                     qp1->objectEntity=twoDLine;
+                    vcp.back()->objectEntity->projectedEntity=line;
                     controllerObservable->onAddEntity(line);
                     vcp.append(qp1);
                     qp1->needsProjection = false;
