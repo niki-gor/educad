@@ -27,12 +27,16 @@ PointByCoords::PointByCoords(double x, double y, double z){
 }
 
 PointByLinesIntersection::PointByLinesIntersection(const PTR<Line>& first, const PTR<Line>& second) {
-    first->addChildren(PTR<Entity>(this));
-    first->addChildren(PTR<Entity>(this));
+//    first->addChildren(PTR<Entity>(this));
+//    first->addChildren(PTR<Entity>(this));
     AngemPoint p = AngemUtils::linesIntersection(*first, *second);
     x = p.x;
     y = p.y;
     z = p.z;
+}
+
+PointOnLine::PointOnLine(PTR<Line> l1, double x, double y, double z){
+//    line->addChildren(PTR<Entity>(this));
 }
 
 std::vector<PTR<Entity> > PointByLinesIntersection::getParents() const{
@@ -41,10 +45,6 @@ std::vector<PTR<Entity> > PointByLinesIntersection::getParents() const{
 
 std::vector<PTR<Entity> > PointOnLine::getParents() const{
     return {line};
-}
-
-PointOnLine::PointOnLine(PTR<Line> l1, double x, double y, double z){
-    line->addChildren(PTR<Entity>(this));
 }
 
 std::vector<PTR<Entity> > PointOnPlane::getParents() const{
