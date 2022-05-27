@@ -339,23 +339,23 @@ AngemPoint AngemUtils::pointOnLine(AngemLine l, double* x, double* y, double* z)
     if(x == nullptr){
         assert(j != 0 || k != 0 );
         if(j){
-            *x = (*y*i-y0*i + x0*j)/j;
+            x = new double( (*y*i-y0*i + x0*j)/j);
         } else {
-            *x = (*z*i-z0*i + x0*k)/k;
+            x = new double( (*z*i-z0*i + x0*k)/k);
         }
     } else if(y == nullptr){
         assert(i != 0 || k != 0 );
         if(i){
-            *y = (*x*j-x0*j + y0*i)/i;
+            y = new double((*x*j-x0*j + y0*i)/i);
         } else {
-            *y = (*z*j-z0*j + y0*k)/k;
+            y =new double( (*z*j-z0*j + y0*k)/k);
         }
     } else {
         assert(i != 0 || j != 0 );
         if(i){
-            *z = (*x*k-x0*k + z0*i)/i;
+            z = new double((*x*k-x0*k + z0*i)/i);
         } else {
-            *z = (*y*k-y0*k + z0*j)/j;
+            z = new double ((*y*k-y0*k + z0*j)/j);
         }
     }
     return AngemPoint(*x,*y,*z);
