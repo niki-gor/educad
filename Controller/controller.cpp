@@ -111,9 +111,9 @@ bool Controller::onCreatePlaneByParallels(PTR<Entity> line1, PTR<Entity> line2) 
     if (line1->type() == "line" && line2->type() == "line"){
         PTR<Line> line1Cast = std::dynamic_pointer_cast<Line>(line1);
         PTR<Line> line2Cast = std::dynamic_pointer_cast<Line>(line2);
-        PTR<Plane> planeByThreePoints(new PlaneByParallelLines(line1Cast, line2Cast));
-        addToModel(planeByThreePoints);
-        renderEntity(planeByThreePoints);
+        PTR<Plane> plane(new PlaneByParallelLines(line1Cast, line2Cast));
+        addToModel(plane);
+        renderEntity(plane);
     }
     return false;
 }
@@ -122,9 +122,9 @@ bool Controller::onCreatePlaneByIntersecting(PTR<Entity> line1, PTR<Entity> line
     if (line1->type() == "line" && line2->type() == "line"){
         PTR<Line> line1Cast = std::dynamic_pointer_cast<Line>(line1);
         PTR<Line> line2Cast = std::dynamic_pointer_cast<Line>(line2);
-        PTR<Plane> planeByThreePoints(new PlaneByIntersectingLines(line1Cast, line2Cast));
-        addToModel(planeByThreePoints);
-        renderEntity(planeByThreePoints);
+        PTR<Plane> plane(new PlaneByIntersectingLines(line1Cast, line2Cast));
+        addToModel(plane);
+        renderEntity(plane);
     }
     return false;
 }
@@ -133,11 +133,11 @@ bool Controller::onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) {
     if (point->type() == "point" && line->type() == "line"){
         PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
         PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
-        PTR<Plane> planeByThreePoints(new PlaneByPointAndLine(pointCast, lineCast));
-        planeByThreePoints->addProjectionPlane(MAKEPTR<ProjectionPlane> (oxy));
-        planeByThreePoints->addProjectionPlane(MAKEPTR<ProjectionPlane> (oxz));
-        addToModel(planeByThreePoints);
-        renderEntity(planeByThreePoints);
+        PTR<Plane> plane(new PlaneByPointAndLine(pointCast, lineCast));
+        plane->addProjectionPlane(MAKEPTR<ProjectionPlane> (oxy));
+        plane->addProjectionPlane(MAKEPTR<ProjectionPlane> (oxz));
+        addToModel(plane);
+        renderEntity(plane);
     }
     return false;
 }
