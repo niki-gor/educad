@@ -7,21 +7,26 @@ void Canvas::mouseMoveEvent(QMouseEvent *event) {
     int scrHeight = rec.height();
     int scrWidth = rec.width();
     int xDefault = scrWidth / 4;
-    int yDefault =  scrHeight * 556 / 10000 * 9/10 + QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight);
+    int yDefault = scrHeight * 556 / 10000 * 9 / 10 + QApplication::style()->pixelMetric(QStyle::PM_TitleBarHeight);
     if (!blocked) {
         int index = findInVcp(this->pos.x(), this->pos.y());
         if (index >= 0) {
-            qp* temp = vcp[index];
+            qp *temp = vcp[index];
             temp->qpColor = Qt::blue;
             selected = temp->objType;
             vcp.remove(index);
             vcp.append(temp);
-            selectedIndex = vcp.size()-1;
+            selectedIndex = vcp.size() - 1;
         } else {
             selected = NOTHING;
-            if (selectedIndex!=-1)
-                if (!vcp[selectedIndex]->isSelected) vcp[selectedIndex]->qpColor=Qt::black;
-            selectedIndex=-1;
+            if (selectedIndex != -1)
+                if (!vcp[selectedIndex]->isSelected) {
+                    if (vcp[selectedIndex]->needsProjection)
+                        vcp[selectedIndex]->qpColor = Qt::red;
+                    else
+                        vcp[selectedIndex]->qpColor = Qt::black;
+                }
+            selectedIndex = -1;
         }
         //обновить экран
         this->update();

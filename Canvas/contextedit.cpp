@@ -145,6 +145,13 @@ TwoPointsContextEdit::TwoPointsContextEdit () {
    // connect(&act, &QPushButton::released, this, &TwoPointsContextEdit::handleLineByTwoPointsButton);
 }
 
+UnfinishedPointContextEdit::UnfinishedPointContextEdit() {
+    unfinishedPointContextEditWidget = new QMenu();
+    QAction* dontProjectAction = new QAction(tr("Не проецировать"), this);
+    connect(dontProjectAction, SIGNAL(triggered()), this, SLOT(handleDontProjectButon()));
+    unfinishedPointContextEditWidget->addAction(dontProjectAction);
+}
+
 PointAndLineContextEdit::PointAndLineContextEdit () {
     pointAndLineContextEditWidget = new QMenu ();
     QAction* paralellLineThroughPointAction = new QAction(tr("Построить параллельную прямую через точку"), this);
@@ -234,3 +241,7 @@ void PointContextEdit::handleCopyButton () {
 
 }
 
+void UnfinishedPointContextEdit::handleDontProjectButon() {
+    Canvas* cnv = dynamic_cast<Canvas*>(parent());
+    cnv->unlock();
+}

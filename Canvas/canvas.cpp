@@ -66,6 +66,7 @@ void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y
     qp* qp1 = new qp;
     deletePoint(x,y, xBegin, yBegin, planeNumber, "uzbek");
     deleteLine(x1,y1, x2,y2, xBegin, yBegin, planeNumber, "uzbek");
+    printf ("\n%d\n", planeNumber);
     x = canvasBegin.x() - x;
     x1 = canvasBegin.x()-x1;
     x2 = canvasBegin.x()-x2;
@@ -186,8 +187,10 @@ int Canvas::findInSelected(int x, int y) {
 Canvas::Canvas(QWidget *parent, QMainWindow *_parent, ProjectStructureList *_projectStructureList,ControllerObservable* controllerObservable) : QWidget(parent) {
     LineContextEdit lineRMB;
     PointContextEdit pointRMB;
+    oneProjectionRMB.setParent(this);
     pointAndLineRMB.setParent(this);
     twoPointsRMB.setParent(this);
+    oneProjectionRMB.hide();
     pointAndLineRMB.hide();
     twoPointsRMB.hide();
     projectStructureList = _projectStructureList;
@@ -219,6 +222,10 @@ void Canvas::mouseReleaseEvent(QMouseEvent *e) {
         int scrWidth = rec.width();
         int xDefault = scrWidth / 4;
         int yDefault = scrHeight * 555 / 10000 + scrWidth * 35 / 1800;
+        if ((blocked) && ((condition==1) || (condition==2)) ) {
+            oneProjectionRMB.unfinishedPointContextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
+            oneProjectionRMB.unfinishedPointContextEditWidget->show();
+        }
         if (selected == POINT) {
             pointRMB.contextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
             pointRMB.contextEditWidget->show();
@@ -254,8 +261,9 @@ void Canvas::deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, 
     }  else {
         y = canvasBegin.y() - y;
     }
+    printf ("\ndeleting point with pos %d %d\n ", x,y);
     for (int i=0; i<vcp.size(); i++) {
-        if (vcp[i]->pos == QPoint (x,y)) {
+        if ((abs(vcp[i]->pos.x()-x)<=1) && (abs(vcp[i]->pos.y()-y)<=1)) {
             printf ("found");
             vcp.erase(vcp.begin()+i);
         }
@@ -264,7 +272,6 @@ void Canvas::deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, 
 }
 
 void Canvas::deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
-    printf ("deleting line %c", name[0]);
     x1 = canvasBegin.x() - x1;
     x2 = canvasBegin.x() - x2;
     if (planeNumber==1) {
@@ -274,8 +281,10 @@ void Canvas::deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, 
         y1 = canvasBegin.y()-y1;
         y2 = canvasBegin.y()-y2;
     }
+    printf ("\ndeleting line with pos %d %d %d %d\n ", x1, y1, x2, y2);
     for (int i=0; i<vcp.size(); i++) {
-        if ((vcp[i]->pos == QPoint (x1,y1)) && ((vcp[i]->endpos == QPoint (x2,y2)))) {
+        printf ("\nfound line with pos %d %d %d %d \n", vcp[i]->pos.x(), vcp[i]->pos.y(), vcp[i]->endpos.x(), vcp[i]->endpos.y());
+        if (((abs(vcp[i]->pos.x()-x1)<=1) && (abs(vcp[i]->pos.y()-y1)<=1)) && ((abs(vcp[i]->endpos.x()-x2)<=1) && (abs(vcp[i]->endpos.y()-y2)<=1)))  {
             printf ("found");
             vcp.erase(vcp.begin()+i);
         }

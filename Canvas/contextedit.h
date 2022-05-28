@@ -4,6 +4,15 @@
 #include <QPushButton>
 #include <QTextEdit>
 
+class UnfinishedPointContextEdit : public QTextEdit {
+    Q_OBJECT;
+public:
+    UnfinishedPointContextEdit();
+    QMenu* unfinishedPointContextEditWidget;
+private slots:
+    void handleDontProjectButon();
+};
+
 class TwoPointsContextEdit : public QTextEdit {
     Q_OBJECT
 private:
