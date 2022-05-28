@@ -30,6 +30,14 @@ public:
     void onDeleteEntity(PTR<Entity> entity) override;
 
     bool onCreatePointOn(double* x, double * y, double * z, PTR<Entity> line) override;
+
+    bool onCreatePlaneByThreePoints(PTR<Entity> point1, PTR<Entity> point2, PTR<Entity> point3) override;
+
+    bool onCreatePlaneByParallels(PTR<Entity> line1, PTR<Entity> line2) override;
+
+    bool onCreatePlaneByIntersecting(PTR<Entity> line1, PTR<Entity> line2) override;
+
+    bool onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) override;
 };
 
 #endif //EDUCAD_CONTROLLER_H

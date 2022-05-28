@@ -6,6 +6,7 @@
 #include "iostream"
 #include "controller.h"
 #include "../ControllerObservable/ControllerObservable.h"
+#include "vector"
 
 PTR<ProjectionPlane> oxy(new ProjectionPlane(0, 0, 1, 0));
 PTR<ProjectionPlane> oxz(new ProjectionPlane(1, 0, 0, 0));
@@ -33,14 +34,17 @@ public:
 
 class UI : public Renderable{
     ControllerObservable* controller;
+    std::vector<PTR<TwoDEntity>> allProjected;
 public:
     std::vector<PTR<TwoDEntity>> objectOnScreens;
     void clickMouse(int x, int y, PTR<ProjectionPlane> projectionPlane){
-        if (projectionPlane == oxy){
-            addPoint(x, y, 0, 0, 1, "point1");
-        }
-        else{
-            addPoint(x, y, 0, 0, 2, "point1");
+        PTR<TwoDEntity> point(new TwoDPoint(x, y, projectionPlane));
+        allProjected.push_back(point);
+    }
+
+    void addProjection(int xCurr, int yCurr, int xProj, int yProj, PTR<ProjectionPlane>currProjectionPlane, PTR<ProjectionPlane> projProjectionPlane){
+        for (int i = 0; i < allProjected.size(); ++i) {
+//            if (allProjected[i]->)
         }
     }
     void doubleClickMouse(){
@@ -55,22 +59,12 @@ public:
 
 private:
     void addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) override {
-        PTR<ProjectionPlane> plane;
-        if (planeNumber == 1){
-            plane = oxy;
-        }
-        else{
-            plane = oxz;
-        }
-        PTR<TwoDEntity> point(new TwoDPoint(x, y, plane));
-        PTR<Renderable> renderable;
-        renderable.reset(this);
-        point->setRenderable(renderable);
-        objectOnScreens.push_back(point);
     }
 
     void addLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) override {
+    }
 
+    void addPlane(){
     }
 };
 

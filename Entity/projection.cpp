@@ -63,7 +63,7 @@ PTR<TwoDEntity> PlaneByThreePoints::getProjection(PTR<ProjectionPlane> projectio
     PTR<TwoDPoint> point2Projected = second->getProjectionPoint(projectionPlane);
     PTR<TwoDPoint> point3Projected = third->getProjectionPoint(projectionPlane);
     PTR<TwoDEntity> projectedEntity(new TwoDPlane(point1Projected, point2Projected, point3Projected));
-    projectedEntity->projectedEntity.reset(this);
+//    projectedEntity->projectedEntity.reset(this);
     return projectedEntity;
 }
 
@@ -78,7 +78,7 @@ PTR<TwoDEntity> PlaneByIntersectingLines::getProjection(PTR<ProjectionPlane> pro
     PTR<TwoDLine> line1Projected = first->getProjectionLine(projectionPlane);
     PTR<TwoDLine> line2Projected = second->getProjectionLine(projectionPlane);
     PTR<TwoDEntity> projectedEntity(new TwoDPlane(line1Projected, line2Projected));
-    projectedEntity->projectedEntity.reset(this);
+//    projectedEntity->projectedEntity.reset(this);
     return projectedEntity;
 }
 
@@ -86,7 +86,7 @@ PTR<TwoDEntity> PlaneByParallelLines::getProjection(PTR<ProjectionPlane> project
     PTR<TwoDLine> line1Projected = first->getProjectionLine(projectionPlane);
     PTR<TwoDLine> line2Projected = second->getProjectionLine(projectionPlane);
     PTR<TwoDEntity> projectedEntity(new TwoDPlane(line1Projected, line2Projected));
-    projectedEntity->projectedEntity.reset(this);
+//    projectedEntity->projectedEntity.reset(this);
     return projectedEntity;
 }
 

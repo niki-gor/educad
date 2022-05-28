@@ -94,3 +94,48 @@ bool Controller::onCreatePointOn(double* x, double* y, double* z, PTR<Entity> en
     }
     return false;
 }
+
+bool Controller::onCreatePlaneByThreePoints(PTR<Entity> point1, PTR<Entity> point2, PTR<Entity> point3) {
+    if (point1->type() == "point" && point2->type() == "point" && point3->type() == "point"){
+        PTR<Point> point1Cast = std::dynamic_pointer_cast<Point>(point1);
+        PTR<Point> point2Cast = std::dynamic_pointer_cast<Point>(point2);
+        PTR<Point> point3Cast = std::dynamic_pointer_cast<Point>(point3);
+        PTR<Plane> planeByThreePoints(new PlaneByThreePoints(point1Cast, point2Cast, point3Cast));
+        addToModel(planeByThreePoints);
+        renderEntity(planeByThreePoints);
+    }
+    return false;
+}
+
+bool Controller::onCreatePlaneByParallels(PTR<Entity> line1, PTR<Entity> line2) {
+    if (line1->type() == "line" && line2->type() == "line"){
+        PTR<Line> line1Cast = std::dynamic_pointer_cast<Line>(line1);
+        PTR<Line> line2Cast = std::dynamic_pointer_cast<Line>(line2);
+        PTR<Plane> planeByThreePoints(new PlaneByParallelLines(line1Cast, line2Cast));
+        addToModel(planeByThreePoints);
+        renderEntity(planeByThreePoints);
+    }
+    return false;
+}
+
+bool Controller::onCreatePlaneByIntersecting(PTR<Entity> line1, PTR<Entity> line2) {
+    if (line1->type() == "line" && line2->type() == "line"){
+        PTR<Line> line1Cast = std::dynamic_pointer_cast<Line>(line1);
+        PTR<Line> line2Cast = std::dynamic_pointer_cast<Line>(line2);
+        PTR<Plane> planeByThreePoints(new PlaneByIntersectingLines(line1Cast, line2Cast));
+        addToModel(planeByThreePoints);
+        renderEntity(planeByThreePoints);
+    }
+    return false;
+}
+
+bool Controller::onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) {
+    if (point->type() == "line" && line->type() == "point"){
+        PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(line);
+        PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(point);
+        PTR<Plane> planeByThreePoints(new PlaneByPointAndLine(pointCast, lineCast));
+        addToModel(planeByThreePoints);
+        renderEntity(planeByThreePoints);
+    }
+    return false;
+}
