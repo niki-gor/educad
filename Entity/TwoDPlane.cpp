@@ -59,3 +59,5 @@ void TwoDPlane::setProjected(PTR<Entity> entity) {
 PTR<Entity> TwoDPlane::entityByTwoDEntity(PTR<TwoDEntity> secondProjection) {
     return PTR<Entity>();
 }
+
+

@@ -71,6 +71,9 @@ PTR<TwoDEntity> PlaneByPointAndLine::getProjection(PTR<ProjectionPlane> projecti
     PTR<TwoDPoint> pointProjected = point->getProjectionPoint(projectionPlane);
     PTR<TwoDLine> lineProjected = line->getProjectionLine(projectionPlane);
     PTR<TwoDEntity> projectedEntity(new TwoDPlane(lineProjected, pointProjected));
+    pointProjected->projectionPlane = projectionPlane;
+    lineProjected->projectionPlane = projectionPlane;
+    projectedEntity->projectionPlane = projectionPlane;
     return projectedEntity;
 }
 

@@ -223,6 +223,8 @@ public:
     virtual void render() = 0;
     virtual void deleteFromRender() = 0;
     void setRenderable(PTR<Renderable> renderable_);
+    virtual void setProjected(PTR<Entity> projected){projectedEntity = projected;}
+    virtual void setProjectionPlane(PTR<ProjectionPlane> projectionPlane_){projectionPlane = projectionPlane_;}
     virtual PTR<Entity> entityByTwoDEntity(PTR<TwoDEntity> secondProjection) = 0;
 };
 
@@ -273,6 +275,7 @@ public:
     TwoDPlane(PTR<TwoDPoint> point1_, PTR<TwoDPoint> point2_ , PTR<TwoDPoint> point3_): point1(point1_), point2(point2_), point3(point3_){};
     void render() override;
     void setProjected(PTR<Entity> entity);
+//    void setProjectionPlane(PTR<ProjectionPlane> projectionPlane_){}
     void deleteFromRender() override;
 
     PTR<Entity> entityByTwoDEntity(PTR<TwoDEntity> secondProjection) override;;
