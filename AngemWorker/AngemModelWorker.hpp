@@ -8,7 +8,7 @@
 
 class AngemModelWorker {
 public:
-    AngemModelWorker(PTR<Polyset<Entity>> container, PTR<Render> render) : container(container), render(render){}
+    AngemModelWorker(PTR<Polyset<Entity>> container) : container(container){}
     virtual ~AngemModelWorker();
     PTR<Entity> AddToModel(PTR<Entity> p); // добавить существующий объект в модель
     //virtual PTR<Entity> AddToModelNew(Polyset<Entity> contP) = 0; // добавить новый объект в модель
@@ -17,7 +17,6 @@ public:
     virtual PTR<Entity> CreateEntity(Polyset<Entity> contP) = 0;
 protected:
     PTR<Polyset<Entity>> container;
-    PTR<Render> render;
     std::vector<PTR<Entity>> children;
 };
 
