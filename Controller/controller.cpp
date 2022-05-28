@@ -130,12 +130,23 @@ bool Controller::onCreatePlaneByIntersecting(PTR<Entity> line1, PTR<Entity> line
 }
 
 bool Controller::onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) {
-    if (point->type() == "line" && line->type() == "point"){
+    if (point->type() == "point" && line->type() == "line"){
         PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(line);
         PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(point);
         PTR<Plane> planeByThreePoints(new PlaneByPointAndLine(pointCast, lineCast));
         addToModel(planeByThreePoints);
         renderEntity(planeByThreePoints);
+    }
+    return false;
+}
+
+bool Controller::onAddPointOnPlaneProjectionAlgo(PTR<Entity> plane, PTR<Entity> point) {
+    if (plane->type() == "plane" && point->type() == "point"){
+        PTR<Plane> plane = std::dynamic_pointer_cast<Plane>(plane);
+        PTR<Point> point = std::dynamic_pointer_cast<Point>(point);
+        if (AngemUtils::isPointOnPlane(*plane, *point)){
+            algo->pointOnPlaneProjection(point, plane);
+        }
     }
     return false;
 }

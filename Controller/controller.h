@@ -8,6 +8,7 @@
 #include "AngemModelWorker.hpp"
 #include "../ControllerObservable/ControllerObservable.h"
 #include "Angem.hpp"
+#include "../AlgoInterface/AlgoInterface.h"
 
 class Controller: public ControllerObservable{
 private:
@@ -18,6 +19,7 @@ private:
     Render* render;
     ProjectionPlane oxy;
     ProjectionPlane oxz;
+    AlgoInterface* algo;
 public:
     bool onCreateLineByTwoPoint(PTR<Entity> point1, PTR<Entity> point2) override;
 
@@ -38,6 +40,8 @@ public:
     bool onCreatePlaneByIntersecting(PTR<Entity> line1, PTR<Entity> line2) override;
 
     bool onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) override;
+
+    bool onAddPointOnPlaneProjectionAlgo(PTR<Entity> plane, PTR<Entity> point) override;
 };
 
 #endif //EDUCAD_CONTROLLER_H

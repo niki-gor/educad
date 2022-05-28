@@ -8,8 +8,9 @@
 #include "render.h"
 
 class AlgoInterface{
+public:
     Render* render;
     virtual void pointOnPlaneProjection(PTR<Point> point, PTR<Plane> plane) = 0;
-}
+};
 
 #endif //EDUCAD_ALGOINTERFACE_H

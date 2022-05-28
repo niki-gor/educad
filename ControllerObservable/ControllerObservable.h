@@ -18,6 +18,7 @@ public:
     virtual bool onCreatePlaneByParallels(PTR<Entity> line1, PTR<Entity> line2) = 0;
     virtual bool onCreatePlaneByIntersecting(PTR<Entity> line1, PTR<Entity> line2) = 0;
     virtual bool onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) = 0;
+    virtual bool onAddPointOnPlaneProjectionAlgo(PTR<Entity> plane, PTR<Entity> point) = 0;
 };
 
 #endif //EDUCAD_CONTROLLEROBSERVABLE_H
