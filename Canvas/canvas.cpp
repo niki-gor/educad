@@ -76,6 +76,8 @@ void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y
         y1 = canvasBegin.y() - y1;
         y2 = canvasBegin.y() - y2;
     }
+    deletePoint(x,y, xBegin, yBegin, planeNumber, "uzbek");
+    deleteLine(x1,y1, x2,y2, xBegin, yBegin, planeNumber, "uzbek");
     qp1->pos = QPoint(x1, y1);
     qp1->pos = QPoint(x1, y1);
     qp1->endpos = QPoint (x2,y2);
@@ -85,6 +87,8 @@ void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y
     qp1->needsProjection = false;
     qp1->qpName = QString::fromStdString(name);
     qp1->planeNumber = planeNumber;
+    vcp.append(qp1);
+    this->update();
 }
 
 void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
@@ -244,6 +248,7 @@ void Canvas::clear() {
 }
 
 void Canvas::deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
+    printf ("deleting point %c", name[0]);
     x = canvasBegin.x() - x;
     if (planeNumber==1) {
         y = canvasBegin.y() + y;
@@ -258,6 +263,7 @@ void Canvas::deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, 
 }
 
 void Canvas::deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
+    printf ("deleting line %c", name[0]);
     x1 = canvasBegin.x() - x1;
     x2 = canvasBegin.x() - x2;
     if (planeNumber==1) {
