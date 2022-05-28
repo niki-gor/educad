@@ -1,0 +1,13 @@
+on: push
+
+jobs:
+  build and test:
+    runs-on: ubuntu-latest
+    container: rkhazh/first_dock
+    steps:
+    - uses: actions/checkout@v3
+    - run: make build
+    - name: Build project
+      uses: actions/upload-artifact@v3
+      with:
+        path: build/

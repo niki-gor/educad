@@ -335,27 +335,36 @@ AngemLine AngemUtils::parallelLine(AngemLine l, AngemPoint p){
 }
 
 AngemPoint AngemUtils::pointOnLine(AngemLine l, double* x, double* y, double* z){
-    auto const & [i, j, k, x0, y0, z0] = l;
+    auto const & [i,j,k,x0,y0,z0] = l;
     if(x == nullptr){
         assert(j != 0 || k != 0 );
         if(j){
-            *x = (*y*i-y0*i + x0*j)/j;
+            double xt = (*y*i-y0*i + x0*j)/j;
+            x = &xt;
         } else {
-            *x = (*z*i-z0*i + x0*k)/k;
+            double xt = (*z*i-z0*i + x0*k)/k;
+            x = &xt;
         }
-    } else if(y == nullptr){
+    } 
+    if(y == nullptr){
         assert(i != 0 || k != 0 );
         if(i){
-            *y = (*x*j-x0*j + y0*i)/i;
+            double yt = (*x*j-x0*j + y0*i)/i;
+            y = &yt;
         } else {
-            *y = (*z*j-z0*j + y0*k)/k;
+            double yt = (*z*j-z0*j + y0*k)/k;
+            y = &yt;
         }
-    } else {
+    } 
+    if(z == nullptr) {
         assert(i != 0 || j != 0 );
+        
         if(i){
-            *z = (*x*k-x0*k + z0*i)/i;
+            double zt = ((*x)*k-x0*k + z0*i)/i;
+            z = &zt;
         } else {
-            *z = (*y*k-y0*k + z0*j)/j;
+            double zt =  ((*y)*k-y0*k + z0*j)/j;
+            z = &zt;
         }
     }
     return AngemPoint(*x,*y,*z);
@@ -365,13 +374,18 @@ AngemPoint AngemUtils::pointOnPlane(AngemPlane pl, double* x, double* y, double*
     auto const & [A, B, C, D] = pl;
     if(x == nullptr){
         assert(A != 0);
-        *x = (-B*(*y) - C*(*z) - D)/A;
-    } else if (y == nullptr){
+        double xt = (-B*(*y) - C*(*z) - D)/A;
+        x = &xt;
+    }
+    if (y == nullptr){
         assert(B != 0);
-        *y = (-A*(*x) - C*(*z) - D)/B;
-    } else {
+        double yt = (-A*(*x) - C*(*z) - D)/B;
+        y = &yt;
+    }
+    if(z == nullptr) {
         assert(C != 0);
-        *z = (-A*(*x) - B*(*y) - D)/C;
+        double zt = (-A*(*x) - B*(*y) - D)/C;
+        z = &zt;
     }
     return AngemPoint(*x,*y,*z);
 }

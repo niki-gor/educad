@@ -7,6 +7,7 @@ add_executable(${PROJECT_NAME} main.cpp)
 set(GCC_COVERAGE_COMPILE_FLAGS "-fprofile-arcs -ftest-coverage")
 #set(GCC_COVERAGE_LINK_FLAGS    "-lgcov")
 
+
 add_subdirectory(TwoDEntity)
 add_subdirectory(Utils)
 add_subdirectory(Angem)

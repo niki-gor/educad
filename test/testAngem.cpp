@@ -79,6 +79,39 @@ TEST(AngemUtils,linesIntersection)
     EXPECT_D_EQ(pIntersection.z, C->z);
 }
 
+TEST(AngemUtils,PointOnLine)
+{
+    PTR<Point> A(new PointByCoords(8, 6, 0));
+    PTR<Point> C(new PointByCoords(2, 11, 1));
+    LineByTwoPoints l1 = LineByTwoPoints(A,C);
+    double* x1 = &(C->x);
+    double* y1 = &(C->y);
+    double* z1 = &(C->z);
+    AngemPoint FC = AngemUtils::pointOnLine(l1, x1, y1, nullptr);
+    EXPECT_DOUBLE_EQ(FC.z, C->z);
+    FC = AngemUtils::pointOnLine(l1, x1, nullptr, z1);
+    EXPECT_DOUBLE_EQ(FC.y, C->y);
+    FC = AngemUtils::pointOnLine(l1, nullptr, y1, z1);
+    EXPECT_DOUBLE_EQ(FC.x, C->x);
+}
+
+TEST(AngemUtils, PointOnPlane){
+    PTR<Point> A(new PointByCoords(8, 6, 0));
+    PTR<Point> C(new PointByCoords(2, 11, 1));
+    PTR<Point> D(new PointByCoords(7, 8 , 10));
+    PlaneByThreePoints pl1 = PlaneByThreePoints(A,D,C);
+    double* x1 = &(C->x);
+    double* y1 = &(C->y);
+    double* z1 = &(C->z);
+    AngemPoint FC = AngemUtils::pointOnPlane(pl1, x1, y1, nullptr);
+    EXPECT_DOUBLE_EQ(FC.z, C->z);
+    FC = AngemUtils::pointOnPlane(pl1, x1, nullptr, z1);
+    EXPECT_DOUBLE_EQ(FC.y, C->y);
+    FC = AngemUtils::pointOnPlane(pl1, nullptr, y1, z1);
+    EXPECT_DOUBLE_EQ(FC.x, C->x);
+    
+}
+
 TEST(AngemUtils, planesIntersection)
 {
     PTR<Point> A(new PointByCoords(8, 6, 0));
