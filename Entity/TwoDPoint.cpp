@@ -20,9 +20,9 @@ void TwoDPoint::render() {
     this->renderable->addPoint(X, Y, projectionPlane->originPoint->x, projectionPlane->originPoint->y, direction, "uzbek");
 }
 
-void TwoDPoint::deleteFromRender() {
-    //гоша сделает
-//renderable->addPoint()
+void TwoDPoint::deleteFromRender(PTR<TwoDEntity> point) {
+   //Марат сделает, я спать хочу
+    //renderable->deletePoint()
 }
 
 PTR<Entity> TwoDPoint::entityByTwoDEntity(PTR<TwoDEntity> secondProjection) {
