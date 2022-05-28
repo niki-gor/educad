@@ -62,6 +62,7 @@ std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> Canvas::linePlaneCoo
 }
 
 void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
+    printf ("\nAdding plane \n");
     qp* qp1 = new qp;
     x = canvasBegin.x() - x;
     x1 = canvasBegin.x()-x1;
