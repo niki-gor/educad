@@ -14,6 +14,10 @@ public:
     virtual bool onCreateParallelLine(PTR<Entity> line, PTR<Entity> point) = 0;
     virtual bool onCreateLineByTwoPoint(PTR<Entity> point1, PTR<Entity> point2) = 0;
     virtual bool onCreatePointOn(double* x, double* y, double* z, PTR<Entity> entity) = 0;
+    virtual bool onCreatePlaneByThreePoints(PTR<Entity> point1, PTR<Entity> point2, PTR<Entity> point3) = 0;
+    virtual bool onCreatePlaneByParallels(PTR<Entity> line1, PTR<Entity> line2) = 0;
+    virtual bool onCreatePlaneByIntersecting(PTR<Entity> line1, PTR<Entity> line2) = 0;
+    virtual bool onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) = 0;
 };
 
 #endif //EDUCAD_CONTROLLEROBSERVABLE_H

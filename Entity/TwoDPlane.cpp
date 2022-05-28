@@ -35,6 +35,23 @@ void TwoDPlane::deleteFromRender() {
     }
 }
 
+void TwoDPlane::setProjected(PTR<Entity> entity) {
+    projectedEntity = entity;
+    if (point1 && point2){
+        point1->projectedEntity = entity;
+        point2->projectedEntity = entity;
+        point3->projectedEntity = entity;
+    }
+    else if(line1 && point1){
+        line1->projectedEntity = entity;
+        point1->projectedEntity = entity;
+    }
+    else{
+        line1->projectedEntity = entity;
+        line2->projectedEntity = entity;
+    }
+}
+
 PTR<Entity> TwoDPlane::entityByTwoDEntity(PTR<TwoDEntity> secondProjection) {
     return PTR<Entity>();
 }
