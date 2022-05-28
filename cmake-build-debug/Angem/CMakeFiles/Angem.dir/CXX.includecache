@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Utils/utils.h
+typeindex
+-
+typeinfo
+-
+memory
+-
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem/Angem.cpp
+Angem.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem/Angem.hpp
+assert.h
+-
+math.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem/math.h
+cmath
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem/cmath
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem/Angem.hpp
+memory
+-
+utils.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem/utils.h
+AngemEntity.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem/AngemEntity.h
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem/AngemEntity.h
+

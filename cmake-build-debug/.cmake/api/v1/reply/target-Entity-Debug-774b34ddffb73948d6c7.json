@@ -1,0 +1,181 @@
+{
+	"archive" : {},
+	"artifacts" : 
+	[
+		{
+			"path" : "Entity/libEntity.a"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_library",
+			"target_link_libraries",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"Entity/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 8,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 18,
+				"parent" : 0
+			},
+			{
+				"command" : 2,
+				"file" : 0,
+				"line" : 17,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-std=c++11 -g"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/Entity"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/Utils"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/Angem"
+				},
+				{
+					"backtrace" : 3,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/RenderableEntity"
+				}
+			],
+			"language" : "CXX",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "RenderableEntity::@ddc9481115400d7b3727"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "Utils::@63186210bb9289bb1152"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "Angem::@c0973f68ea13b9fbd4a6"
+		}
+	],
+	"id" : "Entity::@63e448c03557eac2e596",
+	"name" : "Entity",
+	"nameOnDisk" : "libEntity.a",
+	"paths" : 
+	{
+		"build" : "Entity",
+		"source" : "Entity"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0,
+				1,
+				2,
+				3,
+				4,
+				5,
+				6,
+				7
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Entity/Entity.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Entity/TwoDLine.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Entity/TwoDPlane.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Entity/TwoDPoint.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Entity/line.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Entity/plane.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Entity/point.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "Entity/projection.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "STATIC_LIBRARY"
+}

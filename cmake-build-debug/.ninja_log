@@ -1,0 +1,56 @@
+# ninja log v5
+8	1394	6754040038215959	build.ninja	9795af6d1b047e00
+77	1374	6752967477326416	Utils/CMakeFiles/Utils.dir/polyset.cpp.obj	3a722d2d0223e6e2
+75	3361	6753857186750124	Entity/CMakeFiles/Entity.dir/point.cpp.obj	ff3c1cc1e46697c2
+94	283	6750079599425241	AngemWorker/CMakeFiles/AngemWorkers.dir/PointWorker.cpp.obj	7b6cf7a82f069aed
+68	159	6749523575764993	UI/CMakeFiles/UI.dir/unittest.cpp.obj	645a3229df569411
+7662	9566	6753858934268397	C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/cmake-build-debug/UI/UI_autogen/mocs_compilation.cpp	3e64fa976fbbbab0
+22	926	6753897583485968	Angem/CMakeFiles/Angem.dir/Angem.cpp.obj	c29710573d39eee7
+19	932	6753875655513404	render/CMakeFiles/Render.dir/render.cpp.obj	d4890ac4a1c77262
+1375	2499	6752967488966396	Utils/libUtils.a	536abf476a0a779e
+108	3365	6753857186750124	Controller/CMakeFiles/Controller.dir/controller.cpp.obj	6549bf02f406981a
+9574	14033	6753858982037062	UI/CMakeFiles/UI.dir/mainwindow.cpp.obj	9c2d06cb646be42c
+101	281	6750079599375236	AngemWorker/CMakeFiles/AngemWorkers.dir/PlaneWorker.cpp.obj	a28138f3cfc3a02e
+10976	11056	6752967574591226	UI/CMakeFiles/UI.dir/controller.cpp.obj	7e0cc0a1fcacebec
+39	2924	6753857181979794	Entity/CMakeFiles/Entity.dir/Entity.cpp.obj	face5539473937b0
+37	1994	6749523594115029	UI/CMakeFiles/UI.dir/guiobjects.cpp.obj	49426db287739b41
+41	1383	6753897588076000	Entity/CMakeFiles/Entity.dir/projection.cpp.obj	849216f86c08acee
+43	2684	6753857179659780	Entity/CMakeFiles/Entity.dir/TwoDPoint.cpp.obj	3dd564df0026f2c3
+48	3292	6753857186050147	Entity/CMakeFiles/Entity.dir/line.cpp.obj	3b4e3e602b7a2808
+35	2596	6753857178659790	Entity/CMakeFiles/Entity.dir/TwoDLine.cpp.obj	41e12b0830730b47
+103	3305	6753857186200146	AngemWorker/CMakeFiles/AngemWorkers.dir/AngemModelWorker.cpp.obj	91ce69ecb9dd5245
+14052	14273	6753858984427043	UI/libUI.a	8241c89c2847419
+14	2129	6753857172947617	RenderableEntity/CMakeFiles/RenderableEntity.dir/Renderable.cpp.obj	8b16085270ee4bc2
+939	1088	6753897585125969	Angem/libAngem.a	2599be1556503162
+7662	9566	6753858934268397	UI/UI_autogen/timestamp	3e64fa976fbbbab0
+558	4586	6749495938095619	UI/CMakeFiles/UI.dir/canvas.cpp.obj	43d5aeb4c95ce51b
+53	3114	6753857184260154	Entity/CMakeFiles/Entity.dir/plane.cpp.obj	3f814109bdc4fd61
+97	3067	6753857183804964	AngemWorker/CMakeFiles/AngemWorkers.dir/LineWorker.cpp.obj	2d004b7bd7c993cd
+2178	6621	6753858907900989	Canvas/CMakeFiles/CANVAS.dir/CANVAS_autogen/mocs_compilation.cpp.obj	4eb78ccc21a40ab
+1384	1853	6753897592735968	Entity/libEntity.a	dd764466f8cbf34b
+3886	3996	6753857193060268	AngemWorker/libAngemWorkers.a	7b17e5592e9e8cc9
+2189	6725	6753858908901003	Canvas/CMakeFiles/CANVAS.dir/canvasMoveMouse.cpp.obj	8b2e3f65116ec033
+932	1052	6753875656720547	render/libRender.a	9a86f3e7efb34cd7
+7662	9566	6753858934268397	UI/UI_autogen/mocs_compilation.cpp	3e64fa976fbbbab0
+7662	9566	6753858934268397	C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/cmake-build-debug/UI/UI_autogen/timestamp	3e64fa976fbbbab0
+495	4076	6753900631647563	Canvas/CMakeFiles/CANVAS.dir/canvasPressMouse.cpp.obj	d7ce6b6b78645840
+3996	4213	6753857195250262	Controller/libController.a	ce42f4f301938517
+9570	13872	6753858980417058	UI/CMakeFiles/UI.dir/UI_autogen/mocs_compilation.cpp.obj	72efb33b8091d445
+9567	13950	6753858981187045	CMakeFiles/educad.dir/main.cpp.obj	65ae968e14d2de6b
+4745	7010	6753900660967570	educad.exe	20cd4ffb564e78f3
+4036	7544	6749492038780839	UI/CMakeFiles/UI.dir/contextedit.cpp.obj	22078c8d1cdc8f4e
+15	464	6753900595597206	Canvas/CANVAS_autogen/timestamp	631cc7c381cbae82
+4076	8304	6749492046359746	UI/CMakeFiles/UI.dir/projectstructurelist.cpp.obj	7ba04888a53b50a7
+9578	13988	6753858981557043	UI/CMakeFiles/UI.dir/toolbar.cpp.obj	27fca4cf6866461b
+9584	14052	6753858982237048	UI/CMakeFiles/UI.dir/iguiobserver.cpp.obj	db5965de0f0a4986
+10971	13627	6752967600271224	UI/CMakeFiles/UI.dir/Descriptive.cpp.obj	fd05ecd928ecf368
+15	464	6753900595597206	Canvas/CANVAS_autogen/mocs_compilation.cpp	631cc7c381cbae82
+15	464	6753900595597206	C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/cmake-build-debug/Canvas/CANVAS_autogen/timestamp	631cc7c381cbae82
+15	464	6753900595597206	C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/cmake-build-debug/Canvas/CANVAS_autogen/mocs_compilation.cpp	631cc7c381cbae82
+4975	7726	6752967541250358	Canvas/CMakeFiles/CANVAS.dir/projectstructurelist.cpp.obj	c50d63602d03bdd8
+518	4228	6753875688444691	Canvas/CMakeFiles/CANVAS.dir/canvas.cpp.obj	cfcb8ee222b8acef
+4077	4744	6753900638337549	Canvas/libCANVAS.a	13ead8d176bfe84e
+2193	6744	6753858909121003	Canvas/CMakeFiles/CANVAS.dir/contextedit.cpp.obj	4d71e3846d70ec9b
+2131	3074	6753857183814966	RenderableEntity/libRenderableEntity.a	7b7ed4659a9a3e1a
+64	2923	6753857181849787	Entity/CMakeFiles/Entity.dir/TwoDPlane.cpp.obj	e89234f59a591da0
+2197	6489	6753858906550995	Canvas/CMakeFiles/CANVAS.dir/canvasPaint.cpp.obj	76133e549340b111

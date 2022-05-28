@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils/polyset.cpp
+polyset.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils/polyset.h
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils/polyset.h
+unordered_set
+-
+unordered_map
+-
+utils.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils/utils.h
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils/utils.h
+typeindex
+-
+typeinfo
+-
+memory
+-
+

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libEntity.a  CMakeFiles/Entity.dir/Entity.cpp.o CMakeFiles/Entity.dir/TwoDLine.cpp.o CMakeFiles/Entity.dir/TwoDPoint.cpp.o CMakeFiles/Entity.dir/line.cpp.o CMakeFiles/Entity.dir/plane.cpp.o CMakeFiles/Entity.dir/point.cpp.o CMakeFiles/Entity.dir/projection.cpp.o
+/usr/bin/ranlib libEntity.a

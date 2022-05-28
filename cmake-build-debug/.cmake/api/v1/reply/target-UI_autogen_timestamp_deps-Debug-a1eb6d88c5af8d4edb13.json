@@ -1,0 +1,73 @@
+{
+	"backtrace" : 0,
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : 
+		[
+			"UI/CMakeLists.txt"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			}
+		]
+	},
+	"dependencies" : 
+	[
+		{
+			"id" : "Utils::@63186210bb9289bb1152"
+		},
+		{
+			"id" : "Entity::@63e448c03557eac2e596"
+		},
+		{
+			"id" : "CANVAS::@143009be06d10e3b316f"
+		},
+		{
+			"id" : "Controller::@0d1b063abe32f7b316f3"
+		}
+	],
+	"id" : "UI_autogen_timestamp_deps::@e824db2576db0fa939c2",
+	"isGeneratorProvided" : true,
+	"name" : "UI_autogen_timestamp_deps",
+	"paths" : 
+	{
+		"build" : "UI",
+		"source" : "UI"
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		},
+		{
+			"name" : "CMake Rules",
+			"sourceIndexes" : 
+			[
+				1
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/UI/CMakeFiles/UI_autogen_timestamp_deps",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 0,
+			"isGenerated" : true,
+			"path" : "cmake-build-debug/UI/CMakeFiles/UI_autogen_timestamp_deps.rule",
+			"sourceGroupIndex" : 1
+		}
+	],
+	"type" : "UTILITY"
+}

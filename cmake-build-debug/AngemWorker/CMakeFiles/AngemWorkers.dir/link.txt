@@ -1,0 +1,2 @@
+/usr/bin/ar qc libAngemWorkers.a  CMakeFiles/AngemWorkers.dir/AngemModelWorker.cpp.o CMakeFiles/AngemWorkers.dir/LineWorker.cpp.o CMakeFiles/AngemWorkers.dir/PlaneWorker.cpp.o CMakeFiles/AngemWorkers.dir/PointWorker.cpp.o
+/usr/bin/ranlib libAngemWorkers.a

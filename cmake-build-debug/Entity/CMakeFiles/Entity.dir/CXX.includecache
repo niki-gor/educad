@@ -1,0 +1,100 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Angem/Angem.hpp
+memory
+-
+utils.h
+../Angem/utils.h
+AngemEntity.h
+../Angem/AngemEntity.h
+
+../Angem/AngemEntity.h
+
+../Utils/polyset.h
+unordered_set
+-
+unordered_map
+-
+utils.h
+../Utils/utils.h
+
+../Utils/utils.h
+typeindex
+-
+typeinfo
+-
+memory
+-
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.cpp
+Entity.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.hpp
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.hpp
+utils.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/utils.h
+AngemEntity.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/AngemEntity.h
+TwoDEntity.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/TwoDEntity.h
+cmath
+-
+iostream
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/iostream
+set
+-
+polyset.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/polyset.h
+vector
+-
+Angem.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Angem.hpp
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/TwoDEntity.h
+memory
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/memory
+Entity.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.hpp
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/TwoDLine.cpp
+TwoDEntity.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/TwoDEntity.h
+iostream
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/iostream
+Entity.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.hpp
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/TwoDPoint.cpp
+TwoDEntity.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/TwoDEntity.h
+iostream
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/iostream
+Entity.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.hpp
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/line.cpp
+Entity.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.hpp
+Angem.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Angem.hpp
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/plane.cpp
+Entity.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.hpp
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/point.cpp
+Entity.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.hpp
+Angem.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Angem.hpp
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/projection.cpp
+Entity.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.hpp
+

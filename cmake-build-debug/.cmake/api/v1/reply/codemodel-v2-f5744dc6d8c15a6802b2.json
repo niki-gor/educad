@@ -1,0 +1,426 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					],
+					"jsonFile" : "directory-.-Debug-d0094a50bb2071803777.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						13
+					]
+				},
+				{
+					"build" : "RenderableEntity",
+					"jsonFile" : "directory-RenderableEntity-Debug-667188e99389949402b8.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "RenderableEntity",
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"build" : "Utils",
+					"jsonFile" : "directory-Utils-Debug-41eaf4291e881bd200c4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "Utils",
+					"targetIndexes" : 
+					[
+						12
+					]
+				},
+				{
+					"build" : "Angem",
+					"jsonFile" : "directory-Angem-Debug-e380e0d33a2768c600d2.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 3,
+					"source" : "Angem",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "Entity",
+					"jsonFile" : "directory-Entity-Debug-74aa86f5b4cc655b4d13.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 4,
+					"source" : "Entity",
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"build" : "Canvas",
+					"jsonFile" : "directory-Canvas-Debug-57bbfa8e18d9c3466528.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 5,
+					"source" : "Canvas",
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"build" : "render",
+					"jsonFile" : "directory-render-Debug-4c37437beb0acdfb65ad.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 6,
+					"source" : "render",
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"build" : "AngemWorker",
+					"jsonFile" : "directory-AngemWorker-Debug-9811fc3eb7e95dac65e4.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 7,
+					"source" : "AngemWorker",
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"build" : "Controller",
+					"jsonFile" : "directory-Controller-Debug-26320035745585f90a89.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 8,
+					"source" : "Controller",
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"build" : "UI",
+					"jsonFile" : "directory-UI-Debug-2fb30ecde3adcd6f7f99.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 9,
+					"source" : "UI",
+					"targetIndexes" : 
+					[
+						9,
+						10,
+						11
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "educad",
+					"targetIndexes" : 
+					[
+						13
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1
+					],
+					"name" : "RenderableEntity",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						8
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						2
+					],
+					"name" : "Utils",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						12
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						3
+					],
+					"name" : "Angem",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "Entity",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						5
+					],
+					"name" : "CANVAS",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						2,
+						3,
+						4
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						6
+					],
+					"name" : "Render",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						7
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						7
+					],
+					"name" : "AngemWorkers",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						8
+					],
+					"name" : "Controller",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						5
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						9
+					],
+					"name" : "UI",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						9,
+						10,
+						11
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 3,
+					"id" : "Angem::@c0973f68ea13b9fbd4a6",
+					"jsonFile" : "target-Angem-Debug-e36cad19588080f21922.json",
+					"name" : "Angem",
+					"projectIndex" : 3
+				},
+				{
+					"directoryIndex" : 7,
+					"id" : "AngemWorkers::@9aed8c32867369bee881",
+					"jsonFile" : "target-AngemWorkers-Debug-7c7b1b5c9016b402a34a.json",
+					"name" : "AngemWorkers",
+					"projectIndex" : 7
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "CANVAS::@143009be06d10e3b316f",
+					"jsonFile" : "target-CANVAS-Debug-f3fa46fee3ab1fc3d159.json",
+					"name" : "CANVAS",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "CANVAS_autogen::@143009be06d10e3b316f",
+					"jsonFile" : "target-CANVAS_autogen-Debug-16ea110126f75b8f9190.json",
+					"name" : "CANVAS_autogen",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 5,
+					"id" : "CANVAS_autogen_timestamp_deps::@143009be06d10e3b316f",
+					"jsonFile" : "target-CANVAS_autogen_timestamp_deps-Debug-9e58210f9cc318ebb24d.json",
+					"name" : "CANVAS_autogen_timestamp_deps",
+					"projectIndex" : 5
+				},
+				{
+					"directoryIndex" : 8,
+					"id" : "Controller::@0d1b063abe32f7b316f3",
+					"jsonFile" : "target-Controller-Debug-cba3d9f5e7bd947331af.json",
+					"name" : "Controller",
+					"projectIndex" : 8
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "Entity::@63e448c03557eac2e596",
+					"jsonFile" : "target-Entity-Debug-774b34ddffb73948d6c7.json",
+					"name" : "Entity",
+					"projectIndex" : 4
+				},
+				{
+					"directoryIndex" : 6,
+					"id" : "Render::@2499b95dafeadf15eafc",
+					"jsonFile" : "target-Render-Debug-a566df1099da8656ef60.json",
+					"name" : "Render",
+					"projectIndex" : 6
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "RenderableEntity::@ddc9481115400d7b3727",
+					"jsonFile" : "target-RenderableEntity-Debug-c997d9f7ed3dbda20037.json",
+					"name" : "RenderableEntity",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "UI::@e824db2576db0fa939c2",
+					"jsonFile" : "target-UI-Debug-d376582f818ed25f33dd.json",
+					"name" : "UI",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "UI_autogen::@e824db2576db0fa939c2",
+					"jsonFile" : "target-UI_autogen-Debug-f0d5448e70af3717d4d9.json",
+					"name" : "UI_autogen",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 9,
+					"id" : "UI_autogen_timestamp_deps::@e824db2576db0fa939c2",
+					"jsonFile" : "target-UI_autogen_timestamp_deps-Debug-a1eb6d88c5af8d4edb13.json",
+					"name" : "UI_autogen_timestamp_deps",
+					"projectIndex" : 9
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "Utils::@63186210bb9289bb1152",
+					"jsonFile" : "target-Utils-Debug-8bfe32f62716a6dced06.json",
+					"name" : "Utils",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "educad::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-educad-Debug-c5f2759f3dd4d65237f2.json",
+					"name" : "educad",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/cmake-build-debug",
+		"source" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 4
+	}
+}

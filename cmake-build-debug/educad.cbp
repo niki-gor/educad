@@ -1,0 +1,851 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="educad"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\Angem\;CMake Files\AngemWorker\;CMake Files\Controller\;CMake Files\Entity\;CMake Files\render\;CMake Files\UI\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Core\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6CoreTools\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6EntryPointPrivate\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Gui\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6GuiTools\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Widgets\;CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6WidgetsTools\;CMake Files\Utils\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="educad">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/educad" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DWIN32"/>
+					<Add option="-D_ENABLE_EXTENDED_ALIGNED_STORAGE"/>
+					<Add option="-DWIN64"/>
+					<Add option="-D_WIN64"/>
+					<Add option="-DMINGW_HAS_SECURE_API=1"/>
+					<Add option="-DUNICODE"/>
+					<Add option="-D_UNICODE"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/UI"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/AngemWorker"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtCore"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/mkspecs/win32-g++"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtGui"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtWidgets"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 educad"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="educad/fast">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/educad" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DWIN32"/>
+					<Add option="-D_ENABLE_EXTENDED_ALIGNED_STORAGE"/>
+					<Add option="-DWIN64"/>
+					<Add option="-D_WIN64"/>
+					<Add option="-DMINGW_HAS_SECURE_API=1"/>
+					<Add option="-DUNICODE"/>
+					<Add option="-D_UNICODE"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/UI"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/AngemWorker"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtCore"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/mkspecs/win32-g++"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtGui"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtWidgets"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 educad/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Utils">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Utils/libUtils.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Utils"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Utils/Makefile&quot;  VERBOSE=1 Utils"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Utils/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Utils/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Utils/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Utils/fast">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Utils/libUtils.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Utils"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Utils/Makefile&quot;  VERBOSE=1 Utils/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Utils/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Utils/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Utils/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Angem">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Angem/libAngem.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Angem"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Angem/Makefile&quot;  VERBOSE=1 Angem"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Angem/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Angem/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Angem/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Angem/fast">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Angem/libAngem.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Angem"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Angem/Makefile&quot;  VERBOSE=1 Angem/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Angem/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Angem/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Angem/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Entity">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Entity/libEntity.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Entity"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Entity/Makefile&quot;  VERBOSE=1 Entity"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Entity/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Entity/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Entity/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Entity/fast">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Entity/libEntity.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Entity"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Entity/Makefile&quot;  VERBOSE=1 Entity/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Entity/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Entity/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Entity/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Render">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/render/libRender.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/render"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/render/Makefile&quot;  VERBOSE=1 Render"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/render/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/render/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/render/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Render/fast">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/render/libRender.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/render"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/render/Makefile&quot;  VERBOSE=1 Render/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/render/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/render/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/render/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="AngemWorkers">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/AngemWorker/libAngemWorkers.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/AngemWorker"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/AngemWorker/Makefile&quot;  VERBOSE=1 AngemWorkers"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/AngemWorker/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/AngemWorker/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/AngemWorker/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="AngemWorkers/fast">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/AngemWorker/libAngemWorkers.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/AngemWorker"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/AngemWorker/Makefile&quot;  VERBOSE=1 AngemWorkers/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/AngemWorker/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/AngemWorker/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/AngemWorker/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Controller">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Controller/libController.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Controller"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/AngemWorker"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Controller/Makefile&quot;  VERBOSE=1 Controller"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Controller/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Controller/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Controller/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Controller/fast">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Controller/libController.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/Controller"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/AngemWorker"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Controller/Makefile&quot;  VERBOSE=1 Controller/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Controller/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Controller/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/Controller/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="UI">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI/libUI.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DWIN32"/>
+					<Add option="-D_ENABLE_EXTENDED_ALIGNED_STORAGE"/>
+					<Add option="-DWIN64"/>
+					<Add option="-D_WIN64"/>
+					<Add option="-DMINGW_HAS_SECURE_API=1"/>
+					<Add option="-DUNICODE"/>
+					<Add option="-D_UNICODE"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/UI"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI/UI_autogen/include"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtCore"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/mkspecs/win32-g++"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtGui"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtWidgets"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 UI"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="UI/fast">
+				<Option output="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI/libUI.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DWIN32"/>
+					<Add option="-D_ENABLE_EXTENDED_ALIGNED_STORAGE"/>
+					<Add option="-DWIN64"/>
+					<Add option="-D_WIN64"/>
+					<Add option="-DMINGW_HAS_SECURE_API=1"/>
+					<Add option="-DUNICODE"/>
+					<Add option="-D_UNICODE"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/UI"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI/UI_autogen/include"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils"/>
+					<Add directory="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtCore"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/mkspecs/win32-g++"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtGui"/>
+					<Add directory="/mnt/c/Qt/6.2.4/mingw_64/include/QtWidgets"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 UI/fast"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="UI_autogen">
+				<Option working_dir="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 UI_autogen"/>
+					<CompileFile command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j12 -f &quot;/mnt/c/Users/George/Desktop/файл\ смерти/технопарк/ml/1\ сем/c++/educad/cmake-build-debug/UI/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem/Angem.cpp">
+			<Option target="Angem"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem/Angem.hpp">
+			<Option target="Angem"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/AngemWorker/AngemModelWorker.cpp">
+			<Option target="AngemWorkers"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/AngemWorker/AngemModelWorker.hpp">
+			<Option target="AngemWorkers"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/AngemWorker/LineWorker.cpp">
+			<Option target="AngemWorkers"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/AngemWorker/PlaneWorker.cpp">
+			<Option target="AngemWorkers"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/AngemWorker/PointWorker.cpp">
+			<Option target="AngemWorkers"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/controller.cpp">
+			<Option target="Controller"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/controller.h">
+			<Option target="Controller"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.cpp">
+			<Option target="Entity"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/Entity.hpp">
+			<Option target="Entity"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/TwoDLine.cpp">
+			<Option target="Entity"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/TwoDPoint.cpp">
+			<Option target="Entity"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/line.cpp">
+			<Option target="Entity"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/plane.cpp">
+			<Option target="Entity"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/point.cpp">
+			<Option target="Entity"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/projection.cpp">
+			<Option target="Entity"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils/polyset.cpp">
+			<Option target="Utils"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils/polyset.h">
+			<Option target="Utils"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI/UI_autogen/mocs_compilation.cpp">
+			<Option target="UI"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/main.cpp">
+			<Option target="educad"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/render.cpp">
+			<Option target="Render"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/render.h">
+			<Option target="Render"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Angem/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Angem\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/AngemWorker/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\AngemWorker\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Controller\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Entity/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Entity\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\render\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/UI/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\UI\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/FindWrapAtomic.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/FindWrapVulkanHeaders.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/Qt6Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/Qt6ConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/Qt6ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/Qt6ConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/Qt6Dependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/Qt6Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/Qt6VersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/QtFeature.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/QtFeatureCommon.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/QtPublicCMakeHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/QtPublicCMakeVersionHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/QtPublicDependencyHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/QtPublicFinalizerHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/QtPublicFindPackageHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/QtPublicPluginHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/QtPublicTargetHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6/QtPublicWalkLibsHelpers.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Core\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6CoreTools/Qt6CoreToolsVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6CoreTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointMinGW32Target.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6EntryPointPrivate\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6EntryPointPrivate\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6EntryPointPrivate\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6EntryPointPrivate\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6EntryPointPrivate\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6EntryPointPrivate\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6EntryPointPrivate\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6EntryPointPrivate/Qt6EntryPointPrivateVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6EntryPointPrivate\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Gui/Qt6GuiAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Gui/Qt6GuiDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Gui/Qt6GuiVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Gui\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6GuiTools/Qt6GuiToolsVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6GuiTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6Widgets/Qt6WidgetsVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6Widgets\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsAdditionalTargetInfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6WidgetsTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6WidgetsTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6WidgetsTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsConfigVersionImpl.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6WidgetsTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsDependencies.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6WidgetsTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets-relwithdebinfo.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6WidgetsTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6WidgetsTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/../../../../../../../../../Qt/6.2.4/mingw_64/lib/cmake/Qt6WidgetsTools/Qt6WidgetsToolsVersionlessTargets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\..\..\..\Qt\6.2.4\mingw_64\lib\cmake\Qt6WidgetsTools\"/>
+		</Unit>
+		<Unit filename="/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Utils/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Utils\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

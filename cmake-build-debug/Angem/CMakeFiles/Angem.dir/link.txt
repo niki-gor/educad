@@ -1,0 +1,2 @@
+/usr/bin/ar qc libAngem.a  CMakeFiles/Angem.dir/Angem.cpp.o
+/usr/bin/ranlib libAngem.a

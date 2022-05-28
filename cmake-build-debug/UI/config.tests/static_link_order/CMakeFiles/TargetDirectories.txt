@@ -1,0 +1,5 @@
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI/config.tests/static_link_order/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI/config.tests/static_link_order/CMakeFiles/edit_cache.dir
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI/config.tests/static_link_order/CMakeFiles/static_link_order_test.dir
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI/config.tests/static_link_order/CMakeFiles/staticLib.dir
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/cmake-build-debug/UI/config.tests/static_link_order/CMakeFiles/objLib.dir

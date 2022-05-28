@@ -1,0 +1,484 @@
+{
+	"artifacts" : 
+	[
+		{
+			"path" : "educad.exe"
+		},
+		{
+			"path" : "educad.pdb"
+		}
+	],
+	"backtrace" : 1,
+	"backtraceGraph" : 
+	{
+		"commands" : 
+		[
+			"add_executable",
+			"target_link_libraries",
+			"set_target_properties",
+			"include",
+			"find_package",
+			"target_include_directories"
+		],
+		"files" : 
+		[
+			"CMakeLists.txt",
+			"Controller/CMakeLists.txt",
+			"UI/CMakeLists.txt",
+			"render/CMakeLists.txt",
+			"Canvas/CMakeLists.txt",
+			"C:/Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreTargets.cmake",
+			"C:/Qt/6.2.4/mingw_64/lib/cmake/Qt6Core/Qt6CoreConfig.cmake",
+			"C:/Qt/6.2.4/mingw_64/lib/cmake/Qt6/Qt6Config.cmake",
+			"C:/Qt/6.2.4/mingw_64/lib/cmake/Qt6Gui/Qt6GuiTargets.cmake",
+			"C:/Qt/6.2.4/mingw_64/lib/cmake/Qt6Gui/Qt6GuiConfig.cmake"
+		],
+		"nodes" : 
+		[
+			{
+				"file" : 0
+			},
+			{
+				"command" : 0,
+				"file" : 0,
+				"line" : 5,
+				"parent" : 0
+			},
+			{
+				"command" : 1,
+				"file" : 0,
+				"line" : 21,
+				"parent" : 0
+			},
+			{
+				"file" : 1
+			},
+			{
+				"command" : 1,
+				"file" : 1,
+				"line" : 11,
+				"parent" : 3
+			},
+			{
+				"file" : 2
+			},
+			{
+				"command" : 1,
+				"file" : 2,
+				"line" : 32,
+				"parent" : 5
+			},
+			{
+				"file" : 3
+			},
+			{
+				"command" : 1,
+				"file" : 3,
+				"line" : 16,
+				"parent" : 7
+			},
+			{
+				"file" : 4
+			},
+			{
+				"command" : 1,
+				"file" : 4,
+				"line" : 32,
+				"parent" : 9
+			},
+			{
+				"command" : 4,
+				"file" : 2,
+				"line" : 21,
+				"parent" : 5
+			},
+			{
+				"file" : 7,
+				"parent" : 11
+			},
+			{
+				"command" : 4,
+				"file" : 7,
+				"line" : 209,
+				"parent" : 12
+			},
+			{
+				"file" : 6,
+				"parent" : 13
+			},
+			{
+				"command" : 3,
+				"file" : 6,
+				"line" : 50,
+				"parent" : 14
+			},
+			{
+				"file" : 5,
+				"parent" : 15
+			},
+			{
+				"command" : 2,
+				"file" : 5,
+				"line" : 56,
+				"parent" : 16
+			},
+			{
+				"command" : 4,
+				"file" : 7,
+				"line" : 209,
+				"parent" : 12
+			},
+			{
+				"file" : 9,
+				"parent" : 18
+			},
+			{
+				"command" : 3,
+				"file" : 9,
+				"line" : 50,
+				"parent" : 19
+			},
+			{
+				"file" : 8,
+				"parent" : 20
+			},
+			{
+				"command" : 2,
+				"file" : 8,
+				"line" : 56,
+				"parent" : 21
+			},
+			{
+				"command" : 5,
+				"file" : 0,
+				"line" : 20,
+				"parent" : 0
+			}
+		]
+	},
+	"compileGroups" : 
+	[
+		{
+			"compileCommandFragments" : 
+			[
+				{
+					"fragment" : "-std=c++11 -g"
+				},
+				{
+					"fragment" : "-std=gnu++17"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"backtrace" : 2,
+					"define" : "MINGW_HAS_SECURE_API=1"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_CORE_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_GUI_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "QT_WIDGETS_LIB"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "UNICODE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "WIN32"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "WIN64"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_ENABLE_EXTENDED_ALIGNED_STORAGE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_UNICODE"
+				},
+				{
+					"backtrace" : 2,
+					"define" : "_WIN64"
+				}
+			],
+			"includes" : 
+			[
+				{
+					"backtrace" : 23,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/UI"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/Controller"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/render"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/Angem"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/AngemWorker"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/Entity"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/RenderableEntity"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/Utils"
+				},
+				{
+					"backtrace" : 2,
+					"path" : "C:/Users/George/Desktop/dumb nigger/technopark/ml/first/cpp/educad/Canvas"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.2.4/mingw_64/include/QtCore"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.2.4/mingw_64/include"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.2.4/mingw_64/mkspecs/win32-g++"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.2.4/mingw_64/include/QtGui"
+				},
+				{
+					"backtrace" : 2,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.2.4/mingw_64/include/QtWidgets"
+				}
+			],
+			"language" : "CXX",
+			"languageStandard" : 
+			{
+				"backtraces" : 
+				[
+					2
+				],
+				"standard" : "17"
+			},
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"dependencies" : 
+	[
+		{
+			"backtrace" : 2,
+			"id" : "RenderableEntity::@ddc9481115400d7b3727"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "Utils::@63186210bb9289bb1152"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "Entity::@63e448c03557eac2e596"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "Angem::@c0973f68ea13b9fbd4a6"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "CANVAS::@143009be06d10e3b316f"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "UI::@e824db2576db0fa939c2"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "Render::@2499b95dafeadf15eafc"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "AngemWorkers::@9aed8c32867369bee881"
+		},
+		{
+			"backtrace" : 2,
+			"id" : "Controller::@0d1b063abe32f7b316f3"
+		}
+	],
+	"id" : "educad::@6890427a1f51a3e7e1df",
+	"link" : 
+	{
+		"commandFragments" : 
+		[
+			{
+				"fragment" : "-std=c++11 -g",
+				"role" : "flags"
+			},
+			{
+				"fragment" : "",
+				"role" : "flags"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "Controller\\libController.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "UI\\libUI.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 2,
+				"fragment" : "Controller\\libController.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "AngemWorker\\libAngemWorkers.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "render\\libRender.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "Canvas\\libCANVAS.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "Entity\\libEntity.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 4,
+				"fragment" : "Angem\\libAngem.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "Utils\\libUtils.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 8,
+				"fragment" : "RenderableEntity\\libRenderableEntity.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "C:\\Qt\\6.2.4\\mingw_64\\lib\\libQt6Widgets.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "C:\\Qt\\6.2.4\\mingw_64\\lib\\libQt6Gui.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 10,
+				"fragment" : "C:\\Qt\\6.2.4\\mingw_64\\lib\\libQt6Core.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Qt\\6.2.4\\mingw_64\\lib\\libQt6Widgets.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Qt\\6.2.4\\mingw_64\\lib\\libQt6Gui.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "C:\\Qt\\6.2.4\\mingw_64\\lib\\libQt6Core.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 17,
+				"fragment" : "-lmpr",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 17,
+				"fragment" : "-luserenv",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 22,
+				"fragment" : "-ld3d11",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 22,
+				"fragment" : "-ldxgi",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 22,
+				"fragment" : "-ldxguid",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32",
+				"role" : "libraries"
+			}
+		],
+		"language" : "CXX"
+	},
+	"name" : "educad",
+	"nameOnDisk" : "educad.exe",
+	"paths" : 
+	{
+		"build" : ".",
+		"source" : "."
+	},
+	"sourceGroups" : 
+	[
+		{
+			"name" : "Source Files",
+			"sourceIndexes" : 
+			[
+				0
+			]
+		}
+	],
+	"sources" : 
+	[
+		{
+			"backtrace" : 1,
+			"compileGroupIndex" : 0,
+			"path" : "main.cpp",
+			"sourceGroupIndex" : 0
+		}
+	],
+	"type" : "EXECUTABLE"
+}

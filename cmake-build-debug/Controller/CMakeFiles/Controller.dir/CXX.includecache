@@ -1,0 +1,104 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Angem/Angem.hpp
+memory
+-
+utils.h
+../Angem/utils.h
+AngemEntity.h
+../Angem/AngemEntity.h
+
+../Angem/AngemEntity.h
+
+../AngemWorker/AngemModelWorker.hpp
+Angem.hpp
+../AngemWorker/Angem.hpp
+Entity.hpp
+../AngemWorker/Entity.hpp
+render.h
+../AngemWorker/render.h
+
+../Entity/Entity.hpp
+utils.h
+../Entity/utils.h
+AngemEntity.h
+../Entity/AngemEntity.h
+TwoDEntity.h
+../Entity/TwoDEntity.h
+cmath
+-
+iostream
+../Entity/iostream
+set
+-
+polyset.h
+../Entity/polyset.h
+vector
+-
+Angem.hpp
+../Entity/Angem.hpp
+
+../Entity/TwoDEntity.h
+memory
+../Entity/memory
+Entity.hpp
+../Entity/Entity.hpp
+
+../Utils/polyset.h
+unordered_set
+-
+unordered_map
+-
+utils.h
+../Utils/utils.h
+
+../Utils/utils.h
+typeindex
+-
+typeinfo
+-
+memory
+-
+
+../render/GUIObserver.h
+TwoDEntity.h
+../render/TwoDEntity.h
+Entity.hpp
+../render/Entity.hpp
+
+../render/render.h
+set
+../render/set
+GUIObserver.h
+../render/GUIObserver.h
+TwoDEntity.h
+../render/TwoDEntity.h
+Entity.hpp
+../render/Entity.hpp
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/ControllerObservable.h
+TwoDEntity.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/TwoDEntity.h
+Entity.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/Entity.hpp
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/controller.cpp
+controller.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/controller.h
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/controller.h
+render.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/render.h
+AngemModelWorker.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/AngemModelWorker.hpp
+ControllerObservable.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/ControllerObservable.h
+TwoDEntity.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/Controller/TwoDEntity.h
+

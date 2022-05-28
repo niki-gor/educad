@@ -1,0 +1,82 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../Angem/Angem.hpp
+memory
+-
+utils.h
+../Angem/utils.h
+AngemEntity.h
+../Angem/AngemEntity.h
+
+../Angem/AngemEntity.h
+
+../Entity/Entity.hpp
+utils.h
+../Entity/utils.h
+AngemEntity.h
+../Entity/AngemEntity.h
+TwoDEntity.h
+../Entity/TwoDEntity.h
+cmath
+-
+iostream
+../Entity/iostream
+set
+-
+polyset.h
+../Entity/polyset.h
+vector
+-
+Angem.hpp
+../Entity/Angem.hpp
+
+../Entity/TwoDEntity.h
+memory
+../Entity/memory
+Entity.hpp
+../Entity/Entity.hpp
+
+../Utils/polyset.h
+unordered_set
+-
+unordered_map
+-
+utils.h
+../Utils/utils.h
+
+../Utils/utils.h
+typeindex
+-
+typeinfo
+-
+memory
+-
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/GUIObserver.h
+TwoDEntity.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/TwoDEntity.h
+Entity.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/Entity.hpp
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/render.cpp
+render.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/render.h
+iostream
+-
+
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/render.h
+set
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/set
+GUIObserver.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/GUIObserver.h
+TwoDEntity.h
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/TwoDEntity.h
+Entity.hpp
+/mnt/c/Users/George/Desktop/файл смерти/технопарк/ml/1 сем/c++/educad/render/Entity.hpp
+
