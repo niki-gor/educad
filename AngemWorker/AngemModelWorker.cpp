@@ -3,6 +3,7 @@
 PTR<Entity> AngemModelWorker::AddToModel(PTR<Entity> p){
     //render->addEntity(p);
     container->insert(p);
+    return p;
 }
 
 void AngemModelWorker::DeleteEntity(PTR<Entity> p){
