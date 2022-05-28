@@ -135,6 +135,7 @@ bool Controller::onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) {
         PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
         PTR<Plane> planeByThreePoints(new PlaneByPointAndLine(pointCast, lineCast));
         planeByThreePoints->addProjectionPlane(MAKEPTR<ProjectionPlane> (oxy));
+        planeByThreePoints->addProjectionPlane(MAKEPTR<ProjectionPlane> (oxz));
         addToModel(planeByThreePoints);
         renderEntity(planeByThreePoints);
     }

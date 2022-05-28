@@ -15,6 +15,7 @@ PTR<TwoDEntity> Point::getProjection(PTR<ProjectionPlane> projectionPlane) {
     projectionOnAbsciss.reset();
     projectoinOnOrdinate.reset();
     twoDProjections.insert(twoDPoint);
+    twoDPoint->projectionPlane = projectionPlane;
     return twoDPoint;
 }
 
@@ -46,6 +47,7 @@ PTR<TwoDEntity> Line::getProjection(PTR<ProjectionPlane> projectionPlane){
     PTR<TwoDPoint> twoDPoint1 = point1->getProjectionPoint(projectionPlane);
     PTR<TwoDPoint> twoDPoint2 = point2->getProjectionPoint(projectionPlane);
     PTR<TwoDLine> line(new TwoDLine(twoDPoint1, twoDPoint2, projectionPlane));
+    line->projectionPlane = projectionPlane;
     twoDProjections.insert(line);
     return line;
 }
@@ -63,7 +65,9 @@ PTR<TwoDEntity> PlaneByThreePoints::getProjection(PTR<ProjectionPlane> projectio
     PTR<TwoDPoint> point2Projected = second->getProjectionPoint(projectionPlane);
     PTR<TwoDPoint> point3Projected = third->getProjectionPoint(projectionPlane);
     PTR<TwoDEntity> projectedEntity(new TwoDPlane(point1Projected, point2Projected, point3Projected));
-//    projectedEntity->projectedEntity.reset(this);
+    point1Projected->projectionPlane = projectionPlane;
+    point2Projected->projectionPlane = projectionPlane;
+    point3Projected->projectionPlane = projectionPlane;
     return projectedEntity;
 }
 
@@ -81,7 +85,8 @@ PTR<TwoDEntity> PlaneByIntersectingLines::getProjection(PTR<ProjectionPlane> pro
     PTR<TwoDLine> line1Projected = first->getProjectionLine(projectionPlane);
     PTR<TwoDLine> line2Projected = second->getProjectionLine(projectionPlane);
     PTR<TwoDEntity> projectedEntity(new TwoDPlane(line1Projected, line2Projected));
-//    projectedEntity->projectedEntity.reset(this);
+    line1Projected->projectionPlane = projectionPlane;
+    line2Projected->projectionPlane = projectionPlane;
     return projectedEntity;
 }
 
@@ -89,7 +94,8 @@ PTR<TwoDEntity> PlaneByParallelLines::getProjection(PTR<ProjectionPlane> project
     PTR<TwoDLine> line1Projected = first->getProjectionLine(projectionPlane);
     PTR<TwoDLine> line2Projected = second->getProjectionLine(projectionPlane);
     PTR<TwoDEntity> projectedEntity(new TwoDPlane(line1Projected, line2Projected));
-//    projectedEntity->projectedEntity.reset(this);
+    line1Projected->projectionPlane = projectionPlane;
+    line2Projected->projectionPlane = projectionPlane;
     return projectedEntity;
 }
 
