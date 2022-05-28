@@ -64,6 +64,8 @@ std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> Canvas::linePlaneCoo
 void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
     printf ("\nAdding plane \n");
     qp* qp1 = new qp;
+    deletePoint(x,y, xBegin, yBegin, planeNumber, "uzbek");
+    deleteLine(x1,y1, x2,y2, xBegin, yBegin, planeNumber, "uzbek");
     x = canvasBegin.x() - x;
     x1 = canvasBegin.x()-x1;
     x2 = canvasBegin.x()-x2;
@@ -76,9 +78,6 @@ void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y
         y1 = canvasBegin.y() - y1;
         y2 = canvasBegin.y() - y2;
     }
-    deletePoint(x,y, xBegin, yBegin, planeNumber, "uzbek");
-    deleteLine(x1,y1, x2,y2, xBegin, yBegin, planeNumber, "uzbek");
-    qp1->pos = QPoint(x1, y1);
     qp1->pos = QPoint(x1, y1);
     qp1->endpos = QPoint (x2,y2);
     qp1->pos2 = QPoint (x, y);
@@ -253,13 +252,15 @@ void Canvas::deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, 
     if (planeNumber==1) {
         y = canvasBegin.y() + y;
     }  else {
-        y -= canvasBegin.y();
+        y = canvasBegin.y() - y;
     }
     for (int i=0; i<vcp.size(); i++) {
         if (vcp[i]->pos == QPoint (x,y)) {
+            printf ("found");
             vcp.erase(vcp.begin()+i);
         }
     }
+    this->update();
 }
 
 void Canvas::deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
@@ -270,12 +271,14 @@ void Canvas::deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, 
         y1 = canvasBegin.y() + y1;
         y2 = canvasBegin.y() + y2;
     }  else {
-        y1 -= canvasBegin.y();
-        y2 -= canvasBegin.y();
+        y1 = canvasBegin.y()-y1;
+        y2 = canvasBegin.y()-y2;
     }
     for (int i=0; i<vcp.size(); i++) {
-        if ((vcp[i]->pos == QPoint (x1,y1)) && ((vcp[i]->pos == QPoint (x2,y2)))) {
+        if ((vcp[i]->pos == QPoint (x1,y1)) && ((vcp[i]->endpos == QPoint (x2,y2)))) {
+            printf ("found");
             vcp.erase(vcp.begin()+i);
         }
     }
+    this->update();
 }
