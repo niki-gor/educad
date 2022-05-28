@@ -25,6 +25,7 @@ public:
 private slots:
     void handlePerpendicularFromPointToLineButton();
     void handleParallelLineThroughPointButton ();
+    void handlePlaneThroughLineAndPointButton ();
 };
 
 class ContextEdit : public QTextEdit {

@@ -61,14 +61,45 @@ std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> Canvas::linePlaneCoo
     return result;
 }
 
+void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
+    qp* qp1 = new qp;
+    x = canvasBegin.x() - x;
+    x1 = canvasBegin.x()-x1;
+    x2 = canvasBegin.x()-x2;
+    if (planeNumber==1) {
+        y = canvasBegin.y() + y;
+        y1 = canvasBegin.y() + y1;
+        y2 = canvasBegin.y() + y2;
+    } else {
+        y = canvasBegin.y() - y;
+        y1 = canvasBegin.y() - y1;
+        y2 = canvasBegin.y() - y2;
+    }
+    qp1->pos = QPoint(x1, y1);
+    qp1->pos = QPoint(x1, y1);
+    qp1->endpos = QPoint (x2,y2);
+    qp1->pos2 = QPoint (x, y);
+    qp1->objType = PLANEBYLINEANDPOINT;
+    qp1->qpColor = Qt::black;
+    qp1->needsProjection = false;
+    qp1->qpName = QString::fromStdString(name);
+    qp1->planeNumber = planeNumber;
+}
+
 void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
     qp* qp1 = new qp;
+    x = canvasBegin.x() - x;
+    if (planeNumber==1) {
+        y = canvasBegin.y() + y;
+    } else {
+        y = canvasBegin.y() - y;
+    }
     qp1->pos = QPoint(x, y);
     qp1->objType = POINT;
     qp1->qpColor = Qt::black;
     qp1->needsProjection = false;
     qp1->qpName = QString::fromStdString(name);
-    qp1->planeNumber = 1;
+    qp1->planeNumber = planeNumber;
     vcp.append(qp1); //добавили в массив для рисования
     this->update();
 }

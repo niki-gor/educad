@@ -61,6 +61,14 @@ void Canvas::paintEvent(QPaintEvent *event) {
             if (vcp[i]->endpos.x() > 0)
                 p.drawLine(vcp[i]->pos.x(), vcp[i]->pos.y(), vcp[i]->endpos.x(), vcp[i]->endpos.y());
         }
+        if (vcp[i]->objType == PLANEBYLINEANDPOINT) {
+            pen.setWidth(3);
+            p.setPen(pen);
+            p.drawLine(vcp[i]->pos.x(), vcp[i]->pos.y(), vcp[i]->endpos.x(), vcp[i]->endpos.y());
+            pen.setWidth(15);
+            p.setPen(pen);
+            p.drawEllipse(vcp[i]->pos2.x(), vcp[i]->pos2.y(), 4, 4);
+        }
         for (int j = 0; j < vcp[i]->planeNumber; j++) {
             text.append('\'');
         }

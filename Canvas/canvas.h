@@ -57,7 +57,8 @@ private:
 enum ObjectType {
     POINT=0,
     LINE=1,
-    NOTHING=2
+    NOTHING=2,
+    PLANEBYLINEANDPOINT=3
 };
 
 struct qp //структура для хранения координаты при рисовании
@@ -65,6 +66,8 @@ struct qp //структура для хранения координаты пр
     PTR<TwoDEntity> objectEntity;
     QPoint pos;
     QPoint endpos;
+    QPoint pos2;
+    QPoint endpos2;
     ObjectType objType;
     QColor qpColor;
     QString qpName;
@@ -94,6 +97,7 @@ public:
     void deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name);
     void deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
 private:
+    void addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
     PointAndLineContextEdit pointAndLineRMB;
     QPoint canvasBegin;
     TwoPointsContextEdit twoPointsRMB;
