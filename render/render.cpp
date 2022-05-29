@@ -1,6 +1,7 @@
 #include "render.h"
-
+#include "time.h"
 #include <iostream>
+#include "unistd.h"
 
 void Render::addToProjectionPlane(const std::shared_ptr<ProjectionPlane>& plane, const std::shared_ptr<Entity>& object) {
     planes.insert(plane);

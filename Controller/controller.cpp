@@ -4,7 +4,7 @@
 
 #include "controller.h"
 
-Controller::Controller(Render* render, AlgoInterface* algoI): render(render),algo(algoI), oxy(ProjectionPlane(0, 0, 1, 0)), oxz(ProjectionPlane(0, 1, 0, 0)){
+Controller::Controller(Render* render, AlgoInterface* algoI): render(render),algo(algoI), oxy(MAKEPTR<ProjectionPlane>(0, 0, 1, 0)), oxz(MAKEPTR<ProjectionPlane>(0, 1, 0, 0)){
 }
 
 void Controller::addToModel(PTR<Entity> entity) {
@@ -17,8 +17,8 @@ void Controller::renderEntity(PTR<Entity> entity) {
 }
 
 void Controller::onAddEntity(PTR<Entity> entity) {
-    entity->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
-    entity->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
+    entity->addProjectionPlane(oxy);
+    entity->addProjectionPlane(oxz);
     addToModel(entity);
     //renderEntity(entity);
 }
@@ -37,8 +37,8 @@ bool Controller::onCreatePerpendicular(PTR<Entity> point, PTR<Entity> line) {
         PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
         PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
         PTR<Line> perpendicularLine(new LineByPerpendicular(pointCast, lineCast));
-        perpendicularLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
-        perpendicularLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
+        perpendicularLine->addProjectionPlane(oxy);
+        perpendicularLine->addProjectionPlane(oxz);
         addToModel(perpendicularLine);
         renderEntity(perpendicularLine);
         return true;
@@ -51,8 +51,8 @@ bool Controller::onCreateParallelLine(PTR<Entity> line, PTR<Entity> point) {
         PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
         PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
         PTR<Line> parallelLine(new LineByParallel(pointCast, lineCast));
-        parallelLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
-        parallelLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
+        parallelLine->addProjectionPlane(oxy);
+        parallelLine->addProjectionPlane(oxz);
         addToModel(parallelLine);
         renderEntity(parallelLine);
     }
@@ -63,8 +63,8 @@ bool Controller::onCreateLineByTwoPoint(PTR<Entity> point1, PTR<Entity> point2) 
         PTR<Point> point1Cast = std::dynamic_pointer_cast<Point>(point1);
         PTR<Point> point2Cast = std::dynamic_pointer_cast<Point>(point2);
         PTR<Line> lineByTwoPoints(new LineByTwoPoints(point1Cast, point2Cast));
-        lineByTwoPoints->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
-        lineByTwoPoints->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
+        lineByTwoPoints->addProjectionPlane(oxy);
+        lineByTwoPoints->addProjectionPlane(oxz);
         addToModel(lineByTwoPoints);
         renderEntity(lineByTwoPoints);
         return true;
@@ -76,8 +76,8 @@ bool Controller::onCreatePointOn(double* x, double* y, double* z, PTR<Entity> en
     if (entity->type() == "line"){
         PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(entity);
         PTR<Point> pointOnLine(new PointOnLine(lineCast, x, y, z));
-        pointOnLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
-        pointOnLine->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
+        pointOnLine->addProjectionPlane(oxy);
+        pointOnLine->addProjectionPlane(oxz);
         addToModel(pointOnLine);
         renderEntity(pointOnLine);
         return true;
@@ -86,8 +86,8 @@ bool Controller::onCreatePointOn(double* x, double* y, double* z, PTR<Entity> en
     else if(entity->type() == "plane"){
         PTR<Plane> planeCast = std::dynamic_pointer_cast<Plane>(entity);
         PTR<Point> pointOnPlane(new PointOnPlane(planeCast, x, y, z));
-        pointOnPlane->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
-        pointOnPlane->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
+        pointOnPlane->addProjectionPlane(oxy);
+        pointOnPlane->addProjectionPlane(oxz);
         addToModel(pointOnPlane);
         renderEntity(pointOnPlane);
         return true;
@@ -134,8 +134,8 @@ bool Controller::onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) {
         PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
         PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
         PTR<Plane> plane(new PlaneByPointAndLine(pointCast, lineCast));
-        plane->addProjectionPlane(MAKEPTR<ProjectionPlane> (oxy));
-        plane->addProjectionPlane(MAKEPTR<ProjectionPlane> (oxz));
+        plane->addProjectionPlane(oxy);
+        plane->addProjectionPlane(oxz);
         addToModel(plane);
         renderEntity(plane);
     }
@@ -162,8 +162,12 @@ PTR<Entity> Controller::onLinkToPlane(double *x, double *y, double *z, PTR<Entit
     if (plane->type() == "plane"){
         PTR<Plane> planeCast = std::dynamic_pointer_cast<Plane>(plane);
         PTR<Point> point(new PointOnPlane(planeCast, x, y, z));
-//        point->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
-//        point->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
+        if(z){
+            point->addProjectionPlane(oxz);
+        }
+        else{
+            point->addProjectionPlane(oxz);
+        }
         return point;
     }
     return nullptr;

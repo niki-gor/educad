@@ -12,7 +12,7 @@ AngemPoint getMiddle(AngemPoint p1, AngemPoint p2){
     return middle;
 }
 
-algorithm Algo::pointOnPlaneProjection(PTR<Point> point, PTR<Plane> plane) {
+algorithm<TwoDEntity> Algo::pointOnPlaneProjection(PTR<Point> point, PTR<Plane> plane) {
     PTR<ProjectionPlane> projectionPlane;
     PTR<ProjectionPlane> projectionPlane2;
     for(auto &it:point->projections){
@@ -20,12 +20,13 @@ algorithm Algo::pointOnPlaneProjection(PTR<Point> point, PTR<Plane> plane) {
         break;
     }
 
-    for (auto &it:plane->projections) {
+    for (auto it:plane->projections) {
         if (it == projectionPlane){
             continue;
         }
         else{
             projectionPlane2 = it;
+            break;
         }
     }
     PTR<Point> point1;
@@ -38,7 +39,7 @@ algorithm Algo::pointOnPlaneProjection(PTR<Point> point, PTR<Plane> plane) {
         AngemPoint point2Coords = AngemUtils::linesIntersection(*line, *planeByPointAndLine->line);
         point2 = MAKEPTR<PointByCoords>(point2Coords.x, point2Coords.y, point2Coords.z);
     }
-    algorithm alg;
+    algorithm<TwoDEntity> alg;
     PTR<TwoDEntity> lineProjection1 = line->getProjection(projectionPlane);
     lineProjection1->projectedEntity = line;
     lineProjection1->projectionPlane = projectionPlane;
@@ -49,15 +50,15 @@ algorithm Algo::pointOnPlaneProjection(PTR<Point> point, PTR<Plane> plane) {
 
     PTR<TwoDEntity> point2Projection2 = point2->getProjection(projectionPlane2);
     point2Projection2->projectedEntity = point2;
-    point2Projection2->projectionPlane = projectionPlane;
+    point2Projection2->projectionPlane = projectionPlane2;
 
     PTR<TwoDEntity> lineProjection2 = line->getProjection(projectionPlane2);
     lineProjection2->projectedEntity = line;
-    lineProjection2->projectionPlane = projectionPlane;
+    lineProjection2->projectionPlane = projectionPlane2;
 
-    PTR<TwoDEntity> pointProjection = point2->getProjection(projectionPlane);
+    PTR<TwoDEntity> pointProjection = point2->getProjection(projectionPlane2);
     pointProjection->projectedEntity = point2;
-    pointProjection->projectionPlane = projectionPlane;
+    pointProjection->projectionPlane = projectionPlane2;
 
     alg.push_back({"Строим прямую из точки на плоскости к искомой точке", {lineProjection1}});
     alg.push_back({"Находим пересечение с прямой на плоскости", {point2Projection1}});

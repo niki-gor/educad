@@ -150,7 +150,7 @@ public:
 class Plane : public Entity, public AngemPlane {
 public:
     std::string type() const {return "plane";};
-    virtual std::string planeType() = 0;
+    virtual std::string planeType() const = 0;
     double getA(){return A;}
     double getB(){return B;}
     double getC(){return C;}
@@ -215,8 +215,6 @@ public:
     ProjectionPlane(const PTR<Plane>& plane);
     ProjectionPlane(double A, double B, double C, double D);
     std::string planeType() const {return "projectionPlane";}
-
-    std::string planeType() override;;
     void add(PTR<TwoDEntity> object) {projected.insert(object);}
     void erase(PTR<TwoDEntity> object){projected.erase(object);}
     void update() override{};

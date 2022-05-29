@@ -17,8 +17,8 @@ private:
     void renderEntity(PTR<Entity> entity);
     void disRenderEntity(PTR<Entity> entity);
     Render* render;
-    ProjectionPlane oxy;
-    ProjectionPlane oxz;
+    PTR<ProjectionPlane> oxy;
+    PTR<ProjectionPlane> oxz;
     AlgoInterface* algo;
 public:
     bool onCreateLineByTwoPoint(PTR<Entity> point1, PTR<Entity> point2) override;
