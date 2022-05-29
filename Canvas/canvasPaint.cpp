@@ -42,9 +42,12 @@ void Canvas::paintEvent(QPaintEvent *event) {
         p.setPen(pen);
         QPainterPath path;
         if (vcp[i]->objType == POINT) {
-            pen.setWidth(15);
+            pen.setWidth(10);
             p.setPen(pen);
-            p.drawEllipse(vcp[i]->pos.x(), vcp[i]->pos.y(), 4, 4);
+            QBrush brush = p.brush();
+            brush.setStyle(Qt::SolidPattern);
+            p.setBrush(brush);
+            p.drawEllipse(vcp[i]->pos.x(), vcp[i]->pos.y(), 5, 5);
             //  p.fillPath(QPainterPath(QPoint(vcp[i].pos.x(), vcp[i].pos.y())), p.brush());
             if (vcp[i]->planeNumber == 1)
                 projectStructureList->addPointToXZPlaneStructure(vcp[i]->qpName);
@@ -65,9 +68,9 @@ void Canvas::paintEvent(QPaintEvent *event) {
             pen.setWidth(3);
             p.setPen(pen);
             p.drawLine(vcp[i]->pos.x(), vcp[i]->pos.y(), vcp[i]->endpos.x(), vcp[i]->endpos.y());
-            pen.setWidth(15);
+            pen.setWidth(10);
             p.setPen(pen);
-            p.drawEllipse(vcp[i]->pos2.x(), vcp[i]->pos2.y(), 4, 4);
+            p.drawEllipse(vcp[i]->pos2.x(), vcp[i]->pos2.y(), 5, 5);
         }
         for (int j = 0; j < vcp[i]->planeNumber; j++) {
             text.append('\'');
