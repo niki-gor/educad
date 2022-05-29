@@ -244,7 +244,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                 if (pointToWork->planeNumber==1) {
                     getControllerObservable()->onLinkToPlane(new double (pointX), new double (pointY), nullptr, planeToWork->objectEntity->projectedEntity);
                 } else {
-+                    getControllerObservable()->onLinkToPlane(new double (pointX), nullptr, new double (pointZ), planeToWork->objectEntity->projectedEntity);
+                    getControllerObservable()->onLinkToPlane(new double (pointX), nullptr, new double (pointZ), planeToWork->objectEntity->projectedEntity);
                 }
                 toWork.erase(0);
                 condition=0;
