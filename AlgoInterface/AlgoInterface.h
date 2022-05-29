@@ -6,11 +6,12 @@
 #define EDUCAD_ALGOINTERFACE_H
 #include "Entity.hpp"
 #include "render.h"
+#include "vector"
+#include "string"
 
 class AlgoInterface{
 public:
-    Render* render;
-    virtual void pointOnPlaneProjection(PTR<Point> point, PTR<Plane> plane) = 0;
+    virtual std::vector<std::pair<std::string, std::vector<PTR<Entity>>>> pointOnPlaneProjection(PTR<Point> point, PTR<Plane> plane) = 0;
 };
 
 #endif //EDUCAD_ALGOINTERFACE_H

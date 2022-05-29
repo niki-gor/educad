@@ -11,6 +11,8 @@ public:
     void onAddToProjectionPlane(std::shared_ptr<TwoDEntity> object) override;
     void onChangeFromProjectionPlane(std::shared_ptr<TwoDEntity> object) override;
     void onDeleteFromProjectionPlane(std::shared_ptr<TwoDEntity> object) override;
+
+    void onAddAlgorithm(std::vector<std::pair<std::string, std::vector<PTR<Entity>>>> algorithm) override{};
 };
 
 #endif
