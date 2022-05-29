@@ -12,6 +12,7 @@
 class AlgoInterface{
 public:
     virtual std::vector<std::pair<std::string, std::vector<PTR<TwoDEntity>>>> pointOnPlaneProjection(PTR<Point> point, PTR<Plane> plane) = 0;
+    virtual algorithm<TwoDEntity> getStraightLevel(PTR<Line> line, PTR<Point> point, PTR<ProjectionPlane> straightPlane) = 0;
 };
 
 #endif //EDUCAD_ALGOINTERFACE_H

@@ -68,3 +68,46 @@ algorithm<TwoDEntity> Algo::pointOnPlaneProjection(PTR<Point> point, PTR<Plane> 
 
     return alg;
 }
+
+algorithm<TwoDEntity> Algo::getStraightLevel(PTR<Line> line, PTR<Point> point, PTR<ProjectionPlane> straightPlane){
+    PTR<ProjectionPlane> projectionPlane;
+    PTR<ProjectionPlane> projectionPlane2 = straightPlane;
+
+    for (auto it:point->projections) {
+        if (it == projectionPlane2){
+            continue;
+        }
+        else{
+            projectionPlane = it;
+            break;
+        }
+    }
+
+    AngemPlane parallelPlane = AngemUtils::parallelPlane(*straightPlane, *point);
+    AngemPoint pointIntersectionCoords = AngemUtils::planeLineIntersection(parallelPlane, *line);
+    PTR<Point> pointIntersection(new PointByCoords(pointIntersectionCoords.x, pointIntersectionCoords.y, pointIntersectionCoords.z));
+    PTR<Line> parallelLine(new LineByTwoPoints(point, pointIntersection));
+
+    PTR<TwoDEntity> parallelLine1 = parallelLine->getProjection(projectionPlane);
+    parallelLine1->projectedEntity = parallelLine;
+    parallelLine1->projectionPlane = projectionPlane;
+
+    PTR<TwoDEntity> pointIntersection1 = pointIntersection->getProjection(projectionPlane);
+    pointIntersection1->projectedEntity = parallelLine;
+    pointIntersection1->projectionPlane = projectionPlane;
+
+    PTR<TwoDEntity> pointIntersection2 = pointIntersection->getProjection(projectionPlane2);
+    pointIntersection2->projectedEntity = parallelLine;
+    pointIntersection2->projectionPlane = projectionPlane2;
+
+    PTR<TwoDEntity> parallelLine2 = parallelLine->getProjection(projectionPlane2);
+    parallelLine2->projectedEntity = parallelLine;
+    parallelLine2->projectionPlane = projectionPlane2;
+
+    algorithm<TwoDEntity> alg;
+    alg.push_back({"Строим прямую параллельную оси через искомую", {parallelLine1}});
+    alg.push_back({"Находим пересечение этой прямой с искомой", {pointIntersection1}});
+    alg.push_back({"Проецируем эту точку", {pointIntersection2}});
+    alg.push_back( { "Проводим прямую от нее до проекции искомой точки", {parallelLine2}});
+    return alg;
+}

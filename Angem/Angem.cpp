@@ -443,3 +443,8 @@ AngemPoint AngemUtils::getProjectionOnLine(AngemLine l, AngemPoint p){
     AngemLine perpendicular = getPerpendicularLine(p, l);
     return linesIntersection(l, perpendicular);
 }
+
+AngemPlane AngemUtils::parallelPlane(AngemPlane pl, AngemPoint p){
+    double D = -pl.A*p.x + -pl.B*p.y + -pl.C*p.z;
+    return AngemPlane(pl.A, pl.B, pl.C, D);
+}
