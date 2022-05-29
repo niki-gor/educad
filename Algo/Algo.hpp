@@ -1,11 +1,17 @@
 #pragma once
 
 #include "Entity.hpp"
-#include "Utils.hpp"
+#include "utils.h"
+#include "render.h"
+#include "AngemModelWorker.hpp"
 
 
 
-namespace Algo {
+class Algo {
+private:
+    PTR<Renderable> render;
+    PTR<AngemModelWorker> storage;
+public:
     bool getProjection(PTR<ProjectionPlane>, PTR<Entity>);
     bool getIntersection(PTR<ProjectionPlane>, PTR<Line>, PTR<Line>);
     bool getParallelLine(PTR<ProjectionPlane>, PTR<Point>, PTR<Line>);

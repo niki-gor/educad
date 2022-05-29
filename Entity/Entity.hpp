@@ -26,6 +26,9 @@ public:
     std::set<PTR<TwoDEntity>> twoDProjections;
     std::vector<PTR<Entity> > childrends;
 //public:
+    size_t getHash();
+    const size_t hash;
+    Entity() : hash{gethash()} {}
     virtual void update() = 0;
     virtual PTR<TwoDEntity> getProjection(PTR<ProjectionPlane> projectionPlane) = 0;
     void addProjectionPlane(const PTR<ProjectionPlane>& plane){projections.insert(plane);}
