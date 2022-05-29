@@ -133,21 +133,24 @@ bool Controller::onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) {
     if (point->type() == "point" && line->type() == "line"){
         PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
         PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
-        PTR<Plane> plane(new PlaneByPointAndLine(pointCast, lineCast));
-        plane->addProjectionPlane(oxy);
-        plane->addProjectionPlane(oxz);
-        addToModel(plane);
-        renderEntity(plane);
+        algorithm<TwoDEntity> alg;
+        alg = algo->getStraightLevel(lineCast, pointCast, oxz);
+        runAlgorithm(alg);
+//        PTR<Plane> plane(new PlaneByPointAndLine(pointCast, lineCast));
+//        plane->addProjectionPlane(oxy);
+//        plane->addProjectionPlane(oxz);
+//        addToModel(plane);
+//        renderEntity(plane);
     }
     return false;
 }
 
 bool Controller::onAddPointOnPlaneProjectionAlgo(PTR<Entity> plane, PTR<Entity> point) {
     if (plane->type() == "plane" && point->type() == "point"){
-        PTR<Plane> plane = std::dynamic_pointer_cast<Plane>(plane);
-        PTR<Point> point = std::dynamic_pointer_cast<Point>(point);
-        if (AngemUtils::isPointOnPlane(*plane, *point)){
-            algorithm<TwoDEntity> alg = algo->pointOnPlaneProjection(point, plane);
+        PTR<Plane> planeCast = std::dynamic_pointer_cast<Plane>(plane);
+        PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
+        if (AngemUtils::isPointOnPlane(*planeCast, *pointCast)){
+            algorithm<TwoDEntity> alg = algo->pointOnPlaneProjection(pointCast, planeCast);
             runAlgorithm(alg);
         }
     }
