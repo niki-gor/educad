@@ -42,6 +42,8 @@ public:
     bool onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) override;
 
     bool onAddPointOnPlaneProjectionAlgo(PTR<Entity> plane, PTR<Entity> point) override;
+
+    PTR<Entity> onLinkToPlane(double *x, double *y, double *z, PTR<Entity> plane) override;
 };
 
 #endif //EDUCAD_CONTROLLER_H

@@ -152,3 +152,12 @@ bool Controller::onAddPointOnPlaneProjectionAlgo(PTR<Entity> plane, PTR<Entity> 
     }
     return false;
 }
+
+PTR<Entity> Controller::onLinkToPlane(double *x, double *y, double *z, PTR<Entity> plane) {
+    if (plane->type() == "plane"){
+        PTR<Plane> planeCast = std::dynamic_pointer_cast<Plane>(plane);
+        PTR<Point> point(new PointOnPlane(planeCast, x, y, z));
+        return point;
+    }
+    return nullptr;
+}
