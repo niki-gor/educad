@@ -2,6 +2,7 @@
 #include "iguiobserver.h"
 #include "Renderable.h"
 #include "unistd.h"
+#include "hintWindow.h"
 //#include "TwoDEntity/TwoDEntity.h"
 
 void GUIAPI::onAddToProjectionPlane(std::shared_ptr<TwoDEntity> object) {
@@ -27,15 +28,20 @@ void GUIAPI::onAddAlgorithm(std::vector<std::pair<std::string, std::vector<PTR<T
 ////            sleep(1000);
 //        }
 //   }
-    for (auto step: algorithm) {
+    HintWindow hint;
+    int i=0;
+    while (i<algorithm.size()) {
+        auto step = algorithm[i];
         for (int i = 0; i < step.second.size(); i++) {
-            QTextEdit hint;
-            hint.append(QString::fromStdString(step.first));
-            hint.move(canvas->parentWindow->height()*8/10, canvas->parentWindow->width()*1/10);
-            hint.show();
             step.second[i]->setRenderable(canvas);
             step.second[i]->render();
-            sleep(1000);
-          }
+        }
+        hint.setText(QString::fromStdString(step.first));
+        hint.move(800,600);
+        hint.exec();
+        while (hint.movement==0) {
+
+        }
+        i+=hint.movement;
     }
 }

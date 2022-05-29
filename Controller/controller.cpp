@@ -133,14 +133,11 @@ bool Controller::onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) {
     if (point->type() == "point" && line->type() == "line"){
         PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
         PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
-        algorithm<TwoDEntity> alg;
-        alg = algo->getStraightLevel(lineCast, pointCast, oxz);
-        runAlgorithm(alg);
-//        PTR<Plane> plane(new PlaneByPointAndLine(pointCast, lineCast));
-//        plane->addProjectionPlane(oxy);
-//        plane->addProjectionPlane(oxz);
-//        addToModel(plane);
-//        renderEntity(plane);
+        PTR<Plane> plane(new PlaneByPointAndLine(pointCast, lineCast));
+        plane->addProjectionPlane(oxy);
+        plane->addProjectionPlane(oxz);
+        addToModel(plane);
+        renderEntity(plane);
     }
     return false;
 }
