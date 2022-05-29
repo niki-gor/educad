@@ -17,7 +17,7 @@ public:
     void changeFromProjectionPlane(const std::shared_ptr<ProjectionPlane>& plane, std::shared_ptr<Entity> object);
     void deleteEntity(const PTR<Entity>& entity);
     void addEntity(const PTR<Entity>& entity);
-    void runAlgorithm(std::vector<std::pair<std::string, std::vector<PTR<Entity>>>> algorithm);
+    void runAlgorithm(std::vector<std::pair<std::string, std::vector<PTR<TwoDEntity>>>> algorithm);
 };
 
 

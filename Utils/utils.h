@@ -8,4 +8,6 @@
 
 template<class T>
 using PTR = std::shared_ptr<T>;
-//typedef std::vector<std::pair<std::string, std::vector<PTR<Entity>>>> algorithm;
+
+template<class T>
+using algorithm = std::vector<std::pair<std::string, std::vector<PTR<T>>>>;

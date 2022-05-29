@@ -12,7 +12,8 @@ int main(int argc, char *argv[])
     a.setWindowIcon(QIcon("../Icons/rk1.png"));
     PTR<GUIAPI> gui(new GUIAPI());
     auto* render = new Render(gui);
-    ControllerObservable* controller = new Controller(render);
+    AlgoInterface* algo = new Algo();
+    ControllerObservable* controller = new Controller(render, algo);
     auto* projectStructureList = new ProjectStructureList();
     PTR<Canvas> canvas (new Canvas(nullptr, nullptr, projectStructureList, controller));
     gui->canvas=canvas;

@@ -4,7 +4,7 @@
 
 #include "controller.h"
 
-Controller::Controller(Render* render): render(render), oxy(ProjectionPlane(0, 0, 1, 0)), oxz(ProjectionPlane(0, 1, 0, 0)){
+Controller::Controller(Render* render, AlgoInterface* algoI): render(render),algo(algoI), oxy(ProjectionPlane(0, 0, 1, 0)), oxz(ProjectionPlane(0, 1, 0, 0)){
 }
 
 void Controller::addToModel(PTR<Entity> entity) {
@@ -147,10 +147,15 @@ bool Controller::onAddPointOnPlaneProjectionAlgo(PTR<Entity> plane, PTR<Entity> 
         PTR<Plane> plane = std::dynamic_pointer_cast<Plane>(plane);
         PTR<Point> point = std::dynamic_pointer_cast<Point>(point);
         if (AngemUtils::isPointOnPlane(*plane, *point)){
-            algo->pointOnPlaneProjection(point, plane);
+            algorithm<TwoDEntity> alg = algo->pointOnPlaneProjection(point, plane);
+            runAlgorithm(alg);
         }
     }
     return false;
+}
+
+void Controller::runAlgorithm(algorithm<TwoDEntity> alg){
+    render->runAlgorithm(alg);
 }
 
 PTR<Entity> Controller::onLinkToPlane(double *x, double *y, double *z, PTR<Entity> plane) {

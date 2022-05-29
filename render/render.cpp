@@ -57,8 +57,6 @@ Render::Render(PTR<GUIObserver> observer) {
     this->observer = observer;
 }
 
-void Render::runAlgorithm(std::vector<std::pair<std::string, std::vector<PTR<Entity>>>> algorithm) {
+void Render::runAlgorithm(std::vector<std::pair<std::string, std::vector<PTR<TwoDEntity>>>> algorithm) {
     observer->onAddAlgorithm(algorithm);
 }
-
-

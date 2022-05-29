@@ -27,7 +27,7 @@ public:
 
     bool onCreateParallelLine(PTR<Entity> line, PTR<Entity> point) override;
 
-    explicit Controller(Render* render);
+    Controller(Render* render, AlgoInterface* algoI);
     void onAddEntity(PTR<Entity> entity) override;
     void onDeleteEntity(PTR<Entity> entity) override;
 
@@ -44,6 +44,9 @@ public:
     bool onAddPointOnPlaneProjectionAlgo(PTR<Entity> plane, PTR<Entity> point) override;
 
     PTR<Entity> onLinkToPlane(double *x, double *y, double *z, PTR<Entity> plane) override;
+
+
+    void runAlgorithm(algorithm<TwoDEntity> alg);
 };
 
 #endif //EDUCAD_CONTROLLER_H

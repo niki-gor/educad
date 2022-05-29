@@ -40,7 +40,6 @@ PlaneByPointAndLine::PlaneByPointAndLine(PTR<Point> p, PTR<Line> l){
     B = k1*l->i - i1*l->k;
     C = i1*l->j - j1*l->i;
     D = A*(-p->x) + B*(-p->y) + C*(-p->z);
-
 //    p->addChildren(PTR<Entity>(this));
 //    l->addChildren(PTR<Entity>(this));
 }
@@ -54,6 +53,7 @@ PlaneByIntersectingLines::PlaneByIntersectingLines(PTR<Line> l, PTR<Line> l1){
     B = l1->k*l->i - l1->i*l->k;
     C = l1->i*l->j - l1->j*l->i;
     D = A*(-l->x0) + B*(-l->y0) + C*(-l->z0);
+    AngemPoint interSecting = AngemUtils::linesIntersection(*l, *l1);
 //    l->addChildren(PTR<Entity>(this));
 //    l1->addChildren(PTR<Entity>(this));
 }
@@ -71,6 +71,7 @@ PlaneByParallelLines::PlaneByParallelLines(PTR<Line> l, PTR<Line> l1){
     B = k1*l->i - i1*l->k;
     C = i1*l->j - j1*l->i;
     D = A*(-l->x0) + B*(-l->y0) + C*(-l->z0);
+
 }
 
 std::vector<PTR<Entity> > PlaneByThreePoints::getParents() const{
