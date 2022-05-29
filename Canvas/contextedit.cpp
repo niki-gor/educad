@@ -163,6 +163,9 @@ PointAndLineContextEdit::PointAndLineContextEdit () {
     QAction* planeThroughLineAndPointAction = new QAction(tr("Провести плоскость через прямую и точку"), this);
     connect(planeThroughLineAndPointAction, SIGNAL(triggered()), this, SLOT(handlePlaneThroughLineAndPointButton()));
     pointAndLineContextEditWidget->addAction(planeThroughLineAndPointAction);
+    QAction* makeStraightLineAction = new QAction(tr("Провести линию уровня"), this);
+    connect(makeStraightLineAction, SIGNAL(triggered()), this, SLOT(handleMakeStraightLine()));
+    pointAndLineContextEditWidget->addAction(makeStraightLineAction);
     // connect(&act, &QPushButton::released, this, &TwoPointsContextEdit::handleLineByTwoPointsButton);
 }
 
@@ -207,6 +210,21 @@ void PointAndLineContextEdit::handlePlaneThroughLineAndPointButton() {
     cnv->getControllerObservable()->onDeleteEntity(point);
     cnv->getControllerObservable()->onDeleteEntity(baseLine);
     cnv->getControllerObservable()->onCreatePlaneByLinePoint(baseLine, point);
+}
+
+void PointAndLineContextEdit::handleMakeStraightLine() {
+    Canvas* cnv = dynamic_cast<Canvas*>(parent());
+    QVector <qp*> objectsToWork = cnv->getSelectedObjects();
+    if (objectsToWork[0]->objType==LINE) {
+        std::swap(objectsToWork[0], objectsToWork[1]);
+    }
+    int plane;
+    if (objectsToWork[0]->planeNumber==1) {
+        plane=2;
+    } else {
+        plane=1;
+    }
+    cnv->getControllerObservable()->onAddStraightLine(objectsToWork[1]->objectEntity->projectedEntity, objectsToWork[0]->objectEntity->projectedEntity, plane);
 }
 
 void PointContextEdit::handleProjectOnPlaneButton() {
