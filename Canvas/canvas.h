@@ -99,9 +99,9 @@ public:
     void deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
     void unlock() {blocked= false; xMatch.remove(0); this->update();}
     qp* getSelectedObject () {return vcp[selectedIndex];};
+    void addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name, TwoDEntity* twoDEntity);
 private:
     UnprojectedPointContextEdit unprojectedPointRMB;
-    void addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
     PointAndLineContextEdit pointAndLineRMB;
     DontProjectObjectContextEdit oneProjectionRMB;
     QPoint canvasBegin;

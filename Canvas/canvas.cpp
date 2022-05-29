@@ -1,5 +1,5 @@
 #include "canvas.h"
-#define EPS 1000
+#define EPS 3000
 
 std::tuple<int, int> Canvas::canvasCoordsToPlaneCoords (int x, int y, PTR<ProjectionPlane> projectionPlane) {
     std::tuple <int, int> result;
@@ -61,7 +61,7 @@ std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> Canvas::linePlaneCoo
     return result;
 }
 
-void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
+void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name, TwoDEntity* twoDEntity) {
     printf ("\nAdding plane \n");
     qp* qp1 = new qp;
     PTR<ProjectionPlane> plane;
@@ -72,7 +72,7 @@ void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y
     twoDLineEnd = std::make_shared<TwoDPoint>(x2, y2, plane);
     point = std::make_shared<TwoDPoint>(x, y, plane);
     PTR<TwoDLine> twoDLine (new TwoDLine(twoDLineBegin, twoDLineEnd, plane));
-    PTR<TwoDEntity> twoDPlane (new TwoDPlane(twoDLine, point));
+    PTR<TwoDEntity> twoDPlane (twoDEntity);
     deletePoint(x,y, xBegin, yBegin, planeNumber, "uzbek");
     deleteLine(x1,y1, x2,y2, xBegin, yBegin, planeNumber, "uzbek");
     printf ("\n%d\n", planeNumber);
@@ -168,8 +168,8 @@ removeRelated::removeRelated(QWidget *parent) : QMessageBox(parent) {
 
 int Canvas::findInVcp(int x, int y) {
     for (int i = 0; i < vcp.size(); ++i) {
-        if (((vcp[i]->pos.x() >= x - 4) && (vcp[i]->pos.x() <= x + 4))
-            && ((vcp[i]->pos.y() >= y - 4) && (vcp[i]->pos.y() <= y + 4))) {
+        if (((vcp[i]->pos.x() >= x - 10) && (vcp[i]->pos.x() <= x + 10))
+            && ((vcp[i]->pos.y() >= y - 10) && (vcp[i]->pos.y() <= y + 10))) {
             return i;
         }
         if (vcp[i]->objType==LINE) {

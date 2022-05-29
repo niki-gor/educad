@@ -3,5 +3,3 @@
 //
 
 #include "Algo.h"
-
-void Algo::doIt(){std::cout << "foo";}

@@ -246,7 +246,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                 } else {
                     getControllerObservable()->onLinkToPlane(new double (pointX), nullptr, new double (pointZ), planeToWork->objectEntity->projectedEntity);
                 }
-                toWork.erase(0);
+                toWork.erase(toWork.begin());
                 condition=0;
             }
         }

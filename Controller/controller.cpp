@@ -157,6 +157,8 @@ PTR<Entity> Controller::onLinkToPlane(double *x, double *y, double *z, PTR<Entit
     if (plane->type() == "plane"){
         PTR<Plane> planeCast = std::dynamic_pointer_cast<Plane>(plane);
         PTR<Point> point(new PointOnPlane(planeCast, x, y, z));
+        point->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxy));
+        point->addProjectionPlane(MAKEPTR<ProjectionPlane>(oxz));
         return point;
     }
     return nullptr;
