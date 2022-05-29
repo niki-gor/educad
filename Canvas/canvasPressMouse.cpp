@@ -60,7 +60,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                     qp1->pos = this->pos;
                     qp1->objType = POINT;
                     qp1->qpColor = Qt::red;
-                    qp1->needsProjection = false;
+                    qp1->needsProjection = true;
                     InputName inputNameWindow;
                     inputNameWindow.exec();
                     qp1->qpName = inputNameWindow.getInput();
@@ -85,6 +85,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                 qp1->objType = POINT;
                 qp1->qpColor = Qt::black;
                 qp1->needsProjection = false;
+                vcp.back()->needsProjection=false;
                 vcp.back()->qpColor = Qt::black;
                 qp1->qpName = vcp.back()->qpName;
                 int y, z;
@@ -160,6 +161,7 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                     qp1->objectEntity=twoDLine;
                     vcp.back()->objectEntity->projectedEntity=line;
                     controllerObservable->onAddEntity(line);
+                    vcp.back()->needsProjection=false;
                     vcp.append(qp1);
                     qp1->needsProjection = false;
                     blocked = false;
@@ -231,6 +233,22 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
             rRelated.exec();
             //обновить экран
             this->update();
+        } else if (condition==4) {
+            int index = findInVcp(this->pos.x(), this->pos.y());
+            if (vcp[index]->objType==PLANEBYLINEANDPOINT) {
+                printf ("Clicked on plane");
+                qp* pointToWork = toWork[0];
+                qp* planeToWork = vcp[index];
+                std::tuple pointCoords = pointPlaneCoordsToCanvasCoords(pointToWork);
+                int pointX = std::get<0>(pointCoords); int pointY = std::get<1>(pointCoords); int pointZ = std::get<2>(pointCoords);
+                if (pointToWork->planeNumber==1) {
+                    getControllerObservable()->onLinkToPlane(new double (pointX), new double (pointY), nullptr, planeToWork->objectEntity->projectedEntity);
+                } else {
++                    getControllerObservable()->onLinkToPlane(new double (pointX), nullptr, new double (pointZ), planeToWork->objectEntity->projectedEntity);
+                }
+                toWork.erase(0);
+                condition=0;
+            }
         }
     }
 }

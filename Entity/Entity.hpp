@@ -264,6 +264,10 @@ public:
 
 class TwoDPlane: public TwoDEntity{
 private:
+public:
+    const PTR<TwoDLine> &getLine1() const;
+
+private:
     PTR<TwoDLine> line1;
     PTR<TwoDLine> line2;
     PTR<TwoDPoint> point1;

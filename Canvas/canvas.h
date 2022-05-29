@@ -81,6 +81,7 @@ class Canvas : public QWidget, public Renderable
 {
     Q_OBJECT
 public:
+    QVector <qp*> toWork;
     void clear();
     Canvas(QWidget* parent = nullptr, QMainWindow* _parent=nullptr, ProjectStructureList* _projectStructureList=nullptr, ControllerObservable* controllerObservable= nullptr);
     void prepareCanvas ();
@@ -97,10 +98,12 @@ public:
     void deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name);
     void deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
     void unlock() {blocked= false; xMatch.remove(0); this->update();}
+    qp* getSelectedObject () {return vcp[selectedIndex];};
 private:
+    UnprojectedPointContextEdit unprojectedPointRMB;
     void addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
     PointAndLineContextEdit pointAndLineRMB;
-    UnfinishedPointContextEdit oneProjectionRMB;
+    DontProjectObjectContextEdit oneProjectionRMB;
     QPoint canvasBegin;
     TwoPointsContextEdit twoPointsRMB;
     int findInSelected (int x, int y);

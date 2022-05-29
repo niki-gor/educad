@@ -60,4 +60,8 @@ PTR<Entity> TwoDPlane::entityByTwoDEntity(PTR<TwoDEntity> secondProjection) {
     return PTR<Entity>();
 }
 
+const PTR<TwoDLine> &TwoDPlane::getLine1() const {
+    return line1;
+}
+
 

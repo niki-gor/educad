@@ -145,7 +145,7 @@ TwoPointsContextEdit::TwoPointsContextEdit () {
    // connect(&act, &QPushButton::released, this, &TwoPointsContextEdit::handleLineByTwoPointsButton);
 }
 
-UnfinishedPointContextEdit::UnfinishedPointContextEdit() {
+DontProjectObjectContextEdit::DontProjectObjectContextEdit() {
     unfinishedPointContextEditWidget = new QMenu();
     QAction* dontProjectAction = new QAction(tr("Не проецировать"), this);
     connect(dontProjectAction, SIGNAL(triggered()), this, SLOT(handleDontProjectButon()));
@@ -241,7 +241,21 @@ void PointContextEdit::handleCopyButton () {
 
 }
 
-void UnfinishedPointContextEdit::handleDontProjectButon() {
+void DontProjectObjectContextEdit::handleDontProjectButon() {
     Canvas* cnv = dynamic_cast<Canvas*>(parent());
     cnv->unlock();
+}
+
+UnprojectedPointContextEdit::UnprojectedPointContextEdit() {
+    unprojectedObjectContextEditWidget = new QMenu();
+    QAction* connectToPlaneAction = new QAction(tr("Привязать к плоскости"), this);
+    connect(connectToPlaneAction, SIGNAL(triggered()), this, SLOT(handleConnectToPlaneButton()));
+    unprojectedObjectContextEditWidget->addAction(connectToPlaneAction);
+}
+
+void UnprojectedPointContextEdit::handleConnectToPlaneButton() {
+    Canvas* cnv = dynamic_cast<Canvas*>(parent());
+    qp* pointToWork = cnv->getSelectedObject();
+    cnv->condition=4;
+    cnv->toWork.append(pointToWork);
 }

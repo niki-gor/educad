@@ -16,15 +16,15 @@ std::tuple<int, int> Canvas::canvasCoordsToPlaneCoords (int x, int y, PTR<Projec
 }
 
 std::tuple<int,int,int> Canvas::pointPlaneCoordsToCanvasCoords (qp* object) {
-    int x,y,z;
+    int x,y=-1,z=-1;
     std::tuple<int,int,int> result;
     x=canvasBegin.x()-object->pos.x();
     if (object->planeNumber == 2) {
-        y = object->projections[0]->pos.y() - height() / 2;
+        if (!object->needsProjection) y = object->projections[0]->pos.y() - height() / 2;
         z = height() / 2 - object->pos.y();
     } else {
         y = object->pos.y() - height() / 2;
-        z = height() / 2 - object->projections[0]->pos.y();
+        if (!object->needsProjection) z = height() / 2 - object->projections[0]->pos.y();
     }
     std::get<0>(result) = x;
     std::get<1>(result) = y;
@@ -64,6 +64,15 @@ std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> Canvas::linePlaneCoo
 void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
     printf ("\nAdding plane \n");
     qp* qp1 = new qp;
+    PTR<ProjectionPlane> plane;
+    PTR<TwoDPoint> twoDLineBegin;
+    PTR<TwoDPoint> twoDLineEnd;
+    PTR <TwoDPoint> point;
+    twoDLineBegin = std::make_shared<TwoDPoint>(x1, y1, plane);
+    twoDLineEnd = std::make_shared<TwoDPoint>(x2, y2, plane);
+    point = std::make_shared<TwoDPoint>(x, y, plane);
+    PTR<TwoDLine> twoDLine (new TwoDLine(twoDLineBegin, twoDLineEnd, plane));
+    PTR<TwoDEntity> twoDPlane (new TwoDPlane(twoDLine, point));
     deletePoint(x,y, xBegin, yBegin, planeNumber, "uzbek");
     deleteLine(x1,y1, x2,y2, xBegin, yBegin, planeNumber, "uzbek");
     printf ("\n%d\n", planeNumber);
@@ -79,6 +88,7 @@ void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y
         y1 = canvasBegin.y() - y1;
         y2 = canvasBegin.y() - y2;
     }
+    qp1->objectEntity=twoDPlane;
     qp1->pos = QPoint(x1, y1);
     qp1->endpos = QPoint (x2,y2);
     qp1->pos2 = QPoint (x, y);
@@ -170,6 +180,18 @@ int Canvas::findInVcp(int x, int y) {
                 return i;
             }
         }
+        if (vcp[i]->objType==PLANEBYLINEANDPOINT) {
+            PTR<TwoDPlane> currPlane = std::dynamic_pointer_cast<TwoDPlane>(vcp[i]->objectEntity);
+            int newY; int newX=width()-x-10;
+            if (this->pos.y()<height()/2) newY = height()/2-y; else newY = y-height()/2;
+            if ((abs(currPlane->getLine1()->getA()* newX + currPlane->getLine1()->getB() * newY + currPlane->getLine1()->getC()) - EPS) <= 0) {
+                return i;
+            }
+            if (((vcp[i]->pos2.x() >= x - 4) && (vcp[i]->pos2.x() <= x + 4))
+                && ((vcp[i]->pos2.y() >= y - 4) && (vcp[i]->pos2.y() <= y + 4))) {
+                return i;
+            }
+        }
     }
     return -1;
 }
@@ -187,9 +209,11 @@ int Canvas::findInSelected(int x, int y) {
 Canvas::Canvas(QWidget *parent, QMainWindow *_parent, ProjectStructureList *_projectStructureList,ControllerObservable* controllerObservable) : QWidget(parent) {
     LineContextEdit lineRMB;
     PointContextEdit pointRMB;
+    unprojectedPointRMB.setParent(this);
     oneProjectionRMB.setParent(this);
     pointAndLineRMB.setParent(this);
     twoPointsRMB.setParent(this);
+    unprojectedPointRMB.hide();
     oneProjectionRMB.hide();
     pointAndLineRMB.hide();
     twoPointsRMB.hide();
@@ -227,8 +251,13 @@ void Canvas::mouseReleaseEvent(QMouseEvent *e) {
             oneProjectionRMB.unfinishedPointContextEditWidget->show();
         }
         if (selected == POINT) {
-            pointRMB.contextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
-            pointRMB.contextEditWidget->show();
+            if (vcp[selectedIndex]->needsProjection==true) {
+                unprojectedPointRMB.unprojectedObjectContextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
+                unprojectedPointRMB.unprojectedObjectContextEditWidget->show();
+            } else {
+                pointRMB.contextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
+                pointRMB.contextEditWidget->show();
+            }
         } else if (selected == LINE) {
             lineRMB.contextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
             lineRMB.contextEditWidget->show();

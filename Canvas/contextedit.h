@@ -4,10 +4,21 @@
 #include <QPushButton>
 #include <QTextEdit>
 
-class UnfinishedPointContextEdit : public QTextEdit {
+
+class UnprojectedPointContextEdit : public QTextEdit {
     Q_OBJECT;
 public:
-    UnfinishedPointContextEdit();
+    UnprojectedPointContextEdit();
+    QMenu* unprojectedObjectContextEditWidget;
+private slots:
+    void handleConnectToPlaneButton();
+};
+
+
+class DontProjectObjectContextEdit : public QTextEdit {
+    Q_OBJECT;
+public:
+    DontProjectObjectContextEdit();
     QMenu* unfinishedPointContextEditWidget;
 private slots:
     void handleDontProjectButon();
