@@ -4,6 +4,14 @@
 #include <QPushButton>
 #include <QTextEdit>
 
+class ConnectedToPlaneContextEdit : public QTextEdit {
+Q_OBJECT;
+public:
+    ConnectedToPlaneContextEdit();
+    QMenu* connectedToPlaneContextEditWidget;
+private slots:
+    void handleProjectOnPlaneButton();
+};
 
 class UnprojectedPointContextEdit : public QTextEdit {
     Q_OBJECT;

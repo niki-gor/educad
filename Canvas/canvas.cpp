@@ -118,6 +118,8 @@ Canvas::addPlaneByLineAndPoint(int x, int y, int x1, int y1, int x2, int y2, int
 
 void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
     qp *qp1 = new qp;
+    PTR<ProjectionPlane> plane;
+    PTR<TwoDEntity> twoDPoint(new TwoDPoint(x, y, plane));
     x = canvasBegin.x() - x;
     if (planeNumber == 1) {
         y = canvasBegin.y() + y;
@@ -130,6 +132,7 @@ void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std
     qp1->needsProjection = false;
     qp1->qpName = QString::fromStdString(name);
     qp1->planeNumber = planeNumber;
+    qp1->objectEntity=twoDPoint;
     vcp.append(qp1); //добавили в массив для рисования
     this->update();
 }
@@ -230,10 +233,12 @@ Canvas::Canvas(QWidget *parent, QMainWindow *_parent, ProjectStructureList *_pro
                ControllerObservable *controllerObservable) : QWidget(parent) {
     LineContextEdit lineRMB;
     PointContextEdit pointRMB;
+    connectedPointRMB.setParent(this);
     unprojectedPointRMB.setParent(this);
     oneProjectionRMB.setParent(this);
     pointAndLineRMB.setParent(this);
     twoPointsRMB.setParent(this);
+    connectedPointRMB.hide();
     unprojectedPointRMB.hide();
     oneProjectionRMB.hide();
     pointAndLineRMB.hide();
@@ -277,8 +282,13 @@ void Canvas::mouseReleaseEvent(QMouseEvent *e) {
                                                                              this->pos.y() + yDefault);
                 unprojectedPointRMB.unprojectedObjectContextEditWidget->show();
             } else {
-                pointRMB.contextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
-                pointRMB.contextEditWidget->show();
+                if (vcp[selectedIndex]->connectedToPlane) {
+                    connectedPointRMB.connectedToPlaneContextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
+                    connectedPointRMB.connectedToPlaneContextEditWidget->show();
+                } else {
+                    pointRMB.contextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
+                    pointRMB.contextEditWidget->show();
+                }
             }
         } else if (selected == LINE) {
             lineRMB.contextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);

@@ -259,3 +259,19 @@ void UnprojectedPointContextEdit::handleConnectToPlaneButton() {
     cnv->condition=4;
     cnv->toWork.append(pointToWork);
 }
+
+ConnectedToPlaneContextEdit::ConnectedToPlaneContextEdit() {
+    connectedToPlaneContextEditWidget = new QMenu();
+    QAction* projectOnPlaneAction = new QAction(tr("Спроецировать на плоскость"), this);
+    connect(projectOnPlaneAction, SIGNAL(triggered()), this, SLOT(handleProjectOnPlaneButton()));
+    connectedToPlaneContextEditWidget->addAction(projectOnPlaneAction);
+}
+
+void ConnectedToPlaneContextEdit::handleProjectOnPlaneButton() {
+    Canvas* cnv = dynamic_cast<Canvas*>(parent());
+    printf ("pint0 %d", cnv->selectedIndex);
+    qp* pointToWork = cnv->getSelectedObject();
+    printf ("pint");
+    cnv->condition=5;
+    cnv->toWork.append(pointToWork);
+}

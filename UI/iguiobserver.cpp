@@ -20,11 +20,22 @@ void GUIAPI::onDeleteFromProjectionPlane(std::shared_ptr<TwoDEntity> object) {
 }
 
 void GUIAPI::onAddAlgorithm(std::vector<std::pair<std::string, std::vector<PTR<TwoDEntity>>>> algorithm) {
-    for(std::pair<std::string, std::vector<PTR<TwoDEntity>>> step: algorithm){
+//    for(std::pair<std::string, std::vector<PTR<TwoDEntity>>> step: algorithm){
+//        for (int i = 0; i < step.second.size(); i++) {
+//            step.second[i]->setRenderable(canvas);
+//            step.second[i]->render();
+////            sleep(1000);
+//        }
+//   }
+    for (auto step: algorithm) {
         for (int i = 0; i < step.second.size(); i++) {
+            QTextEdit hint;
+            hint.append(QString::fromStdString(step.first));
+            hint.move(canvas->parentWindow->height()*8/10, canvas->parentWindow->width()*1/10);
+            hint.show();
             step.second[i]->setRenderable(canvas);
             step.second[i]->render();
-//            sleep(1000);
-        }
+            sleep(1000);
+          }
     }
 }

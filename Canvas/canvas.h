@@ -74,6 +74,7 @@ struct qp //структура для хранения координаты пр
     bool needsProjection;
     int planeNumber;
     bool isSelected=false;
+    bool connectedToPlane = false;
     QVector<qp*> projections;
 };
 
@@ -99,8 +100,10 @@ public:
     void deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
     void unlock() {blocked= false; xMatch.remove(0); this->update();}
     qp* getSelectedObject () {return vcp[selectedIndex];};
+    int selectedIndex;
     void addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name, TwoDEntity* twoDEntity);
 private:
+    ConnectedToPlaneContextEdit connectedPointRMB;
     UnprojectedPointContextEdit unprojectedPointRMB;
     PointAndLineContextEdit pointAndLineRMB;
     DontProjectObjectContextEdit oneProjectionRMB;
@@ -115,7 +118,7 @@ private:
     QPoint pos; //координаты точки для рисования
     void mouseMoveEvent(QMouseEvent *event);
     removeRelated rRelated;
-    int selectedIndex;
+
     QVector<qp*> vcp; //массив (вектор) для хранения рисунка
     QVector<qp*> selectedObjects;
     QVector<qp> help; //массив (вектор) для хранения рисунка

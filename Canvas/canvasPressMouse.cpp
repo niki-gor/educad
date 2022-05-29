@@ -243,14 +243,27 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                 int pointX = std::get<0>(pointCoords); int pointY = std::get<1>(pointCoords); int pointZ = std::get<2>(pointCoords);
                 if (pointToWork->planeNumber==1) {
                     toWork[0]->qpColor=Qt::black;
+                    toWork[0]->needsProjection=false;
+                    toWork[0]->connectedToPlane=true;
                     toWork[0]->objectEntity->projectedEntity=controllerObservable->onLinkToPlane(new double (pointX), new double (pointY), nullptr, planeToWork->objectEntity->projectedEntity);
                 } else {
                     toWork[0]->qpColor=Qt::black;
+                    toWork[0]->needsProjection=false;
+                    toWork[0]->connectedToPlane=true;
                     toWork[0]->objectEntity->projectedEntity=controllerObservable->onLinkToPlane(new double (pointX), nullptr, new double (pointZ), planeToWork->objectEntity->projectedEntity);
                 }
                 toWork.erase(toWork.begin());
                 condition=0;
             }
+        } else if (condition==5) {
+            int index = findInVcp(this->pos.x(), this->pos.y());
+            if (vcp[index]->objType==PLANEBYLINEANDPOINT) {
+                qp *pointToWork = toWork[0];
+                qp *planeToWork = vcp[index];
+                controllerObservable->onAddPointOnPlaneProjectionAlgo(planeToWork->objectEntity->projectedEntity, pointToWork->objectEntity->projectedEntity);
+            }
+            toWork.erase(toWork.begin());
+            condition=0;
         }
     }
 }
