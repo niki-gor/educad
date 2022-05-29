@@ -14,10 +14,11 @@ add_subdirectory(Entity)
 add_subdirectory(Canvas)
 add_subdirectory(render)
 add_subdirectory(AngemWorker)
+add_subdirectory(Algo)
 add_subdirectory(Controller)
 add_subdirectory(UI)
 
-target_include_directories(${PROJECT_NAME} PUBLIC ${CONTROLLER_INCLUDE_DIRS} ${UI_INCLUDE_DIRS})
-target_link_libraries(${PROJECT_NAME} PUBLIC ${CONTROLLER_LIBRARIES} ${UI_LIBRARIES})
+target_include_directories(${PROJECT_NAME} PUBLIC ${CONTROLLER_INCLUDE_DIRS} ${UI_INCLUDE_DIRS} ${ALGO_INCLUDE_DIRS})
+target_link_libraries(${PROJECT_NAME} PUBLIC ${CONTROLLER_LIBRARIES} ${UI_LIBRARIES} ${ALGO_LIBRARIES})
 
 #add_subdirectory(test)
