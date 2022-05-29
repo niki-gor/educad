@@ -8,7 +8,7 @@
 
 class ControllerObservable{
 public:
-    virtual void onAddEntity(PTR<Entity> entity) = 0;
+    virtual PTR<Entity> onAddEntity(PTR<Entity> entity) = 0;
     virtual void onDeleteEntity(PTR<Entity> entity) = 0;
     virtual bool onCreatePerpendicular(PTR<Entity> point, PTR<Entity> line) = 0;
     virtual bool onCreateParallelLine(PTR<Entity> line, PTR<Entity> point) = 0;

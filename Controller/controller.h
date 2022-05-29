@@ -28,7 +28,7 @@ public:
     bool onCreateParallelLine(PTR<Entity> line, PTR<Entity> point) override;
 
     Controller(Render* render, AlgoInterface* algoI);
-    void onAddEntity(PTR<Entity> entity) override;
+    PTR<Entity> onAddEntity(PTR<Entity> entity) override;
     void onDeleteEntity(PTR<Entity> entity) override;
 
     bool onCreatePointOn(double* x, double * y, double * z, PTR<Entity> line) override;

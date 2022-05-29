@@ -16,10 +16,11 @@ void Controller::renderEntity(PTR<Entity> entity) {
     render->addEntity(entity);
 }
 
-void Controller::onAddEntity(PTR<Entity> entity) {
+PTR<Entity> Controller::onAddEntity(PTR<Entity> entity) {
     entity->addProjectionPlane(oxy);
     entity->addProjectionPlane(oxz);
     addToModel(entity);
+    return entity;
     //renderEntity(entity);
 }
 
