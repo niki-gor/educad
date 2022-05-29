@@ -135,6 +135,34 @@ std::vector<PTR<Entity>> PlaneByParallelLines::getParents() const{
     return parents;
 }
 
+PlaneByParallelPlaneAndPoint::PlaneByParallelPlaneAndPoint(PTR<Plane> pl, PTR<Point> p){
+    point = p;
+    plane = pl;
+    init(pl, p);
+    p->addChild(MAKEPTR<PlaneByParallelPlaneAndPoint>(*this));
+    pl->addChild(MAKEPTR<PlaneByParallelPlaneAndPoint>(*this));
+}
+
+void PlaneByParallelPlaneAndPoint::init(PTR<Plane> pl, PTR<Point> p){
+    //intersected line
+    A = pl->A;
+    B = pl->B;
+    C = pl->C;
+    D = p->x*(-A) + p->y*(-B) + p->z*(-C);
+}
+
+void PlaneByParallelPlaneAndPoint::update(){
+    init(plane, point);
+    for(auto& i : children){
+        i->update();
+    }
+}
+
+std::vector<PTR<Entity>> PlaneByParallelPlaneAndPoint::getParents() const{
+    std::vector<PTR<Entity>> parents = {plane, point};
+    return parents;
+}
+
 ProjectionPlane::ProjectionPlane(PTR<ProjectionPlane> perpendicularProjection, PTR<Line> intersection) { // Не доделал
     A = 1;
     B = 1;

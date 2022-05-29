@@ -222,6 +222,21 @@ public:
     std::vector<PTR<Entity>> getParents() const;
 };
 
+class PlaneByParallelPlaneAndPoint : public Plane {
+private:
+    void init(PTR<Plane> pl, PTR<Point> p);
+public:
+    ~PlaneByParallelPlaneAndPoint() = default;
+    PTR<Plane> plane;
+    PTR<Point> point;
+    PlaneByParallelPlaneAndPoint(PTR<Plane> pl, PTR<Point> p);
+    void update();
+    PTR<TwoDEntity> getProjection(PTR<ProjectionPlane>){
+        return PTR<TwoDEntity>();
+    };
+    std::vector<PTR<Entity>> getParents() const;
+};
+
 class ProjectionPlane : public Plane {
 private:
     std::set<PTR<Entity> > projected;
