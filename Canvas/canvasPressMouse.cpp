@@ -242,9 +242,11 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                 std::tuple pointCoords = pointPlaneCoordsToCanvasCoords(pointToWork);
                 int pointX = std::get<0>(pointCoords); int pointY = std::get<1>(pointCoords); int pointZ = std::get<2>(pointCoords);
                 if (pointToWork->planeNumber==1) {
-                    getControllerObservable()->onLinkToPlane(new double (pointX), new double (pointY), nullptr, planeToWork->objectEntity->projectedEntity);
+                    toWork[0]->qpColor=Qt::black;
+                    toWork[0]->objectEntity->projectedEntity=controllerObservable->onLinkToPlane(new double (pointX), new double (pointY), nullptr, planeToWork->objectEntity->projectedEntity);
                 } else {
-                    getControllerObservable()->onLinkToPlane(new double (pointX), nullptr, new double (pointZ), planeToWork->objectEntity->projectedEntity);
+                    toWork[0]->qpColor=Qt::black;
+                    toWork[0]->objectEntity->projectedEntity=controllerObservable->onLinkToPlane(new double (pointX), nullptr, new double (pointZ), planeToWork->objectEntity->projectedEntity);
                 }
                 toWork.erase(toWork.begin());
                 condition=0;

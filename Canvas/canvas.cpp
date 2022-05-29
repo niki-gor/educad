@@ -1,13 +1,26 @@
 #include "canvas.h"
+
 #define EPS 3000
 
-std::tuple<int, int> Canvas::canvasCoordsToPlaneCoords (int x, int y, PTR<ProjectionPlane> projectionPlane) {
-    std::tuple <int, int> result;
+bool isBetween (int x, int y, int value) {
+    int start, end;
+    if (x>y) {
+        start = y;
+        end = x;
+    } else {
+        start = x;
+        end = y;
+    }
+    if ((value>=start) && (value<=end)) return true; else return false;
+}
+
+std::tuple<int, int> Canvas::canvasCoordsToPlaneCoords(int x, int y, PTR<ProjectionPlane> projectionPlane) {
+    std::tuple<int, int> result;
     int yResult;
     int xResult = projectionPlane->originPoint->x + x + canvasBegin.x();
     if (projectionPlane->ordinat->point2->z != 0) {
         yResult = projectionPlane->originPoint->z - y + canvasBegin.y();
-    }  else if (projectionPlane->ordinat->point2->y!=0) {
+    } else if (projectionPlane->ordinat->point2->y != 0) {
         yResult = projectionPlane->originPoint->z + y + canvasBegin.y();
     }
     std::get<0>(result) = xResult;
@@ -15,10 +28,10 @@ std::tuple<int, int> Canvas::canvasCoordsToPlaneCoords (int x, int y, PTR<Projec
     return result;
 }
 
-std::tuple<int,int,int> Canvas::pointPlaneCoordsToCanvasCoords (qp* object) {
-    int x,y=-1,z=-1;
-    std::tuple<int,int,int> result;
-    x=canvasBegin.x()-object->pos.x();
+std::tuple<int, int, int> Canvas::pointPlaneCoordsToCanvasCoords(qp *object) {
+    int x, y = -1, z = -1;
+    std::tuple<int, int, int> result;
+    x = canvasBegin.x() - object->pos.x();
     if (object->planeNumber == 2) {
         if (!object->needsProjection) y = object->projections[0]->pos.y() - height() / 2;
         z = height() / 2 - object->pos.y();
@@ -32,13 +45,13 @@ std::tuple<int,int,int> Canvas::pointPlaneCoordsToCanvasCoords (qp* object) {
     return result;
 }
 
-std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> Canvas::linePlaneCoordsToCanvasCoords (qp* object) {
-    int x1,y1,z1,x2,y2,z2;
-    std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> result;
-    std::tuple<int,int,int> startPoint;
-    std::tuple<int,int,int> endPoint;
-    x1=canvasBegin.x()-object->pos.x();
-    x2=canvasBegin.x()-object->endpos.x();
+std::tuple<std::tuple<int, int, int>, std::tuple<int, int, int>> Canvas::linePlaneCoordsToCanvasCoords(qp *object) {
+    int x1, y1, z1, x2, y2, z2;
+    std::tuple<std::tuple<int, int, int>, std::tuple<int, int, int>> result;
+    std::tuple<int, int, int> startPoint;
+    std::tuple<int, int, int> endPoint;
+    x1 = canvasBegin.x() - object->pos.x();
+    x2 = canvasBegin.x() - object->endpos.x();
     if (object->planeNumber == 2) {
         y1 = object->projections[0]->pos.y() - height() / 2;
         z1 = height() / 2 - object->pos.y();
@@ -61,25 +74,27 @@ std::tuple<std::tuple<int,int,int>,std::tuple<int,int,int>> Canvas::linePlaneCoo
     return result;
 }
 
-void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name, TwoDEntity* twoDEntity) {
-    printf ("\nAdding plane \n");
-    qp* qp1 = new qp;
+void
+Canvas::addPlaneByLineAndPoint(int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber,
+                               std::string name, TwoDEntity *twoDEntity) {
+    printf("\nAdding plane \n");
+    qp *qp1 = new qp;
     PTR<ProjectionPlane> plane;
     PTR<TwoDPoint> twoDLineBegin;
     PTR<TwoDPoint> twoDLineEnd;
-    PTR <TwoDPoint> point;
+    PTR<TwoDPoint> point;
     twoDLineBegin = std::make_shared<TwoDPoint>(x1, y1, plane);
     twoDLineEnd = std::make_shared<TwoDPoint>(x2, y2, plane);
     point = std::make_shared<TwoDPoint>(x, y, plane);
-    PTR<TwoDLine> twoDLine (new TwoDLine(twoDLineBegin, twoDLineEnd, plane));
-    PTR<TwoDEntity> twoDPlane (twoDEntity);
-    deletePoint(x,y, xBegin, yBegin, planeNumber, "uzbek");
-    deleteLine(x1,y1, x2,y2, xBegin, yBegin, planeNumber, "uzbek");
-    printf ("\n%d\n", planeNumber);
+    PTR<TwoDLine> twoDLine(new TwoDLine(twoDLineBegin, twoDLineEnd, plane));
+    PTR<TwoDEntity> twoDPlane(twoDEntity);
+    deletePoint(x, y, xBegin, yBegin, planeNumber, "uzbek");
+    deleteLine(x1, y1, x2, y2, xBegin, yBegin, planeNumber, "uzbek");
+    printf("\n%d\n", planeNumber);
     x = canvasBegin.x() - x;
-    x1 = canvasBegin.x()-x1;
-    x2 = canvasBegin.x()-x2;
-    if (planeNumber==1) {
+    x1 = canvasBegin.x() - x1;
+    x2 = canvasBegin.x() - x2;
+    if (planeNumber == 1) {
         y = canvasBegin.y() + y;
         y1 = canvasBegin.y() + y1;
         y2 = canvasBegin.y() + y2;
@@ -88,10 +103,10 @@ void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y
         y1 = canvasBegin.y() - y1;
         y2 = canvasBegin.y() - y2;
     }
-    qp1->objectEntity=twoDPlane;
+    qp1->objectEntity = twoDPlane;
     qp1->pos = QPoint(x1, y1);
-    qp1->endpos = QPoint (x2,y2);
-    qp1->pos2 = QPoint (x, y);
+    qp1->endpos = QPoint(x2, y2);
+    qp1->pos2 = QPoint(x, y);
     qp1->objType = PLANEBYLINEANDPOINT;
     qp1->qpColor = Qt::black;
     qp1->needsProjection = false;
@@ -102,9 +117,9 @@ void Canvas::addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y
 }
 
 void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
-    qp* qp1 = new qp;
+    qp *qp1 = new qp;
     x = canvasBegin.x() - x;
-    if (planeNumber==1) {
+    if (planeNumber == 1) {
         y = canvasBegin.y() + y;
     } else {
         y = canvasBegin.y() - y;
@@ -120,29 +135,29 @@ void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std
 }
 
 void Canvas::addLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
-    qp* qp1 = new qp;
+    qp *qp1 = new qp;
     PTR<ProjectionPlane> plane;
     PTR<TwoDPoint> twoDLineBegin;
     PTR<TwoDPoint> twoDLineEnd;
     twoDLineBegin = std::make_shared<TwoDPoint>(x1, y1, plane);
     twoDLineEnd = std::make_shared<TwoDPoint>(x2, y2, plane);
-    if (planeNumber==1) {
+    if (planeNumber == 1) {
         y1 = canvasBegin.y() + y1;
         y2 = canvasBegin.y() + y2;
     } else {
         y1 = canvasBegin.y() - y1;
         y2 = canvasBegin.y() - y2;
     }
-    PTR<TwoDEntity> twoDLine (new TwoDLine(twoDLineBegin, twoDLineEnd, plane));
+    PTR<TwoDEntity> twoDLine(new TwoDLine(twoDLineBegin, twoDLineEnd, plane));
     qp1->objectEntity = twoDLine;
-    x1 = canvasBegin.x()-x1;
-    x2 = canvasBegin.x()-x2;
+    x1 = canvasBegin.x() - x1;
+    x2 = canvasBegin.x() - x2;
     qp1->pos = QPoint(x1, y1);
     qp1->endpos = QPoint(x2, y2);
     qp1->objType = LINE;
     qp1->qpColor = Qt::black;
     qp1->needsProjection = false;
-    qp1->qpName =  QString::fromStdString(name);
+    qp1->qpName = QString::fromStdString(name);
     qp1->planeNumber = planeNumber;
     vcp.append(qp1); //добавили в массив для рисования
     this->update();
@@ -172,19 +187,24 @@ int Canvas::findInVcp(int x, int y) {
             && ((vcp[i]->pos.y() >= y - 10) && (vcp[i]->pos.y() <= y + 10))) {
             return i;
         }
-        if (vcp[i]->objType==LINE) {
+        if (vcp[i]->objType == LINE) {
             PTR<TwoDLine> currLine = std::dynamic_pointer_cast<TwoDLine>(vcp[i]->objectEntity);
-            int newY; int newX=width()-x-10;
-            if (this->pos.y()<height()/2) newY = height()/2-y; else newY = y-height()/2;
-            if ((abs(currLine->getA()*newX+currLine->getB()*newY+currLine->getC()) - EPS) <= 0) {
-                return i;
+            int newY;
+            int newX = width() - x - 10;
+            if (this->pos.y() < height() / 2) newY = height() / 2 - y; else newY = y - height() / 2;
+            if ((abs(currLine->getA() * newX + currLine->getB() * newY + currLine->getC()) - EPS) <= 0) {
+                    if (isBetween(vcp[i]->pos.x(), vcp[i]->endpos.x(), x) && isBetween(vcp[i]->pos.y(), vcp[i]->endpos.y(), y))
+                    return i;
             }
         }
-        if (vcp[i]->objType==PLANEBYLINEANDPOINT) {
+        if (vcp[i]->objType == PLANEBYLINEANDPOINT) {
             PTR<TwoDPlane> currPlane = std::dynamic_pointer_cast<TwoDPlane>(vcp[i]->objectEntity);
-            int newY; int newX=width()-x-10;
-            if (this->pos.y()<height()/2) newY = height()/2-y; else newY = y-height()/2;
-            if ((abs(currPlane->getLine1()->getA()* newX + currPlane->getLine1()->getB() * newY + currPlane->getLine1()->getC()) - EPS) <= 0) {
+            int newY;
+            int newX = width() - x - 10;
+            if (this->pos.y() < height() / 2) newY = height() / 2 - y; else newY = y - height() / 2;
+            if ((abs(currPlane->getLine1()->getA() * newX + currPlane->getLine1()->getB() * newY +
+                     currPlane->getLine1()->getC()) - EPS) <= 0) {
+                if (isBetween(vcp[i]->pos.x(), vcp[i]->endpos.x(), x) && isBetween(vcp[i]->pos.y(), vcp[i]->endpos.y(), y))
                 return i;
             }
             if (((vcp[i]->pos2.x() >= x - 4) && (vcp[i]->pos2.x() <= x + 4))
@@ -206,7 +226,8 @@ int Canvas::findInSelected(int x, int y) {
     return -1;
 }
 
-Canvas::Canvas(QWidget *parent, QMainWindow *_parent, ProjectStructureList *_projectStructureList,ControllerObservable* controllerObservable) : QWidget(parent) {
+Canvas::Canvas(QWidget *parent, QMainWindow *_parent, ProjectStructureList *_projectStructureList,
+               ControllerObservable *controllerObservable) : QWidget(parent) {
     LineContextEdit lineRMB;
     PointContextEdit pointRMB;
     unprojectedPointRMB.setParent(this);
@@ -230,10 +251,10 @@ Canvas::Canvas(QWidget *parent, QMainWindow *_parent, ProjectStructureList *_pro
     this->setAutoFillBackground(true); //фон окна заливается автоматически
     this->setPalette(pl); //устанавливаем фон окна
     selected = NOTHING;
-    selectedIndex=-1;
+    selectedIndex = -1;
     selectedObjects.clear();
-    canvasBegin.setX(this->geometry().width()-10);
-    canvasBegin.setY(this->geometry().height()/2);
+    canvasBegin.setX(this->geometry().width() - 10);
+    canvasBegin.setY(this->geometry().height() / 2);
     this->setMouseTracking(true);
     f = 0;
 }
@@ -246,13 +267,14 @@ void Canvas::mouseReleaseEvent(QMouseEvent *e) {
         int scrWidth = rec.width();
         int xDefault = scrWidth / 4;
         int yDefault = scrHeight * 555 / 10000 + scrWidth * 35 / 1800;
-        if ((blocked) && ((condition==1) || (condition==2)) ) {
+        if ((blocked) && ((condition == 1) || (condition == 2))) {
             oneProjectionRMB.unfinishedPointContextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
             oneProjectionRMB.unfinishedPointContextEditWidget->show();
         }
         if (selected == POINT) {
-            if (vcp[selectedIndex]->needsProjection==true) {
-                unprojectedPointRMB.unprojectedObjectContextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
+            if (vcp[selectedIndex]->needsProjection == true) {
+                unprojectedPointRMB.unprojectedObjectContextEditWidget->move(this->pos.x() + xDefault,
+                                                                             this->pos.y() + yDefault);
                 unprojectedPointRMB.unprojectedObjectContextEditWidget->show();
             } else {
                 pointRMB.contextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
@@ -261,11 +283,13 @@ void Canvas::mouseReleaseEvent(QMouseEvent *e) {
         } else if (selected == LINE) {
             lineRMB.contextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
             lineRMB.contextEditWidget->show();
-        } else if ((selectedObjects.size()==2) && (selectedObjects[0]->objType==POINT) && (selectedObjects[1]->objType==POINT)) {
+        } else if ((selectedObjects.size() == 2) && (selectedObjects[0]->objType == POINT) &&
+                   (selectedObjects[1]->objType == POINT)) {
             twoPointsRMB.twoPointsContextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
             twoPointsRMB.twoPointsContextEditWidget->show();
-        } else if ( (selectedObjects.size()==2) &&
-            (((selectedObjects[0]->objType == POINT) && (selectedObjects[1]->objType==LINE)) || ((selectedObjects[1]->objType == POINT) && (selectedObjects[0]->objType==LINE))) ) {
+        } else if ((selectedObjects.size() == 2) &&
+                   (((selectedObjects[0]->objType == POINT) && (selectedObjects[1]->objType == LINE)) ||
+                    ((selectedObjects[1]->objType == POINT) && (selectedObjects[0]->objType == LINE)))) {
             pointAndLineRMB.pointAndLineContextEditWidget->move(this->pos.x() + xDefault, this->pos.y() + yDefault);
             pointAndLineRMB.pointAndLineContextEditWidget->show();
         }
@@ -283,18 +307,18 @@ void Canvas::clear() {
 }
 
 void Canvas::deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
-    printf ("deleting point %c", name[0]);
+    printf("deleting point %c", name[0]);
     x = canvasBegin.x() - x;
-    if (planeNumber==1) {
+    if (planeNumber == 1) {
         y = canvasBegin.y() + y;
-    }  else {
+    } else {
         y = canvasBegin.y() - y;
     }
-    printf ("\ndeleting point with pos %d %d\n ", x,y);
-    for (int i=0; i<vcp.size(); i++) {
-        if ((abs(vcp[i]->pos.x()-x)<=1) && (abs(vcp[i]->pos.y()-y)<=1)) {
-            printf ("found");
-            vcp.erase(vcp.begin()+i);
+    printf("\ndeleting point with pos %d %d\n ", x, y);
+    for (int i = 0; i < vcp.size(); i++) {
+        if ((abs(vcp[i]->pos.x() - x) <= 1) && (abs(vcp[i]->pos.y() - y) <= 1)) {
+            printf("found");
+            vcp.erase(vcp.begin() + i);
         }
     }
     this->update();
@@ -303,19 +327,21 @@ void Canvas::deletePoint(int x, int y, int xBegin, int yBegin, int planeNumber, 
 void Canvas::deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name) {
     x1 = canvasBegin.x() - x1;
     x2 = canvasBegin.x() - x2;
-    if (planeNumber==1) {
+    if (planeNumber == 1) {
         y1 = canvasBegin.y() + y1;
         y2 = canvasBegin.y() + y2;
-    }  else {
-        y1 = canvasBegin.y()-y1;
-        y2 = canvasBegin.y()-y2;
+    } else {
+        y1 = canvasBegin.y() - y1;
+        y2 = canvasBegin.y() - y2;
     }
-    printf ("\ndeleting line with pos %d %d %d %d\n ", x1, y1, x2, y2);
-    for (int i=0; i<vcp.size(); i++) {
-        printf ("\nfound line with pos %d %d %d %d \n", vcp[i]->pos.x(), vcp[i]->pos.y(), vcp[i]->endpos.x(), vcp[i]->endpos.y());
-        if (((abs(vcp[i]->pos.x()-x1)<=1) && (abs(vcp[i]->pos.y()-y1)<=1)) && ((abs(vcp[i]->endpos.x()-x2)<=1) && (abs(vcp[i]->endpos.y()-y2)<=1)))  {
-            printf ("found");
-            vcp.erase(vcp.begin()+i);
+    printf("\ndeleting line with pos %d %d %d %d\n ", x1, y1, x2, y2);
+    for (int i = 0; i < vcp.size(); i++) {
+        printf("\nfound line with pos %d %d %d %d \n", vcp[i]->pos.x(), vcp[i]->pos.y(), vcp[i]->endpos.x(),
+               vcp[i]->endpos.y());
+        if (((abs(vcp[i]->pos.x() - x1) <= 1) && (abs(vcp[i]->pos.y() - y1) <= 1)) &&
+            ((abs(vcp[i]->endpos.x() - x2) <= 1) && (abs(vcp[i]->endpos.y() - y2) <= 1))) {
+            printf("found");
+            vcp.erase(vcp.begin() + i);
         }
     }
     this->update();
