@@ -56,8 +56,8 @@ algorithm<TwoDEntity> Algo::pointOnPlaneProjection(PTR<Point> point, PTR<Plane> 
     lineProjection2->projectedEntity = line;
     lineProjection2->projectionPlane = projectionPlane2;
 
-    PTR<TwoDEntity> pointProjection = point2->getProjection(projectionPlane2);
-    pointProjection->projectedEntity = point2;
+    PTR<TwoDEntity> pointProjection = point->getProjection(projectionPlane2);
+    pointProjection->projectedEntity = point;
     pointProjection->projectionPlane = projectionPlane2;
 
     alg.push_back({"Строим прямую из точки на плоскости к искомой точке", {lineProjection1}});
