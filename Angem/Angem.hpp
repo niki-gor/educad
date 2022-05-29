@@ -31,6 +31,7 @@ namespace AngemUtils {
     bool isPointOnPlane(AngemPlane pl, AngemPoint p); // Лежит ли точка на плоскости
     AngemPoint getProjectionOnPlane(AngemPlane pl, AngemPoint p); // Проекция точки на плоскость
     AngemPoint getProjectionOnLine(AngemLine l, AngemPoint p); // Проекция точки на прямую.
+    AngemPlane parallelPlane(AngemPlane pl, AngemPoint p); // Плоскость, параллельная другой плоскости и проходящая через заданную точку.
 };
 
 #endif

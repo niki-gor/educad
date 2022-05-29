@@ -47,6 +47,8 @@ public:
 
 
     void runAlgorithm(algorithm<TwoDEntity> alg);
+
+    bool onAddStraightLine(PTR<Entity> line, PTR<Entity> point, int projectionPlane) override;
 };
 
 #endif //EDUCAD_CONTROLLER_H

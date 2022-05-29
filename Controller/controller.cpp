@@ -172,3 +172,20 @@ PTR<Entity> Controller::onLinkToPlane(double *x, double *y, double *z, PTR<Entit
     }
     return nullptr;
 }
+
+bool Controller::onAddStraightLine(PTR<Entity> line, PTR<Entity> point, int projectionPlane) {
+    if (line->type() == "line" && point->type() == "point"){
+        algorithm<TwoDEntity> alg;
+        PTR<Line> lineCast = std::dynamic_pointer_cast<Line>(line);
+        PTR<Point> pointCast = std::dynamic_pointer_cast<Point>(point);
+        if (projectionPlane == 1){
+            alg = algo->getStraightLevel(lineCast, pointCast, oxz);
+        }
+        else if(projectionPlane == 2){
+            alg = algo->getStraightLevel(lineCast, pointCast, oxy);
+        }
+        runAlgorithm(alg);
+        return true;
+    }
+    return false;
+}

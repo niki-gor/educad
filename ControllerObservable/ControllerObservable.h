@@ -19,6 +19,7 @@ public:
     virtual bool onCreatePlaneByIntersecting(PTR<Entity> line1, PTR<Entity> line2) = 0;
     virtual bool onCreatePlaneByLinePoint(PTR<Entity> line, PTR<Entity> point) = 0;
     virtual bool onAddPointOnPlaneProjectionAlgo(PTR<Entity> plane, PTR<Entity> point) = 0;
+    virtual bool onAddStraightLine(PTR<Entity> line, PTR<Entity> point, int projectionPlane) = 0;
     virtual PTR<Entity> onLinkToPlane(double* x, double* y, double* z, PTR<Entity> plane) = 0;
 };
 
