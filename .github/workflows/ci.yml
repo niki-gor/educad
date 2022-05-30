@@ -1,7 +1,7 @@
 on: push
 
 jobs:
-  build and test:
+  build_and_test:
     runs-on: ubuntu-latest
     container: rkhazh/first_dock
     steps:
@@ -19,7 +19,7 @@ jobs:
   coverage:
     runs-on: ubuntu-latest
     container: rkhazh/first_dock
-    needs: [build and test]
+    needs: [build_and_test]
     steps:
     - uses: actions/checkout@v2 
     - uses: actions/download-artifact@v2
