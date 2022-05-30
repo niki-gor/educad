@@ -6,11 +6,34 @@ jobs:
     container: rkhazh/first_dock
     steps:
     - uses: actions/checkout@v2 
-    - run: make build|
-           make angemTest|
-           makeAngemReport
+    - run: make build
 
-    - name: Build and test
+    - name: Build
       uses: actions/upload-artifact@v2
       with:
+        name: build-artifact
         path: build/
+  test:
+    runs-on: ubuntu-latest
+    container: rkhazh/first_dock
+    steps:
+    - uses: actions/checkout@v2 
+    - run: make angemTest
+
+    - name: Test
+      uses: actions/download-artifact@v2
+      with:
+        name: build-artifact
+
+  coverage:
+    runs-on: ubuntu-latest
+    container: rkhazh/first_dock
+    steps:
+    - uses: actions/checkout@v2 
+    - run: make makeAngemReport
+
+    - name: Coverage
+      uses: actions/download-artifact@v2
+      with:
+        name: build-artifact
+    
