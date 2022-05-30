@@ -11,8 +11,8 @@ angemTest:
 	./build/test/testAngem
 makeAngemReport:
 	cd build && 														\
-	lcov -t "tests/testAngem" -o coverageAngem.info -c -d test/testAngem &&		\
-	genhtml -o report coverageAngem.info
+	lcov -t "test/testAngem" -o Cov.info -c -d . &&		\
+	genhtml -o report Cov.info
 startReportServer:
 	cd build/report &&													\
 	python3 -m http.server 8080											\
