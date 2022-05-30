@@ -6,8 +6,11 @@ jobs:
     container: rkhazh/first_dock
     steps:
     - uses: actions/checkout@v2 
-    - run: make build
-    - name: Build project
+    - run: make build|
+           make angemTest|
+           makeAngemReport
+
+    - name: Build and test
       uses: actions/upload-artifact@v2
       with:
         path: build/
