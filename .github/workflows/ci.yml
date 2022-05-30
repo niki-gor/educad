@@ -1,32 +1,25 @@
 on: push
 
 jobs:
-  build:
+  build and test:
     runs-on: ubuntu-latest
     container: rkhazh/first_dock
     steps:
     - uses: actions/checkout@v2 
     - run: make build
-
+    - run: make angemTest
     - name: Build
       uses: actions/upload-artifact@v2
       with:
         name: build-artifact
         path: build/
-  test:
-    runs-on: ubuntu-latest
-    container: rkhazh/first_dock
-    steps:
-    - uses: actions/checkout@v2 
-    - uses: actions/download-artifact@v2
-      with:
-        name: build-artifact
-    - run: make angemTest
+
       
 
   coverage:
     runs-on: ubuntu-latest
     container: rkhazh/first_dock
+    needs: [build and test]
     steps:
     - uses: actions/checkout@v2 
     - uses: actions/download-artifact@v2
