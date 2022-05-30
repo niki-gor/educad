@@ -12,7 +12,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: build-artifact
-        path: build/
+        path: build
 
       
 
