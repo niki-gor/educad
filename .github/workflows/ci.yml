@@ -23,8 +23,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2 
     - uses: actions/download-artifact@v2
+    - run: mkdir build
       with:
         name: build-artifact
+        path: build
     - run: ls -la
     - run: make makeAngemReport
     
