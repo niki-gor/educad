@@ -22,10 +22,11 @@ jobs:
     needs: [build_and_test]
     steps:
     - uses: actions/checkout@v2 
-    - run: make makeAngemReport
     - uses: actions/download-artifact@v2
       with:
         name: build-artifact
+    - run: ls -la
+    - run: make makeAngemReport
     
       
     
