@@ -1,94 +1,37 @@
-#pragma once
+#ifndef ANGEM_HPP
+#define ANGEM_HPP
 
 #include <memory>
-#include "Entity.hpp"
-#include "Utils.hpp"
+#include "utils.h"
+#include "AngemEntity.h"
+#include <vector>
+
+
+using matrix = std::vector<std::vector<double>>;
 
 
 namespace AngemUtils {
-    float getDistance(AngemPoint p1, AngemPoint p2){
-        return 0;
-    }
-    AngemLine getPerpendicularLine(AngemPoint p, AngemLine l){
-        return AngemLine();
-    }
-    AngemLine getPerpendicularLine(AngemLine l1, AngemLine l2){
-        return AngemLine();
-    }
-    AngemLine getPerpendicularLine(AngemPoint p, AngemPlane s){
-        return AngemLine();
-    }
-    AngemPoint linesIntersection(AngemLine l1,AngemLine l2){
-        return AngemPoint();
-    }
-    AngemLine planesIntersection(AngemPlane,AngemPlane){
-        return AngemLine();
-    }
-    AngemLine parallelLine(AngemLine, AngemPoint){
-        return AngemLine();
-    }
+    double getDistance(AngemPoint p1, AngemPoint p2); // Расстояние от точки до точки
+    double getDistance(AngemPoint p, AngemLine l); // Расстояние от точки до прямой
+    double getDistance(AngemPoint p, AngemPlane pl); // Расстояние от точки до плоскости
+    AngemLine getPerpendicularLine(AngemPoint p, AngemLine l); // Перпендикуляр от точки до прямой
+    double getDeterminant(matrix const &  matr); // Определитель матрицы любого порядка.
+    matrix getAlgAddition(matrix const &  matr, int n, int iDel, int jDel); // Алгебраическое дополнение элемента матрицы
+    AngemLine getPerpendicularLine(AngemLine l1, AngemLine l2); // Перпендикуляр от пересекающихся прямых
+    AngemPoint planeLineIntersection(AngemPlane p, AngemLine l); // Точка пересечения плоскости и прямой
+    AngemLine getPerpendicularLine(AngemPoint p, AngemPlane s); // Перпендикуляр от точки до плоскости
+    AngemPoint linesIntersection(AngemLine l1,AngemLine l2); // Точка пересечения двух прямых
+    AngemLine planesIntersection(AngemPlane pl1,AngemPlane pl2); // Линия пересечения двух плоскостей
+    AngemLine parallelLine(AngemLine l, AngemPoint p); // Прямая, параллельная исходной прямой и проходящая через исходную точку.
+    double round(double x, int N=2); // Округление (по дефолту до 0.01)
+    AngemPoint pointOnLine(AngemLine l, double* x, double* y, double* z); // Получить точку на прямой по двум координатам. 3 координату указать как nullptr. 
+    std::pair<AngemPoint, AngemPoint> pointOnLine(AngemLine l, AngemPoint p, double distance); // Точка на прямой, находящаяся на заданном расстоянии от исходной точки.
+    AngemPoint pointOnPlane(AngemPlane pl, double* x, double* y, double* z); // Получить точку на плоскости по двум координатам. 3 координату указать как nullptr. 
+    bool isPointOnLine(AngemLine l, AngemPoint p); // Лежит ли точка на линии 
+    bool isPointOnPlane(AngemPlane pl, AngemPoint p); // Лежит ли точка на плоскости
+    AngemPoint getProjectionOnPlane(AngemPlane pl, AngemPoint p); // Проекция точки на плоскость
+    AngemPoint getProjectionOnLine(AngemLine l, AngemPoint p); // Проекция точки на прямую.
+    AngemPlane parallelPlane(AngemPlane pl, AngemPoint p); // Плоскость, параллельная другой плоскости и проходящая через заданную точку.
 };
 
-class AngemModelWorker {
-public:
-    virtual ~AngemModelWorker();
-    virtual PTR<Entity> AddToModel(PTR<Entity> p) = 0; // добавить существующий объект в модель
-    virtual PTR<Entity> AddToModelNew(Polyset<Entity> contP) = 0; // добавить новый объект в модель
-    virtual int DeleteEntity(PTR<Entity> p) = 0; // удалить элемент
-    virtual int DeleteRecurs(PTR<Entity> p) = 0;
-    virtual PTR<Entity> CreateEntity(Polyset<Entity> contP) = 0;
-private:
-   PTR<Polyset<Entity>> container; 
-};
-
-class LineWorker: AngemModelWorker {
-public:
-    ~LineWorker();
-    PTR<Entity> AddToModel(PTR<Entity> PLine){ return PTR<Line>(); }
-    PTR<Entity> AddToModelNew(Polyset<Entity> contP) { return PTR<Line>(); }
-    int DeleteEntity(PTR<Entity> PLine) { return 0; }
-    int DeleteRecurs(PTR<Entity> PLine) { return 0; }
-    PTR<Entity> CreateEntity(Polyset<Entity> contP) { return PTR<Line>(); }
-    LineWorker init(PTR<Polyset<Entity>> cont){
-        return LineWorker();
-    }
-private:
-    PTR<Polyset<Entity>> container;
-    LineWorker();
-};
-
-class PlaneWorker: AngemModelWorker {
-public:
-    ~PlaneWorker();
-    PTR<Entity> AddToModel(PTR<Entity> PPlane){ return PTR<Plane>(); }
-    PTR<Entity> AddToModelNew(Polyset<Entity> contP) { return PTR<Plane>(); }
-    int DeleteEntity(PTR<Entity> PPlane) { return 0; }
-    int DeleteRecurs(PTR<Entity> PPlane) { return 0; }
-    PTR<Entity> CreateEntity(Polyset<Entity> contP) { return PTR<Plane>(); }
-    PlaneWorker init(){
-        return PlaneWorker();
-    }
-private:
-    PTR<Polyset<Entity>> container; 
-    PlaneWorker();
-};
-
-class PointWorker: AngemModelWorker {
-public:
-    ~PointWorker();
-    PTR<Entity> AddToModel(PTR<Entity> PPoint){ return PTR<Point>(); }
-    PTR<Entity> AddToModelNew(Polyset<Entity> contP) { return PTR<Point>(); }
-    int DeleteEntity(PTR<Entity> PPoint) { return 0; }
-    int DeleteRecurs(PTR<Entity> PPoint) { return 0; }
-    PTR<Entity> CreateEntity(Polyset<Entity> contP) { return PTR<Point>(); }
-    PointWorker init(){
-        return PointWorker();
-    }
-private:
-    PTR<Polyset<Entity>> container;
-    PointWorker();
-};
-
-
-
-
+#endif
