@@ -14,7 +14,7 @@ void TwoDPlane::render() {
         if (projectionPlane->ordinat->point2->y == 1)
             direction = 1;
         else if (projectionPlane->ordinat->point2->z == 1) direction = 2;
-        renderable->addPlaneByLineAndPoint(this->point1->X, this->point1->Y, this->line1->point1->X, this->line1->point1->Y, this->line1->point2->X, this->line1->point2->Y,projectionPlane->originPoint->x, projectionPlane->originPoint->y, direction, "uzbek",
+        renderable->addPlaneByLineAndPoint(this->point1->X, this->point1->Y, this->line1->point1->X, this->line1->point1->Y, this->line1->point2->X, this->line1->point2->Y,projectionPlane->originPoint->x, projectionPlane->originPoint->y, direction, "PL",
                                            this);
     }
     else{

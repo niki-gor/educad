@@ -106,7 +106,8 @@ void Canvas::mousePressEvent(QMouseEvent *e) {
                 vcp.back()->projections.append(qp1);
                 twoDPoint->projectedEntity = point;
                 qp1->objectEntity=twoDPoint;
-                controllerObservable->onAddEntity(point);
+                qp1->objectEntity->projectedEntity = controllerObservable->onAddEntity(point);
+                vcp.back()->objectEntity->projectedEntity = qp1->objectEntity->projectedEntity;
                 vcp.append(qp1);
                 blocked = false;
             }

@@ -37,7 +37,7 @@ void GUIAPI::onAddAlgorithm(std::vector<std::pair<std::string, std::vector<PTR<T
             step.second[i]->render();
         }
         hint.setText(QString::fromStdString(step.first));
-        hint.move(800,600);
+        hint.move(480,850);
         hint.exec();
         while (hint.movement==0) {
 
