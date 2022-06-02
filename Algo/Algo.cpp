@@ -15,8 +15,14 @@ AngemPoint getMiddle(AngemPoint p1, AngemPoint p2){
 algorithm<TwoDEntity> Algo::pointOnPlaneProjection(PTR<Point> point, PTR<Plane> plane) {
     PTR<ProjectionPlane> projectionPlane;
     PTR<ProjectionPlane> projectionPlane2;
+    PTR<TwoDEntity> pointProjection1;
     for(auto &it:point->projections){
         projectionPlane = it;
+        for (auto & twoD: point->twoDProjections) {
+            if (twoD->projectionPlane == it){
+                pointProjection1 = twoD;
+            }
+        }
         break;
     }
 
@@ -63,9 +69,10 @@ algorithm<TwoDEntity> Algo::pointOnPlaneProjection(PTR<Point> point, PTR<Plane> 
     alg.push_back({"Строим прямую из точки на плоскости к искомой точке", {lineProjection1}});
     alg.push_back({"Находим пересечение с прямой на плоскости", {point2Projection1}});
     alg.push_back({"Находим проекцию этой точки на другую плоскость", {point2Projection2}});
+    alg.push_back({"link", {point2Projection1, point2Projection2}});
     alg.push_back( { "Строим прямую из двух точек", {lineProjection2}});
     alg.push_back( { "Находим проекцию точки на прямой", {pointProjection}});
-
+    alg.push_back({"link", {pointProjection1}});
     return alg;
 }
 
