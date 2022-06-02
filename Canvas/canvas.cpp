@@ -116,10 +116,10 @@ Canvas::addPlaneByLineAndPoint(int x, int y, int x1, int y1, int x2, int y2, int
     this->update();
 }
 
-void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name) {
+void Canvas::addPoint(int x, int y, int xBegin, int yBegin, int planeNumber, std::string name, TwoDPoint* twoDEntity ) {
+    PTR<TwoDEntity> twoDPoint(twoDEntity);
     qp *qp1 = new qp;
     PTR<ProjectionPlane> plane;
-    PTR<TwoDEntity> twoDPoint(new TwoDPoint(x, y, plane));
     x = canvasBegin.x() - x;
     if (planeNumber == 1) {
         y = canvasBegin.y() + y;
@@ -355,4 +355,30 @@ void Canvas::deleteLine(int x1, int y1, int x2, int y2, int xBegin, int yBegin, 
         }
     }
     this->update();
+}
+
+
+void Canvas::addLinkLine(PTR<TwoDEntity> entity1, PTR<TwoDEntity> entity2) {
+    qp qp1;
+    printf ("\nLooking for link line\n");
+    qp* firstObj = findInVcpByPTR(entity1);
+    qp* secondObj = findInVcpByPTR(entity2);
+    if (firstObj && secondObj) {
+        printf("\nLink line found\n");
+        qp1.pos = firstObj->pos;
+        qp1.endpos = secondObj->pos;
+        qp1.objType = LINE;
+        qp1.qpColor = Qt::green;
+        xMatch.append(qp1); //добавили в массив для рисования
+    }
+    this->update();
+}
+
+qp *Canvas::findInVcpByPTR(PTR<TwoDEntity> entity) {
+    for (auto qpObj: vcp) {
+        if (qpObj->objectEntity==entity) {
+            return qpObj;
+        }
+    }
+    return nullptr;
 }

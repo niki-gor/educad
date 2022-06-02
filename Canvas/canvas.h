@@ -87,7 +87,7 @@ public:
     Canvas(QWidget* parent = nullptr, QMainWindow* _parent=nullptr, ProjectStructureList* _projectStructureList=nullptr, ControllerObservable* controllerObservable= nullptr);
     void prepareCanvas ();
     int condition; //0=dead 1=point 2=line
-    void addPoint (int x, int y, int xBegin, int yBegin, int planeNumber, std::string name);
+    void addPoint (int x, int y, int xBegin, int yBegin, int planeNumber, std::string name, TwoDPoint* twoDEntity);
     void addLine (int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name);
     ProjectStructureList* getProjectStructureList () {return projectStructureList;}
     QMainWindow* parentWindow;
@@ -102,7 +102,11 @@ public:
     qp* getSelectedObject () {return vcp[selectedIndex];};
     int selectedIndex;
     void addPlaneByLineAndPoint (int x, int y, int x1, int y1, int x2, int y2, int xBegin, int yBegin, int planeNumber, std::string name, TwoDEntity* twoDEntity);
+
+    void addLinkLine(PTR<TwoDEntity> entity1, PTR<TwoDEntity> entity2) override;
+
 private:
+    qp* findInVcpByPTR (PTR<TwoDEntity> entity);
     ConnectedToPlaneContextEdit connectedPointRMB;
     UnprojectedPointContextEdit unprojectedPointRMB;
     PointAndLineContextEdit pointAndLineRMB;

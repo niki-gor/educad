@@ -107,8 +107,8 @@ algorithm<TwoDEntity> Algo::getStraightLevel(PTR<Line> line, PTR<Point> point, P
     algorithm<TwoDEntity> alg;
     alg.push_back({"Строим прямую параллельную оси через искомую", {parallelLine1}});
     alg.push_back({"Находим пересечение этой прямой с искомой", {pointIntersection1}});
-    alg.push_back({"link", {pointIntersection1, pointIntersection2}});
     alg.push_back({"Проецируем эту точку", {pointIntersection2}});
+    alg.push_back({"link", {pointIntersection1, pointIntersection2}});
     alg.push_back( { "Проводим прямую от нее до проекции искомой точки", {parallelLine2}});
     return alg;
 }

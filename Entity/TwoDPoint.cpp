@@ -17,7 +17,8 @@ void TwoDPoint::render() {
         direction = 1;
     }
     else if (projectionPlane->ordinat->point2->z == 1) direction = 2;
-    this->renderable->addPoint(X, Y, projectionPlane->originPoint->x, projectionPlane->originPoint->y, direction, "L");
+    this->renderable->addPoint(X, Y, projectionPlane->originPoint->x, projectionPlane->originPoint->y, direction, "L",
+                               this);
 }
 
 void TwoDPoint::deleteFromRender() {
