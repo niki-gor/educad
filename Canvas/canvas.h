@@ -118,7 +118,6 @@ private:
     QPoint pos; //координаты точки для рисования
     void mouseMoveEvent(QMouseEvent *event);
     removeRelated rRelated;
-
     QVector<qp*> vcp; //массив (вектор) для хранения рисунка
     QVector<qp*> selectedObjects;
     QVector<qp> help; //массив (вектор) для хранения рисунка
