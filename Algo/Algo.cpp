@@ -72,7 +72,7 @@ algorithm<TwoDEntity> Algo::pointOnPlaneProjection(PTR<Point> point, PTR<Plane> 
     alg.push_back({"link", {point2Projection1, point2Projection2}});
     alg.push_back( { "Строим прямую из двух точек", {lineProjection2}});
     alg.push_back( { "Находим проекцию точки на прямой", {pointProjection}});
-    alg.push_back({"link", {pointProjection1}});
+    alg.push_back({"link", {pointProjection1, pointProjection}});
     return alg;
 }
 
