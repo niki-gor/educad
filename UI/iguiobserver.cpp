@@ -29,10 +29,10 @@ void GUIAPI::onAddAlgorithm(std::vector<std::pair<std::string, std::vector<PTR<T
 //        }
 //   }
     HintWindow hint;
-    int i=0;
-    while (i<algorithm.size()) {
+    int i = 0;
+    while (i < algorithm.size()) {
         auto step = algorithm[i];
-        if (step.first=="link") {
+        if (step.first == "link") {
             this->canvas->addLinkLine(step.second[0], step.second[1]);
             i++;
         } else {
@@ -40,19 +40,18 @@ void GUIAPI::onAddAlgorithm(std::vector<std::pair<std::string, std::vector<PTR<T
                 step.second[i]->setRenderable(canvas);
                 step.second[i]->render();
             }
-            if ((algorithm.size()>=i+1) && (algorithm[i+1].first=="link")) {
-                this->canvas->addLinkLine(algorithm[i+1].second[0], algorithm[i+1].second[1]);
+            if ((algorithm.size() >= i + 1) && (algorithm[i + 1].first == "link")) {
+                printf ("\nmaking connection\n");
+                this->canvas->addLinkLine(algorithm[i + 1].second[0], algorithm[i + 1].second[1]);
                 i++;
-                continue;
-            } else {
-                hint.setText(QString::fromStdString(step.first));
-                hint.move(480, 850);
-                hint.exec();
-                while (hint.movement == 0) {
-
-                }
-                i += hint.movement;
             }
+            hint.setText(QString::fromStdString(step.first));
+            hint.move(480, 850);
+            hint.exec();
+            while (hint.movement == 0) {
+
+            }
+            i += hint.movement;
         }
     }
 }
