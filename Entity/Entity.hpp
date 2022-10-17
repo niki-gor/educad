@@ -241,7 +241,7 @@ public:
     double Y;
     TwoDPoint(double x, double y, PTR<ProjectionPlane> plane);
     void render();
-    void deleteFromRender();
+    void deleteFromRender(PTR<TwoDEntity> point);
 
     PTR<Entity> entityByTwoDEntity(PTR<TwoDEntity> secondProjection) override;
 };
